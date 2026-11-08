@@ -29,7 +29,7 @@ export interface OceanRidgePageData {
 }
 
 export const oceanRidgeData: OceanRidgePageData = {
-  metaTitle: 'Private Security & Estate Protection in Ocean Ridge, FL | Massive Protective Services',
+  metaTitle: 'Estate Protection & Security Ocean Ridge | MPS',
   metaDescription:
     "Discreet, licensed security for Ocean Ridge's oceanfront and Intracoastal estates — from a Palm Beach County agency headquartered minutes away in Delray Beach.",
 

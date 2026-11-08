@@ -36,7 +36,7 @@ export const LocationsOverviewClient: React.FC = () => {
       {/* 1. Hero Section */}
       <section
         aria-label="Florida Coverage Grid"
-        className="relative w-full pt-32 sm:pt-40 pb-16 sm:pb-24 overflow-hidden border-b border-white/[0.08]"
+        className="relative w-full pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden border-b border-white/[0.08]"
       >
         {/* Ambient background glows */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#C5A880]/10 rounded-full blur-[140px] pointer-events-none" />
@@ -74,7 +74,7 @@ export const LocationsOverviewClient: React.FC = () => {
               initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.08 }}
-              className="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal text-white leading-[1.12] tracking-tight"
+              className="text-2xl sm:text-4xl lg:text-[46px] font-serif font-normal text-white leading-[1.12] tracking-tight"
             >
               Where We Operate — Statewide Armed Security &amp; Executive Protection
             </motion.h1>
@@ -291,7 +291,7 @@ export const LocationsOverviewClient: React.FC = () => {
       {/* 3. The Tri-County Response Architecture Section */}
       <section
         aria-label="Dispatch Corridor Architecture"
-        className="relative w-full py-20 sm:py-28 bg-[#09101E] border-t border-white/[0.08]"
+        className="relative w-full py-14 sm:py-18 lg:py-20 bg-[#09101E] border-t border-white/[0.08]"
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="max-w-3xl space-y-3">

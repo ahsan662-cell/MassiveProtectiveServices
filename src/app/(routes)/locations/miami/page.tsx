@@ -1,14 +1,27 @@
 import type { Metadata } from 'next';
 import { MiamiClient } from './components/MiamiClient';
 import { miamiData } from '@/data/locations/miamiData';
+import { getCanonicalUrl } from '@/utils/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { getLocalBusinessSchema } from '@/utils/schema';
 
 export const metadata: Metadata = {
+  keywords: [
+    "Miami executive protection",
+    "armed security Brickell",
+    "Coral Gables security guards",
+    "Coconut Grove private security",
+    "Key Biscayne bodyguard",
+  ],
   title: miamiData.metaTitle,
   description: miamiData.metaDescription,
+  alternates: {
+    canonical: getCanonicalUrl('/locations/miami'),
+  },
   openGraph: {
     title: miamiData.metaTitle,
     description: miamiData.metaDescription,
-    url: 'https://massiveprotectiveservice.com/locations/miami',
+    url: getCanonicalUrl('/locations/miami'),
     siteName: 'Massive Protective Services',
     images: [
       {
@@ -27,11 +40,20 @@ export const metadata: Metadata = {
     description: miamiData.metaDescription,
     images: [miamiData.hero.bgImage],
   },
-  alternates: {
-    canonical: 'https://massiveprotectiveservice.com/locations/miami',
-  },
 };
 
 export default function MiamiLocationPage() {
-  return <MiamiClient />;
+  return (
+    <>
+      <JsonLd
+        data={getLocalBusinessSchema({
+          name: 'Massive Protective Services — Miami',
+          description: miamiData.metaDescription,
+          path: '/locations/miami',
+          areaServed: 'Miami, FL',
+        })}
+      />
+      <MiamiClient />
+    </>
+  );
 }

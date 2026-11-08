@@ -1,14 +1,25 @@
 import type { Metadata } from 'next';
 import { OceanRidgeClient } from './components/OceanRidgeClient';
 import { oceanRidgeData } from '@/data/locations/oceanRidgeData';
+import { getCanonicalUrl } from '@/utils/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { getLocalBusinessSchema } from '@/utils/schema';
 
 export const metadata: Metadata = {
+  keywords: [
+    "Ocean Ridge estate security",
+    "oceanfront compound protection Ocean Ridge",
+    "private security Ocean Ridge FL",
+  ],
   title: oceanRidgeData.metaTitle,
   description: oceanRidgeData.metaDescription,
+  alternates: {
+    canonical: getCanonicalUrl('/locations/ocean-ridge'),
+  },
   openGraph: {
     title: oceanRidgeData.metaTitle,
     description: oceanRidgeData.metaDescription,
-    url: 'https://massiveprotectiveservice.com/locations/ocean-ridge',
+    url: getCanonicalUrl('/locations/ocean-ridge'),
     siteName: 'Massive Protective Services',
     images: [
       {
@@ -27,11 +38,20 @@ export const metadata: Metadata = {
     description: oceanRidgeData.metaDescription,
     images: [oceanRidgeData.hero.bgImage],
   },
-  alternates: {
-    canonical: 'https://massiveprotectiveservice.com/locations/ocean-ridge',
-  },
 };
 
 export default function OceanRidgeLocationPage() {
-  return <OceanRidgeClient />;
+  return (
+    <>
+      <JsonLd
+        data={getLocalBusinessSchema({
+          name: 'Massive Protective Services — Ocean Ridge',
+          description: oceanRidgeData.metaDescription,
+          path: '/locations/ocean-ridge',
+          areaServed: 'Ocean Ridge, FL',
+        })}
+      />
+      <OceanRidgeClient />
+    </>
+  );
 }

@@ -79,7 +79,7 @@ export const PhilosophyBanner: React.FC = () => {
       </div>
 
       {/* 2. Main Content Area matching exact screenshot */}
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 py-20 sm:py-28 lg:py-32 text-center flex flex-col items-center">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 py-14 sm:py-18 lg:py-20 text-center flex flex-col items-center">
         {/* Subtle Ambient Radial Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#C5A880]/5 blur-[140px] rounded-full pointer-events-none" />
 
@@ -99,7 +99,7 @@ export const PhilosophyBanner: React.FC = () => {
 
           {/* Headline: Massive Protective Services is not a guard company. */}
           <motion.div variants={itemVariants} className="max-w-3xl">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[62px] font-serif font-normal text-white leading-[1.12] tracking-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[48px] font-serif font-normal text-white leading-[1.12] tracking-tight">
               Massive Protective Services
               <br />
               is not a guard company.

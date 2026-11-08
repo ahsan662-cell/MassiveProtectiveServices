@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { ServicePageConfig } from './types';
 import { ServiceHero } from './sections/ServiceHero';

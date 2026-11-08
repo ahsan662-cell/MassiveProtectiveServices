@@ -3,7 +3,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { PhoneCall, Menu, X, ChevronDown, Shield, MapPin, FileText, ArrowRight, Lock } from 'lucide-react';
+import { PhoneCall, Menu, X, ChevronDown, Shield, MapPin, FileText, ArrowRight, Lock, ExternalLink } from 'lucide-react';
+import { FaLinkedin } from 'react-icons/fa6';
 import { BrandLogo } from './BrandLogo';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { toggleMobileMenu, setMobileMenuOpen, setActiveModal } from '@/store/slices/uiSlice';
@@ -92,7 +93,7 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Main Navigation Bar */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-0.5 flex items-center justify-between">
           {/* Logo */}
           <BrandLogo />
 
@@ -110,16 +111,16 @@ export const Header: React.FC = () => {
               const isAbout = item.title === 'ABOUT';
               const isResources = item.title === 'RESOURCES';
 
-              let menuWidthClass = 'w-72 sm:w-80';
+              let menuWidthClass = 'w-72 sm:w-20';
               let gridColsClass = 'grid-cols-1';
               let menuPositionClass = 'left-0';
 
               if (isLocations) {
-                menuWidthClass = 'w-[800px] xl:w-[860px] max-w-[calc(100vw-32px)]';
-                gridColsClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3';
+                menuWidthClass = 'w-[800px] xl:w-[500px] max-w-[calc(100vw-32px)]';
+                gridColsClass = 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-2';
                 menuPositionClass = '-left-28 sm:-left-36 lg:-left-44 xl:-left-44';
               } else if (isServices) {
-                menuWidthClass = 'w-[620px] xl:w-[680px] max-w-[calc(100vw-32px)]';
+                menuWidthClass = 'w-[620px] xl:w-[500px] max-w-[calc(100vw-32px)]';
                 gridColsClass = 'grid-cols-1 sm:grid-cols-2';
                 menuPositionClass = 'left-0';
               } else if (isAbout) {
@@ -207,7 +208,7 @@ export const Header: React.FC = () => {
                             <Link
                               href="/executive-protection"
                               onClick={() => setActiveDropdown(null)}
-                              className="text-[11px] font-sans text-zinc-400 hover:text-[#D4AF37] transition-colors flex items-center gap-1 group"
+                              className="text-[11px] font-serif text-zinc-400 hover:text-[#D4AF37] transition-colors flex items-center gap-1 group"
                             >
                               <span>Class G Armed</span>
                               <span className="transition-transform group-hover:translate-x-0.5">→</span>
@@ -215,32 +216,49 @@ export const Header: React.FC = () => {
                           </div>
                         )}
 
+
+
                         {/* Multi-Column Grid */}
                         <div className={`grid ${gridColsClass} gap-1.5`}>
-                          {item.items?.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              onClick={() => setActiveDropdown(null)}
-                              className="group flex flex-col p-2.5 rounded-md hover:bg-[#131F38] border border-transparent hover:border-[#C5A880]/30 transition-all duration-150"
-                            >
-                              <div className="flex items-center justify-between gap-1.5">
-                                <span className="text-xs font-semibold text-zinc-200 group-hover:text-[#D4AF37] transition-colors truncate">
-                                  {subItem.name}
-                                </span>
-                                {subItem.badge && (
-                                  <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-[#C5A880]/15 text-[#D4AF37] border border-[#C5A880]/30 shrink-0">
-                                    {subItem.badge}
+                          {item.items?.map((subItem) => {
+                            const isExternal = subItem.href.startsWith('http');
+                            return (
+                              <Link
+                                key={subItem.name}
+                                href={subItem.href}
+                                target={isExternal ? '_blank' : undefined}
+                                rel={isExternal ? 'noopener noreferrer' : undefined}
+                                onClick={() => setActiveDropdown(null)}
+                                className="group flex flex-col p-2.5 rounded-md hover:bg-[#131F38] border hover:border-[#C5A880]/30 border-[#C5A880]/10 transition-all duration-150"
+                              >
+                                <div className="flex items-center justify-between gap-1.5">
+                                  <div className="flex items-center gap-2 min-w-0">
+                                    {isExternal && (
+                                      <FaLinkedin className="w-4 h-4 text-[#0A66C2] shrink-0" />
+                                    )}
+                                    <span className="text-xs font-semibold text-zinc-200 group-hover:text-[#D4AF37] transition-colors truncate">
+                                      {subItem.name}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-1.5 shrink-0">
+                                    {subItem.badge && (
+                                      <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-[#C5A880]/15 text-[#D4AF37] border border-[#C5A880]/30 shrink-0">
+                                        {subItem.badge}
+                                      </span>
+                                    )}
+                                    {isExternal && (
+                                      <ExternalLink className="w-3 h-3 text-[#C5A880] opacity-70 group-hover:opacity-100" />
+                                    )}
+                                  </div>
+                                </div>
+                                {subItem.description && (
+                                  <span className="text-[11px] text-zinc-400 group-hover:text-zinc-300 mt-1 line-clamp-1 font-light leading-snug">
+                                    {subItem.description}
                                   </span>
                                 )}
-                              </div>
-                              {subItem.description && (
-                                <span className="text-[11px] text-zinc-400 group-hover:text-zinc-300 mt-0.5 line-clamp-1 font-light leading-snug">
-                                  {subItem.description}
-                                </span>
-                              )}
-                            </Link>
-                          ))}
+                              </Link>
+                            );
+                          })}
                         </div>
 
                         {/* Footer Ribbon for Multi-Column Menus */}
@@ -264,7 +282,7 @@ export const Header: React.FC = () => {
           </nav>
 
           {/* Action CTAs Matching Screenshot */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             {/* Call 24/7 Button - Outlined Gold */}
             <a
               href="tel:9542347231"
@@ -272,6 +290,17 @@ export const Header: React.FC = () => {
               className="hidden sm:inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-sm border border-[#C5A880]/60 hover:border-[#D4AF37] text-xs font-semibold tracking-wider text-zinc-100 hover:text-[#D4AF37] bg-transparent transition-all shadow-[0_0_12px_rgba(212,175,55,0.1)] hover:shadow-[0_0_20px_rgba(212,175,55,0.25)]"
             >
               Call 24/7
+            </a>
+
+            {/* Portfolio Button - Same styling as Contact Our Team button */}
+            <a
+              href="https://www.linkedin.com/in/marc-a-tardalo-22839530/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Marc A. Tardalo Personal Portfolio on LinkedIn"
+              className="hidden sm:inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] text-xs font-bold tracking-wider uppercase transition-all shadow-[0_0_15px_rgba(197,168,128,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.5)] cursor-pointer"
+            >
+              Portfolio
             </a>
 
             {/* Contact Our Team Button - Solid Warm Gold */}
@@ -498,33 +527,45 @@ export const Header: React.FC = () => {
                                 </div>
                               ) : (
                                 <div className="p-2 space-y-1.5">
-                                  {section.items?.map((subItem) => (
-                                    <Link
-                                      key={subItem.name}
-                                      href={subItem.href}
-                                      onClick={() => dispatch(setMobileMenuOpen(false))}
-                                      className="group flex items-center justify-between p-2.5 rounded-md bg-[#0D2548]/80 hover:bg-[#1C2C4E] border border-white/5 hover:border-[#C5A880]/40 transition-colors"
-                                    >
-                                      <div className="flex flex-col pr-2">
-                                        <div className="flex items-center gap-2">
-                                          <span className="text-xs font-semibold text-white group-hover:text-[#D4AF37] transition-colors">
-                                            {subItem.name}
-                                          </span>
-                                          {subItem.badge && (
-                                            <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-[#C5A880]/15 text-[#D4AF37] border border-[#C5A880]/30">
-                                              {subItem.badge}
+                                  {section.items?.map((subItem) => {
+                                    const isExternal = subItem.href.startsWith('http');
+                                    return (
+                                      <Link
+                                        key={subItem.name}
+                                        href={subItem.href}
+                                        target={isExternal ? '_blank' : undefined}
+                                        rel={isExternal ? 'noopener noreferrer' : undefined}
+                                        onClick={() => dispatch(setMobileMenuOpen(false))}
+                                        className="group flex items-center justify-between p-2.5 rounded-md bg-[#0D2548]/80 hover:bg-[#1C2C4E] border border-white/5 hover:border-[#C5A880]/40 transition-colors"
+                                      >
+                                        <div className="flex flex-col pr-2 min-w-0">
+                                          <div className="flex items-center gap-2">
+                                            {isExternal && (
+                                              <FaLinkedin className="w-4 h-4 text-[#0A66C2] shrink-0" />
+                                            )}
+                                            <span className="text-xs font-semibold text-white group-hover:text-[#D4AF37] transition-colors truncate">
+                                              {subItem.name}
+                                            </span>
+                                            {subItem.badge && (
+                                              <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-[#C5A880]/15 text-[#D4AF37] border border-[#C5A880]/30 shrink-0">
+                                                {subItem.badge}
+                                              </span>
+                                            )}
+                                          </div>
+                                          {subItem.description && (
+                                            <span className="text-[11px] text-zinc-300 mt-0.5 line-clamp-1">
+                                              {subItem.description}
                                             </span>
                                           )}
                                         </div>
-                                        {subItem.description && (
-                                          <span className="text-[11px] text-zinc-300 mt-0.5 line-clamp-1">
-                                            {subItem.description}
-                                          </span>
+                                        {isExternal ? (
+                                          <ExternalLink className="w-3.5 h-3.5 text-[#C5A880] shrink-0" />
+                                        ) : (
+                                          <ArrowRight className="w-3.5 h-3.5 text-[#C5A880] group-hover:translate-x-0.5 transition-transform shrink-0" />
                                         )}
-                                      </div>
-                                      <ArrowRight className="w-3.5 h-3.5 text-[#C5A880] group-hover:translate-x-0.5 transition-transform shrink-0" />
-                                    </Link>
-                                  ))}
+                                      </Link>
+                                    );
+                                  })}
                                 </div>
                               )}
                             </motion.div>
@@ -558,6 +599,15 @@ export const Header: React.FC = () => {
                 >
                   <PhoneCall className="w-4 h-4 text-[#D4AF37]" />
                   <span>Call (954) 234-7231 (24/7)</span>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/marc-a-tardalo-22839530/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center py-3 px-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-bold text-xs uppercase tracking-widest text-center shadow-lg transition-colors cursor-pointer"
+                >
+                  Portfolio
                 </a>
 
                 <Link

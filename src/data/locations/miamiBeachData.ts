@@ -31,7 +31,7 @@ export interface MiamiBeachPageData {
 }
 
 export const miamiBeachData: MiamiBeachPageData = {
-  metaTitle: 'Private Security & Celebrity Protection Miami Beach FL | Massive Protective Services',
+  metaTitle: 'Private Security & Celebrity Protection Miami Beach | MPS',
   metaDescription:
     "Armed security, VIP protection and estate services for Miami Beach's private island residences, luxury hotel clientele and Art Basel event season. FL License B1400200.",
 

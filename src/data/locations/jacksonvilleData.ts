@@ -27,7 +27,7 @@ export interface JacksonvillePageData {
 }
 
 export const jacksonvilleData: JacksonvillePageData = {
-  metaTitle: 'Private Security & Executive Protection Jacksonville FL | Massive Protective Services',
+  metaTitle: 'Private Security & Executive Protection Jacksonville | MPS',
   metaDescription:
     'Plan executive visits, private functions, and property security in Jacksonville. Speak with Massive to confirm licensed-team availability and deployment arrangements.',
 

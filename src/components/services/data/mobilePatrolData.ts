@@ -5,7 +5,7 @@ export const mobilePatrolData: ServicePageConfig = {
   hero: {
     serviceName: 'Mobile Patrol',
     breadcrumbTitle: 'Mobile Patrol',
-    headline: 'Mobile Patrol Services',
+    headline: 'Mobile Patrol Security Services in South Florida',
     subtitle:
       'A visible presence. A deliberate plan. Explore property patrols, access checks, and documented observations tailored to your site.',
     bgImage: '/images/mps_service_mobile_patrol.jpg',

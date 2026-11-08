@@ -26,7 +26,7 @@ export const ServiceHero: React.FC<Props> = ({ data }) => {
   return (
     <section
       aria-label={data.headline}
-      className="relative w-full min-h-[92vh] flex flex-col justify-between pt-36 sm:pt-44 pb-12 sm:pb-16 text-white overflow-hidden bg-[#070D18]"
+      className="relative w-full min-h-[85vh] lg:min-h-[88vh] flex flex-col justify-between pt-28 sm:pt-36 pb-10 sm:pb-14 text-white overflow-hidden bg-[#070D18]"
     >
       {/* Background Image with Dark Overlays */}
       <div className="absolute inset-0 z-0 select-none">
@@ -85,7 +85,7 @@ export const ServiceHero: React.FC<Props> = ({ data }) => {
               initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.08 }}
-              className="text-4xl sm:text-6xl lg:text-[68px] font-serif font-normal text-white leading-[1.08] tracking-tight max-w-5xl"
+              className="text-3xl sm:text-4xl lg:text-5xl xl:text-[54px] font-serif font-normal text-white leading-[1.1] tracking-tight max-w-5xl"
             >
               {data.headline}
             </motion.h1>
@@ -109,14 +109,14 @@ export const ServiceHero: React.FC<Props> = ({ data }) => {
             >
               <a
                 href={data.primaryCta.href}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 sm:py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] hover:scale-[1.02] cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] hover:scale-[1.02] cursor-pointer"
               >
                 {data.primaryCta.label}
               </a>
 
               <a
                 href={data.secondaryCta.href}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 rounded-sm border border-white/25 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] bg-black/40 backdrop-blur-sm font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.02]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm border border-white/25 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] bg-black/40 backdrop-blur-sm font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.02]"
               >
                 {data.secondaryCta.href.startsWith('tel:') && (
                   <Phone className="w-4 h-4 text-[#C5A880]" />
@@ -187,7 +187,7 @@ export const ServiceHero: React.FC<Props> = ({ data }) => {
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-4xl sm:text-6xl lg:text-[72px] font-serif font-normal text-white leading-[1.08] tracking-tight max-w-5xl"
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-[54px] font-serif font-normal text-white leading-[1.1] tracking-tight max-w-5xl"
           >
             {data.headline}
           </motion.h1>
@@ -211,14 +211,14 @@ export const ServiceHero: React.FC<Props> = ({ data }) => {
           >
             <a
               href={data.primaryCta.href}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 sm:py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] hover:scale-[1.02] cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] hover:scale-[1.02] cursor-pointer"
             >
               {data.primaryCta.label}
             </a>
 
             <a
               href={data.secondaryCta.href}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 rounded-sm border border-white/25 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] bg-black/40 backdrop-blur-sm font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.02]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm border border-white/25 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] bg-black/40 backdrop-blur-sm font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.02]"
             >
               {data.secondaryCta.href.startsWith('tel:') && data.secondaryCta.icon !== 'none' && (
                 <Phone className="w-4 h-4 text-[#C5A880]" />

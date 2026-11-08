@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { getCanonicalUrl } from '@/utils/seo';
 import {
   LicensingHeroSection,
   ThreeLicensesSection,
@@ -12,6 +13,15 @@ import {
 } from './components';
 
 export const metadata: Metadata = {
+  keywords: [
+    "Florida Class B security agency license",
+    "Florida Class G armed license",
+    "FDACS license verification B1400200",
+    "Chapter 493 Florida Statutes compliance",
+  ],
+  alternates: {
+    canonical: getCanonicalUrl('/licensing'),
+  },
   title: 'Florida Licensing & Credentials | Massive Protective Services — FL License B1400200',
   description:
     'Florida-Licensed. Armed. Verifiable. Class B Security Agency License B1400200, Chapter 493 Florida Statutes compliance, Class G armed officers, and instant FDACS verification guide.',
@@ -19,7 +29,7 @@ export const metadata: Metadata = {
     title: 'Florida Licensing & Credentials | Massive Protective Services',
     description:
       'Every claim on this page is a public record. FL Agency License B1400200, Chapter 493 compliance, and Class G armed credentials.',
-    url: 'https://massiveprotectiveservices.com/licensing',
+    url: getCanonicalUrl('/licensing'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

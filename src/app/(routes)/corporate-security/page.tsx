@@ -1,3 +1,6 @@
+import { getServiceSchema } from '@/utils/schema';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { getCanonicalUrl } from '@/utils/seo';
 import React from 'react';
 import type { Metadata } from 'next';
 import {
@@ -15,6 +18,16 @@ import {
 } from './components';
 
 export const metadata: Metadata = {
+  keywords: [
+    "corporate security South Florida",
+    "workplace violence prevention Florida",
+    "high-risk termination security",
+    "executive boardroom protection",
+    "corporate campus armed security",
+  ],
+  alternates: {
+    canonical: getCanonicalUrl('/corporate-security'),
+  },
   title: 'Corporate Security Services in South Florida | Massive Protective Services',
   description:
     'Executive protection, high-risk terminations, workplace violence prevention, and on-site officers across Palm Beach, Broward, and Miami-Dade. FDACS License B1400200.',
@@ -22,7 +35,7 @@ export const metadata: Metadata = {
     title: 'Corporate Security Services in South Florida | Massive Protective Services',
     description:
       'Your boardroom should be your safest room. We make sure it is. Executive protection, high-risk terminations, workplace violence prevention, and corporate security officers.',
-    url: 'https://massiveprotectiveservices.com/corporate-security',
+    url: getCanonicalUrl('/corporate-security'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',
@@ -32,6 +45,12 @@ export const metadata: Metadata = {
 export default function CorporateSecurityPage() {
   return (
     <div className="w-full flex-1 flex flex-col overflow-x-clip bg-[#0A111F]">
+      <JsonLd data={getServiceSchema({
+  name: "Corporate Security Services",
+  serviceType: "Corporate Security",
+  description: "Executive protection, high-risk terminations, workplace violence prevention, and on-site officers across Palm Beach, Broward, and Miami-Dade. FDACS License B1400200.",
+  slug: "corporate-security"
+})} />
       {/* 1. Hero with Boardroom Skyline, Breadcrumbs & Dual Action Buttons (Screenshot 1) */}
       <CorporateHeroSection />
 

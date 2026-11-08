@@ -29,7 +29,7 @@ export interface LighthousePointPageData {
 }
 
 export const lighthousePointData: LighthousePointPageData = {
-  metaTitle: 'Private Security & Bodyguards Lighthouse Point FL | Massive Protective Services',
+  metaTitle: 'Private Security & Bodyguards Lighthouse Point | MPS',
   metaDescription:
     "Estate security, armed officers and close protection for Lighthouse Point's waterfront homes, private docks and residents — from a licensed Broward County agency.",
 

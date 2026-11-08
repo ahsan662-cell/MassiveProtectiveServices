@@ -49,7 +49,7 @@ export const PrivacyHeroSection: React.FC = () => {
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.08 }}
-          className="text-4xl sm:text-6xl lg:text-[68px] font-serif font-normal text-white leading-tight tracking-tight"
+          className="text-3xl sm:text-4xl lg:text-[48px] font-serif font-normal text-white leading-tight tracking-tight"
         >
           Privacy Policy
         </motion.h1>

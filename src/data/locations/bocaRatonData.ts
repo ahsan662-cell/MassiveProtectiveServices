@@ -29,7 +29,7 @@ export interface BocaRatonPageConfig {
 }
 
 export const bocaRatonData: BocaRatonPageConfig = {
-  metaTitle: 'Private Security & Executive Protection Boca Raton, FL | Massive Protective Services',
+  metaTitle: 'Private Security & Executive Protection Boca Raton | MPS',
   metaDescription:
     'Licensed Palm Beach County armed security and executive protection for Boca Raton estates, Royal Palm Yacht Club, Woodfield, Mizner Park & corporate corridors.',
 

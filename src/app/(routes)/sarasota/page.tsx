@@ -1,3 +1,4 @@
+import { getCanonicalUrl } from '@/utils/seo';
 import { Metadata } from 'next';
 import { SarasotaClient } from '../locations/sarasota/components/SarasotaClient';
 import { sarasotaData } from '@/data/locations/sarasotaData';
@@ -6,12 +7,12 @@ export const metadata: Metadata = {
   title: sarasotaData.metaTitle,
   description: sarasotaData.metaDescription,
   alternates: {
-    canonical: 'https://massiveprotectiveservices.com/sarasota',
+    canonical: getCanonicalUrl('/locations/sarasota'),
   },
   openGraph: {
     title: sarasotaData.metaTitle,
     description: sarasotaData.metaDescription,
-    url: 'https://massiveprotectiveservices.com/sarasota',
+    url: getCanonicalUrl('/locations/sarasota'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

@@ -34,7 +34,7 @@ export const LocationProximityAdvantage: React.FC<Props> = ({ data }) => {
   return (
     <section
       aria-label={data.headline}
-      className="relative w-full bg-[#070D18] py-20 sm:py-28 lg:py-32 text-white overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#070D18] py-16 sm:py-20 lg:py-24 text-white overflow-hidden border-t border-white/5"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#C5A880]/5 rounded-full blur-3xl pointer-events-none" />

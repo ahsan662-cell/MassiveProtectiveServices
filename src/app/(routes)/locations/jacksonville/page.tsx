@@ -1,17 +1,26 @@
 import { Metadata } from 'next';
 import { JacksonvilleClient } from './components/JacksonvilleClient';
 import { jacksonvilleData } from '@/data/locations/jacksonvilleData';
+import { getCanonicalUrl } from '@/utils/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { getLocalBusinessSchema } from '@/utils/schema';
 
 export const metadata: Metadata = {
+  keywords: [
+    "Jacksonville armed security",
+    "Jacksonville executive protection",
+    "corporate security Jacksonville FL",
+  ],
   title: jacksonvilleData.metaTitle,
   description: jacksonvilleData.metaDescription,
   alternates: {
-    canonical: '/locations/jacksonville',
+    canonical: getCanonicalUrl('/locations/jacksonville'),
   },
   openGraph: {
     title: jacksonvilleData.metaTitle,
     description: jacksonvilleData.metaDescription,
-    url: 'https://massiveprotectiveservices.com/locations/jacksonville',
+    url: getCanonicalUrl('/locations/jacksonville'),
+    siteName: 'Massive Protective Services',
     images: [
       {
         url: '/images/mps_location_jacksonville_hero.jpg',
@@ -24,5 +33,17 @@ export const metadata: Metadata = {
 };
 
 export default function JacksonvilleLocationPage() {
-  return <JacksonvilleClient />;
+  return (
+    <>
+      <JsonLd
+        data={getLocalBusinessSchema({
+          name: 'Massive Protective Services — Jacksonville',
+          description: jacksonvilleData.metaDescription,
+          path: '/locations/jacksonville',
+          areaServed: 'Jacksonville, FL',
+        })}
+      />
+      <JacksonvilleClient />
+    </>
+  );
 }

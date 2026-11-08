@@ -25,7 +25,7 @@ export interface ManalapanPageData {
 }
 
 export const manalapanData: ManalapanPageData = {
-  metaTitle: 'Manalapan Estate Security & Armed Officers FL | Massive Protective Services',
+  metaTitle: 'Manalapan Estate Security & Armed Officers | MPS',
   metaDescription:
     'Licensed armed protection, documented perimeter patrols, and ocean-to-Intracoastal estate security for the Town of Manalapan, FL. Florida Agency License B1400200.',
 

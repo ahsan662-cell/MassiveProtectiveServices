@@ -66,7 +66,7 @@ export const JurisdictionCoverage: React.FC = () => {
     <section
       id="territory"
       aria-label="Jurisdiction and Operational Coverage"
-      className="relative w-full py-20 sm:py-28 bg-[#0D121D] border-t border-white/[0.06] overflow-hidden"
+      className="relative w-full py-14 sm:py-18 lg:py-20 bg-[#0D121D] border-t border-white/[0.06] overflow-hidden"
     >
       {/* Subtle radial tactical background illumination */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#C5A880]/5 blur-[180px] rounded-full pointer-events-none" />

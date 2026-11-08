@@ -17,7 +17,7 @@ export const LocationSplitSection: React.FC<Props> = ({ data }) => {
   return (
     <section
       aria-label={data.headline}
-      className="relative w-full bg-[#070D18] py-20 sm:py-28 lg:py-32 text-white overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#070D18] py-16 sm:py-20 lg:py-24 text-white overflow-hidden border-t border-white/5"
     >
       {/* Background ambient lighting glow */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C5A880]/5 rounded-full blur-3xl pointer-events-none" />
@@ -43,7 +43,7 @@ export const LocationSplitSection: React.FC<Props> = ({ data }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-[1.14] tracking-tight"
+            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.14] tracking-tight"
           >
             {data.headline}
           </motion.h2>

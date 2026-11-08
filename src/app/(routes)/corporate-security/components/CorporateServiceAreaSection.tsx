@@ -9,7 +9,7 @@ export const CorporateServiceAreaSection: React.FC = () => {
   return (
     <section
       aria-label="Corporate Security Service Area"
-      className="relative w-full bg-[#0B1324] py-20 sm:py-28 lg:py-32 text-white overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#0B1324] py-14 sm:py-18 lg:py-20 text-white overflow-hidden border-t border-white/5"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
@@ -26,7 +26,7 @@ export const CorporateServiceAreaSection: React.FC = () => {
                 SERVICE AREA
               </span>
 
-              <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-[1.12] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.12] tracking-tight">
                 Corporate Security across South Florida
               </h2>
             </div>

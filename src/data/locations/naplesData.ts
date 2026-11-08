@@ -25,7 +25,7 @@ export interface NaplesPageData {
 }
 
 export const naplesData: NaplesPageData = {
-  metaTitle: 'Private Security & Protection in Naples | Massive Protective Services',
+  metaTitle: 'Private Security & Protection in Naples | MPS',
   metaDescription:
     'Consult with us on executive, property, and private-event security planning in Naples. Service availability and deployment confirmed individually from Delray Beach headquarters.',
 

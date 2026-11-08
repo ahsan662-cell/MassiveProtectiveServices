@@ -31,7 +31,7 @@ export interface SarasotaPageData {
 }
 
 export const sarasotaData: SarasotaPageData = {
-  metaTitle: 'Private Security & Estate Protection in Sarasota, FL | Massive Protective Services',
+  metaTitle: 'Estate Protection & Security Sarasota | MPS',
   metaDescription:
     "Armed security and executive protection for Sarasota's barrier island estates, arts season events and Gulf Coast residences — a licensed South Florida agency that travels for the right client.",
 

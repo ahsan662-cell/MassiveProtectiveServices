@@ -25,7 +25,7 @@ export const ConciergeHeadquartersSection: React.FC = () => {
               DELRAY BEACH HEADQUARTERS
             </span>
 
-            <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-[1.15] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight">
               South Florida. A local perspective.
             </h2>
           </motion.div>

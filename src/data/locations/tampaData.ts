@@ -25,7 +25,7 @@ export interface TampaPageData {
 }
 
 export const tampaData: TampaPageData = {
-  metaTitle: 'Private Security & Protection in Tampa | Massive Protective Services',
+  metaTitle: 'Private Security & Protection in Tampa | MPS',
   metaDescription:
     'Plan executive, property, and event security in Tampa. Discuss your itinerary, requirements, and availability with our licensed Delray Beach headquarters.',
 

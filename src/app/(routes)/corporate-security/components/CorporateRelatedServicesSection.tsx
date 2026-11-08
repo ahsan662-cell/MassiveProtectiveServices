@@ -50,7 +50,7 @@ export const CorporateRelatedServicesSection: React.FC = () => {
   return (
     <section
       aria-label="Related Services"
-      className="relative w-full bg-[#070D18] py-20 sm:py-28 lg:py-32 text-white overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#070D18] py-14 sm:py-18 lg:py-20 text-white overflow-hidden border-t border-white/5"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Section Header matching Screenshot 5 */}

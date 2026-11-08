@@ -1,3 +1,6 @@
+import { getServiceSchema } from '@/utils/schema';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { getCanonicalUrl } from '@/utils/seo';
 import React from 'react';
 import type { Metadata } from 'next';
 import {
@@ -15,6 +18,16 @@ import {
 } from './components';
 
 export const metadata: Metadata = {
+  keywords: [
+    "concierge security South Florida",
+    "luxury front of house security",
+    "residential concierge security Miami",
+    "hospitality security guards",
+    "luxury condominium security",
+  ],
+  alternates: {
+    canonical: getCanonicalUrl('/concierge-security'),
+  },
   title: 'Concierge Security in South Florida | Massive Protective Services',
   description:
     'Discreet front-of-house security for luxury residential, hospitality, and commercial properties across Palm Beach, Broward and Miami-Dade. FDACS License B1400200.',
@@ -22,7 +35,7 @@ export const metadata: Metadata = {
     title: 'Concierge Security in South Florida | Massive Protective Services',
     description:
       'Discreet front-of-house security. A considered welcome, with a watchful presence behind every arrival.',
-    url: 'https://massiveprotectiveservices.com/concierge-security',
+    url: getCanonicalUrl('/concierge-security'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',
@@ -32,6 +45,12 @@ export const metadata: Metadata = {
 export default function ConciergeSecurityPage() {
   return (
     <div className="w-full flex-1 flex flex-col overflow-x-clip bg-[#0A111F]">
+      <JsonLd data={getServiceSchema({
+  name: "Concierge Security Services",
+  serviceType: "Concierge Security",
+  description: "Discreet front-of-house security for luxury residential, hospitality, and commercial properties across Palm Beach, Broward and Miami-Dade. FDACS License B1400200.",
+  slug: "concierge-security"
+})} />
       {/* 1. Hero with Breadcrumbs & Dual Action Buttons */}
       <ConciergeHeroSection />
 

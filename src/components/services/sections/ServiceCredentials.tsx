@@ -44,7 +44,7 @@ export const ServiceCredentials: React.FC<Props> = ({ data }) => {
     <section
       aria-label={data.headline || 'Licensed, Armed and Verifiable'}
       className={`relative w-full bg-[#0B1324] ${
-        hasHeader ? 'py-20 sm:py-28 lg:py-32' : 'py-12 sm:py-16 lg:py-20'
+        hasHeader ? 'py-16 sm:py-20 lg:py-24' : 'py-12 sm:py-16 lg:py-20'
       } text-white overflow-hidden border-t border-white/5`}
     >
       <div className={`relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${hasHeader ? 'space-y-10 sm:space-y-12' : ''}`}>

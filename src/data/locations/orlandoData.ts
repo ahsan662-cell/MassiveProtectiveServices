@@ -25,7 +25,7 @@ export interface OrlandoPageData {
 }
 
 export const orlandoData: OrlandoPageData = {
-  metaTitle: 'Private Security & Protection in Orlando | Massive Protective Services',
+  metaTitle: 'Private Security & Protection in Orlando | MPS',
   metaDescription:
     'Plan executive, event and property protection in Orlando. Discuss availability and deployment with our licensed team at Delray Beach headquarters.',
 

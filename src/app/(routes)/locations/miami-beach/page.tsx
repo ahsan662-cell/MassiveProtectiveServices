@@ -1,14 +1,26 @@
 import type { Metadata } from 'next';
 import { MiamiBeachClient } from './components/MiamiBeachClient';
 import { miamiBeachData } from '@/data/locations/miamiBeachData';
+import { getCanonicalUrl } from '@/utils/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { getLocalBusinessSchema } from '@/utils/schema';
 
 export const metadata: Metadata = {
+  keywords: [
+    "Miami Beach security guards",
+    "South Beach VIP protection",
+    "Star Island estate security",
+    "Art Basel Miami Beach security",
+  ],
   title: miamiBeachData.metaTitle,
   description: miamiBeachData.metaDescription,
+  alternates: {
+    canonical: getCanonicalUrl('/locations/miami-beach'),
+  },
   openGraph: {
     title: miamiBeachData.metaTitle,
     description: miamiBeachData.metaDescription,
-    url: 'https://massiveprotectiveservice.com/locations/miami-beach',
+    url: getCanonicalUrl('/locations/miami-beach'),
     siteName: 'Massive Protective Services',
     images: [
       {
@@ -27,11 +39,20 @@ export const metadata: Metadata = {
     description: miamiBeachData.metaDescription,
     images: [miamiBeachData.hero.bgImage],
   },
-  alternates: {
-    canonical: 'https://massiveprotectiveservice.com/locations/miami-beach',
-  },
 };
 
 export default function MiamiBeachPage() {
-  return <MiamiBeachClient />;
+  return (
+    <>
+      <JsonLd
+        data={getLocalBusinessSchema({
+          name: 'Massive Protective Services — Miami Beach',
+          description: miamiBeachData.metaDescription,
+          path: '/locations/miami-beach',
+          areaServed: 'Miami Beach, FL',
+        })}
+      />
+      <MiamiBeachClient />
+    </>
+  );
 }

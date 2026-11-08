@@ -37,7 +37,7 @@ export const LocationPlanningBeyond: React.FC<Props> = ({ data }) => {
       aria-label={data.headline}
       className={`relative w-full ${
         isLight ? 'bg-[#FAF8F5] text-[#151D2A]' : 'bg-[#0B1324] text-white'
-      } py-20 sm:py-28 overflow-hidden border-t ${
+      } py-14 sm:py-18 lg:py-20 overflow-hidden border-t ${
         isLight ? 'border-black/5' : 'border-white/5'
       }`}
     >

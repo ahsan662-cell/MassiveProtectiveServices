@@ -5,7 +5,7 @@ export const lossPreventionData: ServicePageConfig = {
   hero: {
     serviceName: 'Loss Prevention',
     breadcrumbTitle: 'Loss Prevention',
-    headline: 'Loss Prevention in South Florida',
+    headline: 'Loss Prevention & Retail Security in South Florida',
     subtitle:
       'Observant retail security. Clear reporting. A considered approach to protecting your inventory, people, and customer experience.',
     bgImage: '/images/mps_service_loss_prevention.jpg',

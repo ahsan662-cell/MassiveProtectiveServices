@@ -30,7 +30,7 @@ export interface PalmBeachPageData {
 }
 
 export const palmBeachData: PalmBeachPageData = {
-  metaTitle: 'Private Security & Estate Protection in Palm Beach, FL | Massive Protective Services',
+  metaTitle: 'Estate Protection & Security Palm Beach | MPS',
   metaDescription:
     'Discreet, licensed security for Palm Beach oceanfront and lakefront estates, private clubs and seasonal residences — from an agency headquartered 25 minutes south in Delray Beach.',
 

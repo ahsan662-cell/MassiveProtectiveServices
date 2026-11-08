@@ -3,6 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
+import { MapPin, ExternalLink } from 'lucide-react';
+import { FaLinkedin } from 'react-icons/fa6';
 import { BrandLogo } from './BrandLogo';
 import { SERVICES_NAV, LOCATIONS_NAV, RESOURCES_NAV } from '@/data/navigation';
 
@@ -54,9 +56,21 @@ export const Footer: React.FC = () => {
             <BrandLogo size="lg" />
 
             {/* Headline */}
-            <h2 className="text-2xl sm:text-[26px] font-serif font-normal text-white leading-tight tracking-tight pt-1">
-              Headquartered in Delray Beach, FL.
-            </h2>
+            <div>
+              <h2 className="text-2xl sm:text-[26px] font-serif font-normal text-white leading-tight tracking-tight pt-1">
+                Headquartered in Delray Beach, FL.
+              </h2>
+              <a
+                href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#C5A880] hover:text-[#D4AF37] transition-colors mt-2"
+              >
+                <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <span>Find us on Google</span>
+                <ExternalLink className="w-3 h-3 opacity-70" />
+              </a>
+            </div>
 
             {/* Paragraph */}
             <p className="text-xs sm:text-sm text-zinc-300 font-sans font-light leading-relaxed max-w-md">
@@ -78,6 +92,35 @@ export const Footer: React.FC = () => {
               >
                 <span className="text-[#C5A880]">24/7</span> · (954) 234-7231
               </a>
+            </div>
+
+            {/* LinkedIn Portfolio Links */}
+            <div className="pt-2 space-y-2.5 border-t border-white/[0.08]">
+              <span className="text-[11px] font-mono tracking-wider text-zinc-400 uppercase block">
+                LinkedIn Portfolios:
+              </span>
+              <div className="flex flex-col gap-2 text-xs font-sans">
+                <a
+                  href="https://www.linkedin.com/company/massive-protective-services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-zinc-300 hover:text-[#D4AF37] transition-colors group"
+                >
+                  <FaLinkedin className="w-4 h-4 text-[#0A66C2] shrink-0 group-hover:scale-105 transition-transform" />
+                  <span className="group-hover:underline">Company: Massive Protective Services</span>
+                  <ExternalLink className="w-3 h-3 opacity-60 ml-auto" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/marc-a-tardalo-22839530/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-zinc-300 hover:text-[#D4AF37] transition-colors group"
+                >
+                  <FaLinkedin className="w-4 h-4 text-[#0A66C2] shrink-0 group-hover:scale-105 transition-transform" />
+                  <span className="group-hover:underline">Personal: Marc A. Tardalo (Founder &amp; CEO)</span>
+                  <ExternalLink className="w-3 h-3 opacity-60 ml-auto" />
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -180,14 +223,40 @@ export const Footer: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Mid Section Tagline Note matching Screenshot */}
+        {/* Mid Section Review Banner & Address Note matching Task 3 & Task 4 */}
         <motion.div
           variants={itemVariants}
-          className="pt-6 pb-6 text-xs sm:text-[13px] font-sans font-light text-zinc-400"
+          className="pt-6 pb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-t border-white/[0.08]"
         >
-          <p>
-            Headquartered in Delray Beach, FL · Serving Palm Beach, Broward &amp; Miami-Dade Counties.
-          </p>
+          {/* Address Line with Find Us on Google */}
+          <div className="flex flex-wrap items-center gap-2 text-xs sm:text-[13px] font-sans font-light text-zinc-400">
+            <span>
+              Headquartered in Delray Beach, FL · Serving Palm Beach, Broward &amp; Miami-Dade Counties.
+            </span>
+            <span>·</span>
+            <a
+              href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs font-mono text-[#C5A880] hover:text-[#D4AF37] transition-colors font-medium"
+            >
+              <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <span>Find us on Google</span>
+            </a>
+          </div>
+
+          {/* TASK 3: ⭐ Happy with our service? Leave a review on Google */}
+          <div>
+            <a
+              href="https://admin.trustindex.io/card/56cfe17231ce249"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm bg-white/[0.04] hover:bg-white/[0.08] border border-[#C5A880]/40 hover:border-[#D4AF37] text-xs sm:text-[13px] font-sans text-zinc-200 hover:text-white transition-all shadow-sm group"
+            >
+              <span>⭐ Happy with our service? Leave a review on Google</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[#C5A880] transition-transform group-hover:translate-x-0.5" />
+            </a>
+          </div>
         </motion.div>
 
         {/* Bottom Full-Width Gold Divider Line matching Screenshot */}
@@ -221,6 +290,34 @@ export const Footer: React.FC = () => {
             >
               Accessibility
             </Link>
+          </div>
+
+          {/* LinkedIn Footer Connect Links */}
+          <div className="flex items-center gap-2.5 text-[11px] font-sans">
+            <span className="text-zinc-500">Connect on LinkedIn:</span>
+            <a
+              href="https://www.linkedin.com/company/massive-protective-services"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Massive Protective Services (Company LinkedIn)"
+              aria-label="Company LinkedIn"
+              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-[#D4AF37] transition-colors"
+            >
+              <FaLinkedin className="w-3.5 h-3.5 text-[#0A66C2]" />
+              <span>Company</span>
+            </a>
+            <span className="text-zinc-600">·</span>
+            <a
+              href="https://www.linkedin.com/in/marc-a-tardalo-22839530/"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Marc A. Tardalo (Personal Portfolio)"
+              aria-label="Founder Portfolio"
+              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-[#D4AF37] transition-colors"
+            >
+              <FaLinkedin className="w-3.5 h-3.5 text-[#0A66C2]" />
+              <span>Personal</span>
+            </a>
           </div>
         </motion.div>
       </motion.div>

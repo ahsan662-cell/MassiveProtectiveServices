@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { getCanonicalUrl } from '@/utils/seo';
 import {
   TestimonialsHeroSection,
   TestimonialsGridSection,
@@ -9,6 +10,14 @@ import {
 } from './components';
 
 export const metadata: Metadata = {
+  keywords: [
+    "private security testimonials",
+    "executive protection reviews South Florida",
+    "confidential security client references",
+  ],
+  alternates: {
+    canonical: getCanonicalUrl('/testimonials'),
+  },
   title: 'Client Testimonials & Confidential References | Massive Protective Services',
   description:
     'What clients say without saying who they are. Discretion-first private security testimonials, verifiable credentials (FL License B1400200), and NDA references across Palm Beach, Broward, and Miami-Dade Counties.',
@@ -16,7 +25,7 @@ export const metadata: Metadata = {
     title: 'Client Testimonials | Massive Protective Services',
     description:
       'What clients say without saying who they are. Verifiable credentials and mutual NDA references for qualified prospective clients.',
-    url: 'https://massiveprotectiveservices.com/testimonials',
+    url: getCanonicalUrl('/testimonials'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

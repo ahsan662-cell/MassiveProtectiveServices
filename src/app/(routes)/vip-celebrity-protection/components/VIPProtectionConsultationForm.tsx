@@ -55,7 +55,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
     <section
       id={id}
       aria-label="Request VIP Protection"
-      className="relative w-full bg-[#080E1A] text-white py-20 sm:py-28 lg:py-32 overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#080E1A] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/5"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
         {/* Section Header */}
@@ -76,7 +76,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-[1.14] tracking-tight"
+            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.14] tracking-tight"
           >
             Request VIP Protection — We Respond Within 2 Hours
           </motion.h2>

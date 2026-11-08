@@ -1,3 +1,6 @@
+import { getServiceSchema } from '@/utils/schema';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { getCanonicalUrl } from '@/utils/seo';
 import React from 'react';
 import type { Metadata } from 'next';
 import {
@@ -16,6 +19,16 @@ import {
 } from './components';
 
 export const metadata: Metadata = {
+  keywords: [
+    "Florida Class G armed guards",
+    "armed security officers South Florida",
+    "licensed armed patrol",
+    "Class G security officers Palm Beach",
+    "armed commercial security",
+  ],
+  alternates: {
+    canonical: getCanonicalUrl('/armed-officers'),
+  },
   title: 'Armed Security Guard Services in South Florida | Massive Protective Services',
   description:
     'Florida-licensed Class G armed officers for estates, businesses, events and executive details across Palm Beach, Broward and Miami-Dade. FDACS License B1400200.',
@@ -23,7 +36,7 @@ export const metadata: Metadata = {
     title: 'Armed Security Guard Services in South Florida | Massive Protective Services',
     description:
       'Florida Class G armed protection for private estates, corporate premises, events, and executive details. Zero unarmed guards.',
-    url: 'https://massiveprotectiveservices.com/armed-officers',
+    url: getCanonicalUrl('/armed-officers'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',
@@ -33,6 +46,12 @@ export const metadata: Metadata = {
 export default function ArmedOfficersPage() {
   return (
     <div className="w-full flex-1 flex flex-col overflow-x-clip bg-[#0A111F]">
+      <JsonLd data={getServiceSchema({
+  name: "Armed Security Guard Services",
+  serviceType: "Armed Security",
+  description: "Florida-licensed Class G armed officers for estates, businesses, events and executive details across Palm Beach, Broward and Miami-Dade. FDACS License B1400200.",
+  slug: "armed-officers"
+})} />
       {/* 1. Hero with Breadcrumb & Dual Action Buttons */}
       <ArmedSecurityHeroSection />
 

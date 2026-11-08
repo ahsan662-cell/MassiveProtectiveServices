@@ -13,6 +13,7 @@ import {
   CheckCircle2,
   Loader2,
   AlertTriangle,
+  Star,
 } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
 
@@ -55,7 +56,7 @@ export const ContactFormSection: React.FC = () => {
   return (
     <section
       aria-label="Contact and Confidential Consultation Form"
-      className="relative w-full bg-[#0A111F] text-white pt-32 sm:pt-40 pb-16 sm:pb-24 overflow-hidden"
+      className="relative w-full bg-[#0A111F] text-white pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Header */}
@@ -74,7 +75,7 @@ export const ContactFormSection: React.FC = () => {
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-[1.15] tracking-tight"
+            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight"
           >
             Start a Confidential Conversation
           </motion.h1>
@@ -91,7 +92,7 @@ export const ContactFormSection: React.FC = () => {
         </div>
 
         {/* Full-width Divider Line */}
-        <div className="w-full h-px bg-[#C5A880]/30 mb-12 sm:mb-16" />
+        <div className="w-full h-px bg-[#C5A880]/30 mb-8 sm:mb-10" />
 
         {/* Main Grid: Form on Left, Contact Cards on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
@@ -366,9 +367,20 @@ export const ContactFormSection: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="rounded-sm bg-[#101A2D] border border-white/[0.08] p-6 shadow-xl"
             >
-              <div className="flex items-center gap-2 text-xs font-sans font-medium text-white">
-                <MapPin className="w-4 h-4 text-[#C5A880]" />
-                <span>Headquarters</span>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs font-sans font-medium text-white">
+                  <MapPin className="w-4 h-4 text-[#C5A880]" />
+                  <span>Headquarters</span>
+                </div>
+                <a
+                  href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[11px] font-mono text-[#C5A880] hover:text-[#D4AF37] transition-colors"
+                >
+                  <span>Find us on Google</span>
+                  <ExternalLink className="w-3 h-3 opacity-70" />
+                </a>
               </div>
               <p className="text-sm font-sans font-semibold text-white mt-2.5">
                 Delray Beach, Florida
@@ -400,8 +412,86 @@ export const ContactFormSection: React.FC = () => {
                 <ExternalLink className="w-3 h-3 ml-0.5" />
               </div>
             </motion.div>
+
+            {/* Card 5: Leave Us a Google Review Button */}
+            <motion.div
+              initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="pt-1"
+            >
+              <a
+                href="https://admin.trustindex.io/card/56cfe17231ce249"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer bg-[#C9A84C] hover:bg-[#D4AF37] text-[#0A0F1E]"
+              >
+                <Star className="w-4 h-4 fill-[#0A0F1E] text-[#0A0F1E]" />
+                <span>Leave Us a Google Review</span>
+                <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+              </a>
+            </motion.div>
           </div>
         </div>
+
+        {/* TASK 1 & 2: Google Map Embed Section directly below contact form */}
+        <motion.div
+          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.6 }}
+          className="mt-12 sm:mt-16 space-y-4 pt-10 border-t border-white/[0.08]"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-xs font-mono font-medium text-[#C5A880] uppercase tracking-wider">
+                <MapPin className="w-4 h-4 text-[#C5A880]" />
+                <span>MASSIVE PROTECTIVE SERVICES · DELRAY BEACH HEADQUARTERS</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-serif text-white font-normal">
+                Regional Headquarters &amp; Operating Territory
+              </h3>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm border border-white/15 hover:border-[#C5A880] text-xs font-mono text-zinc-300 hover:text-white transition-all bg-[#101A2D]"
+              >
+                <MapPin className="w-3.5 h-3.5 text-[#C5A880]" />
+                <span>Find us on Google</span>
+                <ExternalLink className="w-3 h-3 text-zinc-500" />
+              </a>
+
+              <a
+                href="https://admin.trustindex.io/card/56cfe17231ce249"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer bg-[#C9A84C] hover:bg-[#D4AF37] text-[#0A0F1E]"
+              >
+                <Star className="w-3.5 h-3.5 fill-[#0A0F1E] text-[#0A0F1E]" />
+                <span>Leave Us a Google Review</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Embedded Google Map iframe with exact required attributes */}
+          <div className="relative w-full overflow-hidden rounded-lg border border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.85)]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7148545.926219277!2d-83.804601!3d27.698638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d90537dcc4b9eb%3A0x55c7ab2ae649c981!2sMassive%20Protective%20Services!5e0!3m2!1sen!2sus!4v1715000000000!5m2!1sen!2sus"
+              width="100%"
+              height="450"
+              style={{ border: 0, borderRadius: '8px' }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Massive Protective Services Google Map"
+              className="w-full"
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );

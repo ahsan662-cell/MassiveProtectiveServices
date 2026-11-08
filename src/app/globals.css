@@ -2,6 +2,7 @@
 @config "../../tailwind.config.js";
 
 :root {
+  font-size: 15px;
   --background: #0A0A0A;
   --foreground: #F5F5F7;
 
@@ -28,6 +29,12 @@
   
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
+}
+
+@media (min-width: 1536px) {
+  :root {
+    font-size: 16px;
+  }
 }
 
 /* Strict Zero-Horizontal-Overflow enforcement across all viewports */
@@ -74,4 +81,19 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #3A3D40;
+}
+
+/* TrustIndex Reviews Widget Styling */
+.trustindex-reviews-wrapper .ti-footer,
+.trustindex-reviews-wrapper .ti-footer span,
+.trustindex-reviews-wrapper .ti-footer strong,
+.trustindex-reviews-wrapper .ti-footer strong a,
+.trustindex-reviews-wrapper .ti-rating-text,
+.trustindex-reviews-wrapper .ti-rating-text strong,
+.trustindex-reviews-wrapper .ti-rating-text a {
+  color: #E4E4E7 !important;
+}
+.trustindex-reviews-wrapper .ti-footer strong a:hover,
+.trustindex-reviews-wrapper .ti-rating-text strong a:hover {
+  color: #C9A84C !important;
 }

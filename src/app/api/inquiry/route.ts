@@ -97,46 +97,50 @@ export async function POST(req: NextRequest) {
         ''
     ).trim();
 
-    const serviceType = String(
+    const rawService =
       sanitizedBody.serviceType ||
-        sanitizedBody.serviceNeeded ||
-        sanitizedBody.serviceRequired ||
-        sanitizedBody.coverageType ||
-        sanitizedBody.typeOfNeed ||
-        sanitizedBody.deploymentType ||
-        sanitizedBody.principalType ||
-        'Executive Protection'
-    ).trim();
+      sanitizedBody.serviceNeeded ||
+      sanitizedBody.serviceRequired ||
+      sanitizedBody.coverageType ||
+      sanitizedBody.typeOfNeed ||
+      sanitizedBody.deploymentType ||
+      sanitizedBody.principalType;
+    const serviceType =
+      rawService && String(rawService).trim() ? String(rawService).trim() : undefined;
 
-    const location = String(
+    const rawLocation =
       sanitizedBody.locationPreset ||
-        sanitizedBody.location ||
-        sanitizedBody.propertyLocation ||
-        sanitizedBody.propertyCity ||
-        sanitizedBody.cityLocation ||
-        sanitizedBody.city ||
-        sanitizedBody.county ||
-        'Florida Territory'
-    ).trim();
+      sanitizedBody.location ||
+      sanitizedBody.propertyLocation ||
+      sanitizedBody.propertyCity ||
+      sanitizedBody.cityLocation ||
+      sanitizedBody.city ||
+      sanitizedBody.county;
+    const location =
+      rawLocation && String(rawLocation).trim() ? String(rawLocation).trim() : undefined;
 
-    const message = String(
+    const rawMessage =
       sanitizedBody.message ||
-        sanitizedBody.briefDescription ||
-        sanitizedBody.propertyDescription ||
-        sanitizedBody.specialRequirements ||
-        sanitizedBody.notes ||
-        ''
-    ).trim();
+      sanitizedBody.briefDescription ||
+      sanitizedBody.propertyDescription ||
+      sanitizedBody.specialRequirements ||
+      sanitizedBody.notes ||
+      sanitizedBody.statement;
+    const message =
+      rawMessage && String(rawMessage).trim() ? String(rawMessage).trim() : undefined;
 
-    const preferredDate = String(
+    const rawPreferredDate =
       sanitizedBody.preferredDate ||
-        sanitizedBody.coverageStart ||
-        sanitizedBody.timeline ||
-        sanitizedBody.coverageTiming ||
-        sanitizedBody.arrivalDate ||
-        sanitizedBody.startDate ||
-        ''
-    ).trim();
+      sanitizedBody.coverageStart ||
+      sanitizedBody.timeline ||
+      sanitizedBody.coverageTiming ||
+      sanitizedBody.arrivalDate ||
+      sanitizedBody.startDate ||
+      sanitizedBody.targetDate;
+    const preferredDate =
+      rawPreferredDate && String(rawPreferredDate).trim()
+        ? String(rawPreferredDate).trim()
+        : undefined;
 
     const formSource = String(
       sanitizedBody.formSource ||
@@ -172,21 +176,85 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 7. Assemble Unified Dispatch Payload
+    // 7. Assemble Unified Dispatch Payload (only containing fields actually provided)
     const dispatchPayload: InquiryDispatchPayload = {
+      ...sanitizedBody,
       formSource,
       fullName: sanitizePlainText(fullName),
       email: email,
       phone: sanitizePlainText(phone),
-      serviceType: sanitizePlainText(serviceType),
-      location: sanitizePlainText(location),
-      county: sanitizePlainText(location),
-      message: message ? sanitizePlainText(message) : undefined,
-      preferredDate: preferredDate ? sanitizePlainText(preferredDate) : undefined,
-      ndaRequested: sanitizedBody.ndaRequested !== undefined ? Boolean(sanitizedBody.ndaRequested) : true,
-      requiresArmedDriver: sanitizedBody.requiresArmedDriver !== undefined ? Boolean(sanitizedBody.requiresArmedDriver) : false,
-      ...sanitizedBody,
     };
+
+    // Clean up normalized aliases so they don't duplicate as extra custom fields
+    delete dispatchPayload.name;
+    delete dispatchPayload.clientName;
+    delete dispatchPayload.principalName;
+    delete dispatchPayload.emailAddress;
+    delete dispatchPayload.contactEmail;
+    delete dispatchPayload.phoneNumber;
+    delete dispatchPayload.contactPhone;
+    delete dispatchPayload.serviceNeeded;
+    delete dispatchPayload.serviceRequired;
+    delete dispatchPayload.coverageType;
+    delete dispatchPayload.typeOfNeed;
+    delete dispatchPayload.deploymentType;
+    delete dispatchPayload.principalType;
+    delete dispatchPayload.locationPreset;
+    delete dispatchPayload.propertyLocation;
+    delete dispatchPayload.propertyCity;
+    delete dispatchPayload.cityLocation;
+    delete dispatchPayload.city;
+    delete dispatchPayload.county;
+    delete dispatchPayload.coverageStart;
+    delete dispatchPayload.timeline;
+    delete dispatchPayload.coverageTiming;
+    delete dispatchPayload.arrivalDate;
+    delete dispatchPayload.startDate;
+    delete dispatchPayload.targetDate;
+    delete dispatchPayload.briefDescription;
+    delete dispatchPayload.propertyDescription;
+    delete dispatchPayload.specialRequirements;
+    delete dispatchPayload.notes;
+    delete dispatchPayload.statement;
+
+    if (serviceType) {
+      dispatchPayload.serviceType = sanitizePlainText(serviceType);
+    } else {
+      delete dispatchPayload.serviceType;
+    }
+
+    if (location) {
+      dispatchPayload.location = sanitizePlainText(location);
+    } else {
+      delete dispatchPayload.location;
+    }
+
+    if (message) {
+      dispatchPayload.message = sanitizePlainText(message);
+    } else {
+      delete dispatchPayload.message;
+    }
+
+    if (preferredDate) {
+      dispatchPayload.preferredDate = sanitizePlainText(preferredDate);
+    } else {
+      delete dispatchPayload.preferredDate;
+    }
+
+    if (sanitizedBody.ndaRequested !== undefined && sanitizedBody.ndaRequested !== null) {
+      dispatchPayload.ndaRequested = Boolean(sanitizedBody.ndaRequested);
+    } else {
+      delete dispatchPayload.ndaRequested;
+    }
+
+    if (
+      sanitizedBody.requiresArmedDriver !== undefined &&
+      sanitizedBody.requiresArmedDriver !== null
+    ) {
+      dispatchPayload.requiresArmedDriver = Boolean(sanitizedBody.requiresArmedDriver);
+    } else {
+      delete dispatchPayload.requiresArmedDriver;
+    }
 
     // 8. Gather Client Telemetry
     const ip =

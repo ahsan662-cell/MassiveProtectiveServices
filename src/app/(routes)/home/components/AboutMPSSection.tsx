@@ -39,7 +39,7 @@ export const AboutMPSSection: React.FC = () => {
     <section
       id="about-mps"
       aria-label="About Massive Protective Services"
-      className="relative w-full bg-[#101A2D] text-white py-20 sm:py-28 lg:py-32 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#101A2D] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -63,7 +63,7 @@ export const AboutMPSSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.08 }}
-              className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-[1.15] tracking-tight"
+              className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight"
             >
               A South Florida Security Firm Built for the Clients Other Firms Are Not Equipped to Serve
             </motion.h2>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { Crown } from 'lucide-react';
+import { Crown, MapPin, ExternalLink } from 'lucide-react';
 
 export const FounderBioSection: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -10,11 +10,11 @@ export const FounderBioSection: React.FC = () => {
   return (
     <section
       aria-label="The Founder - Marc A. Tardalo"
-      className="relative w-full bg-[#101A2D] text-white py-20 sm:py-28 lg:py-32 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#101A2D] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-12 sm:mb-16 space-y-3">
+        <div className="mb-8 sm:mb-10 space-y-3">
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export const FounderBioSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-tight tracking-tight"
+            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-tight tracking-tight"
           >
             Marc A. Tardalo — Founder &amp; CEO
           </motion.h2>
@@ -126,7 +126,19 @@ export const FounderBioSection: React.FC = () => {
               </div>
               <div className="space-y-1">
                 <span className="text-zinc-400 block font-mono text-[11px]">Headquarters:</span>
-                <span className="text-white font-medium">Delray Beach, FL</span>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-white font-medium">Delray Beach, FL</span>
+                  <a
+                    href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[11px] font-mono text-[#C5A880] hover:text-[#D4AF37] transition-colors"
+                  >
+                    <MapPin className="w-3 h-3 text-[#D4AF37]" />
+                    <span>Find us on Google</span>
+                    <ExternalLink className="w-2.5 h-2.5 opacity-70" />
+                  </a>
+                </div>
               </div>
               <div className="space-y-1">
                 <span className="text-zinc-400 block font-mono text-[11px]">FL Agency License:</span>

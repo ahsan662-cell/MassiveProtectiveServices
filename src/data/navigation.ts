@@ -235,12 +235,16 @@ export const NAV_STRUCTURE: NavCategory[] = [
         href: '/licensing',
         description: 'Meet the licensed professionals behind Massive Protective Services Inc.',
       },
-      {
-        name: 'Security Intelligence & Blog',
-        href: '/blog',
-        description: 'Guides on executive protection, armed security & bodyguard pricing',
-      },
+      // {
+      //   name: 'Security Intelligence & Blog',
+      //   href: '/blog',
+      //   description: 'Guides on executive protection, armed security & bodyguard pricing',
+      // },
     ],
+  },
+  {
+    title: 'BLOGS',
+    href: '/blog',
   },
   {
     title: 'CONTACT',
@@ -253,6 +257,9 @@ export const SERVICES_NAV: DropdownItem[] =
 
 export const LOCATIONS_NAV: DropdownItem[] =
   NAV_STRUCTURE.find((c) => c.title === 'LOCATIONS')?.items || [];
+
+export const PORTFOLIO_NAV: DropdownItem[] =
+  NAV_STRUCTURE.find((c) => c.title === 'PORTFOLIO')?.items || [];
 
 export const RESOURCES_NAV: DropdownItem[] = [
   ...(NAV_STRUCTURE.find((c) => c.title === 'RESOURCES')?.items || []),

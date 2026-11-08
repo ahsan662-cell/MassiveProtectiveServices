@@ -56,7 +56,7 @@ export const WhoWeWorkWithCorporateSection: React.FC = () => {
   return (
     <section
       aria-label="Who We Work With"
-      className="relative w-full bg-[#0B1322] py-20 sm:py-28 lg:py-32 text-white overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#0B1322] py-14 sm:py-18 lg:py-20 text-white overflow-hidden border-t border-white/5"
     >
       {/* Background subtle atmospheric glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C5A880]/5 rounded-full blur-[140px] pointer-events-none" />

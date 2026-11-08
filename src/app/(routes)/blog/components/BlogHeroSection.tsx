@@ -11,7 +11,7 @@ export const BlogHeroSection: React.FC = () => {
   return (
     <section
       aria-label="Security Intelligence Blog Header and Featured Article"
-      className="relative w-full bg-[#0A111F] text-white pt-32 sm:pt-40 pb-16 sm:pb-24 overflow-hidden"
+      className="relative w-full bg-[#0A111F] text-white pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Top Hero Narrative matching Screenshot 1 */}
@@ -30,7 +30,7 @@ export const BlogHeroSection: React.FC = () => {
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-4xl sm:text-6xl lg:text-[64px] font-serif font-normal text-white leading-[1.1] tracking-tight"
+            className="text-3xl sm:text-4xl lg:text-[46px] font-serif font-normal text-white leading-[1.1] tracking-tight"
           >
             Security Guides for Executives, Families and Estate Owners
           </motion.h1>

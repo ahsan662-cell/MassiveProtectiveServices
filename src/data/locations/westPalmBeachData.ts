@@ -26,7 +26,7 @@ export interface WestPalmBeachPageData {
 }
 
 export const westPalmBeachData: WestPalmBeachPageData = {
-  metaTitle: 'West Palm Beach Executive Protection & Armed Security | Massive Protective Services',
+  metaTitle: 'West Palm Beach Executive Protection & Security | MPS',
   metaDescription:
     "Licensed armed executive protection, corporate security and PBI airport arrival coverage for West Palm Beach's executive, legal and financial community. FL License B1400200.",
 

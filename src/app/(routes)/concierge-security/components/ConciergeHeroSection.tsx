@@ -12,7 +12,7 @@ export const ConciergeHeroSection: React.FC = () => {
   return (
     <section
       aria-label="Concierge Security in South Florida"
-      className="relative w-full min-h-[92vh] flex flex-col justify-between pt-36 sm:pt-44 pb-8 sm:pb-12 text-white overflow-hidden bg-[#070D18]"
+      className="relative w-full min-h-[85vh] lg:min-h-[88vh] flex flex-col justify-between pt-28 sm:pt-36 pb-8 sm:pb-12 text-white overflow-hidden bg-[#070D18]"
     >
       {/* Background Hero Image with Luxury Reception Atmosphere matching Screenshot 1 */}
       <div className="absolute inset-0 z-0 select-none">
@@ -29,7 +29,7 @@ export const ConciergeHeroSection: React.FC = () => {
       </div>
 
       {/* Main Centered Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center items-center text-center space-y-6 sm:space-y-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center items-center text-center space-y-4 sm:space-y-6">
         {/* Breadcrumb Navigation matching Screenshot 1 */}
         <motion.nav
           aria-label="Breadcrumb"
@@ -54,7 +54,7 @@ export const ConciergeHeroSection: React.FC = () => {
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.08 }}
-          className="text-4xl sm:text-6xl lg:text-[72px] font-serif font-normal text-white leading-[1.08] tracking-tight max-w-5xl"
+          className="text-3xl sm:text-4xl lg:text-5xl xl:text-[54px] font-serif font-normal text-white leading-[1.1] tracking-tight max-w-5xl"
         >
           Concierge Security in South Florida
         </motion.h1>
@@ -79,14 +79,14 @@ export const ConciergeHeroSection: React.FC = () => {
         >
           <Link
             href="/contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 sm:py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] hover:scale-[1.02] cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] hover:scale-[1.02] cursor-pointer"
           >
             Request a Confidential Consultation
           </Link>
 
           <a
             href="tel:9542347231"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 rounded-sm border border-[#C5A880]/60 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] bg-black/40 backdrop-blur-sm font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.02]"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm border border-[#C5A880]/60 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] bg-black/40 backdrop-blur-sm font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.02]"
           >
             <Phone className="w-4 h-4 text-[#C5A880]" />
             <span>Call 24/7: (954) 234-7231</span>

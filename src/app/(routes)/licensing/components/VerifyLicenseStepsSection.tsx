@@ -52,7 +52,7 @@ export const VerifyLicenseStepsSection: React.FC = () => {
   return (
     <section
       aria-label="Verify Our License Step by Step"
-      className="relative w-full bg-[#080E1A] text-white py-20 sm:py-28 lg:py-32 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#080E1A] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Centered Header matching Screenshot 4 */}
@@ -73,7 +73,7 @@ export const VerifyLicenseStepsSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-[1.15] tracking-tight"
+            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight"
           >
             Don’t Take Our Word for It. Here Is Exactly How
             <br className="hidden sm:inline" /> to Check.
@@ -132,7 +132,7 @@ export const VerifyLicenseStepsSection: React.FC = () => {
               href="https://licensing.fdacs.gov/access/agency.aspx"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.3)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.5)] hover:scale-[1.02] cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.3)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.5)] hover:scale-[1.02] cursor-pointer"
             >
               <span>Verify License B1400200 Now</span>
               <ArrowRight className="w-4 h-4" />

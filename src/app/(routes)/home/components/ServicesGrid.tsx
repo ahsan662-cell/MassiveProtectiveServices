@@ -39,7 +39,7 @@ const SERVICES = [
     title: 'VIP & Celebrity Protection',
     description:
       'Discreet close protection for celebrities, entertainers, athletes and high-profile public figures — hotel arrivals, venue movements and private events.',
-    href: '/celebrity-protection',
+    href: '/vip-celebrity-protection',
   },
   {
     icon: Key,
@@ -77,14 +77,14 @@ export const ServicesGrid: React.FC = () => {
     <section
       id="services"
       aria-label="What We Do - Private Security Services"
-      className="relative w-full bg-[#0A111F] text-white py-20 sm:py-28 lg:py-32 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#0A111F] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#C5A880]/5 blur-[160px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-14 sm:mb-18 space-y-4">
+        <div className="mb-8 sm:mb-12 space-y-4">
           {/* Eyebrow: WHAT WE DO */}
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
@@ -103,7 +103,7 @@ export const ServicesGrid: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-[1.15] tracking-tight max-w-4xl"
+            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight max-w-4xl"
           >
             Private Security Services for South Florida’s Most
             <br className="hidden sm:inline" /> Discerning Clients

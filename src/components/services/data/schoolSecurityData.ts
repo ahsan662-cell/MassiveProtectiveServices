@@ -5,7 +5,7 @@ export const schoolSecurityData: ServicePageConfig = {
   hero: {
     serviceName: 'School Security',
     breadcrumbTitle: 'School Security',
-    headline: 'School Security in South Florida',
+    headline: 'School & Campus Security Services in South Florida',
     subtitle:
       'A considered, welcoming security presence. Proposed support for school routines, campus access and communication — shaped around your school community.',
     bgImage: '/images/mps_service_school_security.jpg',

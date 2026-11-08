@@ -1,14 +1,25 @@
 import type { Metadata } from 'next';
 import { ManalapanClient } from './components/ManalapanClient';
 import { manalapanData } from '@/data/locations/manalapanData';
+import { getCanonicalUrl } from '@/utils/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { getLocalBusinessSchema } from '@/utils/schema';
 
 export const metadata: Metadata = {
+  keywords: [
+    "Manalapan estate security",
+    "ocean-to-lake compound security Manalapan",
+    "private security Manalapan Florida",
+  ],
   title: manalapanData.metaTitle,
   description: manalapanData.metaDescription,
+  alternates: {
+    canonical: getCanonicalUrl('/locations/manalapan'),
+  },
   openGraph: {
     title: manalapanData.metaTitle,
     description: manalapanData.metaDescription,
-    url: 'https://massiveprotectiveservice.com/locations/manalapan',
+    url: getCanonicalUrl('/locations/manalapan'),
     siteName: 'Massive Protective Services',
     images: [
       {
@@ -27,11 +38,20 @@ export const metadata: Metadata = {
     description: manalapanData.metaDescription,
     images: [manalapanData.hero.bgImage],
   },
-  alternates: {
-    canonical: 'https://massiveprotectiveservice.com/locations/manalapan',
-  },
 };
 
 export default function ManalapanPage() {
-  return <ManalapanClient />;
+  return (
+    <>
+      <JsonLd
+        data={getLocalBusinessSchema({
+          name: 'Massive Protective Services — Manalapan',
+          description: manalapanData.metaDescription,
+          path: '/locations/manalapan',
+          areaServed: 'Manalapan, FL',
+        })}
+      />
+      <ManalapanClient />
+    </>
+  );
 }

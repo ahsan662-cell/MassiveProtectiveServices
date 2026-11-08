@@ -51,7 +51,7 @@ export const CorporateFAQSection: React.FC = () => {
   return (
     <section
       aria-label="Corporate Security FAQ"
-      className="relative w-full bg-[#0B1324] text-white py-20 sm:py-28 lg:py-32 overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#0B1324] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/5"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         {/* Section Header matching Screenshot 4 */}
@@ -72,7 +72,7 @@ export const CorporateFAQSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-tight tracking-tight"
+            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-tight tracking-tight"
           >
             Your questions, answered.
           </motion.h2>

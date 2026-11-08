@@ -31,7 +31,7 @@ export const ServiceClosingCTA: React.FC<Props> = ({ data }) => {
   return (
     <section
       aria-label="Discreet Security Consultation"
-      className={`relative w-full ${bgClass} text-white py-20 sm:py-28 lg:py-32 overflow-hidden ${
+      className={`relative w-full ${bgClass} text-white py-16 sm:py-20 lg:py-24 overflow-hidden ${
         hideTopGoldBorder ? 'border-t border-white/5' : 'border-t-2 border-[#C5A880]'
       }`}
     >
@@ -79,14 +79,14 @@ export const ServiceClosingCTA: React.FC<Props> = ({ data }) => {
         >
           <a
             href={primaryCta.href}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 sm:py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] hover:scale-[1.02] cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] hover:scale-[1.02] cursor-pointer"
           >
             {primaryCta.label}
           </a>
 
           <a
             href={secondaryCta.href}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 sm:py-4 rounded-sm border border-white/25 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] bg-[#111B2C]/70 backdrop-blur-sm font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.02]"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm border border-white/25 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] bg-[#111B2C]/70 backdrop-blur-sm font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.02]"
           >
             {secondaryCta.label}
           </a>

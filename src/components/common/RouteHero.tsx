@@ -28,7 +28,7 @@ export const RouteHero: React.FC<RouteHeroProps> = ({
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <div className="relative w-full min-h-[460px] sm:min-h-[520px] flex items-center justify-center overflow-hidden bg-[#0A0D14] border-b border-white/[0.08] pt-28 pb-16">
+    <div className="relative w-full min-h-[380px] sm:min-h-[440px] flex items-center justify-center overflow-hidden bg-[#0A0D14] border-b border-white/[0.08] pt-24 sm:pt-28 pb-12">
       {/* Background with Ambient Darkened Luxury Overlays */}
       {backgroundImage ? (
         <div
@@ -71,7 +71,7 @@ export const RouteHero: React.FC<RouteHeroProps> = ({
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-5xl md:text-6xl font-serif font-normal text-white tracking-tight"
+          className="text-2xl sm:text-4xl md:text-5xl font-serif font-normal text-white tracking-tight"
         >
           {title}{' '}
           {titleHighlight && (

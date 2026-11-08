@@ -34,7 +34,7 @@ export const ServiceScopeGrid: React.FC<Props> = ({ data }) => {
   return (
     <section
       aria-label={data.headline}
-      className="relative w-full bg-[#070D18] py-20 sm:py-28 lg:py-32 text-white overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#070D18] py-16 sm:py-20 lg:py-24 text-white overflow-hidden border-t border-white/5"
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#111C33]/40 via-transparent to-transparent pointer-events-none" />
 

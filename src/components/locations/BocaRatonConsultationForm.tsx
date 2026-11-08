@@ -30,7 +30,7 @@ export const BocaRatonConsultationForm: React.FC<Props> = ({ id = 'consultation-
     <section
       id={id}
       aria-label="Boca Raton Confidential Security Consultation"
-      className="relative w-full bg-[#070D18] py-20 sm:py-28 lg:py-32 text-white overflow-hidden border-t border-white/5 scroll-mt-24"
+      className="relative w-full bg-[#070D18] py-16 sm:py-20 lg:py-24 text-white overflow-hidden border-t border-white/5 scroll-mt-24"
     >
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}

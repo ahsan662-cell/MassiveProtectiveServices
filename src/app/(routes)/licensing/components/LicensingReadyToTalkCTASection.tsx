@@ -11,7 +11,7 @@ export const LicensingReadyToTalkCTASection: React.FC = () => {
   return (
     <section
       aria-label="Every License Verified. Ready to Talk."
-      className="relative w-full bg-[#070D18] text-white py-24 sm:py-32 lg:py-36 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#070D18] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
     >
       {/* Subtle Warm Amber Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[340px] bg-[#C5A880]/5 blur-[150px] rounded-full pointer-events-none" />
@@ -35,7 +35,7 @@ export const LicensingReadyToTalkCTASection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.08 }}
-          className="text-4xl sm:text-6xl lg:text-[68px] font-serif font-normal text-white leading-[1.1] tracking-tight"
+          className="text-3xl sm:text-4xl lg:text-[48px] font-serif font-normal text-white leading-[1.1] tracking-tight"
         >
           Every License Verified. Every Officer Checked.
           <br />

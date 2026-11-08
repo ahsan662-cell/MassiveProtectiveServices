@@ -60,7 +60,7 @@ export const ServiceWhyMassive: React.FC<Props> = ({ data }) => {
   return (
     <section
       aria-label="Why Massive Protective Services"
-      className={`relative w-full py-20 sm:py-28 lg:py-32 overflow-hidden border-t ${
+      className={`relative w-full py-16 sm:py-20 lg:py-24 overflow-hidden border-t ${
         isDark
           ? 'bg-[#0B1324] text-[#F5F5F7] border-white/5'
           : 'bg-[#FAF9F6] text-[#0A111F] border-black/5'

@@ -36,7 +36,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       aria-label="Hero Overview"
-      className="relative w-full min-h-0 sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]"
+      className="relative w-full min-h-[85vh] lg:min-h-[90vh] xl:min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]"
     >
       {/* Background Image: Estate Entrance at Dusk matching screenshot */}
       <div className="absolute inset-0 z-0">
@@ -56,23 +56,23 @@ export const HeroSection: React.FC = () => {
       </div>
 
       {/* Main Hero Content Container */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-28 sm:pt-40 pb-6 sm:pb-28 text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 lg:pt-36 pb-8 sm:pb-16 text-center flex flex-col items-center">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col items-center space-y-6 sm:space-y-8"
+          className="flex flex-col items-center space-y-4 sm:space-y-6"
         >
           {/* Eyebrow / Super-title matching Screenshot */}
           <motion.div variants={itemVariants}>
-            <span className="text-[11px] sm:text-xs font-mono font-semibold tracking-[0.28em] text-[#C5A880] uppercase">
+            <span className="text-[10px] sm:text-xs font-mono font-semibold tracking-[0.25em] text-[#C5A880] uppercase">
               MASSIVE PROTECTIVE SERVICES
             </span>
           </motion.div>
 
           {/* Headline matching Screenshot: Serif, Centered, Elegant White */}
           <motion.div variants={itemVariants} className="max-w-4xl">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[76px] font-serif font-normal text-white leading-[1.08] tracking-tight drop-shadow-[0_4px_18px_rgba(0,0,0,0.8)]">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[48px] xl:text-[68px] font-serif font-normal text-white leading-[1.1] tracking-tight drop-shadow-[0_4px_18px_rgba(0,0,0,0.8)]">
               Armed Security &amp;
               <br />
               Executive Protection
@@ -84,7 +84,7 @@ export const HeroSection: React.FC = () => {
           {/* Subheadline matching Screenshot */}
           <motion.p
             variants={itemVariants}
-            className="text-sm sm:text-base md:text-lg text-zinc-300 font-sans font-light max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+            className="text-xs sm:text-sm md:text-base text-zinc-300 font-sans font-light max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
           >
             A licensed private security firm headquartered in Delray Beach — serving estates,
             executives, events and organizations across Palm Beach, Broward and Miami-Dade Counties.
@@ -98,7 +98,7 @@ export const HeroSection: React.FC = () => {
             {/* Request Confidential Consultation - Solid Warm Gold */}
             <Link
               href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] hover:scale-[1.02] cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] hover:scale-[1.02] cursor-pointer"
             >
               Request Confidential Consultation
             </Link>
@@ -106,7 +106,7 @@ export const HeroSection: React.FC = () => {
             {/* View Our Services - Outlined Gold Button */}
             <a
               href="#services"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 rounded-sm border border-[#C5A880]/60 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] bg-black/40 hover:bg-[#121212]/80 backdrop-blur-sm font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.02]"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm border border-[#C5A880]/60 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] bg-black/40 hover:bg-[#121212]/80 backdrop-blur-sm font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.02]"
             >
               View Our Services
             </a>

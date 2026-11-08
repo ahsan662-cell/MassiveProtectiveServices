@@ -29,7 +29,7 @@ export const LicensingStandardsComparisonSection: React.FC = () => {
   return (
     <section
       aria-label="What Licensing Requires and What We Add to It"
-      className="relative w-full bg-[#080E1A] text-white py-20 sm:py-28 lg:py-32 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#080E1A] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         <div className="max-w-4xl space-y-3">

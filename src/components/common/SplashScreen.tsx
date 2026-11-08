@@ -5,23 +5,33 @@ import Image from 'next/image';
 
 export const SplashScreen: React.FC = () => {
   const [isHiding, setIsHiding] = useState(false);
-  const [isMounted, setIsMounted] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // Prevent splash overlay from running for search engine crawlers and headless user-agents
+    if (
+      typeof navigator !== 'undefined' &&
+      /bot|crawl|spider|slurp|frog|headless|googlebot|bingbot/i.test(navigator.userAgent)
+    ) {
+      return;
+    }
+
+    setIsMounted(true);
+
     // Lock scroll during splash screen display
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    // Show for ~2.2 seconds like reference (elitesecurity.pro setTimeout 2500ms)
+    // Show for ~1.8 seconds like reference
     const fadeTimer = setTimeout(() => {
       setIsHiding(true);
-    }, 2000);
+    }, 1800);
 
-    // Completely unmount 450ms after fade animation begins
+    // Completely unmount 400ms after fade animation begins
     const removeTimer = setTimeout(() => {
       setIsMounted(false);
       document.body.style.overflow = originalOverflow;
-    }, 2650);
+    }, 2200);
 
     return () => {
       clearTimeout(fadeTimer);

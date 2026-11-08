@@ -22,7 +22,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
       aria-label="Service Philosophy"
       className={`relative w-full ${
         isLight ? 'bg-[#FAF8F5] text-[#151D2A]' : 'bg-[#0B1324] text-white'
-      } py-20 sm:py-28 lg:py-32 overflow-hidden border-t ${
+      } py-16 sm:py-20 lg:py-24 overflow-hidden border-t ${
         isLight ? 'border-black/5' : 'border-white/5'
       }`}
     >
@@ -54,7 +54,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: 0.08 }}
-                className={`text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal ${
+                className={`text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal ${
                   isLight ? 'text-[#151D2A]' : 'text-white'
                 } leading-[1.15] tracking-tight`}
               >
@@ -158,7 +158,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: 0.08 }}
-                className={`text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal ${
+                className={`text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal ${
                   isLight ? 'text-[#151D2A]' : 'text-white'
                 } leading-[1.15] tracking-tight`}
               >
@@ -341,7 +341,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: 0.08 }}
-              className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-[1.15] tracking-tight"
+              className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight"
             >
               {data.headline}
             </motion.h2>

@@ -1,7 +1,7 @@
 import { LocationPageConfig } from '@/components/locations/types';
 
 export const aventuraData: LocationPageConfig = {
-  metaTitle: 'Private Security & Executive Protection Aventura, FL | Massive Protective Services',
+  metaTitle: 'Private Security & Executive Protection Aventura | MPS',
   metaDescription:
     'Licensed Florida armed security and executive protection for Aventura luxury high-rises, Williams Island, Turnberry Isle, international executives & waterfront estates.',
 

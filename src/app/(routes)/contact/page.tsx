@@ -1,14 +1,41 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { getCanonicalUrl } from '@/utils/seo';
 import { ContactFormSection } from './components/ContactFormSection';
 import { ResponseTimeBanner } from './components/ResponseTimeBanner';
 import { PrimaryServiceAreaSection } from './components/PrimaryServiceAreaSection';
 
-export const metadata: Metadata = {
-  title: 'Contact Massive Protective Services | Start a Confidential Conversation',
-  description:
-    'Start a confidential conversation with Massive Protective Services. Direct response within hours. No sales process. Delray Beach HQ serving Palm Beach, Broward, and Miami-Dade.',
-};
+interface ContactPageProps {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export async function generateMetadata(
+  props: ContactPageProps
+): Promise<Metadata> {
+  const searchParams = props.searchParams ? await props.searchParams : undefined;
+  const hasInquiry = searchParams && Object.keys(searchParams).length > 0;
+
+  return {
+    title: 'Contact Massive Protective Services | Start a Confidential Conversation',
+    description:
+      'Start a confidential conversation with Massive Protective Services. Direct response within hours. No sales process. Delray Beach HQ serving Palm Beach, Broward, and Miami-Dade.',
+    alternates: {
+      canonical: getCanonicalUrl('/contact'),
+    },
+    robots: hasInquiry
+      ? { index: false, follow: true }
+      : { index: true, follow: true },
+    openGraph: {
+      title: 'Contact Massive Protective Services | Start a Confidential Conversation',
+      description:
+        'Start a confidential conversation with Massive Protective Services. Direct response within hours. No sales process. Delray Beach HQ serving Palm Beach, Broward, and Miami-Dade.',
+      url: getCanonicalUrl('/contact'),
+      siteName: 'Massive Protective Services',
+      locale: 'en_US',
+      type: 'website',
+    },
+  };
+}
 
 export default function ContactPage() {
   return (

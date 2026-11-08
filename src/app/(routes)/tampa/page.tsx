@@ -1,3 +1,4 @@
+import { getCanonicalUrl } from '@/utils/seo';
 import { Metadata } from 'next';
 import { TampaClient } from '../locations/tampa/components/TampaClient';
 import { tampaData } from '@/data/locations/tampaData';
@@ -6,12 +7,12 @@ export const metadata: Metadata = {
   title: tampaData.metaTitle,
   description: tampaData.metaDescription,
   alternates: {
-    canonical: 'https://massiveprotectiveservices.com/tampa',
+    canonical: getCanonicalUrl('/locations/tampa'),
   },
   openGraph: {
     title: tampaData.metaTitle,
     description: tampaData.metaDescription,
-    url: 'https://massiveprotectiveservices.com/tampa',
+    url: getCanonicalUrl('/locations/tampa'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

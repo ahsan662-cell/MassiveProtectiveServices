@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import { getCanonicalUrl } from '@/utils/seo';
 import {
   CareersHeroSection,
   WhoWeHireSection,
@@ -13,9 +14,27 @@ import {
 } from './components';
 
 export const metadata: Metadata = {
+  keywords: [
+    "armed security jobs Florida",
+    "Class G security guard hiring",
+    "executive protection careers Florida",
+    "Massive Protective Services careers",
+  ],
   title: 'Careers | Massive Protective Services — Delray Beach, FL',
   description:
     'We Are Not a Staffing Agency. Massive Protective Services hires Florida Class G licensed armed professionals who take protection seriously. Explore opportunities in South Florida.',
+  alternates: {
+    canonical: getCanonicalUrl('/careers'),
+  },
+  openGraph: {
+    title: 'Careers | Massive Protective Services — Delray Beach, FL',
+    description:
+      'We Are Not a Staffing Agency. Massive Protective Services hires Florida Class G licensed armed professionals who take protection seriously. Explore opportunities in South Florida.',
+    url: getCanonicalUrl('/careers'),
+    siteName: 'Massive Protective Services',
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default function CareersPage() {

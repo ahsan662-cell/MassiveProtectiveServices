@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { MapPin, Navigation } from 'lucide-react';
+import { MapPin, Navigation, ExternalLink } from 'lucide-react';
 
 const REGIONS = [
   {
@@ -62,7 +62,7 @@ export const AboutServiceAreaSection: React.FC = () => {
   return (
     <section
       aria-label="Our Service Area"
-      className="relative w-full bg-[#0A111F] text-white py-20 sm:py-28 lg:py-32 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#0A111F] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -84,7 +84,7 @@ export const AboutServiceAreaSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.08 }}
-              className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-[1.12] tracking-tight"
+              className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.12] tracking-tight"
             >
               Headquartered in Delray Beach. Serving South Florida — and Beyond.
             </motion.h2>
@@ -97,8 +97,18 @@ export const AboutServiceAreaSection: React.FC = () => {
               className="space-y-6 text-sm sm:text-base text-zinc-300 font-sans font-light leading-[1.85]"
             >
               <p>
-                Massive Protective Services is headquartered in Delray Beach, Florida — centrally
-                positioned within the corridor from Palm Beach to Miami-Dade. Our primary service
+                Massive Protective Services is headquartered in Delray Beach, Florida{' '}
+                <a
+                  href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-[#C5A880] hover:text-[#D4AF37] transition-colors ml-1"
+                >
+                  <MapPin className="w-3 h-3 text-[#D4AF37]" />
+                  <span>Find us on Google</span>
+                  <ExternalLink className="w-2.5 h-2.5 opacity-70" />
+                </a>{' '}
+                — centrally positioned within the corridor from Palm Beach to Miami-Dade. Our primary service
                 area covers Palm Beach, Broward and Miami-Dade counties, with reach into the
                 Treasure Coast and Gulf Coast for the right engagement.
               </p>

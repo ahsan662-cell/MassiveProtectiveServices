@@ -1,17 +1,26 @@
 import { Metadata } from 'next';
 import { BoyntonBeachClient } from './components/BoyntonBeachClient';
 import { boyntonBeachData } from '@/data/locations/boyntonBeachData';
+import { getCanonicalUrl } from '@/utils/seo';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { getLocalBusinessSchema } from '@/utils/schema';
 
 export const metadata: Metadata = {
+  keywords: [
+    "Boynton Beach armed security",
+    "Boynton Beach security guards",
+    "private security Boynton Beach FL",
+  ],
   title: boyntonBeachData.metaTitle,
   description: boyntonBeachData.metaDescription,
   alternates: {
-    canonical: '/locations/boynton-beach',
+    canonical: getCanonicalUrl('/locations/boynton-beach'),
   },
   openGraph: {
     title: boyntonBeachData.metaTitle,
     description: boyntonBeachData.metaDescription,
-    url: 'https://massiveprotectiveservices.com/locations/boynton-beach',
+    url: getCanonicalUrl('/locations/boynton-beach'),
+    siteName: 'Massive Protective Services',
     images: [
       {
         url: '/images/mps_location_boynton_hero.jpg',
@@ -24,5 +33,17 @@ export const metadata: Metadata = {
 };
 
 export default function BoyntonBeachLocationPage() {
-  return <BoyntonBeachClient />;
+  return (
+    <>
+      <JsonLd
+        data={getLocalBusinessSchema({
+          name: 'Massive Protective Services — Boynton Beach',
+          description: boyntonBeachData.metaDescription,
+          path: '/locations/boynton-beach',
+          areaServed: 'Boynton Beach, FL',
+        })}
+      />
+      <BoyntonBeachClient />
+    </>
+  );
 }

@@ -38,7 +38,7 @@ export const CorporateConsultationFormSection: React.FC = () => {
     <section
       id="consultation-form"
       aria-label="Request a Confidential Corporate Security Consultation"
-      className="relative w-full bg-[#080E1A] text-white py-20 sm:py-28 lg:py-32 overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#080E1A] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/5"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
         {/* Section Header matching Screenshot 3 */}
@@ -59,7 +59,7 @@ export const CorporateConsultationFormSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-3xl sm:text-5xl lg:text-[54px] font-serif font-normal text-white leading-[1.14] tracking-tight"
+            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.14] tracking-tight"
           >
             Request a Confidential Corporate Security Consultation
           </motion.h2>

@@ -9,7 +9,7 @@ export const CorporatePhilosophySection: React.FC = () => {
   return (
     <section
       aria-label="Corporate Security Philosophy"
-      className="relative w-full bg-[#0B1220] py-20 sm:py-28 lg:py-32 text-white overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#0B1220] py-14 sm:py-18 lg:py-20 text-white overflow-hidden border-t border-white/5"
     >
       {/* Background ambient lighting accents */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C5A880]/5 rounded-full blur-3xl pointer-events-none" />

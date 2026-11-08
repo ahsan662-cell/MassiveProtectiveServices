@@ -32,13 +32,13 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
     <section
       id={id}
       aria-label="Aventura Security Consultation"
-      className="relative w-full bg-[#080E1A] py-20 sm:py-28 lg:py-32 text-white overflow-hidden border-t border-white/5 scroll-mt-24"
+      className="relative w-full bg-[#080E1A] py-16 sm:py-20 lg:py-24 text-white overflow-hidden border-t border-white/5 scroll-mt-24"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C5A880]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-12 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-8 sm:mb-10">
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}

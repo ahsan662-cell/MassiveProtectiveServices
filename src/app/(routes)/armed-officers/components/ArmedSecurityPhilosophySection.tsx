@@ -9,7 +9,7 @@ export const ArmedSecurityPhilosophySection: React.FC = () => {
   return (
     <section
       aria-label="Licensed Armed Protection Philosophy"
-      className="relative w-full bg-[#0B1220] text-white py-24 sm:py-32 lg:py-36 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#0B1220] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-7 sm:space-y-9">
         {/* Top Gold Divider Accent Line matching Screenshot 2 */}

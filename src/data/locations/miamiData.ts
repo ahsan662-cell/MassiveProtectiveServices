@@ -24,7 +24,7 @@ export interface MiamiPageData {
 }
 
 export const miamiData: MiamiPageData = {
-  metaTitle: 'Miami Executive Protection — Armed Security for an International City | Massive Protective Services',
+  metaTitle: 'Miami Executive Protection & Armed Security | MPS',
   metaDescription:
     'Licensed armed executive protection for Miami corporate, financial and residential principals in Brickell, Coral Gables, Coconut Grove and Key Biscayne. FL License B1400200.',
 

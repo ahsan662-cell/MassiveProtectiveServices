@@ -74,7 +74,7 @@ export const CorporateScopeGridSection: React.FC = () => {
   return (
     <section
       aria-label="What Corporate Security Covers"
-      className="relative w-full bg-[#070D18] py-20 sm:py-28 lg:py-32 text-white overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#070D18] py-14 sm:py-18 lg:py-20 text-white overflow-hidden border-t border-white/5"
     >
       {/* Subtle radial ambient background light */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#111C33]/40 via-transparent to-transparent pointer-events-none" />

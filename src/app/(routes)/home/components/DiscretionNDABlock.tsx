@@ -44,7 +44,7 @@ export const DiscretionNDABlock: React.FC = () => {
     <section
       id="discretion"
       aria-label="Confidentiality and Consultation"
-      className="relative w-full py-20 sm:py-28 bg-[#090D15] border-t border-white/[0.08] overflow-hidden"
+      className="relative w-full py-14 sm:py-18 lg:py-20 bg-[#090D15] border-t border-white/[0.08] overflow-hidden"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#C5A880]/5 blur-[160px] rounded-full pointer-events-none" />

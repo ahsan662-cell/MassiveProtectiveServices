@@ -7,6 +7,10 @@ import { Header } from "@/components/common/Header";
 import { Footer } from "@/components/common/Footer";
 import { SplashScreen } from "@/components/common/SplashScreen";
 
+import { JsonLd } from "@/components/seo/JsonLd";
+import { getLocalBusinessSchema } from "@/utils/schema";
+import { SITE_URL } from "@/utils/seo";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,21 +28,13 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
+  },
   title: "Massive Protective Services (MPS) | Armed Security & Executive Protection",
   description:
     "A licensed private security firm headquartered in Delray Beach — serving estates, executives, events and organizations across Palm Beach, Broward and Miami-Dade Counties. FDACS License B1400200. Zero unarmed guards.",
-  keywords: [
-    "Massive Protective Services",
-    "Executive Protection Palm Beach",
-    "Armed Security Miami-Dade",
-    "Estate Security Broward",
-    "Florida Class G Armed Guards",
-    "FDACS License B1400200",
-    "Chapter 493 Florida Statutes",
-    "Tactical Luxury Security",
-    "Celebrity Protection Florida",
-    "Art Basel Security",
-  ],
   authors: [{ name: "Massive Protective Services" }],
   creator: "Massive Protective Services",
   publisher: "Massive Protective Services",
@@ -47,10 +43,14 @@ export const metadata: Metadata = {
     email: true,
     address: true,
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || process.env.GOOGLE_SITE_VERIFICATION,
+  },
   openGraph: {
     title: "Massive Protective Services | Sovereign Armed Protection",
     description:
       "100% Class G Armed Operators. Zero unarmed guards. Zero subcontracting. Regulated under Chapter 493, Florida Statutes. FDACS License B1400200.",
+    url: SITE_URL,
     type: "website",
     locale: "en_US",
     siteName: "Massive Protective Services",
@@ -61,7 +61,6 @@ export const viewport: Viewport = {
   themeColor: "#0A0A0A",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
 };
 
 export default function RootLayout({
@@ -72,9 +71,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased dark`}
     >
-      <body className="min-h-screen max-w-[100vw] overflow-x-clip flex flex-col bg-[#0A0A0A] text-[#F5F5F7]">
+      <body
+        suppressHydrationWarning
+        className="min-h-screen max-w-[100vw] overflow-x-clip flex flex-col bg-[#0A0A0A] text-[#F5F5F7]"
+      >
+        <JsonLd data={getLocalBusinessSchema()} />
         <StoreProvider>
           <ErrorBoundary>
             {/* Executive Loading Splash Screen with Lion Emblem (elitesecurity.pro style) */}
