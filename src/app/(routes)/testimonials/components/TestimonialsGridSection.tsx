@@ -1,75 +1,42 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { Star } from 'lucide-react';
-
-const TESTIMONIALS = [
-  {
-    quote: '[Testimonial text estate owner, Palm Beach County pending from Marc]',
-    role: 'Estate Owner — Palm Beach County',
-  },
-  {
-    quote: '[Testimonial text — corporate executive, Broward County — pending from Marc]',
-    role: 'Corporate Executive — Broward County',
-  },
-  {
-    quote: '[Testimonial text — private event client — pending from Marc]',
-    role: 'Private Event Client — Miami-Dade County',
-  },
-  {
-    quote: '[Testimonial text — pending]',
-    role: 'Family Office Principal — Palm Beach County',
-  },
-  {
-    quote: '[Testimonial text — pending]',
-    role: 'VIP Client — South Florida',
-  },
-  {
-    quote: '[Testimonial text — pending]',
-    role: 'Residential Security Client — Boca Raton',
-  },
-];
+import { TrustIndexWidget } from '@/components/TrustIndexWidget';
+import { GoogleReviewsSkeleton } from '@/components/GoogleReviewsSkeleton';
+import { TRUSTINDEX_CARD_URL } from '@/utils/googleReviews';
 
 export const TestimonialsGridSection: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.08,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 16 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: 'easeOut' as const },
-    },
-  };
-
   return (
     <section
-      aria-label="Client Quotes and Testimonials Grid"
-      className="relative w-full bg-[#0A111F] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
+      aria-label="Verified Google Client Reviews"
+      className="relative w-full bg-[#0A111F] text-white py-16 sm:py-20 lg:py-24 overflow-hidden border-t border-white/[0.08]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
-        {/* Section Header matching Screenshot 2 */}
-        <div className="space-y-3">
+      {/* Ambient background gold glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#C9A84C]/5 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+        {/* Section Header */}
+        <div className="space-y-3.5 text-center sm:text-left">
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
-              CLIENT TESTIMONIALS
-            </span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/25 text-[#C9A84C] text-xs font-semibold uppercase tracking-wider">
+              <svg
+                className="w-3.5 h-3.5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+              </svg>
+              <span>VERIFIED GOOGLE BUSINESS REVIEWS</span>
+            </div>
           </motion.div>
 
           <motion.h2
@@ -77,7 +44,7 @@ export const TestimonialsGridSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight"
+            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight max-w-4xl"
           >
             In Their Words
           </motion.h2>
@@ -86,76 +53,91 @@ export const TestimonialsGridSection: React.FC = () => {
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: 0.14 }}
-            className="text-xs text-zinc-400 font-sans italic"
+            transition={{ duration: 0.5, delay: 0.12 }}
+            className="text-sm sm:text-base font-sans text-zinc-400 max-w-2xl"
           >
-            Testimonial copy and star ratings are placeholders pending confirmation
+            Live verified reviews from clients, estate principals, and private event organizers across South Florida.
           </motion.p>
         </div>
 
-        {/* 6 Testimonial Cards (2 rows x 3 columns) matching Screenshot 2 */}
+        {/* Live TrustIndex Google Reviews Widget */}
+        <Suspense fallback={<GoogleReviewsSkeleton />}>
+          <TrustIndexWidget />
+        </Suspense>
+
+        {/* Trustindex QR Card & Direct Review Action */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mt-12 sm:mt-16 max-w-2xl mx-auto"
         >
-          {TESTIMONIALS.map((t, idx) => (
-            <motion.div
-              key={idx}
-              variants={itemVariants}
-              whileHover={
-                prefersReducedMotion
-                  ? undefined
-                  : {
-                      y: -3,
-                      transition: { duration: 0.2 },
-                    }
-              }
-              className="group rounded-sm bg-[#0B1220] border border-[#C5A880]/50 p-7 sm:p-9 flex flex-col justify-between space-y-6 shadow-xl transition-all duration-300 hover:border-[#C5A880] hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(197,168,128,0.12)] min-h-[340px]"
-            >
-              <div className="space-y-4">
-                {/* Top Row: Quote mark & Pending Copy Tag */}
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl font-serif text-[#C5A880] leading-none select-none">
-                    &ldquo;&ldquo;
-                  </span>
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-zinc-400 font-medium">
-                    PLACEHOLDER / PENDING COPY
-                  </span>
+          <div className="relative p-6 sm:p-7 rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-[#C9A84C]/30 shadow-2xl backdrop-blur-md overflow-hidden">
+            {/* Subtle gold radial ambient */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#C9A84C]/10 rounded-bl-full pointer-events-none blur-xl" />
+
+            <div className="relative z-10 flex flex-col sm:flex-row items-center gap-6 sm:gap-7">
+              {/* QR Code Container */}
+              <div className="shrink-0 bg-white p-2.5 rounded-xl shadow-xl shadow-black/50 border border-white/20">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/Trustindex-QRcard-massive-protective-services.svg"
+                  alt="Scan QR code to write a review for Massive Protective Services on Google"
+                  width={116}
+                  height={116}
+                  className="w-28 h-28 object-contain block"
+                />
+              </div>
+
+              {/* Text & Action Button */}
+              <div className="flex-1 text-center sm:text-left space-y-2.5">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#C9A84C]/15 border border-[#C9A84C]/30 text-[#C9A84C] text-xs font-semibold uppercase tracking-wider">
+                  <svg
+                    className="w-3.5 h-3.5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
+                  <span>Quick Review Card</span>
                 </div>
 
-                {/* Quote Text in Serif */}
-                <p className="text-lg sm:text-xl font-serif font-light text-zinc-100 leading-snug pt-2">
-                  {t.quote}
+                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight font-serif">
+                  Scan or Click to Leave a Review
+                </h3>
+
+                <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                  Scan the QR code with your mobile camera or click below to submit your verified review for Massive Protective Services.
                 </p>
-              </div>
 
-              {/* Bottom Client Info & Rating */}
-              <div className="space-y-3 pt-4">
-                <div className="w-8 h-[1px] bg-[#C5A880]" />
-
-                <div className="text-xs sm:text-sm font-sans font-medium text-white">
-                  {t.role}
-                </div>
-
-                <div className="flex items-center gap-1.5 pt-0.5">
-                  <div className="flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-3.5 h-3.5 fill-[#C5A880] text-[#C5A880]"
+                <div className="pt-1.5">
+                  <a
+                    href={TRUSTINDEX_CARD_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2.5 bg-[#C9A84C] text-[#0A0F1E] font-bold text-sm px-6 py-2.5 rounded-lg shadow-lg shadow-[#C9A84C]/20 hover:bg-[#D4B55D] hover:shadow-[#C9A84C]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                  >
+                    <span>Leave Us a Google Review</span>
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                       />
-                    ))}
-                  </div>
-                  <span className="text-[11px] font-sans text-zinc-400 ml-1.5">
-                    Rating pending
-                  </span>
+                    </svg>
+                  </a>
                 </div>
               </div>
-            </motion.div>
-          ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -57,7 +57,7 @@ export default function HomePage() {
       <ServicesGrid />
 
       {/* Verified Google Business Reviews */}
-      <GoogleReviews />
+      {/* <GoogleReviews /> */}
 
       {/* 4. WHO WE PROTECT & Credential Stat Bar (Screenshot 4) */}
       <WhoWeProtectSection />
