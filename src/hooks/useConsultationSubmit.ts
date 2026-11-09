@@ -36,6 +36,7 @@ export function useConsultationSubmit(options: UseConsultationSubmitOptions) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [isMethodModalOpen, setIsMethodModalOpen] = useState<boolean>(false);
+  const [isHumanVerified, setIsHumanVerified] = useState<boolean>(false);
   const isLockedRef = useRef<boolean>(false);
 
   // Validate core fields
@@ -212,6 +213,7 @@ export function useConsultationSubmit(options: UseConsultationSubmitOptions) {
     setErrorMessage(null);
     setFieldErrors({});
     setIsMethodModalOpen(false);
+    setIsHumanVerified(false);
     isLockedRef.current = false;
     setIdempotencyKey(generateUUID());
   }, []);
@@ -224,6 +226,8 @@ export function useConsultationSubmit(options: UseConsultationSubmitOptions) {
     fieldErrors,
     isMethodModalOpen,
     setIsMethodModalOpen,
+    isHumanVerified,
+    setIsHumanVerified,
     validate,
     submitForm,
     submitViaWhatsApp,

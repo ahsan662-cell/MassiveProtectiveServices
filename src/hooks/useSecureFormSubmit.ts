@@ -49,6 +49,7 @@ export function useSecureFormSubmit(options: UseSecureFormSubmitOptions = {}) {
   const [isTimedOut, setIsTimedOut] = useState<boolean>(false);
   const [csrfToken, setCsrfToken] = useState<string | null>(null);
   const [isMethodModalOpen, setIsMethodModalOpen] = useState<boolean>(false);
+  const [isHumanVerified, setIsHumanVerified] = useState<boolean>(false);
 
   // Single-dispatch lock ref to drop parallel duplicate clicks instantly
   const isLockedRef = useRef<boolean>(false);
@@ -250,6 +251,8 @@ export function useSecureFormSubmit(options: UseSecureFormSubmitOptions = {}) {
     idempotencyKey,
     isMethodModalOpen,
     setIsMethodModalOpen,
+    isHumanVerified,
+    setIsHumanVerified,
     submitViaWhatsApp,
     submitViaEmail: () => form.handleSubmit(handleSecureSubmit)(),
     requestSubmissionChoice,

@@ -9,3 +9,4 @@ export { GoldDivider } from './GoldDivider';
 export { PillTag } from './PillTag';
 export { TacticalInquiryForm } from './TacticalInquiryForm';
 export { SubmissionMethodModal } from './SubmissionMethodModal';
+export { SecurityCaptcha } from './SecurityCaptcha';

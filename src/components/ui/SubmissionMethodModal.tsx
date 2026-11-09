@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, MessageCircle, X, Shield, ArrowRight, Loader2, Lock } from 'lucide-react';
+import { Mail, MessageCircle, X, Shield, ArrowRight, Loader2, Lock, CheckCircle2 } from 'lucide-react';
 import { MPS_PHONE_DISPLAY } from '@/utils/whatsapp';
+import { SecurityCaptcha } from './SecurityCaptcha';
 
 export interface SubmissionMethodModalProps {
   isOpen: boolean;
@@ -13,6 +14,8 @@ export interface SubmissionMethodModalProps {
   isSubmittingEmail?: boolean;
   clientName?: string;
   sourceTitle?: string;
+  isHumanVerified?: boolean;
+  onVerifyHuman?: (verified: boolean) => void;
 }
 
 export const SubmissionMethodModal: React.FC<SubmissionMethodModalProps> = ({
@@ -23,8 +26,38 @@ export const SubmissionMethodModal: React.FC<SubmissionMethodModalProps> = ({
   isSubmittingEmail = false,
   clientName,
   sourceTitle = 'Consultation Inquiry',
+  isHumanVerified = false,
+  onVerifyHuman,
 }) => {
+  const [captchaVerified, setCaptchaVerified] = useState(isHumanVerified);
+  const [captchaError, setCaptchaError] = useState<string | null>(null);
+
   if (!isOpen) return null;
+
+  const handleVerify = (verified: boolean) => {
+    setCaptchaVerified(verified);
+    if (verified) {
+      setCaptchaError(null);
+    }
+    onVerifyHuman?.(verified);
+  };
+
+  const handleEmailClick = async () => {
+    if (!captchaVerified && !isHumanVerified) {
+      setCaptchaError('Please verify that you are human before proceeding.');
+      return;
+    }
+    await onSubmitEmail();
+  };
+
+  const handleWhatsAppClick = () => {
+    if (!captchaVerified && !isHumanVerified) {
+      setCaptchaError('Please verify that you are human before proceeding.');
+      return;
+    }
+    onSubmitWhatsApp();
+    onClose();
+  };
 
   return (
     <AnimatePresence>
@@ -78,16 +111,28 @@ export const SubmissionMethodModal: React.FC<SubmissionMethodModalProps> = ({
             </p>
           </div>
 
+          {/* Security Human Verification Card */}
+          <div className="mb-4">
+            <SecurityCaptcha
+              isVerified={captchaVerified || isHumanVerified}
+              onVerify={handleVerify}
+              error={captchaError}
+              className="w-full max-w-full"
+            />
+          </div>
+
           {/* Dual Submission Options */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-5">
             {/* Option 1: Email Submission */}
             <button
               type="button"
               disabled={isSubmittingEmail}
-              onClick={async () => {
-                await onSubmitEmail();
-              }}
-              className="group relative flex flex-col justify-between p-4 rounded-lg bg-[#111C30] hover:bg-[#15233D] border border-white/10 hover:border-[#3B82F6]/60 text-left transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer disabled:opacity-50"
+              onClick={handleEmailClick}
+              className={`group relative flex flex-col justify-between p-4 rounded-lg bg-[#111C30] hover:bg-[#15233D] border text-left transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer disabled:opacity-50 ${
+                captchaVerified || isHumanVerified
+                  ? 'border-[#3B82F6]/60 shadow-[0_0_15px_rgba(59,130,246,0.15)]'
+                  : 'border-white/10 opacity-75'
+              }`}
             >
               <div className="space-y-2">
                 <div className="w-9 h-9 rounded-md bg-[#0E2445] border border-[#3B82F6]/40 flex items-center justify-center text-white group-hover:scale-105 transition-transform">
@@ -116,11 +161,12 @@ export const SubmissionMethodModal: React.FC<SubmissionMethodModalProps> = ({
             {/* Option 2: WhatsApp Submission */}
             <button
               type="button"
-              onClick={() => {
-                onSubmitWhatsApp();
-                onClose();
-              }}
-              className="group relative flex flex-col justify-between p-4 rounded-lg bg-[#0F2228] hover:bg-[#122E36] border border-[#25D366]/30 hover:border-[#25D366]/70 text-left transition-all duration-200 hover:shadow-[0_4px_24px_rgba(37,211,102,0.15)] hover:-translate-y-0.5 cursor-pointer"
+              onClick={handleWhatsAppClick}
+              className={`group relative flex flex-col justify-between p-4 rounded-lg bg-[#0F2228] hover:bg-[#122E36] border text-left transition-all duration-200 hover:shadow-[0_4px_24px_rgba(37,211,102,0.15)] hover:-translate-y-0.5 cursor-pointer ${
+                captchaVerified || isHumanVerified
+                  ? 'border-[#25D366]/60 shadow-[0_0_15px_rgba(37,211,102,0.15)]'
+                  : 'border-[#25D366]/30 opacity-75'
+              }`}
             >
               <div className="space-y-2">
                 <div className="w-9 h-9 rounded-md bg-[#25D366]/20 border border-[#25D366]/50 flex items-center justify-center text-[#25D366] group-hover:scale-105 transition-transform">

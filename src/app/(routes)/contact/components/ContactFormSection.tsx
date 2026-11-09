@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
 import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
+import { SecurityCaptcha } from '@/components/ui/SecurityCaptcha';
 import { MessageCircle, ChevronDown as ChevronDownIcon } from 'lucide-react';
 
 const SERVICES_OPTIONS = [
@@ -41,7 +42,7 @@ export const ContactFormSection: React.FC = () => {
     message: '',
   });
 
-  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, isMethodModalOpen, setIsMethodModalOpen, validate, submitForm, submitViaWhatsApp, reset } = useConsultationSubmit({
+  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, isMethodModalOpen, setIsMethodModalOpen, isHumanVerified, setIsHumanVerified, validate, submitForm, submitViaWhatsApp, reset } = useConsultationSubmit({
       formSource: 'Direct Contact Page Inquiry',
     });
 
@@ -289,6 +290,14 @@ export const ContactFormSection: React.FC = () => {
                   </div>
                 )}
 
+                {/* Security Human Verification CAPTCHA */}
+                <div className="pt-1">
+                  <SecurityCaptcha
+                    isVerified={isHumanVerified}
+                    onVerify={(v) => setIsHumanVerified(v)}
+                  />
+                </div>
+
                 {/* Submit Action Button */}
                 <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
                   <button
@@ -519,6 +528,8 @@ export const ContactFormSection: React.FC = () => {
         }}
         isSubmittingEmail={isSubmitting}
         clientName={formData.fullName}
+        isHumanVerified={isHumanVerified}
+        onVerifyHuman={setIsHumanVerified}
       />
     </section>
   );

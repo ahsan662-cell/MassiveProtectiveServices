@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
 import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
+import { SecurityCaptcha } from '@/components/ui/SecurityCaptcha';
 
 export const CareersApplicationFormSection: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -48,6 +49,8 @@ export const CareersApplicationFormSection: React.FC = () => {
     errorMessage,
     isMethodModalOpen,
     setIsMethodModalOpen,
+    isHumanVerified,
+    setIsHumanVerified,
     validate,
     submitForm,
     submitViaWhatsApp,
@@ -456,6 +459,14 @@ export const CareersApplicationFormSection: React.FC = () => {
                 </div>
               )}
 
+              {/* Human Verification Security Captcha */}
+              <div className="pt-1">
+                <SecurityCaptcha
+                  isVerified={isHumanVerified}
+                  onVerify={(v) => setIsHumanVerified(v)}
+                />
+              </div>
+
               {/* Dual Action Submit Buttons (Email & WhatsApp) */}
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
                 <button
@@ -508,6 +519,8 @@ export const CareersApplicationFormSection: React.FC = () => {
         }}
         isSubmittingEmail={isSubmitting}
         clientName={formData.fullName}
+        isHumanVerified={isHumanVerified}
+        onVerifyHuman={setIsHumanVerified}
       />
     </section>
   );

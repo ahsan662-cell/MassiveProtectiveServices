@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { CheckCircle2, AlertTriangle, Shield, Lock, PhoneCall, Loader2, Calendar, MessageCircle, ChevronDown } from 'lucide-react';
 import { useSecureFormSubmit } from '@/hooks/useSecureFormSubmit';
 import { SubmissionMethodModal } from './SubmissionMethodModal';
+import { SecurityCaptcha } from './SecurityCaptcha';
 
 interface TacticalInquiryFormProps {
   id?: string;
@@ -44,6 +45,8 @@ export const TacticalInquiryForm: React.FC<TacticalInquiryFormProps> = ({
     idempotencyKey,
     isMethodModalOpen,
     setIsMethodModalOpen,
+    isHumanVerified,
+    setIsHumanVerified,
     submitViaWhatsApp,
     submitViaEmail,
     requestSubmissionChoice,
@@ -338,6 +341,14 @@ export const TacticalInquiryForm: React.FC<TacticalInquiryFormProps> = ({
             </label>
           </div>
 
+          {/* Human Verification Security Captcha */}
+          <div className="pt-1">
+            <SecurityCaptcha
+              isVerified={isHumanVerified}
+              onVerify={(v) => setIsHumanVerified(v)}
+            />
+          </div>
+
           {/* Submit Action Buttons with Email and WhatsApp Options */}
           <div className="pt-1.5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
             <button
@@ -382,6 +393,8 @@ export const TacticalInquiryForm: React.FC<TacticalInquiryFormProps> = ({
         isSubmittingEmail={isSubmitting}
         clientName={currentValues.fullName}
         sourceTitle={title}
+        isHumanVerified={isHumanVerified}
+        onVerifyHuman={setIsHumanVerified}
       />
     </div>
   );

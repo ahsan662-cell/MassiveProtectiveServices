@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Search, MapPin, ArrowRight, ShieldCheck, Check, Clock, ChevronRight } from 'lucide-react';
 import { ALL_LOCATIONS, REGIONS, LocationOverviewItem } from '@/data/locationsOverviewData';
@@ -224,57 +225,76 @@ export const LocationsOverviewClient: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.35, delay: idx * 0.03 }}
-                    className="group relative bg-[#0E182D]/90 hover:bg-[#13203C] border border-white/[0.08] hover:border-[#0E2445]/50 rounded-sm p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.5)] hover:-translate-y-1"
+                    className="group relative bg-[#0E182D]/90 hover:bg-[#13203C] border border-white/[0.08] hover:border-[#0E2445]/60 rounded-sm overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.5)] hover:-translate-y-1"
                   >
-                    {/* Top gold accent line */}
-                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0E2445]/30 group-hover:via-[#0E2445] to-transparent transition-all duration-500" />
+                    {/* Top blue accent line */}
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0E2445]/50 group-hover:via-[#93C5FD] to-transparent transition-all duration-500 z-20 pointer-events-none" />
 
                     <div>
-                      {/* County Tag & Badge */}
-                      <div className="flex items-center justify-between gap-2 mb-4">
-                        <span className="text-[11px] font-mono text-[#93C5FD] uppercase tracking-wider flex items-center gap-1.5">
-                          <MapPin className="w-3.5 h-3.5 stroke-[1.8]" />
-                          <span>{item.regionLabel}</span>
-                        </span>
+                      {/* Jurisdiction Photograph Header */}
+                      <Link
+                        href={item.href}
+                        className="relative block w-full h-44 sm:h-48 overflow-hidden bg-[#070D18]"
+                        aria-label={`Explore ${item.name} security operations`}
+                      >
+                        <Image
+                          src={item.image}
+                          alt={`${item.name}, Florida Private Security & Bodyguards`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out brightness-[0.78] group-hover:brightness-90 contrast-[1.05]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0E182D] via-[#0E182D]/35 to-black/20" />
 
-                        <span className="text-[9.5px] font-mono uppercase px-2 py-0.5 rounded bg-[#0E2445]/15 text-[#93C5FD] border border-[#0E2445]/30 shrink-0">
-                          {item.badge}
-                        </span>
-                      </div>
+                        {/* Badges floating over image */}
+                        <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
+                          <span className="text-[10px] font-mono font-medium text-white/95 uppercase tracking-wider flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-[#070D18]/85 backdrop-blur-md border border-white/10 shadow-sm">
+                            <MapPin className="w-3 h-3 text-[#93C5FD]" />
+                            <span>{item.regionLabel}</span>
+                          </span>
 
-                      {/* City Name */}
-                      <Link href={item.href} className="block group-hover:text-[#93C5FD] transition-colors">
-                        <h2 className="text-2xl sm:text-[26px] font-serif font-normal text-white group-hover:text-[#93C5FD] leading-snug tracking-tight mb-2">
-                          {item.name}
-                        </h2>
+                          <span className="text-[9.5px] font-mono uppercase px-2 py-0.5 rounded-sm bg-[#0E2445]/90 text-[#93C5FD] border border-[#93C5FD]/30 shadow-sm backdrop-blur-md font-medium">
+                            {item.badge}
+                          </span>
+                        </div>
                       </Link>
 
-                      {/* Tagline */}
-                      <p className="text-xs sm:text-[13px] font-sans font-medium text-zinc-300 mb-3 leading-snug">
-                        {item.tagline}
-                      </p>
+                      {/* Card Body */}
+                      <div className="p-5 sm:p-6 pb-2">
+                        {/* City Name */}
+                        <Link href={item.href} className="block group-hover:text-[#93C5FD] transition-colors">
+                          <h2 className="text-xl sm:text-2xl font-serif font-normal text-white group-hover:text-[#93C5FD] leading-snug tracking-tight mb-2">
+                            {item.name}
+                          </h2>
+                        </Link>
 
-                      {/* Description */}
-                      <p className="text-xs sm:text-[13px] font-sans font-light text-zinc-400 leading-relaxed mb-5">
-                        {item.description}
-                      </p>
+                        {/* Tagline */}
+                        <p className="text-xs sm:text-[13px] font-sans font-medium text-zinc-300 mb-2.5 leading-snug">
+                          {item.tagline}
+                        </p>
 
-                      {/* Bullet Highlights */}
-                      <ul className="space-y-2 mb-6 border-t border-white/[0.06] pt-4">
-                        {item.highlights.map((h, i) => (
-                          <li key={i} className="text-xs text-zinc-300 font-sans flex items-start gap-2">
-                            <Check className="w-3.5 h-3.5 text-[#93C5FD] shrink-0 mt-0.5 stroke-[2.2]" />
-                            <span className="leading-tight">{h}</span>
-                          </li>
-                        ))}
-                      </ul>
+                        {/* Description */}
+                        <p className="text-xs sm:text-[13px] font-sans font-light text-zinc-400 leading-relaxed mb-4 line-clamp-3">
+                          {item.description}
+                        </p>
+
+                        {/* Bullet Highlights */}
+                        <ul className="space-y-1.5 mb-2 border-t border-white/[0.06] pt-3.5">
+                          {item.highlights.map((h, i) => (
+                            <li key={i} className="text-xs text-zinc-300 font-sans flex items-start gap-2">
+                              <Check className="w-3.5 h-3.5 text-[#93C5FD] shrink-0 mt-0.5 stroke-[2.2]" />
+                              <span className="leading-tight">{h}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
 
                     {/* Bottom Action Button */}
-                    <div className="pt-2 border-t border-white/[0.06]">
+                    <div className="p-5 sm:p-6 pt-3 border-t border-white/[0.06]">
                       <Link
                         href={item.href}
-                        className="w-full inline-flex items-center justify-between px-4 py-3 rounded-sm bg-[#16233B] group-hover:bg-[#0E2445] text-zinc-200 group-hover:text-[#0A0A0A] font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300"
+                        className="w-full inline-flex items-center justify-between px-4 py-2.5 rounded-sm bg-[#16233B] group-hover:bg-[#0E2445] text-zinc-200 group-hover:text-white font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300"
                       >
                         <span>Explore {item.name} Detail</span>
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

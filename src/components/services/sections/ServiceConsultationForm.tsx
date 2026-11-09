@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, Check, Loader2, ShieldCheck, Lock, Calendar, MessageCircle, Mail } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
 import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
+import { SecurityCaptcha } from '@/components/ui/SecurityCaptcha';
 import { MPS_PHONE_DISPLAY } from '@/utils/whatsapp';
 import { ServiceFormData } from '../types';
 
@@ -89,6 +90,8 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
     fieldErrors,
     isMethodModalOpen,
     setIsMethodModalOpen,
+    isHumanVerified,
+    setIsHumanVerified,
     validate,
     submitForm,
     submitViaWhatsApp,
@@ -492,6 +495,14 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
                 </div>
               )}
 
+              {/* Human Verification Security Captcha */}
+              <div className="pt-1">
+                <SecurityCaptcha
+                  isVerified={isHumanVerified}
+                  onVerify={(v) => setIsHumanVerified(v)}
+                />
+              </div>
+
               {/* Row 4: Submit Actions & Dual Channel Selector */}
               <div className="pt-1.5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
                 {/* Primary Submit Button: opens submission choice dialog */}
@@ -539,6 +550,8 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
         isSubmittingEmail={isSubmitting}
         clientName={formData.fullName}
         sourceTitle={headline}
+        isHumanVerified={isHumanVerified}
+        onVerifyHuman={setIsHumanVerified}
       />
     </section>
   );

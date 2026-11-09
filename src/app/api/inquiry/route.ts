@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { sanitizeObject, sanitizePlainText } from '@/utils/sanitize';
 import { validateCsrfToken, CSRF_COOKIE_NAME, CSRF_HEADER_NAME } from '@/utils/csrf';
 import { sendDualInquiryEmails, InquiryDispatchPayload } from '@/utils/mailer';
+import { recordSubmission } from '@/utils/submissionStore';
 
 // In-Memory Idempotency Cache (stores processed keys for 15 minutes)
 interface IdempotencyRecord {
@@ -284,19 +285,53 @@ export async function POST(req: NextRequest) {
     const userAgent = req.headers.get('user-agent') || 'Unknown';
     const timestamp = new Date().toISOString();
 
-    // 9. Dispatch Dual Emails (Owner Alert + Client Receipt)
-    const emailDispatch = await sendDualInquiryEmails(dispatchPayload, {
-      ip,
-      idempotencyKey,
-      timestamp,
-      userAgent,
-    });
+    // 9. Dispatch Dual Emails (Owner Alert + Client Receipt) or handle WhatsApp log
+    const channel = sanitizedBody.submissionChannel === 'whatsapp' ? 'whatsapp' : 'email';
+    let emailDispatch = { internalSent: false, clientSent: false };
+
+    if (channel === 'email') {
+      emailDispatch = await sendDualInquiryEmails(dispatchPayload, {
+        ip,
+        idempotencyKey,
+        timestamp,
+        userAgent,
+      });
+    }
+
+    const isSuccess = channel === 'whatsapp' || emailDispatch.internalSent || emailDispatch.clientSent;
+
+    // Record submission into persistent store for Real-time Dashboard tracking
+    try {
+      await recordSubmission({
+        channel,
+        status: isSuccess ? 'success' : 'failed',
+        formSource,
+        fullName: dispatchPayload.fullName,
+        email: dispatchPayload.email,
+        phone: dispatchPayload.phone,
+        serviceType: dispatchPayload.serviceType,
+        location: dispatchPayload.location,
+        preferredDate: dispatchPayload.preferredDate,
+        companyName: typeof dispatchPayload.companyName === 'string' ? dispatchPayload.companyName : undefined,
+        jobTitle: typeof dispatchPayload.jobTitle === 'string' ? dispatchPayload.jobTitle : undefined,
+        message: dispatchPayload.message,
+        resumeFileName: dispatchPayload.resumeFile?.name || (typeof dispatchPayload.resumeFileName === 'string' ? dispatchPayload.resumeFileName : undefined),
+        ndaRequested: dispatchPayload.ndaRequested,
+        requiresArmedDriver: dispatchPayload.requiresArmedDriver,
+        ip,
+        userAgent,
+        idempotencyKey,
+        errorMessage: !isSuccess ? 'Dispatch delivery unconfirmed by mail server.' : undefined,
+      });
+    } catch (storeErr) {
+      console.error('[API /api/inquiry] Failed logging to submissionStore:', storeErr);
+    }
 
     const successResponse = {
       success: true,
       message: 'Encrypted transmission confirmed.',
       idempotencyKey,
-      dispatchVerified: emailDispatch.internalSent || emailDispatch.clientSent,
+      dispatchVerified: isSuccess,
     };
 
     // 10. Cache in Idempotency Store
@@ -313,6 +348,20 @@ export async function POST(req: NextRequest) {
     });
   } catch (error: unknown) {
     console.error('[API /api/inquiry] Fatal handler exception:', error);
+
+    // Record failure in store
+    try {
+      await recordSubmission({
+        channel: 'email',
+        status: 'failed',
+        formSource: 'Intake Error',
+        fullName: 'Unregistered Candidate/Client',
+        email: 'error@intake.internal',
+        phone: 'N/A',
+        errorMessage: error instanceof Error ? error.message : String(error),
+      });
+    } catch {}
+
     return NextResponse.json(
       {
         error: 'Critical transmission error on secure channel. Contact priority dispatch.',
