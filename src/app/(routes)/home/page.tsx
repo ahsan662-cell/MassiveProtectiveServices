@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="w-full flex-1 flex flex-col overflow-x-clip bg-[#0A111F]">
+    <div className="w-full flex-1 flex flex-col overflow-x-clip bg-[#0A0A0A]">
       <JsonLd data={getLocalBusinessSchema({ path: '/' })} />
       {/* 1. Hero Section (Screenshot 1) */}
       <HeroSection />

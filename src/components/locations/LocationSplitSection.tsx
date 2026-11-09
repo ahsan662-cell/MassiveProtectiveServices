@@ -20,7 +20,7 @@ export const LocationSplitSection: React.FC<Props> = ({ data }) => {
       className="relative w-full bg-[#070D18] py-16 sm:py-20 lg:py-24 text-white overflow-hidden border-t border-white/5"
     >
       {/* Background ambient lighting glow */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C5A880]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#0E2445]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         {/* Section Header */}
@@ -32,7 +32,7 @@ export const LocationSplitSection: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {data.eyebrow}
               </span>
             </motion.div>
@@ -69,7 +69,7 @@ export const LocationSplitSection: React.FC<Props> = ({ data }) => {
               />
             </div>
             {data.image.caption && (
-              <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#C5A880]/80 uppercase block">
+              <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#93C5FD]/80 uppercase block">
                 {data.image.caption}
               </span>
             )}
@@ -105,7 +105,7 @@ export const LocationSplitSection: React.FC<Props> = ({ data }) => {
                   />
                 </div>
                 {data.image.caption && (
-                  <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#C5A880] uppercase block">
+                  <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#93C5FD] uppercase block">
                     {data.image.caption}
                   </span>
                 )}
@@ -114,11 +114,11 @@ export const LocationSplitSection: React.FC<Props> = ({ data }) => {
 
             {data.stats && data.stats.length > 0 && (
               <div className="pt-4 sm:pt-6 space-y-6">
-                <div className="w-full h-px bg-[#C5A880]/35" />
+                <div className="w-full h-px bg-[#0E2445]/35" />
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
                   {data.stats.map((stat, idx) => (
                     <div key={idx} className="space-y-1">
-                      <div className="text-3xl sm:text-4xl lg:text-5xl font-serif font-light text-[#C5A880] tracking-tight">
+                      <div className="text-3xl sm:text-4xl lg:text-5xl font-serif font-light text-[#93C5FD] tracking-tight">
                         {stat.value}
                       </div>
                       <p className="text-xs sm:text-[13px] text-zinc-300 font-sans font-light leading-snug">
@@ -156,7 +156,7 @@ export const LocationSplitSection: React.FC<Props> = ({ data }) => {
                   />
                 </div>
                 {data.image.caption && (
-                  <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#C5A880] uppercase block">
+                  <span className="text-[10px] sm:text-[11px] font-mono tracking-widest text-[#93C5FD] uppercase block">
                     {data.image.caption}
                   </span>
                 )}
@@ -169,11 +169,11 @@ export const LocationSplitSection: React.FC<Props> = ({ data }) => {
                 className={
                   isDividedList
                     ? 'py-6 sm:py-7 flex items-start gap-4 sm:gap-5 group'
-                    : 'group bg-[#121D38] hover:bg-[#162548] border border-white/[0.08] hover:border-[#C5A880]/50 rounded-lg p-6 sm:p-7 flex items-start gap-4 sm:gap-5 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all duration-300'
+                    : 'group bg-[#121D38] hover:bg-[#162548] border border-white/[0.08] hover:border-[#0E2445]/50 rounded-lg p-6 sm:p-7 flex items-start gap-4 sm:gap-5 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all duration-300'
                 }
               >
                 {item.icon && (
-                  <div className="text-[#C5A880] group-hover:text-[#D4AF37] transition-colors shrink-0 mt-1">
+                  <div className="text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors shrink-0 mt-1">
                     <ServiceIcon name={item.icon} className="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.6]" />
                   </div>
                 )}
@@ -181,8 +181,8 @@ export const LocationSplitSection: React.FC<Props> = ({ data }) => {
                   <h3
                     className={`text-xl sm:text-2xl font-serif font-normal ${
                       data.itemTitleColor === 'white'
-                        ? 'text-white group-hover:text-[#C5A880]'
-                        : 'text-[#C5A880] group-hover:text-[#D4AF37]'
+                        ? 'text-white group-hover:text-[#93C5FD]'
+                        : 'text-[#93C5FD] group-hover:text-[#93C5FD]'
                     } transition-colors leading-snug`}
                   >
                     {item.title}

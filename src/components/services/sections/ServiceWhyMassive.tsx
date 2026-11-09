@@ -78,7 +78,7 @@ export const ServiceWhyMassive: React.FC<Props> = ({ data }) => {
             >
               <span
                 className={`text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] ${
-                  isDark ? 'text-[#C5A880]' : 'text-[#C5A880]'
+                  isDark ? 'text-[#93C5FD]' : 'text-[#93C5FD]'
                 }`}
               >
                 {data.eyebrow}
@@ -114,17 +114,17 @@ export const ServiceWhyMassive: React.FC<Props> = ({ data }) => {
                 variants={itemVariants}
                 className={`group relative ${
                   isDark
-                    ? 'border border-white/[0.08] hover:border-[#C5A880]/40 bg-[#0E1728]/80 hover:bg-[#121E35] rounded-sm'
-                    : 'border border-[#C5A880] hover:border-[#D4AF37] bg-white/70 hover:bg-white rounded-none'
-                } p-7 sm:p-8 flex flex-col justify-start transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(197,168,128,0.18)] hover:-translate-y-1`}
+                    ? 'border border-white/[0.08] hover:border-[#0E2445]/40 bg-[#0E1728]/80 hover:bg-[#121E35] rounded-sm'
+                    : 'border border-[#0E2445] hover:border-[#93C5FD] bg-white/70 hover:bg-white rounded-none'
+                } p-7 sm:p-8 flex flex-col justify-start transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(14, 36, 69, 0.18)] hover:-translate-y-1`}
               >
                 {pillar.eyebrow && (
-                  <span className="text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-[0.2em] text-[#C5A880] mb-3 block">
+                  <span className="text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-[0.2em] text-[#93C5FD] mb-3 block">
                     {pillar.eyebrow}
                   </span>
                 )}
                 {pillar.icon && (
-                  <div className="w-8 h-8 flex items-center justify-start text-[#C5A880] group-hover:text-[#D4AF37] transition-colors mb-4">
+                  <div className="w-8 h-8 flex items-center justify-start text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors mb-4">
                     <ServiceIcon name={pillar.icon} className="w-6 h-6 stroke-[1.6]" />
                   </div>
                 )}
@@ -159,7 +159,7 @@ export const ServiceWhyMassive: React.FC<Props> = ({ data }) => {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="border-l-2 border-[#C5A880] pl-6 sm:pl-8 space-y-2 py-1"
+                className="border-l-2 border-[#0E2445] pl-6 sm:pl-8 space-y-2 py-1"
               >
                 <h3 className="text-xl sm:text-2xl font-serif font-normal text-white leading-snug">
                   {pillar.title}
@@ -187,13 +187,13 @@ export const ServiceWhyMassive: React.FC<Props> = ({ data }) => {
                 } pt-6 sm:pt-8`}
               >
                 {pillar.icon && (
-                  <div className="w-8 h-8 flex items-center justify-start text-[#C5A880] group-hover:text-[#D4AF37] transition-colors">
+                  <div className="w-8 h-8 flex items-center justify-start text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors">
                     <ServiceIcon name={pillar.icon} className="w-6 h-6 stroke-[1.4]" />
                   </div>
                 )}
 
                 <h3
-                  className={`text-xl sm:text-2xl font-serif font-normal group-hover:text-[#C5A880] transition-colors leading-snug ${
+                  className={`text-xl sm:text-2xl font-serif font-normal group-hover:text-[#93C5FD] transition-colors leading-snug ${
                     isDark ? 'text-white' : 'text-[#0A111F]'
                   }`}
                 >
@@ -227,13 +227,13 @@ export const ServiceWhyMassive: React.FC<Props> = ({ data }) => {
                   className="group relative flex flex-col items-start space-y-4"
                 >
                 {pillar.icon && (
-                  <div className="w-10 h-10 flex items-center justify-start text-[#C5A880] group-hover:text-[#D4AF37] transition-colors">
+                  <div className="w-10 h-10 flex items-center justify-start text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors">
                     <ServiceIcon name={pillar.icon} className="w-6 h-6 stroke-[1.6]" />
                   </div>
                 )}
 
                 <h3
-                  className={`text-xl sm:text-2xl font-serif font-normal group-hover:text-[#C5A880] transition-colors leading-snug ${
+                  className={`text-xl sm:text-2xl font-serif font-normal group-hover:text-[#93C5FD] transition-colors leading-snug ${
                     isDark ? 'text-white' : 'text-[#0A111F]'
                   }`}
                 >
@@ -266,7 +266,7 @@ export const ServiceWhyMassive: React.FC<Props> = ({ data }) => {
               href={data.verifyLink.href}
               target={data.verifyLink.href.startsWith('http') ? '_blank' : undefined}
               rel={data.verifyLink.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-sans text-[#C5A880] hover:text-[#D4AF37] transition-colors group"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-sans text-[#93C5FD] hover:text-[#93C5FD] transition-colors group"
             >
               <span>{data.verifyLink.label}</span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -299,7 +299,7 @@ export const ServiceWhyMassive: React.FC<Props> = ({ data }) => {
             className={`border rounded-none p-7 sm:p-9 space-y-3 ${
               isDark
                 ? 'border-white/10 bg-[#111A2C]/60'
-                : 'border-[#C5A880]/40 bg-white/60'
+                : 'border-[#0E2445]/40 bg-white/60'
             }`}
           >
             <h4
@@ -332,7 +332,7 @@ export const ServiceWhyMassive: React.FC<Props> = ({ data }) => {
               {data.credentialBadges.map((badge, idx) => (
                 <div
                   key={idx}
-                  className="bg-[#080E1B] border border-white/[0.08] hover:border-[#C5A880]/40 rounded-none p-5 sm:p-6 text-center flex items-center justify-center transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
+                  className="bg-[#080E1B] border border-white/[0.08] hover:border-[#0E2445]/40 rounded-none p-5 sm:p-6 text-center flex items-center justify-center transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)]"
                 >
                   <span className="text-xs sm:text-[13px] font-sans text-zinc-300 font-light tracking-wide">
                     {badge}

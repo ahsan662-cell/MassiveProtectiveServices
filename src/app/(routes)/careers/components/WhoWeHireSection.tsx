@@ -30,7 +30,7 @@ export const WhoWeHireSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               WHO WE HIRE
             </span>
           </motion.div>
@@ -54,16 +54,16 @@ export const WhoWeHireSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 rounded-sm bg-[#0B1220] border-t-2 border-t-[#C5A880] border-x border-b border-white/[0.08] p-7 sm:p-9 space-y-6 shadow-2xl"
+            className="lg:col-span-5 rounded-sm bg-[#0B1220] border-t-2 border-t-[#0E2445] border-x border-b border-white/[0.08] p-7 sm:p-9 space-y-6 shadow-2xl"
           >
-            <span className="text-xs font-mono uppercase tracking-widest text-[#C5A880] block font-semibold">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#93C5FD] block font-semibold">
               MINIMUM REQUIREMENTS
             </span>
 
             <ul className="space-y-3.5">
               {MINIMUM_REQUIREMENTS.map((req) => (
                 <li key={req} className="flex items-start text-xs sm:text-[13px] text-zinc-300 font-sans font-light leading-relaxed">
-                  <span className="text-[#C5A880] font-bold mr-3 select-none leading-none mt-0.5">•</span>
+                  <span className="text-[#93C5FD] font-bold mr-3 select-none leading-none mt-0.5">•</span>
                   <span>{req}</span>
                 </li>
               ))}

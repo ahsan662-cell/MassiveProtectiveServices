@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ChevronDown, Check, Loader2, ShieldCheck, AlertTriangle } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
+import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
+import { MessageCircle, ChevronDown as ChevronDownIcon } from 'lucide-react';
 
 const DEPLOYMENT_TYPES = [
   'Estate / Residential',
@@ -36,20 +38,24 @@ export const ArmedSecurityFormSection: React.FC = () => {
 
   const [deploymentOpen, setDeploymentOpen] = useState(false);
   const [timelineOpen, setTimelineOpen] = useState(false);
-  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, submitForm, reset } = useConsultationSubmit({ formSource: 'Armed Security Consultation' });
+  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, isMethodModalOpen, setIsMethodModalOpen, validate, submitForm, submitViaWhatsApp, reset } = useConsultationSubmit({ formSource: 'Armed Security Consultation' });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const getPayload = () => (formData);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    await submitForm(formData);
+    if (validate(getPayload())) {
+      setIsMethodModalOpen(true);
+    }
   };
 
   return (
     <section
       id="request-form"
       aria-label="Request Armed Security Form"
-      className="relative w-full bg-[#080E1A] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#080E1A] text-white py-8 sm:py-10 lg:py-12 overflow-hidden border-t border-white/[0.08]"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 sm:space-y-5">
         {/* Section Header matching Screenshot 1 */}
         <div className="space-y-3">
           <motion.div
@@ -58,7 +64,7 @@ export const ArmedSecurityFormSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               A PRIVATE FIRST CONVERSATION
             </span>
           </motion.div>
@@ -68,7 +74,7 @@ export const ArmedSecurityFormSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight"
+            className="text-xl sm:text-2xl lg:text-[28px] font-serif font-normal text-white leading-[1.15] tracking-tight"
           >
             Request Armed Security - We Respond Within 2 Hours
           </motion.h2>
@@ -89,9 +95,9 @@ export const ArmedSecurityFormSection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="rounded-sm bg-[#0B1424] border border-[#C5A880]/50 p-8 sm:p-12 text-center space-y-5 shadow-2xl"
+            className="rounded-sm bg-[#0B1424] border border-[#0E2445]/50 p-8 sm:p-12 text-center space-y-5 shadow-2xl"
           >
-            <div className="w-14 h-14 rounded-full bg-[#C5A880]/20 border border-[#C5A880] flex items-center justify-center mx-auto text-[#C5A880]">
+            <div className="w-14 h-14 rounded-full bg-[#0E2445]/20 border border-[#0E2445] flex items-center justify-center mx-auto text-[#93C5FD]">
               <ShieldCheck className="w-7 h-7" />
             </div>
             <h3 className="text-2xl sm:text-3xl font-serif text-white">Inquiry Received</h3>
@@ -114,7 +120,7 @@ export const ArmedSecurityFormSection: React.FC = () => {
                   placeholder="Your full name"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                 />
               </div>
 
@@ -128,7 +134,7 @@ export const ArmedSecurityFormSection: React.FC = () => {
                   placeholder="Your phone number"
                   value={formData.phoneNumber}
                   onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                 />
               </div>
             </div>
@@ -145,7 +151,7 @@ export const ArmedSecurityFormSection: React.FC = () => {
                   placeholder="Your email address"
                   value={formData.emailAddress}
                   onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                 />
               </div>
 
@@ -159,7 +165,7 @@ export const ArmedSecurityFormSection: React.FC = () => {
                   placeholder="Deployment location"
                   value={formData.location}
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                 />
               </div>
             </div>
@@ -191,20 +197,20 @@ export const ArmedSecurityFormSection: React.FC = () => {
                     setDeploymentOpen(!deploymentOpen);
                     setTimelineOpen(false);
                   }}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-left flex items-center justify-between text-white focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-left flex items-center justify-between text-white focus:outline-none focus:border-[#0E2445] transition-colors"
                 >
                   <span className={formData.deploymentType ? 'text-white' : 'text-zinc-400'}>
                     {formData.deploymentType || 'Select deployment type'}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#C5A880] transition-transform ${
+                    className={`w-4 h-4 text-[#93C5FD] transition-transform ${
                       deploymentOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
 
                 {deploymentOpen && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-[#0B1424] border border-[#C5A880]/40 rounded-sm shadow-2xl z-30 divide-y divide-white/[0.05] overflow-hidden">
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-[#0B1424] border border-[#0E2445]/40 rounded-sm shadow-2xl z-30 divide-y divide-white/[0.05] overflow-hidden">
                     {DEPLOYMENT_TYPES.map((type) => (
                       <div
                         key={type}
@@ -215,7 +221,7 @@ export const ArmedSecurityFormSection: React.FC = () => {
                         className="px-4 py-3 text-xs sm:text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer flex items-center justify-between transition-colors"
                       >
                         <span>{type}</span>
-                        {formData.deploymentType === type && <Check className="w-3.5 h-3.5 text-[#C5A880]" />}
+                        {formData.deploymentType === type && <Check className="w-3.5 h-3.5 text-[#93C5FD]" />}
                       </div>
                     ))}
                   </div>
@@ -233,20 +239,20 @@ export const ArmedSecurityFormSection: React.FC = () => {
                     setTimelineOpen(!timelineOpen);
                     setDeploymentOpen(false);
                   }}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-left flex items-center justify-between text-white focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-left flex items-center justify-between text-white focus:outline-none focus:border-[#0E2445] transition-colors"
                 >
                   <span className={formData.timeline ? 'text-white' : 'text-zinc-400'}>
                     {formData.timeline || 'Select timeline'}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#C5A880] transition-transform ${
+                    className={`w-4 h-4 text-[#93C5FD] transition-transform ${
                       timelineOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
 
                 {timelineOpen && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-[#0B1424] border border-[#C5A880]/40 rounded-sm shadow-2xl z-30 divide-y divide-white/[0.05] overflow-hidden">
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-[#0B1424] border border-[#0E2445]/40 rounded-sm shadow-2xl z-30 divide-y divide-white/[0.05] overflow-hidden">
                     {TIMELINES.map((time) => (
                       <div
                         key={time}
@@ -257,7 +263,7 @@ export const ArmedSecurityFormSection: React.FC = () => {
                         className="px-4 py-3 text-xs sm:text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer flex items-center justify-between transition-colors"
                       >
                         <span>{time}</span>
-                        {formData.timeline === time && <Check className="w-3.5 h-3.5 text-[#C5A880]" />}
+                        {formData.timeline === time && <Check className="w-3.5 h-3.5 text-[#93C5FD]" />}
                       </div>
                     ))}
                   </div>
@@ -276,7 +282,7 @@ export const ArmedSecurityFormSection: React.FC = () => {
                 placeholder="Describe your situation, environment and any known threats"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors resize-y"
+                className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors resize-y"
               />
             </div>
 
@@ -284,7 +290,7 @@ export const ArmedSecurityFormSection: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-sm bg-[#0E2445] hover:bg-[#173A6E] text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(14, 36, 69, 0.35)] hover:shadow-[0_4px_32px_rgba(23, 58, 110, 0.55)] cursor-pointer flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
@@ -303,6 +309,21 @@ export const ArmedSecurityFormSection: React.FC = () => {
           </form>
         )}
       </div>
+      {/* Submission Method Selection Modal */}
+      <SubmissionMethodModal
+        isOpen={isMethodModalOpen}
+        onClose={() => setIsMethodModalOpen(false)}
+        onSubmitEmail={async () => {
+          const payload = typeof getPayload === 'function' ? getPayload() : formData;
+          await submitForm(payload);
+        }}
+        onSubmitWhatsApp={() => {
+          const payload = typeof getPayload === 'function' ? getPayload() : formData;
+          submitViaWhatsApp(payload);
+        }}
+        isSubmittingEmail={isSubmitting}
+        clientName={formData.fullName}
+      />
     </section>
   );
 };

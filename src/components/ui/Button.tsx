@@ -29,7 +29,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'relative inline-flex items-center justify-center font-bold tracking-wider uppercase font-sans transition-all duration-200 select-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none rounded-md';
+      'relative inline-flex items-center justify-center font-bold tracking-wider uppercase font-sans transition-all duration-200 select-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0E2445] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none rounded-md';
 
     const sizeStyles = {
       sm: 'px-3 py-1.5 text-[11px] gap-1.5',
@@ -39,11 +39,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variantStyles = {
       primary:
-        'bg-gradient-to-r from-[#C5A880] to-[#D4AF37] text-[#0A0A0A] hover:brightness-110 shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:shadow-[0_0_30px_rgba(212,175,55,0.45)] border border-[#D4AF37]',
+        'bg-[#0E2445] hover:bg-[#173A6E] text-white shadow-[0_4px_20px_rgba(14,36,69,0.35)] hover:shadow-[0_4px_30px_rgba(23,58,110,0.5)] border border-[#0E2445]',
       outline:
-        'bg-transparent border border-[#D4AF37]/50 text-[#D4AF37] hover:border-[#D4AF37] hover:bg-[#D4AF37]/10 hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]',
+        'bg-transparent border border-[#0E2445] text-[#0E2445] hover:bg-[#0E2445] hover:text-white transition-all',
       tactical:
-        'bg-[#121212] border border-white/10 text-white hover:border-[#D4AF37]/50 hover:bg-[#1F1F1F] hover:text-[#D4AF37]',
+        'bg-[#121212] border border-white/10 text-white hover:border-[#0E2445] hover:bg-[#0E2445]/20 hover:text-white',
       danger:
         'bg-[#8B1E1E] border border-red-700 text-white hover:bg-red-800 shadow-[0_0_15px_rgba(139,30,30,0.4)]',
     }[variant];

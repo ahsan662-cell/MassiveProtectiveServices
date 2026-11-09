@@ -48,7 +48,7 @@ export const ServiceScopeGrid: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {data.eyebrow}
               </span>
             </motion.div>
@@ -103,15 +103,15 @@ export const ServiceScopeGrid: React.FC<Props> = ({ data }) => {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="group relative bg-[#131E30]/90 hover:bg-[#18263D] border border-white/[0.08] hover:border-[#C5A880]/40 rounded-sm p-8 sm:p-9 flex flex-col justify-between transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1"
+                  className="group relative bg-[#131E30]/90 hover:bg-[#18263D] border border-white/[0.08] hover:border-[#0E2445]/40 rounded-sm p-8 sm:p-9 flex flex-col justify-between transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1"
                 >
                   {/* Top Solid Gold Accent Bar */}
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#C5A880]" />
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#0E2445]" />
 
                   <div>
                     {/* Optional Card Icon */}
                     {card.icon && (
-                      <div className="w-8 h-8 flex items-center justify-start mb-5 text-[#C5A880] group-hover:text-[#D4AF37] transition-colors">
+                      <div className="w-8 h-8 flex items-center justify-start mb-5 text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors">
                         <ServiceIcon name={card.icon} className="w-6 h-6 stroke-[1.6]" />
                       </div>
                     )}
@@ -135,7 +135,7 @@ export const ServiceScopeGrid: React.FC<Props> = ({ data }) => {
 
                   {/* Bottom Right Arrow */}
                   <div className="mt-8 flex justify-end">
-                    <span className="text-[#C5A880] text-xl font-light leading-none group-hover:translate-x-1.5 transition-transform duration-300">
+                    <span className="text-[#93C5FD] text-xl font-light leading-none group-hover:translate-x-1.5 transition-transform duration-300">
                       →
                     </span>
                   </div>
@@ -149,25 +149,25 @@ export const ServiceScopeGrid: React.FC<Props> = ({ data }) => {
                 variants={itemVariants}
                 className={`group relative ${
                   isLeftGoldBorder
-                    ? 'bg-[#111C2E]/90 hover:bg-[#152238] border-l-2 border-[#C5A880] border-t border-r border-b border-white/[0.06] rounded-none'
+                    ? 'bg-[#111C2E]/90 hover:bg-[#152238] border-l-2 border-[#0E2445] border-t border-r border-b border-white/[0.06] rounded-none'
                     : isGoldTitle || isWhiteTitle
-                    ? 'bg-[#121D38] hover:bg-[#162548] border border-white/[0.08] hover:border-[#C5A880]/50 rounded-lg'
+                    ? 'bg-[#121D38] hover:bg-[#162548] border border-white/[0.08] hover:border-[#0E2445]/50 rounded-lg'
                     : isMinimalGold
-                    ? 'bg-[#0E1728]/70 hover:bg-[#121E35] border border-[#C5A880]/30 hover:border-[#C5A880]/70 rounded-sm'
-                    : 'bg-[#111A2C]/80 hover:bg-[#152238] border border-white/[0.07] hover:border-[#C5A880]/40 rounded-sm'
+                    ? 'bg-[#0E1728]/70 hover:bg-[#121E35] border border-[#0E2445]/30 hover:border-[#0E2445]/70 rounded-sm'
+                    : 'bg-[#111A2C]/80 hover:bg-[#152238] border border-white/[0.07] hover:border-[#0E2445]/40 rounded-sm'
                 } p-8 sm:p-9 flex flex-col justify-start transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1`}
               >
                 {/* Top gold accent on hover */}
-                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C5A880]/0 group-hover:via-[#C5A880] to-transparent transition-all duration-500" />
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0E2445]/30 group-hover:via-[#0E2445] to-transparent transition-all duration-500" />
 
                 {/* Card Icon */}
                 {card.icon && (
                   isMinimalGold || isGoldTitle || isWhiteTitle || isLeftGoldBorder ? (
-                    <div className="w-8 h-8 flex items-center justify-start mb-5 text-[#C5A880] group-hover:text-[#D4AF37] transition-colors">
+                    <div className="w-8 h-8 flex items-center justify-start mb-5 text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors">
                       <ServiceIcon name={card.icon} className="w-6 h-6 stroke-[1.6]" />
                     </div>
                   ) : (
-                    <div className="w-12 h-12 rounded-sm bg-[#1A263D] border border-white/10 group-hover:border-[#C5A880]/50 flex items-center justify-center mb-6 text-[#C5A880] transition-colors duration-300">
+                    <div className="w-12 h-12 rounded-sm bg-[#1A263D] border border-white/10 group-hover:border-[#0E2445]/50 flex items-center justify-center mb-6 text-[#93C5FD] transition-colors duration-300">
                       <ServiceIcon name={card.icon} className="w-6 h-6 stroke-[1.6]" />
                     </div>
                   )
@@ -177,7 +177,7 @@ export const ServiceScopeGrid: React.FC<Props> = ({ data }) => {
                 <h3
                   className={`text-xl sm:text-2xl font-serif font-normal ${
                     isGoldTitle || isLeftGoldBorder
-                      ? 'text-[#C5A880] group-hover:text-[#D4AF37]'
+                      ? 'text-[#93C5FD] group-hover:text-[#93C5FD]'
                       : 'text-white group-hover:text-[#F3E5D0]'
                   } transition-colors mb-3 leading-snug`}
                 >

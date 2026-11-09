@@ -38,7 +38,7 @@ export const ArmedSecurityServiceAreaSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               SERVICE AREA
             </span>
           </motion.div>
@@ -66,7 +66,7 @@ export const ArmedSecurityServiceAreaSection: React.FC = () => {
           >
             {/* North Indicator */}
             <div className="flex items-center gap-1 text-[11px] font-mono text-zinc-400">
-              <span className="text-[#C5A880]">↑</span>
+              <span className="text-[#93C5FD]">↑</span>
               <span>N</span>
             </div>
 
@@ -88,7 +88,7 @@ export const ArmedSecurityServiceAreaSection: React.FC = () => {
                 {/* Coastline */}
                 <path
                   d="M 150 20 C 170 80 180 140 180 200 C 180 250 170 290 140 320"
-                  stroke="#C5A880"
+                  stroke="#0E2445"
                   strokeWidth="1.5"
                   strokeDasharray="2 3"
                 />
@@ -132,8 +132,8 @@ export const ArmedSecurityServiceAreaSection: React.FC = () => {
                   { cx: 155, cy: 300, label: 'Miami' },
                 ].map((pt, i) => (
                   <g key={i}>
-                    <circle cx={pt.cx} cy={pt.cy} r="3" fill="#C5A880" />
-                    <circle cx={pt.cx} cy={pt.cy} r="6" fill="#C5A880" opacity="0.25" />
+                    <circle cx={pt.cx} cy={pt.cy} r="3" fill="#0E2445" />
+                    <circle cx={pt.cx} cy={pt.cy} r="6" fill="#0E2445" opacity="0.25" />
                     {pt.label && (
                       <text x={pt.cx + 8} y={pt.cy + 3} fill="#E2E8F0" fontSize="9" fontFamily="sans-serif">
                         {pt.label}
@@ -158,7 +158,7 @@ export const ArmedSecurityServiceAreaSection: React.FC = () => {
               <div className="space-y-4">
                 {CITIES_COL_1.map((city) => (
                   <div key={city} className="flex items-center gap-2.5 text-sm sm:text-base text-zinc-200 font-sans">
-                    <span className="text-[#C5A880] font-mono text-sm">→</span>
+                    <span className="text-[#93C5FD] font-mono text-sm">→</span>
                     <span>{city}</span>
                   </div>
                 ))}
@@ -168,7 +168,7 @@ export const ArmedSecurityServiceAreaSection: React.FC = () => {
               <div className="space-y-4">
                 {CITIES_COL_2.map((city) => (
                   <div key={city} className="flex items-center gap-2.5 text-sm sm:text-base text-zinc-200 font-sans">
-                    <span className="text-[#C5A880] font-mono text-sm">→</span>
+                    <span className="text-[#93C5FD] font-mono text-sm">→</span>
                     <span>{city}</span>
                   </div>
                 ))}

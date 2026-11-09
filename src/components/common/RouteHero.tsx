@@ -40,24 +40,24 @@ export const RouteHero: React.FC<RouteHeroProps> = ({
       )}
 
       {/* Grid Pattern and Gradient Overlays */}
-      <div className="absolute inset-0 bg-[radial-gradient(#C5A880_1px,transparent_1px)] [background-size:28px_28px] opacity-[0.05] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#0E2445_1px,transparent_1px)] [background-size:28px_28px] opacity-[0.05] pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0D14]/70 to-transparent" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center space-y-5">
         {/* Breadcrumbs Navigation */}
         <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs font-mono text-zinc-400">
-          <Link href="/" className="hover:text-[#D4AF37] transition-colors">
+          <Link href="/" className="hover:text-[#93C5FD] transition-colors">
             HOME
           </Link>
           {breadcrumbs.map((crumb, idx) => (
             <React.Fragment key={crumb.label}>
               <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
               {crumb.href ? (
-                <Link href={crumb.href} className="hover:text-[#D4AF37] transition-colors">
+                <Link href={crumb.href} className="hover:text-[#93C5FD] transition-colors">
                   {crumb.label.toUpperCase()}
                 </Link>
               ) : (
-                <span className="text-[#C5A880] font-semibold">{crumb.label.toUpperCase()}</span>
+                <span className="text-[#93C5FD] font-semibold">{crumb.label.toUpperCase()}</span>
               )}
             </React.Fragment>
           ))}
@@ -75,7 +75,7 @@ export const RouteHero: React.FC<RouteHeroProps> = ({
         >
           {title}{' '}
           {titleHighlight && (
-            <span className="italic text-[#C5A880] block sm:inline mt-1 sm:mt-0">
+            <span className="italic text-[#93C5FD] block sm:inline mt-1 sm:mt-0">
               {titleHighlight}
             </span>
           )}
@@ -100,7 +100,7 @@ export const RouteHero: React.FC<RouteHeroProps> = ({
         >
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-bold text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(197,168,128,0.25)] hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm bg-[#0E2445] hover:bg-[#173A6E] text-[#0A0A0A] font-bold text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(14, 36, 69, 0.25)] hover:shadow-[0_0_25px_rgba(14, 36, 69, 0.4)]"
           >
             <Lock className="w-3.5 h-3.5" />
             <span>Request Detail Briefing</span>
@@ -108,9 +108,9 @@ export const RouteHero: React.FC<RouteHeroProps> = ({
 
           <a
             href="tel:9542347231"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm border border-[#C5A880]/50 hover:border-[#D4AF37] text-white hover:text-[#D4AF37] bg-black/40 text-xs font-mono font-bold tracking-wider transition-all"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm border border-[#0E2445]/40 hover:border-[#93C5FD] text-white hover:text-[#93C5FD] bg-black/40 text-xs font-mono font-bold tracking-wider transition-all"
           >
-            <PhoneCall className="w-3.5 h-3.5 text-[#D4AF37]" />
+            <PhoneCall className="w-3.5 h-3.5 text-[#93C5FD]" />
             <span>(954) 234-7231 Dispatch</span>
           </a>
         </motion.div>

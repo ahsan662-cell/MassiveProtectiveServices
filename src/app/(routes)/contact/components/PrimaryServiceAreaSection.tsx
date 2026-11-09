@@ -43,7 +43,7 @@ export const PrimaryServiceAreaSection: React.FC = () => {
         <div className="space-y-6 sm:space-y-8">
           {/* Eyebrow */}
           <div>
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               WHERE WE OPERATE
             </span>
           </div>
@@ -65,7 +65,7 @@ export const PrimaryServiceAreaSection: React.FC = () => {
               <motion.div
                 key={area}
                 variants={itemVariants}
-                className="px-5 py-2.5 rounded-full border border-[#C5A880]/40 text-xs sm:text-sm font-sans text-zinc-200 hover:text-white hover:border-[#D4AF37] hover:bg-[#C5A880]/10 transition-all duration-200 cursor-default select-none shadow-[0_0_12px_rgba(197,168,128,0.06)]"
+                className="px-5 py-2.5 rounded-full border border-[#0E2445]/40 text-xs sm:text-sm font-sans text-zinc-200 hover:text-white hover:border-[#93C5FD] hover:bg-[#0E2445]/10 transition-all duration-200 cursor-default select-none shadow-[0_0_12px_rgba(14, 36, 69, 0.06)]"
               >
                 {area}
               </motion.div>

@@ -59,7 +59,7 @@ export const WhoWeWorkWithCorporateSection: React.FC = () => {
       className="relative w-full bg-[#0B1322] py-14 sm:py-18 lg:py-20 text-white overflow-hidden border-t border-white/5"
     >
       {/* Background subtle atmospheric glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C5A880]/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#0E2445]/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Section Header matching Screenshot 4 */}
@@ -70,7 +70,7 @@ export const WhoWeWorkWithCorporateSection: React.FC = () => {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
               WHO WE WORK WITH
             </span>
           </motion.div>
@@ -103,7 +103,7 @@ export const WhoWeWorkWithCorporateSection: React.FC = () => {
                 className="group relative flex flex-col items-start space-y-4 pt-4"
               >
                 {/* Gold Icon */}
-                <div className="w-12 h-12 flex items-center justify-start text-[#C5A880] group-hover:text-[#D4AF37] transition-colors">
+                <div className="w-12 h-12 flex items-center justify-start text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors">
                   <Icon className="w-8 h-8 stroke-[1.6]" />
                 </div>
 

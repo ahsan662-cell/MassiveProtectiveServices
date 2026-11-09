@@ -47,7 +47,7 @@ export const DiscretionNDABlock: React.FC = () => {
       className="relative w-full py-14 sm:py-18 lg:py-20 bg-[#090D15] border-t border-white/[0.08] overflow-hidden"
     >
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#C5A880]/5 blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#0E2445]/5 blur-[160px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -64,7 +64,7 @@ export const DiscretionNDABlock: React.FC = () => {
             >
               Institutional Discretion.
               <br />
-              <span className="italic text-[#C5A880]">Absolute Client Sovereign Protection.</span>
+              <span className="italic text-[#93C5FD]">Absolute Client Sovereign Protection.</span>
             </motion.h2>
 
             <motion.p
@@ -82,7 +82,7 @@ export const DiscretionNDABlock: React.FC = () => {
             {/* Tactical Confidentiality Guarantees */}
             <div className="space-y-4 pt-2">
               <div className="flex items-start gap-3.5 p-4 rounded-lg bg-[#0F1626]/80 border border-white/[0.06]">
-                <div className="p-2 rounded bg-[#152037] text-[#D4AF37] border border-[#C5A880]/30 shrink-0">
+                <div className="p-2 rounded bg-[#152037] text-[#93C5FD] border border-[#0E2445]/30 shrink-0">
                   <Lock className="w-4 h-4" />
                 </div>
                 <div>
@@ -97,7 +97,7 @@ export const DiscretionNDABlock: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-3.5 p-4 rounded-lg bg-[#0F1626]/80 border border-white/[0.06]">
-                <div className="p-2 rounded bg-[#152037] text-[#D4AF37] border border-[#C5A880]/30 shrink-0">
+                <div className="p-2 rounded bg-[#152037] text-[#93C5FD] border border-[#0E2445]/30 shrink-0">
                   <FileText className="w-4 h-4" />
                 </div>
                 <div>
@@ -112,7 +112,7 @@ export const DiscretionNDABlock: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-3.5 p-4 rounded-lg bg-[#0F1626]/80 border border-white/[0.06]">
-                <div className="p-2 rounded bg-[#152037] text-[#D4AF37] border border-[#C5A880]/30 shrink-0">
+                <div className="p-2 rounded bg-[#152037] text-[#93C5FD] border border-[#0E2445]/30 shrink-0">
                   <ShieldAlert className="w-4 h-4" />
                 </div>
                 <div>
@@ -131,9 +131,9 @@ export const DiscretionNDABlock: React.FC = () => {
             <div className="pt-2 flex items-center gap-4">
               <a
                 href="tel:9542347231"
-                className="inline-flex items-center gap-2.5 text-xs font-mono font-medium tracking-wider text-[#C5A880] hover:text-[#D4AF37] transition-colors"
+                className="inline-flex items-center gap-2.5 text-xs font-mono font-medium tracking-wider text-[#93C5FD] hover:text-[#93C5FD] transition-colors"
               >
-                <PhoneCall className="w-4 h-4 text-[#D4AF37]" />
+                <PhoneCall className="w-4 h-4 text-[#93C5FD]" />
                 <span>24/7 ENCRYPTED DISPATCH: (954) 234-7231</span>
               </a>
             </div>
@@ -147,15 +147,15 @@ export const DiscretionNDABlock: React.FC = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6 }}
-              className="p-6 sm:p-8 bg-[#0F172A]/95 border-[#C5A880]/30 shadow-[0_16px_48px_rgba(0,0,0,0.85)]"
+              className="p-6 sm:p-8 bg-[#0F172A]/95 border-[#0E2445]/30 shadow-[0_16px_48px_rgba(0,0,0,0.85)]"
             >
               <div className="border-b border-white/10 pb-5 mb-6">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#D4AF37]">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[#93C5FD]">
                     ENCRYPTED INQUIRY CHANNEL
                   </span>
                   <span className="text-[10px] font-mono text-zinc-400 flex items-center gap-1">
-                    <Lock className="w-3 h-3 text-[#C5A880]" />
+                    <Lock className="w-3 h-3 text-[#93C5FD]" />
                     256-BIT ENCRYPTION
                   </span>
                 </div>
@@ -169,7 +169,7 @@ export const DiscretionNDABlock: React.FC = () => {
 
               {isSuccess ? (
                 <div className="py-10 text-center space-y-5">
-                  <div className="w-16 h-16 rounded-full bg-[#C5A880]/15 border border-[#C5A880]/40 flex items-center justify-center mx-auto text-[#D4AF37]">
+                  <div className="w-16 h-16 rounded-full bg-[#0E2445]/15 border border-[#0E2445]/40 flex items-center justify-center mx-auto text-[#93C5FD]">
                     <CheckCircle2 className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl sm:text-2xl font-serif text-white">
@@ -194,7 +194,7 @@ export const DiscretionNDABlock: React.FC = () => {
                           requiresArmedDriver: false,
                         });
                       }}
-                      className="px-6 py-2.5 rounded-sm border border-[#C5A880]/50 text-xs font-mono uppercase tracking-wider text-[#C5A880] hover:bg-[#C5A880]/10 transition-colors cursor-pointer"
+                      className="px-6 py-2.5 rounded-sm border border-[#0E2445]/50 text-xs font-mono uppercase tracking-wider text-[#93C5FD] hover:bg-[#0E2445]/10 transition-colors cursor-pointer"
                     >
                       Submit Another Intake
                     </button>
@@ -205,7 +205,7 @@ export const DiscretionNDABlock: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-[11px] font-mono uppercase tracking-wider text-zinc-300">
-                        Principal or Agent Name <span className="text-[#C5A880]">*</span>
+                        Principal or Agent Name <span className="text-[#93C5FD]">*</span>
                       </label>
                       <input
                         type="text"
@@ -213,7 +213,7 @@ export const DiscretionNDABlock: React.FC = () => {
                         placeholder="e.g. John Doe / Family Office"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded bg-[#090D16] border border-white/10 focus:border-[#D4AF37] text-white text-xs font-sans placeholder:text-zinc-600 outline-none transition-colors"
+                        className="w-full px-3.5 py-2.5 rounded bg-[#090D16] border border-white/10 focus:border-[#0E2445] text-white text-xs font-sans placeholder:text-zinc-600 outline-none transition-colors"
                       />
                       {fieldErrors.fullName && (
                         <p className="text-[11px] text-[#8B1E1E] font-medium">
@@ -224,7 +224,7 @@ export const DiscretionNDABlock: React.FC = () => {
 
                     <div className="space-y-1.5">
                       <label className="text-[11px] font-mono uppercase tracking-wider text-zinc-300">
-                        Direct Secure Phone <span className="text-[#C5A880]">*</span>
+                        Direct Secure Phone <span className="text-[#93C5FD]">*</span>
                       </label>
                       <input
                         type="tel"
@@ -232,7 +232,7 @@ export const DiscretionNDABlock: React.FC = () => {
                         placeholder="+1 (555) 000-0000"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded bg-[#090D16] border border-white/10 focus:border-[#D4AF37] text-white text-xs font-sans placeholder:text-zinc-600 outline-none transition-colors"
+                        className="w-full px-3.5 py-2.5 rounded bg-[#090D16] border border-white/10 focus:border-[#0E2445] text-white text-xs font-sans placeholder:text-zinc-600 outline-none transition-colors"
                       />
                       {fieldErrors.phone && (
                         <p className="text-[11px] text-[#8B1E1E] font-medium">
@@ -245,7 +245,7 @@ export const DiscretionNDABlock: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-[11px] font-mono uppercase tracking-wider text-zinc-300">
-                        Confidential Email <span className="text-[#C5A880]">*</span>
+                        Confidential Email <span className="text-[#93C5FD]">*</span>
                       </label>
                       <input
                         type="email"
@@ -253,7 +253,7 @@ export const DiscretionNDABlock: React.FC = () => {
                         placeholder="principal@familyoffice.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded bg-[#090D16] border border-white/10 focus:border-[#D4AF37] text-white text-xs font-sans placeholder:text-zinc-600 outline-none transition-colors"
+                        className="w-full px-3.5 py-2.5 rounded bg-[#090D16] border border-white/10 focus:border-[#0E2445] text-white text-xs font-sans placeholder:text-zinc-600 outline-none transition-colors"
                       />
                       {fieldErrors.email && (
                         <p className="text-[11px] text-[#8B1E1E] font-medium">
@@ -314,7 +314,7 @@ export const DiscretionNDABlock: React.FC = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, ndaRequested: e.target.checked })
                         }
-                        className="w-4 h-4 rounded bg-[#0A0A0A] border-white/20 accent-[#D4AF37]"
+                        className="w-4 h-4 rounded bg-[#0A0A0A] border-white/20 accent-[#0E2445]"
                       />
                       <span>Require pre-consultation mutual Non-Disclosure Agreement (NDA)</span>
                     </label>
@@ -326,7 +326,7 @@ export const DiscretionNDABlock: React.FC = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, requiresArmedDriver: e.target.checked })
                         }
-                        className="w-4 h-4 rounded bg-[#0A0A0A] border-white/20 accent-[#D4AF37]"
+                        className="w-4 h-4 rounded bg-[#0A0A0A] border-white/20 accent-[#0E2445]"
                       />
                       <span>Include armored motorcade transport / Class G armed driver</span>
                     </label>
@@ -355,15 +355,15 @@ export const DiscretionNDABlock: React.FC = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className={`w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-sm font-bold text-xs uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(197,168,128,0.35)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] cursor-pointer ${
+                      className={`w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-sm font-bold text-xs uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(14, 36, 69, 0.35)] hover:shadow-[0_0_30px_rgba(23, 58, 110, 0.6)] cursor-pointer ${
                         isSubmitting
-                          ? 'bg-[#182338] text-[#C5A880] border border-[#C5A880]/40 cursor-wait'
-                          : 'bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A]'
+                          ? 'bg-[#182338] text-[#93C5FD] border border-[#0E2445]/40 cursor-wait'
+                          : 'bg-[#0E2445] hover:bg-[#173A6E] text-white'
                       }`}
                     >
                       {isSubmitting ? (
                         <>
-                          <Loader2 className="w-3.5 h-3.5 animate-spin text-[#C5A880]" />
+                          <Loader2 className="w-3.5 h-3.5 animate-spin text-[#93C5FD]" />
                           <span>Securing Transmission...</span>
                         </>
                       ) : (

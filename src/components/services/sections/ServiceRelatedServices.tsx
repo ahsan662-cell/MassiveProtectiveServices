@@ -57,7 +57,7 @@ export const ServiceRelatedServices: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {eyebrow}
               </span>
             </motion.div>
@@ -90,8 +90,8 @@ export const ServiceRelatedServices: React.FC<Props> = ({ data }) => {
                 href={service.href}
                 className={`group relative flex flex-col justify-between h-full ${
                   isLight
-                    ? 'border border-[#C5A880] hover:border-[#D4AF37] bg-white/70 hover:bg-white rounded-none p-7 sm:p-9 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(197,168,128,0.18)]'
-                    : 'bg-[#121D38] hover:bg-[#152344] border border-white/[0.08] hover:border-[#C5A880]/50 rounded-lg p-8 sm:p-10 shadow-[0_6px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.45)]'
+                    ? 'border border-[#0E2445] hover:border-[#93C5FD] bg-white/70 hover:bg-white rounded-none p-7 sm:p-9 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(14, 36, 69, 0.18)]'
+                    : 'bg-[#121D38] hover:bg-[#152344] border border-white/[0.08] hover:border-[#0E2445]/50 rounded-lg p-8 sm:p-10 shadow-[0_6px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.45)]'
                 } transition-all duration-300 hover:-translate-y-1`}
               >
                 <div className="space-y-4">
@@ -117,7 +117,7 @@ export const ServiceRelatedServices: React.FC<Props> = ({ data }) => {
                 </div>
 
                 {service.linkLabel !== 'none' && (
-                  <div className="pt-6 sm:pt-8 flex items-center gap-1.5 text-xs sm:text-[13px] font-sans text-[#C5A880] group-hover:text-[#D4AF37] transition-colors font-medium">
+                  <div className="pt-6 sm:pt-8 flex items-center gap-1.5 text-xs sm:text-[13px] font-sans text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors font-medium">
                     <span>{service.linkLabel || 'Learn More'}</span>
                     <span className="group-hover:translate-x-1.5 transition-transform duration-200">
                       →

@@ -36,10 +36,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             ref={ref}
             className={`w-full bg-[#121212] border ${
-              error ? 'border-red-500/70 focus:border-red-500' : 'border-white/10 focus:border-[#D4AF37]'
+              error ? 'border-red-500/70 focus:border-red-500' : 'border-white/10 focus:border-[#0E2445]'
             } rounded-md px-3.5 py-2.5 ${
               icon ? 'pl-10' : ''
-            } text-sm text-[#F5F5F7] placeholder-zinc-600 focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50 transition-colors font-sans ${className}`}
+            } text-sm text-[#F5F5F7] placeholder-zinc-600 focus:outline-none focus:ring-1 focus:ring-[#0E2445]/50 transition-colors font-sans ${className}`}
             {...props}
           />
         </div>

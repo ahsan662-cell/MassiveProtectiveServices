@@ -87,7 +87,7 @@ export const LocationPlanningBeyond: React.FC<Props> = ({ data }) => {
                 <div>
                   {/* Optional Tag */}
                   {card.tag && (
-                    <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#C5A880] font-semibold block mb-4">
+                    <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#93C5FD] font-semibold block mb-4">
                       {card.tag}
                     </span>
                   )}
@@ -96,7 +96,7 @@ export const LocationPlanningBeyond: React.FC<Props> = ({ data }) => {
                   <h3
                     className={`text-2xl sm:text-[26px] font-serif font-normal ${
                       isLight ? 'text-[#151D2A]' : 'text-white'
-                    } group-hover:text-[#C5A880] transition-colors mb-3 leading-snug`}
+                    } group-hover:text-[#93C5FD] transition-colors mb-3 leading-snug`}
                   >
                     {card.title}
                   </h3>
@@ -118,12 +118,12 @@ export const LocationPlanningBeyond: React.FC<Props> = ({ data }) => {
                       <span
                         className={`text-xs sm:text-[13px] font-sans font-medium ${
                           isLight ? 'text-[#151D2A]' : 'text-white'
-                        } group-hover:text-[#C5A880] transition-colors`}
+                        } group-hover:text-[#93C5FD] transition-colors`}
                       >
                         {card.linkLabel}
                       </span>
                     )}
-                    <span className="text-[#C5A880] group-hover:text-[#D4AF37] text-xl font-light leading-none group-hover:translate-x-1.5 transition-transform duration-300">
+                    <span className="text-[#93C5FD] group-hover:text-[#93C5FD] text-xl font-light leading-none group-hover:translate-x-1.5 transition-transform duration-300">
                       →
                     </span>
                   </div>
@@ -136,7 +136,7 @@ export const LocationPlanningBeyond: React.FC<Props> = ({ data }) => {
                 key={idx}
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
-                className={`group relative border border-[#C5A880]/70 ${
+                className={`group relative border border-[#0E2445]/70 ${
                   isLight ? 'bg-white/60 hover:bg-white' : 'bg-[#111C2E]/60 hover:bg-[#111C2E]'
                 } p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-md rounded-none`}
               >

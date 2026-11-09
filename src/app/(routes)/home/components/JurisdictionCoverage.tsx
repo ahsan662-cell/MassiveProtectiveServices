@@ -69,7 +69,7 @@ export const JurisdictionCoverage: React.FC = () => {
       className="relative w-full py-14 sm:py-18 lg:py-20 bg-[#0D121D] border-t border-white/[0.06] overflow-hidden"
     >
       {/* Subtle radial tactical background illumination */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#C5A880]/5 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#0E2445]/5 blur-[180px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
@@ -85,7 +85,7 @@ export const JurisdictionCoverage: React.FC = () => {
           >
             Tactical Armed Response Across
             <br />
-            <span className="italic text-[#C5A880]">South Florida’s Elite Corridors.</span>
+            <span className="italic text-[#93C5FD]">South Florida’s Elite Corridors.</span>
           </motion.h2>
 
           <motion.p
@@ -129,7 +129,7 @@ export const JurisdictionCoverage: React.FC = () => {
                   <h3 className="text-2xl font-bold text-white font-sans tracking-wide">
                     {county.name}
                   </h3>
-                  <div className="text-xs font-mono text-[#C5A880] mt-1 flex items-center gap-1.5">
+                  <div className="text-xs font-mono text-[#93C5FD] mt-1 flex items-center gap-1.5">
                     <Navigation className="w-3.5 h-3.5" />
                     <span>{county.hqNote}</span>
                   </div>
@@ -148,7 +148,7 @@ export const JurisdictionCoverage: React.FC = () => {
                   <ul className="space-y-1.5 text-xs text-zinc-300 font-sans">
                     {county.keyZones.map((zone) => (
                       <li key={zone} className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-1.5 shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0E2445] mt-1.5 shrink-0" />
                         <span>{zone}</span>
                       </li>
                     ))}
@@ -159,13 +159,13 @@ export const JurisdictionCoverage: React.FC = () => {
               {/* Bottom Card Footer */}
               <div className="pt-6 mt-6 border-t border-white/[0.07] flex items-center justify-between">
                 <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-400">
-                  <Clock className="w-3.5 h-3.5 text-[#D4AF37]" />
+                  <Clock className="w-3.5 h-3.5 text-[#93C5FD]" />
                   <span>{county.responseTime}</span>
                 </div>
 
                 <Link
                   href={county.href}
-                  className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#D4AF37] hover:text-white transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#93C5FD] hover:text-white transition-colors"
                 >
                   <span>SECTOR BRIEF</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -179,10 +179,10 @@ export const JurisdictionCoverage: React.FC = () => {
         <div className="mt-12 text-center">
           <Link
             href="/locations"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#162035] hover:bg-[#1E2D4A] border border-[#C5A880]/30 hover:border-[#D4AF37] text-xs font-mono uppercase tracking-widest text-[#F5F5F7] transition-all shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#162035] hover:bg-[#1E2D4A] border border-[#0E2445]/30 hover:border-[#93C5FD] text-xs font-mono uppercase tracking-widest text-[#F5F5F7] transition-all shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
           >
             <span>Explore Complete Tri-County Tactical Corridor Map</span>
-            <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
+            <ArrowRight className="w-4 h-4 text-[#93C5FD]" />
           </Link>
         </div>
       </div>

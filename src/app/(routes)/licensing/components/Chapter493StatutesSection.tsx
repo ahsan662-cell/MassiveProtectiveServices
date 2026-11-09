@@ -67,7 +67,7 @@ export const Chapter493StatutesSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               UNDERSTANDING FLORIDA SECURITY LICENSING
             </span>
           </motion.div>
@@ -151,8 +151,8 @@ export const Chapter493StatutesSection: React.FC = () => {
             className="lg:col-span-5 space-y-6"
           >
             {/* Sidebar Card */}
-            <div className="rounded-sm bg-[#0B1220] border-l-2 border-l-[#C5A880] border-y border-r border-white/[0.06] p-6 sm:p-8 space-y-5 shadow-2xl">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#C5A880] font-semibold block">
+            <div className="rounded-sm bg-[#0B1220] border-l-2 border-l-[#0E2445] border-y border-r border-white/[0.06] p-6 sm:p-8 space-y-5 shadow-2xl">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#93C5FD] font-semibold block">
                 CHAPTER 493 — AT A GLANCE
               </span>
 
@@ -174,7 +174,7 @@ export const Chapter493StatutesSection: React.FC = () => {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs text-[#C5A880] hover:text-[#D4AF37] font-medium transition-colors group cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-xs text-[#93C5FD] hover:text-[#93C5FD] font-medium transition-colors group cursor-pointer"
                   >
                     <span className="underline-offset-4 group-hover:underline">{link.title}</span>
                     <ExternalLink className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />

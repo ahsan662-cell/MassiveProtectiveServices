@@ -22,7 +22,7 @@ export const CorporateServiceAreaSection: React.FC = () => {
             className="space-y-6 sm:space-y-8 flex flex-col justify-between"
           >
             <div className="space-y-3">
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 SERVICE AREA
               </span>
 
@@ -32,7 +32,7 @@ export const CorporateServiceAreaSection: React.FC = () => {
             </div>
 
             <div className="pt-2 sm:pt-4">
-              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#93C5FD]">
                 DELRAY BEACH, FLORIDA - HEADQUARTERS
               </span>
             </div>
@@ -53,7 +53,7 @@ export const CorporateServiceAreaSection: React.FC = () => {
             </p>
 
             <div className="pt-2 sm:pt-4">
-              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#93C5FD]">
                 PALM BEACH · BROWARD · MIAMI-DADE
               </span>
             </div>

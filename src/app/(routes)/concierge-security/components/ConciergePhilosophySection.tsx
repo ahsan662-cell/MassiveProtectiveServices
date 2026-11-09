@@ -20,7 +20,7 @@ export const ConciergePhilosophySection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               A WELCOME WITH PURPOSE
             </span>
           </motion.div>
@@ -62,7 +62,7 @@ export const ConciergePhilosophySection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.12 }}
-            className="lg:col-span-5 border-l-2 border-l-[#C5A880] pl-6 sm:pl-8 space-y-3"
+            className="lg:col-span-5 border-l-2 border-l-[#0E2445] pl-6 sm:pl-8 space-y-3"
           >
             <h3 className="text-xl sm:text-2xl font-serif text-[#111827] font-normal leading-snug">
               Hospitality in manner.

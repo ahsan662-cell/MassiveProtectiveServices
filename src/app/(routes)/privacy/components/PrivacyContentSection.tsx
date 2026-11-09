@@ -114,7 +114,7 @@ export const PrivacyContentSection: React.FC = () => {
               className="space-y-2.5 pb-8 sm:pb-10 border-b border-black/[0.4] last:border-b-0"
             >
               {/* Section Tag */}
-              <span className="text-[11px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase block">
+              <span className="text-[11px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase block">
                 {sec.number}
               </span>
 

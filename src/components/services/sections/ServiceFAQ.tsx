@@ -47,7 +47,7 @@ export const ServiceFAQ: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {eyebrow}
               </span>
             </motion.div>
@@ -71,7 +71,7 @@ export const ServiceFAQ: React.FC<Props> = ({ data }) => {
           className={`divide-y ${
             isLight
               ? 'divide-[#E8E4DA] border-y border-[#E8E4DA]'
-              : 'divide-[#C5A880]/25 border-y border-[#C5A880]/25'
+              : 'divide-[#0E2445]/30 border-y border-[#0E2445]/25'
           }`}
         >
           {faqs.map((faq, index) => {
@@ -91,15 +91,15 @@ export const ServiceFAQ: React.FC<Props> = ({ data }) => {
                         : 'text-xl sm:text-2xl lg:text-[26px] font-serif font-normal'
                     } ${
                       isLight ? 'text-[#151D2A]' : 'text-white'
-                    } group-hover:text-[#C5A880] transition-colors leading-snug`}
+                    } group-hover:text-[#93C5FD] transition-colors leading-snug`}
                   >
                     {faq.question}
                   </span>
                   {!data?.hideToggleIcons && (
                     <div
                       className={`${
-                        isLight ? 'text-[#A0886C]' : 'text-[#C5A880]/80'
-                      } group-hover:text-[#C5A880] shrink-0 transition-colors pr-2`}
+                        isLight ? 'text-[#0E2445]' : 'text-[#93C5FD]/80'
+                      } group-hover:text-[#93C5FD] shrink-0 transition-colors pr-2`}
                     >
                       {isOpen ? (
                         <Minus className="w-5 h-5 stroke-[1.5]" />

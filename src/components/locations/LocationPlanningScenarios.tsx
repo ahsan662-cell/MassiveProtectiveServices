@@ -83,12 +83,12 @@ export const LocationPlanningScenarios: React.FC<Props> = ({ data }) => {
               key={idx}
               variants={itemVariants}
               whileHover={{ y: -4 }}
-              className={`relative border border-[#C5A880]/70 ${
+              className={`relative border border-[#0E2445]/70 ${
                 isLight ? 'bg-white/60 hover:bg-white' : 'bg-[#111C2E]/60 hover:bg-[#111C2E]'
               } p-7 sm:p-8 flex flex-col justify-start transition-all duration-300 shadow-sm hover:shadow-md rounded-none`}
             >
               {/* Badge */}
-              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#C5A880] font-semibold block mb-4">
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.22em] text-[#93C5FD] font-semibold block mb-4">
                 {card.tag || 'ILLUSTRATIVE PLANNING SCENARIO'}
               </span>
 
@@ -112,7 +112,7 @@ export const LocationPlanningScenarios: React.FC<Props> = ({ data }) => {
 
               {/* Optional Footer Tag/Note */}
               {card.footerNote && (
-                <div className="mt-6 pt-4 border-t border-[#C5A880]/30">
+                <div className="mt-6 pt-4 border-t border-[#0E2445]/30">
                   <p className="text-[11px] sm:text-xs font-mono tracking-wider text-[#8C7A6B]">
                     {card.footerNote}
                   </p>

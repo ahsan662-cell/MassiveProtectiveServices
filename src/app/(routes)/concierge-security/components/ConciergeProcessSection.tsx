@@ -66,7 +66,7 @@ export const ConciergeProcessSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               A PROPERTY-LED PROCESS
             </span>
           </motion.div>
@@ -83,7 +83,7 @@ export const ConciergeProcessSection: React.FC = () => {
         </div>
 
         {/* Horizontal Gold Line Accent matching Screenshot 5 */}
-        <div className="w-full h-[1px] bg-[#C5A880]/50" />
+        <div className="w-full h-[1px] bg-[#0E2445]/50" />
 
         {/* 4 Steps Grid matching Screenshot 5 */}
         <motion.div
@@ -95,7 +95,7 @@ export const ConciergeProcessSection: React.FC = () => {
         >
           {STEPS.map((step) => (
             <motion.div key={step.number} variants={itemVariants} className="space-y-4">
-              <span className="text-3xl sm:text-4xl font-serif text-[#C5A880] block font-normal select-none">
+              <span className="text-3xl sm:text-4xl font-serif text-[#93C5FD] block font-normal select-none">
                 {step.number}
               </span>
 

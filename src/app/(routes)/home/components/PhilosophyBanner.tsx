@@ -51,10 +51,10 @@ export const PhilosophyBanner: React.FC = () => {
     <section
       id="who-we-are"
       aria-label="Who We Are - Massive Protective Services"
-      className="relative w-full bg-[#101A2D] text-white overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#FFFFFF] text-[#0F172A] overflow-hidden"
     >
-      {/* 1. Top Credential Ribbon Bar matching exact screenshot */}
-      <div className="w-full bg-[#090F1B] border-b border-white/[0.08] py-4 px-4 sm:px-6">
+      {/* 1. Top Credential Ribbon Bar - Crisp Clean Off-White */}
+      <div className="w-full bg-[#F8FAFC] border-y border-slate-200/90 py-4 px-4 sm:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -62,15 +62,17 @@ export const PhilosophyBanner: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-center justify-between"
         >
-          {STAT_ITEMS.map((item, index) => {
+          {STAT_ITEMS.map((item) => {
             const Icon = item.icon;
             return (
               <motion.div
                 key={item.label}
                 variants={itemVariants}
-                className="flex items-center justify-center lg:justify-start gap-2.5 text-[11px] sm:text-xs font-mono tracking-wider text-zinc-300 hover:text-[#D4AF37] transition-colors"
+                className="flex items-center justify-center lg:justify-start gap-2.5 text-[11px] sm:text-xs font-mono tracking-wider text-slate-700 hover:text-[#0E2445] transition-colors"
               >
-                <Icon className="w-4 h-4 text-[#C5A880] shrink-0" />
+                <div className="w-7 h-7 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                  <Icon className="w-3.5 h-3.5 text-[#0E2445]" />
+                </div>
                 <span className="font-semibold uppercase tracking-wider">{item.label}</span>
               </motion.div>
             );
@@ -78,10 +80,10 @@ export const PhilosophyBanner: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* 2. Main Content Area matching exact screenshot */}
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 py-14 sm:py-18 lg:py-20 text-center flex flex-col items-center">
+      {/* 2. Main Content Area with Generous White Space (Elite Security Pro style) */}
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 py-20 sm:py-24 lg:py-28 text-center flex flex-col items-center">
         {/* Subtle Ambient Radial Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#C5A880]/5 blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#0E2445]/5 blur-[140px] rounded-full pointer-events-none" />
 
         <motion.div
           variants={containerVariants}
@@ -92,24 +94,25 @@ export const PhilosophyBanner: React.FC = () => {
         >
           {/* Eyebrow: WHO WE ARE */}
           <motion.div variants={itemVariants}>
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0E2445] text-xs font-mono font-bold tracking-[0.2em] uppercase shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0E2445] animate-pulse" />
               WHO WE ARE
             </span>
           </motion.div>
 
-          {/* Headline: Massive Protective Services is not a guard company. */}
+          {/* Headline: Modern Geometric Sans-Serif */}
           <motion.div variants={itemVariants} className="max-w-3xl">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[48px] font-serif font-normal text-white leading-[1.12] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-sans font-extrabold text-[#0A0A0A] leading-[1.12] tracking-tight">
               Massive Protective Services
               <br />
-              is not a guard company.
+              <span className="text-[#0E2445] font-light">is not a guard company.</span>
             </h2>
           </motion.div>
 
-          {/* Body Paragraphs matching exact reference text */}
+          {/* Body Paragraphs with Premium Typography & High Contrast */}
           <motion.div
             variants={itemVariants}
-            className="space-y-6 sm:space-y-8 text-sm sm:text-base md:text-[17px] text-zinc-300 font-sans font-light leading-[1.8] max-w-3xl mx-auto"
+            className="space-y-6 sm:space-y-8 text-sm sm:text-base md:text-[17px] text-slate-700 font-sans font-normal leading-[1.85] max-w-3xl mx-auto"
           >
             <p>
               We are a licensed, armed private security firm based in Delray Beach, Florida. Our officers
@@ -126,12 +129,12 @@ export const PhilosophyBanner: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Bottom Gold Accent Line matching exact screenshot */}
+          {/* Bottom Brand Accent Line */}
           <motion.div
             variants={itemVariants}
             className="pt-2"
           >
-            <div className="w-14 sm:w-16 h-[1.5px] bg-[#C5A880] mx-auto shadow-[0_0_10px_rgba(197,168,128,0.5)]" />
+            <div className="w-16 h-1 bg-[#0E2445] rounded-full mx-auto shadow-[0_0_12px_rgba(14,36,69,0.4)]" />
           </motion.div>
         </motion.div>
       </div>

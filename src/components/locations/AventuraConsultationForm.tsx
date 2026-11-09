@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ShieldCheck, PhoneCall, CheckCircle2, Lock, FileText, Send, Loader2, AlertTriangle } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
+import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
+import { MessageCircle, ChevronDown as ChevronDownIcon } from 'lucide-react';
 
 interface Props {
   id?: string;
@@ -11,7 +13,7 @@ interface Props {
 
 export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-form' }) => {
   const prefersReducedMotion = useReducedMotion();
-  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, submitForm, reset } = useConsultationSubmit({ formSource: 'Aventura Security Consultation' });
+  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, isMethodModalOpen, setIsMethodModalOpen, validate, submitForm, submitViaWhatsApp, reset } = useConsultationSubmit({ formSource: 'Aventura Security Consultation' });
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -23,19 +25,21 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
     message: '',
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    await submitForm(formData);
+    if (validate(formData)) {
+      setIsMethodModalOpen(true);
+    }
   };
 
   return (
     <section
       id={id}
       aria-label="Aventura Security Consultation"
-      className="relative w-full bg-[#080E1A] py-16 sm:py-20 lg:py-24 text-white overflow-hidden border-t border-white/5 scroll-mt-24"
+      className="relative w-full bg-[#080E1A] py-8 sm:py-10 lg:py-12 text-white overflow-hidden border-t border-white/5 scroll-mt-24"
     >
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C5A880]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0E2445]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-8 sm:mb-10">
@@ -45,7 +49,7 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
               CONFIDENTIAL CONSULTATION · AVENTURA
             </span>
           </motion.div>
@@ -55,7 +59,7 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-3xl sm:text-5xl font-serif font-normal text-white leading-tight tracking-tight"
+            className="text-xl sm:text-2xl lg:text-3xl font-serif font-normal text-white leading-tight tracking-tight"
           >
             Request Private Security for Aventura
           </motion.h2>
@@ -81,7 +85,7 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
         >
           {isSuccess ? (
             <div className="py-12 text-center space-y-5">
-              <div className="w-16 h-16 rounded-full bg-[#C5A880]/15 border border-[#C5A880]/40 flex items-center justify-center mx-auto text-[#D4AF37]">
+              <div className="w-16 h-16 rounded-full bg-[#0E2445]/15 border border-[#0E2445]/40 flex items-center justify-center mx-auto text-[#93C5FD]">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <h3 className="text-2xl sm:text-3xl font-serif text-white">
@@ -94,7 +98,7 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
                 <button
                   type="button"
                   onClick={reset}
-                  className="px-6 py-2.5 rounded-sm border border-[#C5A880]/50 text-xs font-mono uppercase tracking-wider text-[#C5A880] hover:bg-[#C5A880]/10 transition-colors"
+                  className="px-6 py-2.5 rounded-sm border border-[#0E2445]/50 text-xs font-mono uppercase tracking-wider text-[#93C5FD] hover:bg-[#0E2445]/10 transition-colors"
                 >
                   Submit Another Inquiry
                 </button>
@@ -106,7 +110,7 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="block text-xs font-mono uppercase tracking-wider text-zinc-300">
-                    Full Name / Title <span className="text-[#C5A880]">*</span>
+                    Full Name / Title <span className="text-[#93C5FD]">*</span>
                   </label>
                   <input
                     type="text"
@@ -114,13 +118,13 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
                     placeholder="Principal, Family Office or Representative"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <label className="block text-xs font-mono uppercase tracking-wider text-zinc-300">
-                    Direct Phone <span className="text-[#C5A880]">*</span>
+                    Direct Phone <span className="text-[#93C5FD]">*</span>
                   </label>
                   <input
                     type="tel"
@@ -128,7 +132,7 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
                     placeholder="(954) 000-0000"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                   />
                 </div>
               </div>
@@ -137,7 +141,7 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="block text-xs font-mono uppercase tracking-wider text-zinc-300">
-                    Confidential Email <span className="text-[#C5A880]">*</span>
+                    Confidential Email <span className="text-[#93C5FD]">*</span>
                   </label>
                   <input
                     type="email"
@@ -145,7 +149,7 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
                     placeholder="direct@domain.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                   />
                 </div>
 
@@ -157,7 +161,7 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
                     type="date"
                     value={formData.targetDate}
                     onChange={(e) => setFormData({ ...formData, targetDate: e.target.value })}
-                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                   />
                 </div>
               </div>
@@ -171,7 +175,7 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
                   <select
                     value={formData.propertyType}
                     onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-[#C5A880] transition-colors"
+                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-3 py-2 sm:py-2.5 text-sm text-white focus:outline-none focus:border-[#0E2445] transition-colors"
                   >
                     <option value="Williams Island Luxury High-Rise">Williams Island Luxury High-Rise</option>
                     <option value="Porto Vita Intracoastal Community">Porto Vita Intracoastal Community</option>
@@ -191,7 +195,7 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
                   <select
                     value={formData.serviceNeeded}
                     onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
-                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-4 py-3 text-sm text-white focus:outline-none focus:border-[#C5A880] transition-colors"
+                    className="w-full bg-[#080E1C] border border-white/10 rounded-md px-3 py-2 sm:py-2.5 text-sm text-white focus:outline-none focus:border-[#0E2445] transition-colors"
                   >
                     <option value="Luxury Residence & High-Rise Security">Luxury Residence & High-Rise Security</option>
                     <option value="Executive Protection & Secure Motorcade">Executive Protection & Secure Motorcade</option>
@@ -213,13 +217,13 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
                   placeholder="Outline access parameters, principal itinerary, hours of coverage, or specific confidentiality requirements..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full bg-[#080E1C] border border-white/10 rounded-md px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors resize-none"
+                  className="w-full bg-[#080E1C] border border-white/10 rounded-md px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors resize-none"
                 />
               </div>
 
               {/* Privacy / NDA Notice */}
-              <div className="p-4 rounded-lg bg-[#080E1C] border border-[#C5A880]/20 flex items-start gap-3">
-                <Lock className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
+              <div className="p-4 rounded-lg bg-[#080E1C] border border-[#0E2445]/20 flex items-start gap-3">
+                <Lock className="w-4 h-4 text-[#93C5FD] shrink-0 mt-0.5" />
                 <div className="text-xs font-sans text-zinc-400 space-y-1">
                   <p className="font-medium text-zinc-300">
                     Strict Confidentiality Protocol & Non-Disclosure
@@ -247,14 +251,14 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
               {/* Submit Buttons */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
-                  <PhoneCall className="w-3.5 h-3.5 text-[#C5A880]" />
+                  <PhoneCall className="w-3.5 h-3.5 text-[#93C5FD]" />
                   <span>Immediate Dispatch 24/7: (954) 234-7231</span>
                 </div>
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-9 py-4 rounded-sm bg-[#0E2445] hover:bg-[#173A6E] text-white font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(14, 36, 69, 0.35)] hover:shadow-[0_4px_32px_rgba(23, 58, 110, 0.55)] cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
@@ -273,6 +277,19 @@ export const AventuraConsultationForm: React.FC<Props> = ({ id = 'consultation-f
           )}
         </motion.div>
       </div>
+      {/* Submission Method Selection Modal */}
+      <SubmissionMethodModal
+        isOpen={isMethodModalOpen}
+        onClose={() => setIsMethodModalOpen(false)}
+        onSubmitEmail={async () => {
+          await submitForm(formData);
+        }}
+        onSubmitWhatsApp={() => {
+          submitViaWhatsApp(formData);
+        }}
+        isSubmittingEmail={isSubmitting}
+        clientName={formData.name}
+      />
     </section>
   );
 };

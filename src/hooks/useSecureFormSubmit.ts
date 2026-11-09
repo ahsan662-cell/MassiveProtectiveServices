@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { inquirySchema, InquiryFormData } from '@/schemas/inquirySchema';
 import { setSubmissionStatus } from '@/store/slices/inquirySlice';
 import { CSRF_COOKIE_NAME, CSRF_HEADER_NAME } from '@/utils/csrf';
+import { openWhatsApp, FormSubmissionPayload } from '@/utils/whatsapp';
 
 // UUID v4 generator
 function generateIdempotencyKey(): string {
@@ -33,10 +34,11 @@ interface UseSecureFormSubmitOptions {
   onSuccess?: (data: InquiryFormData, result: { success: boolean; message: string }) => void;
   onError?: (error: Error) => void;
   timeoutMs?: number; // defaults to 8000ms
+  formSource?: string;
 }
 
 export function useSecureFormSubmit(options: UseSecureFormSubmitOptions = {}) {
-  const { defaultValues, formOptions, onSuccess, onError, timeoutMs = 8000 } = options;
+  const { defaultValues, formOptions, onSuccess, onError, timeoutMs = 8000, formSource = 'Tactical Inquiry' } = options;
   const dispatch = useDispatch();
 
   // Persistent Idempotency Key across retries until a submission succeeds
@@ -46,6 +48,7 @@ export function useSecureFormSubmit(options: UseSecureFormSubmitOptions = {}) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isTimedOut, setIsTimedOut] = useState<boolean>(false);
   const [csrfToken, setCsrfToken] = useState<string | null>(null);
+  const [isMethodModalOpen, setIsMethodModalOpen] = useState<boolean>(false);
 
   // Single-dispatch lock ref to drop parallel duplicate clicks instantly
   const isLockedRef = useRef<boolean>(false);
@@ -113,7 +116,7 @@ export function useSecureFormSubmit(options: UseSecureFormSubmitOptions = {}) {
       setIsTimedOut(false);
       dispatch(setSubmissionStatus('submitting'));
 
-      // 2. Client-side abort controller with 8-second timeout
+      // 2. Client-side abort controller with timeout
       const controller = new AbortController();
       const timeoutId = setTimeout(() => {
         controller.abort();
@@ -146,7 +149,10 @@ export function useSecureFormSubmit(options: UseSecureFormSubmitOptions = {}) {
             'Idempotency-Key': idempotencyKey,
             [CSRF_HEADER_NAME]: currentToken || 'mps-tactical-token',
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify({
+            ...formData,
+            formSource,
+          }),
           signal: controller.signal,
         });
 
@@ -161,9 +167,10 @@ export function useSecureFormSubmit(options: UseSecureFormSubmitOptions = {}) {
 
         // 4. On Success: update Redux, trigger success state, reset form, cycle idempotency key
         setIsSuccess(true);
+        setIsMethodModalOpen(false);
         dispatch(setSubmissionStatus('SUBMITTED'));
         form.reset();
-        setIdempotencyKey(generateIdempotencyKey()); // New key for subsequent requests
+        setIdempotencyKey(generateIdempotencyKey());
         onSuccess?.(formData, result);
       } catch (err: unknown) {
         clearTimeout(timeoutId);
@@ -186,7 +193,52 @@ export function useSecureFormSubmit(options: UseSecureFormSubmitOptions = {}) {
         isLockedRef.current = false;
       }
     },
-    [csrfToken, dispatch, form, idempotencyKey, onError, onSuccess, timeoutMs]
+    [csrfToken, dispatch, form, formSource, idempotencyKey, onError, onSuccess, timeoutMs]
+  );
+
+  /**
+   * Submit via WhatsApp
+   */
+  const submitViaWhatsApp = useCallback(
+    (formData?: InquiryFormData) => {
+      const data = formData || form.getValues();
+      openWhatsApp(data as FormSubmissionPayload, formSource);
+
+      // Async background logging
+      fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...data,
+          formSource: `${formSource} (WhatsApp)`,
+          submissionChannel: 'whatsapp',
+        }),
+      }).catch(() => {});
+
+      setIsSuccess(true);
+      setIsMethodModalOpen(false);
+      dispatch(setSubmissionStatus('SUBMITTED'));
+      form.reset();
+    },
+    [dispatch, form, formSource]
+  );
+
+  /**
+   * Trigger choice modal on valid submit
+   */
+  const requestSubmissionChoice = useCallback(
+    (e?: React.FormEvent) => {
+      if (e) e.preventDefault();
+      form.handleSubmit(
+        () => {
+          setIsMethodModalOpen(true);
+        },
+        () => {
+          // If form errors exist, react-hook-form sets them automatically
+        }
+      )();
+    },
+    [form]
   );
 
   return {
@@ -196,12 +248,18 @@ export function useSecureFormSubmit(options: UseSecureFormSubmitOptions = {}) {
     isTimedOut,
     errorMessage,
     idempotencyKey,
+    isMethodModalOpen,
+    setIsMethodModalOpen,
+    submitViaWhatsApp,
+    submitViaEmail: () => form.handleSubmit(handleSecureSubmit)(),
+    requestSubmissionChoice,
     handleSubmit: form.handleSubmit(handleSecureSubmit),
     resetForm: () => {
       form.reset();
       setIsSuccess(false);
       setErrorMessage(null);
       setIsTimedOut(false);
+      setIsMethodModalOpen(false);
       isLockedRef.current = false;
       setIdempotencyKey(generateIdempotencyKey());
       dispatch(setSubmissionStatus('idle'));

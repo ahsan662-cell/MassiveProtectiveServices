@@ -46,7 +46,7 @@ export const LocationNearbyCoverage: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {data.eyebrow}
               </span>
             </motion.div>
@@ -73,13 +73,13 @@ export const LocationNearbyCoverage: React.FC<Props> = ({ data }) => {
         >
           {data.cards.map((card, idx) => {
             const cardContent = (
-              <div className="group relative h-full bg-[#121D38] hover:bg-[#162548] border border-white/[0.08] hover:border-[#C5A880]/50 rounded-lg p-7 sm:p-8 flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all duration-300">
+              <div className="group relative h-full bg-[#121D38] hover:bg-[#162548] border border-white/[0.08] hover:border-[#0E2445]/50 rounded-lg p-7 sm:p-8 flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all duration-300">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl sm:text-2xl font-serif font-normal text-white group-hover:text-[#F3E5D0] transition-colors leading-snug">
                       {card.title}
                     </h3>
-                    <span className="text-[#C5A880] group-hover:text-[#D4AF37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200 text-sm">
+                    <span className="text-[#93C5FD] group-hover:text-[#93C5FD] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200 text-sm">
                       ↗
                     </span>
                   </div>

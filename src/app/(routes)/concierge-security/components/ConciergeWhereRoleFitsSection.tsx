@@ -61,7 +61,7 @@ export const ConciergeWhereRoleFitsSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               WHERE THE ROLE FITS
             </span>
           </motion.div>
@@ -99,10 +99,10 @@ export const ConciergeWhereRoleFitsSection: React.FC = () => {
                         transition: { duration: 0.2 },
                       }
                 }
-                className="group rounded-sm bg-white border border-black/10 p-7 sm:p-9 space-y-5 shadow-sm transition-all duration-300 hover:border-[#C5A880] hover:shadow-md min-h-[240px] flex flex-col justify-between"
+                className="group rounded-sm bg-white border border-black/10 p-7 sm:p-9 space-y-5 shadow-sm transition-all duration-300 hover:border-[#0E2445] hover:shadow-md min-h-[240px] flex flex-col justify-between"
               >
                 <div className="space-y-4">
-                  <div className="w-8 h-8 flex items-center justify-start text-[#C5A880]">
+                  <div className="w-8 h-8 flex items-center justify-start text-[#93C5FD]">
                     <Icon className="w-6 h-6 stroke-[1.6]" />
                   </div>
 

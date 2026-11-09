@@ -63,7 +63,7 @@ export const VerifyLicenseStepsSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               VERIFY OUR LICENSE
             </span>
           </motion.div>
@@ -103,7 +103,7 @@ export const VerifyLicenseStepsSection: React.FC = () => {
           >
             {STEPS.map((step) => (
               <motion.div key={step.number} variants={itemVariants} className="space-y-4">
-                <span className="text-3xl sm:text-4xl font-serif text-[#C5A880] block font-normal">
+                <span className="text-3xl sm:text-4xl font-serif text-[#93C5FD] block font-normal">
                   {step.number}
                 </span>
 
@@ -132,7 +132,7 @@ export const VerifyLicenseStepsSection: React.FC = () => {
               href="https://licensing.fdacs.gov/access/agency.aspx"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.3)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.5)] hover:scale-[1.02] cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#0E2445] hover:bg-[#173A6E] text-white font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(14, 36, 69, 0.3)] hover:shadow-[0_4px_32px_rgba(23, 58, 110, 0.5)] hover:scale-[1.02] cursor-pointer"
             >
               <span>Verify License B1400200 Now</span>
               <ArrowRight className="w-4 h-4" />
@@ -152,7 +152,7 @@ export const VerifyLicenseStepsSection: React.FC = () => {
                 href="https://licensing.fdacs.gov/access/agency.aspx"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#C5A880] hover:text-[#D4AF37] font-mono inline-flex items-center gap-1 transition-colors group"
+                className="text-[#93C5FD] hover:text-[#93C5FD] font-mono inline-flex items-center gap-1 transition-colors group"
               >
                 <span className="underline-offset-4 group-hover:underline">
                   https://licensing.fdacs.gov/access/agency.aspx
@@ -169,7 +169,7 @@ export const VerifyLicenseStepsSection: React.FC = () => {
                 href="https://licensing.fdacs.gov/access/individual.aspx"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#C5A880] hover:text-[#D4AF37] font-mono inline-flex items-center gap-1 transition-colors group"
+                className="text-[#93C5FD] hover:text-[#93C5FD] font-mono inline-flex items-center gap-1 transition-colors group"
               >
                 <span className="underline-offset-4 group-hover:underline">
                   https://licensing.fdacs.gov/access/individual.aspx

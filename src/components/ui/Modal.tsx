@@ -86,7 +86,7 @@ export const Modal: React.FC<ModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 16 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className={`relative w-full ${maxWidthClasses} bg-[#121212] border border-[#D4AF37]/30 rounded-xl shadow-[0_12px_48px_rgba(0,0,0,0.95)] overflow-hidden z-10 flex flex-col max-h-[90vh]`}
+            className={`relative w-full ${maxWidthClasses} bg-[#121212] border border-[#0E2445]/40 rounded-xl shadow-[0_12px_48px_rgba(0,0,0,0.95)] overflow-hidden z-10 flex flex-col max-h-[90vh]`}
           >
             {/* Drag Handle for mobile */}
             <div className="w-full flex justify-center pt-2.5 pb-1 sm:hidden cursor-grab active:cursor-grabbing">
@@ -105,7 +105,7 @@ export const Modal: React.FC<ModalProps> = ({
                   </h3>
                 )}
                 {subtitle && (
-                  <p className="text-xs font-mono text-[#C5A880] mt-0.5 tracking-wider">
+                  <p className="text-xs font-mono text-[#93C5FD] mt-0.5 tracking-wider">
                     {subtitle}
                   </p>
                 )}

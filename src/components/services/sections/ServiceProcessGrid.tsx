@@ -47,7 +47,7 @@ export const ServiceProcessGrid: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {data.eyebrow}
               </span>
             </motion.div>
@@ -65,7 +65,7 @@ export const ServiceProcessGrid: React.FC<Props> = ({ data }) => {
         </div>
 
         {/* Continuous Gold Divider Line */}
-        <div className="w-full h-px bg-[#C5A880]/35" />
+        <div className="w-full h-px bg-[#0E2445]/35" />
 
         {/* 4 Process Steps Grid */}
         <motion.div
@@ -82,7 +82,7 @@ export const ServiceProcessGrid: React.FC<Props> = ({ data }) => {
               className="group relative flex flex-col justify-start space-y-4"
             >
               {/* Step Number in refined gold serif */}
-              <span className="block text-2xl sm:text-3xl font-serif font-light text-[#C5A880] tracking-wider">
+              <span className="block text-2xl sm:text-3xl font-serif font-light text-[#93C5FD] tracking-wider">
                 {step.number}
               </span>
 

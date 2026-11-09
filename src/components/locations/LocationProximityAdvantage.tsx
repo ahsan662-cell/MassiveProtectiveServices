@@ -37,7 +37,7 @@ export const LocationProximityAdvantage: React.FC<Props> = ({ data }) => {
       className="relative w-full bg-[#070D18] py-16 sm:py-20 lg:py-24 text-white overflow-hidden border-t border-white/5"
     >
       {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#C5A880]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[#0E2445]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Section Header & Narrative (Centered Layout matching Image 3) */}
@@ -49,7 +49,7 @@ export const LocationProximityAdvantage: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {data.eyebrow}
               </span>
             </motion.div>
@@ -91,11 +91,11 @@ export const LocationProximityAdvantage: React.FC<Props> = ({ data }) => {
             <motion.div
               key={idx}
               variants={itemVariants}
-              className="group relative bg-[#121D38] hover:bg-[#162548] border border-white/[0.08] hover:border-[#C5A880]/50 rounded-lg p-7 sm:p-8 flex flex-col justify-start transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1"
+              className="group relative bg-[#121D38] hover:bg-[#162548] border border-white/[0.08] hover:border-[#0E2445]/50 rounded-lg p-7 sm:p-8 flex flex-col justify-start transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1"
             >
               {/* Card Icon */}
               {card.icon && (
-                <div className="w-8 h-8 flex items-center justify-start mb-5 text-[#C5A880] group-hover:text-[#D4AF37] transition-colors">
+                <div className="w-8 h-8 flex items-center justify-start mb-5 text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors">
                   <ServiceIcon name={card.icon} className="w-6 h-6 stroke-[1.6]" />
                 </div>
               )}

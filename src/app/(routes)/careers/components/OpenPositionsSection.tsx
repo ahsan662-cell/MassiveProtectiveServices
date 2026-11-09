@@ -23,7 +23,7 @@ export const OpenPositionsSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               OPEN POSITIONS
             </span>
           </motion.div>
@@ -48,8 +48,8 @@ export const OpenPositionsSection: React.FC = () => {
           className="rounded-sm bg-[#0B1220] border border-white/[0.08] p-10 sm:p-16 lg:p-20 flex flex-col items-center text-center space-y-6 shadow-2xl max-w-5xl mx-auto relative overflow-hidden"
         >
           {/* Briefcase Icon */}
-          <div className="w-16 h-16 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center text-[#C5A880]">
-            <Briefcase className="w-7 h-7 text-[#C5A880] stroke-[1.4]" />
+          <div className="w-16 h-16 rounded-full bg-white/[0.03] border border-white/10 flex items-center justify-center text-[#93C5FD]">
+            <Briefcase className="w-7 h-7 text-[#93C5FD] stroke-[1.4]" />
           </div>
 
           {/* Title */}
@@ -68,7 +68,7 @@ export const OpenPositionsSection: React.FC = () => {
           <div className="pt-2">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 text-sm sm:text-base font-medium text-[#C5A880] hover:text-[#D4AF37] transition-colors group cursor-pointer"
+              className="inline-flex items-center gap-2 text-sm sm:text-base font-medium text-[#93C5FD] hover:text-[#93C5FD] transition-colors group cursor-pointer"
             >
               <span className="underline-offset-4 group-hover:underline">Submit General Inquiry</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

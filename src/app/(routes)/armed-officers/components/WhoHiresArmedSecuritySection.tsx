@@ -61,7 +61,7 @@ export const WhoHiresArmedSecuritySection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               WHO HIRES ARMED SECURITY
             </span>
           </motion.div>
@@ -94,8 +94,8 @@ export const WhoHiresArmedSecuritySection: React.FC = () => {
                 className="space-y-4 flex flex-col justify-between"
               >
                 <div className="space-y-4">
-                  <div className="w-8 h-8 flex items-center justify-start text-[#C5A880]">
-                    <Icon className="w-5 h-5 text-[#C5A880] stroke-[1.6]" />
+                  <div className="w-8 h-8 flex items-center justify-start text-[#93C5FD]">
+                    <Icon className="w-5 h-5 text-[#93C5FD] stroke-[1.6]" />
                   </div>
 
                   <h3 className="text-xl sm:text-2xl font-serif text-white font-normal leading-snug">

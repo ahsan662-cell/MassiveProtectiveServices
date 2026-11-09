@@ -39,7 +39,7 @@ export const LicensingStandardsComparisonSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               OUR STANDARDS
             </span>
           </motion.div>
@@ -56,7 +56,7 @@ export const LicensingStandardsComparisonSection: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 relative">
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-[#C5A880]/60 -translate-x-1/2" />
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-[#0E2445]/60 -translate-x-1/2" />
 
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: -16 }}
@@ -65,14 +65,14 @@ export const LicensingStandardsComparisonSection: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6 lg:pr-8"
           >
-            <h3 className="text-xs sm:text-[13px] font-mono font-semibold tracking-wider uppercase text-[#C5A880]">
+            <h3 className="text-xs sm:text-[13px] font-mono font-semibold tracking-wider uppercase text-[#93C5FD]">
               WHAT CHAPTER 493 REQUIRES
             </h3>
 
             <ul className="space-y-5">
               {CHAPTER_493_REQUIRES.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3 text-sm sm:text-base text-zinc-300 font-sans font-light leading-relaxed">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880] shrink-0 mt-2" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0E2445] shrink-0 mt-2" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -84,16 +84,16 @@ export const LicensingStandardsComparisonSection: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-6 lg:pl-8 border-t border-[#C5A880]/30 pt-8 lg:border-t-0 lg:pt-0"
+            className="space-y-6 lg:pl-8 border-t border-[#0E2445]/30 pt-8 lg:border-t-0 lg:pt-0"
           >
-            <h3 className="text-xs sm:text-[13px] font-mono font-semibold tracking-wider uppercase text-[#C5A880]">
+            <h3 className="text-xs sm:text-[13px] font-mono font-semibold tracking-wider uppercase text-[#93C5FD]">
               WHAT MASSIVE PROTECTIVE ADDS
             </h3>
 
             <ul className="space-y-5">
               {MASSIVE_PROTECTIVE_ADDS.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3 text-sm sm:text-base text-zinc-300 font-sans font-light leading-relaxed">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880] shrink-0 mt-2" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0E2445] shrink-0 mt-2" />
                   <span>{item}</span>
                 </li>
               ))}

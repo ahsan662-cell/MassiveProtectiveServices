@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, Check, Loader2, ShieldCheck, Lock, AlertTriangle } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
+import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
+import { MessageCircle, ChevronDown as ChevronDownIcon } from 'lucide-react';
 
 interface Props {
   id?: string;
@@ -75,20 +77,24 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
   const [startDateOpen, setStartDateOpen] = useState(false);
 
   
-  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, submitForm, reset } = useConsultationSubmit({ formSource: 'Unarmed Security Consultation' });
+  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, isMethodModalOpen, setIsMethodModalOpen, validate, submitForm, submitViaWhatsApp, reset } = useConsultationSubmit({ formSource: 'Unarmed Security Consultation' });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const getPayload = () => (formData);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    await submitForm(formData);
+    if (validate(getPayload())) {
+      setIsMethodModalOpen(true);
+    }
   };
 
   return (
     <section
       id={id}
       aria-label="Request a Confidential Consultation"
-      className="relative w-full bg-[#080E1A] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#080E1A] text-white py-8 sm:py-10 lg:py-12 overflow-hidden border-t border-white/5"
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3.5 sm:space-y-4">
         {/* Section Header */}
         <div className="space-y-3">
           <motion.h2
@@ -96,7 +102,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6 }}
-            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.14] tracking-tight"
+            className="text-xl sm:text-2xl lg:text-[28px] font-serif font-normal text-white leading-[1.14] tracking-tight"
           >
             Request a Confidential Consultation
           </motion.h2>
@@ -117,9 +123,9 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-[#0F1829] border border-[#C5A880]/50 p-8 sm:p-12 text-center space-y-4"
+            className="bg-[#0F1829] border border-[#0E2445]/50 p-8 sm:p-12 text-center space-y-4"
           >
-            <div className="w-16 h-16 bg-[#C5A880]/20 text-[#C5A880] mx-auto flex items-center justify-center rounded-full">
+            <div className="w-16 h-16 bg-[#0E2445]/20 text-[#93C5FD] mx-auto flex items-center justify-center rounded-full">
               <Check className="w-8 h-8" />
             </div>
             <h3 className="text-2xl font-serif text-white">Consultation Request Received</h3>
@@ -156,13 +162,13 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                   agreedToPolicy: false,
                 });
               }}
-              className="mt-4 px-6 py-2.5 border border-[#C5A880] text-[#C5A880] hover:bg-[#C5A880] hover:text-[#0A111F] text-xs font-mono tracking-widest uppercase transition-colors"
+              className="mt-4 px-6 py-2.5 border border-[#0E2445] text-[#93C5FD] hover:bg-[#0E2445] hover:text-[#0A111F] text-xs font-mono tracking-widest uppercase transition-colors"
             >
               Submit Another Request
             </button>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-7">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
             {/* Row 1: Full name & Phone number */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
               <div className="space-y-2">
@@ -175,7 +181,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   placeholder="Your full name"
-                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
+                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
                 />
               </div>
 
@@ -189,7 +195,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder="Your phone number"
-                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
+                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
                 />
               </div>
             </div>
@@ -206,7 +212,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="Your email address"
-                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
+                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
                 />
               </div>
 
@@ -223,18 +229,18 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                     setScheduleOpen(false);
                     setStartDateOpen(false);
                   }}
-                  className="w-full bg-[#111A2C]/80 border border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
+                  className="w-full bg-[#111A2C]/80 border border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
                 >
                   <span className="truncate">{formData.serviceRequired}</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#C5A880] transition-transform ${
+                    className={`w-4 h-4 text-[#93C5FD] transition-transform ${
                       serviceOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
 
                 {serviceOpen && (
-                  <div className="absolute z-30 left-0 right-0 mt-1 bg-[#101828] border border-[#C5A880]/40 shadow-2xl max-h-56 overflow-y-auto">
+                  <div className="absolute z-30 left-0 right-0 mt-1 bg-[#101828] border border-[#0E2445]/40 shadow-2xl max-h-56 overflow-y-auto">
                     {SERVICES_LIST.map((srv, idx) => (
                       <div
                         key={idx}
@@ -244,7 +250,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                         }}
                         className={`px-4 py-2.5 text-sm cursor-pointer transition-colors ${
                           formData.serviceRequired === srv
-                            ? 'bg-[#C5A880]/20 text-[#C5A880]'
+                            ? 'bg-[#0E2445]/20 text-[#93C5FD]'
                             : 'text-zinc-200 hover:bg-white/5'
                         }`}
                       >
@@ -271,7 +277,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                     setScheduleOpen(false);
                     setStartDateOpen(false);
                   }}
-                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
+                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
                 >
                   <span className="truncate">{formData.contactMethod || 'Phone'}</span>
                   <ChevronDown
@@ -292,7 +298,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                         }}
                         className={`px-4 py-2.5 text-sm cursor-pointer transition-colors ${
                           formData.contactMethod === m
-                            ? 'bg-[#C5A880]/20 text-[#C5A880]'
+                            ? 'bg-[#0E2445]/20 text-[#93C5FD]'
                             : 'text-zinc-200 hover:bg-white/5'
                         }`}
                       >
@@ -316,7 +322,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                     setScheduleOpen(false);
                     setStartDateOpen(false);
                   }}
-                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
+                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
                 >
                   <span className={formData.city ? 'text-white truncate' : 'text-zinc-500 truncate'}>
                     {formData.city || 'Select your city or area'}
@@ -339,7 +345,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                         }}
                         className={`px-4 py-2.5 text-sm cursor-pointer transition-colors ${
                           formData.city === c
-                            ? 'bg-[#C5A880]/20 text-[#C5A880]'
+                            ? 'bg-[#0E2445]/20 text-[#93C5FD]'
                             : 'text-zinc-200 hover:bg-white/5'
                         }`}
                       >
@@ -371,7 +377,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                     setCityOpen(false);
                     setStartDateOpen(false);
                   }}
-                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
+                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
                 >
                   <span className={formData.schedule ? 'text-white truncate' : 'text-zinc-500 truncate'}>
                     {formData.schedule || 'Select shifts or discuss with us'}
@@ -394,7 +400,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                         }}
                         className={`px-4 py-2.5 text-sm cursor-pointer transition-colors ${
                           formData.schedule === sch
-                            ? 'bg-[#C5A880]/20 text-[#C5A880]'
+                            ? 'bg-[#0E2445]/20 text-[#93C5FD]'
                             : 'text-zinc-200 hover:bg-white/5'
                         }`}
                       >
@@ -418,7 +424,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                     setCityOpen(false);
                     setScheduleOpen(false);
                   }}
-                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
+                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
                 >
                   <span className={formData.startDate ? 'text-white truncate' : 'text-zinc-500 truncate'}>
                     {formData.startDate || 'Select a date'}
@@ -441,7 +447,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                         }}
                         className={`px-4 py-2.5 text-sm cursor-pointer transition-colors ${
                           formData.startDate === sd
-                            ? 'bg-[#C5A880]/20 text-[#C5A880]'
+                            ? 'bg-[#0E2445]/20 text-[#93C5FD]'
                             : 'text-zinc-200 hover:bg-white/5'
                         }`}
                       >
@@ -463,7 +469,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder="Briefly describe your property, hours, access points, and security concerns."
-                className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white placeholder-zinc-500 rounded-none resize-none transition-colors"
+                className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 rounded-none resize-none transition-colors"
               />
             </div>
 
@@ -474,7 +480,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
                 id="agreedToPolicy"
                 checked={formData.agreedToPolicy}
                 onChange={(e) => setFormData({ ...formData, agreedToPolicy: e.target.checked })}
-                className="mt-1 h-4 w-4 rounded-none border-white/20 bg-[#111A2C] text-[#C5A880] focus:ring-0 focus:ring-offset-0 cursor-pointer accent-[#C5A880]"
+                className="mt-1 h-4 w-4 rounded-none border-white/20 bg-[#111A2C] text-[#93C5FD] focus:ring-0 focus:ring-offset-0 cursor-pointer accent-[#0E2445]"
               />
               <label htmlFor="agreedToPolicy" className="text-xs sm:text-[13px] text-zinc-300 font-sans font-light leading-snug cursor-pointer">
                 I agree to be contacted about this request and have read the Privacy Policy.
@@ -487,7 +493,7 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
               disabled={isSubmitting}
               whileHover={{ scale: prefersReducedMotion ? 1 : 1.005 }}
               whileTap={{ scale: prefersReducedMotion ? 1 : 0.995 }}
-              className="w-full bg-[#C5A880] hover:bg-[#B3956F] text-[#0A111F] font-sans font-medium text-xs sm:text-sm tracking-[0.14em] uppercase py-4 sm:py-4.5 px-6 rounded-none transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_28px_rgba(197,168,128,0.4)] cursor-pointer"
+              className="w-full bg-[#0E2445] hover:bg-[#B3956F] text-[#0A111F] font-sans font-medium text-xs sm:text-sm tracking-[0.14em] uppercase py-4 sm:py-4.5 px-6 rounded-none transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(14, 36, 69, 0.25)] hover:shadow-[0_6px_28px_rgba(14, 36, 69, 0.4)] cursor-pointer"
             >
               {isSubmitting ? (
                 <>
@@ -511,6 +517,21 @@ export const UnarmedSecurityConsultationForm: React.FC<Props> = ({ id = 'consult
           </form>
         )}
       </div>
+      {/* Submission Method Selection Modal */}
+      <SubmissionMethodModal
+        isOpen={isMethodModalOpen}
+        onClose={() => setIsMethodModalOpen(false)}
+        onSubmitEmail={async () => {
+          const payload = typeof getPayload === 'function' ? getPayload() : formData;
+          await submitForm(payload);
+        }}
+        onSubmitWhatsApp={() => {
+          const payload = typeof getPayload === 'function' ? getPayload() : formData;
+          submitViaWhatsApp(payload);
+        }}
+        isSubmittingEmail={isSubmitting}
+        clientName={formData.fullName}
+      />
     </section>
   );
 };

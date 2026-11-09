@@ -58,7 +58,7 @@ export const BlogArticlesGridSection: React.FC<BlogArticlesGridSectionProps> = (
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               ALL ARTICLES
             </span>
           </motion.div>
@@ -94,17 +94,17 @@ export const BlogArticlesGridSection: React.FC<BlogArticlesGridSectionProps> = (
                       transition: { duration: 0.2 },
                     }
               }
-              className="group rounded-sm bg-[#0B1220] border border-[#C5A880]/50 p-7 sm:p-8 flex flex-col justify-between shadow-xl transition-all duration-300 hover:border-[#C5A880] hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(197,168,128,0.12)] min-h-[380px]"
+              className="group rounded-sm bg-[#0B1220] border border-[#0E2445]/50 p-7 sm:p-8 flex flex-col justify-between shadow-xl transition-all duration-300 hover:border-[#0E2445] hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(14, 36, 69, 0.12)] min-h-[380px]"
             >
               <div className="space-y-4">
                 {/* Category Tag */}
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#C5A880] block font-semibold">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#93C5FD] block font-semibold">
                   {article.category}
                 </span>
 
                 {/* Article Title */}
                 <h3 className="text-xl sm:text-2xl font-serif font-normal text-white group-hover:text-[#F5F5F7] leading-snug">
-                  <Link href={`/blog/${article.slug}`} className="hover:text-[#C5A880] transition-colors">
+                  <Link href={`/blog/${article.slug}`} className="hover:text-[#93C5FD] transition-colors">
                     {article.title}
                   </Link>
                 </h3>
@@ -124,7 +124,7 @@ export const BlogArticlesGridSection: React.FC<BlogArticlesGridSectionProps> = (
                 <div>
                   <Link
                     href={`/blog/${article.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#C5A880] group-hover:text-[#D4AF37] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors"
                   >
                     <span>Read the Guide</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />

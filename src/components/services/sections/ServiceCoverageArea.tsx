@@ -89,7 +89,7 @@ export const ServiceCoverageArea: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {eyebrow}
               </span>
             </motion.div>
@@ -135,7 +135,7 @@ export const ServiceCoverageArea: React.FC<Props> = ({ data }) => {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="group relative border border-[#C5A880] hover:border-[#D4AF37] bg-white/70 hover:bg-white rounded-none p-6 sm:p-7 min-h-[110px] sm:min-h-[130px] flex flex-col justify-start transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(197,168,128,0.18)] hover:-translate-y-1"
+                className="group relative border border-[#0E2445] hover:border-[#93C5FD] bg-white/70 hover:bg-white rounded-none p-6 sm:p-7 min-h-[110px] sm:min-h-[130px] flex flex-col justify-start transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(14, 36, 69, 0.18)] hover:-translate-y-1"
               >
                 <h3 className="text-lg sm:text-xl font-serif font-normal text-[#151D2A] group-hover:text-[#0A111F] transition-colors leading-snug">
                   {city}
@@ -245,25 +245,25 @@ export const ServiceCoverageArea: React.FC<Props> = ({ data }) => {
 
                   {/* Coastal City Pins with Glow & Pulsing Ring */}
                   {/* Palm Beach */}
-                  <circle cx="140" cy="90" r="3" fill="#C5A880" />
-                  <circle cx="140" cy="90" r="7" fill="none" stroke="#C5A880" strokeWidth="0.75" opacity="0.4" />
+                  <circle cx="140" cy="90" r="3" fill="#0E2445" />
+                  <circle cx="140" cy="90" r="7" fill="none" stroke="#0E2445" strokeWidth="0.75" opacity="0.4" />
                   <text x="155" y="94" fill="#94A3B8" fontSize="9" fontFamily="sans-serif">Palm Beach</text>
 
                   {/* Delray / Boca */}
-                  <circle cx="138" cy="140" r="2.5" fill="#C5A880" />
-                  <circle cx="136" cy="180" r="2.5" fill="#C5A880" />
-                  <circle cx="137" cy="210" r="2.5" fill="#C5A880" />
+                  <circle cx="138" cy="140" r="2.5" fill="#0E2445" />
+                  <circle cx="136" cy="180" r="2.5" fill="#0E2445" />
+                  <circle cx="137" cy="210" r="2.5" fill="#0E2445" />
 
                   {/* Fort Lauderdale */}
-                  <circle cx="134" cy="270" r="3" fill="#C5A880" />
-                  <circle cx="134" cy="270" r="6" fill="none" stroke="#C5A880" strokeWidth="0.75" opacity="0.4" />
+                  <circle cx="134" cy="270" r="3" fill="#0E2445" />
+                  <circle cx="134" cy="270" r="6" fill="none" stroke="#0E2445" strokeWidth="0.75" opacity="0.4" />
 
                   {/* Hollywood / Aventura */}
-                  <circle cx="128" cy="315" r="2.5" fill="#C5A880" />
+                  <circle cx="128" cy="315" r="2.5" fill="#0E2445" />
 
                   {/* Miami */}
-                  <circle cx="112" cy="380" r="3" fill="#C5A880" />
-                  <circle cx="112" cy="380" r="7" fill="none" stroke="#C5A880" strokeWidth="0.75" opacity="0.4" />
+                  <circle cx="112" cy="380" r="3" fill="#0E2445" />
+                  <circle cx="112" cy="380" r="7" fill="none" stroke="#0E2445" strokeWidth="0.75" opacity="0.4" />
                   <text x="126" y="384" fill="#94A3B8" fontSize="9" fontFamily="sans-serif">Miami</text>
                 </svg>
               </div>
@@ -271,7 +271,7 @@ export const ServiceCoverageArea: React.FC<Props> = ({ data }) => {
               {/* Bottom Card Footer */}
               <div className="relative z-10 flex items-center justify-between text-[11px] font-mono text-zinc-400">
                 <span className="tracking-widest">COASTAL CORRIDOR</span>
-                <span className="text-[#C5A880]">24/7 ACTIVE DETAIL</span>
+                <span className="text-[#93C5FD]">24/7 ACTIVE DETAIL</span>
               </div>
             </motion.div>
 
@@ -291,7 +291,7 @@ export const ServiceCoverageArea: React.FC<Props> = ({ data }) => {
                       key={idx}
                       className="group flex items-center space-x-2 text-[15px] sm:text-base text-zinc-300 hover:text-white transition-colors cursor-pointer"
                     >
-                      <span className="text-[#C5A880] group-hover:translate-x-1 transition-transform duration-200">
+                      <span className="text-[#93C5FD] group-hover:translate-x-1 transition-transform duration-200">
                         →
                       </span>
                       <span className="font-sans font-light">{city}</span>
@@ -306,7 +306,7 @@ export const ServiceCoverageArea: React.FC<Props> = ({ data }) => {
                       key={idx}
                       className="group flex items-center space-x-2 text-[15px] sm:text-base text-zinc-300 hover:text-white transition-colors cursor-pointer"
                     >
-                      <span className="text-[#C5A880] group-hover:translate-x-1 transition-transform duration-200">
+                      <span className="text-[#93C5FD] group-hover:translate-x-1 transition-transform duration-200">
                         →
                       </span>
                       <span className="font-sans font-light">{city}</span>
@@ -333,7 +333,7 @@ export const ServiceCoverageArea: React.FC<Props> = ({ data }) => {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#93C5FD]">
                 {data?.hqBadge || 'DELRAY BEACH, FLORIDA - HEADQUARTERS'}
               </span>
             </motion.div>
@@ -348,7 +348,7 @@ export const ServiceCoverageArea: React.FC<Props> = ({ data }) => {
               <p className="text-base sm:text-lg text-zinc-300 font-sans font-light leading-relaxed">
                 {data?.description}
               </p>
-              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#93C5FD]">
                 {data?.countyBadge || 'PALM BEACH · BROWARD · MIAMI-DADE'}
               </span>
             </motion.div>

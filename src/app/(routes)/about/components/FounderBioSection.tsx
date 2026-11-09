@@ -21,7 +21,7 @@ export const FounderBioSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               THE FOUNDER
             </span>
           </motion.div>
@@ -45,15 +45,15 @@ export const FounderBioSection: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-4 rounded-sm bg-[#0B1220] border border-[#C5A880] p-8 flex flex-col justify-between items-center text-center min-h-[460px] shadow-2xl"
+            className="lg:col-span-4 rounded-sm bg-[#0B1220] border border-[#0E2445] p-8 flex flex-col justify-between items-center text-center min-h-[460px] shadow-2xl"
           >
-            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#C5A880]">
+            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#93C5FD]">
               PORTRAIT / AWAITING PHOTOGRAPH
             </div>
 
             <div className="my-auto flex flex-col items-center space-y-4">
-              <Crown className="w-12 h-12 text-[#C5A880] stroke-[1.2]" />
-              <div className="w-8 h-[1px] bg-[#C5A880]" />
+              <Crown className="w-12 h-12 text-[#93C5FD] stroke-[1.2]" />
+              <div className="w-8 h-[1px] bg-[#0E2445]" />
               <div className="text-xs sm:text-sm font-sans text-zinc-300 max-w-[200px]">
                 Marc A. Tardalo — professional photo, portrait orientation
               </div>
@@ -72,10 +72,10 @@ export const FounderBioSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6 }}
-              className="rounded-sm bg-[#0B1220] border border-[#C5A880] p-7 sm:p-9 space-y-6 flex-1 shadow-2xl"
+              className="rounded-sm bg-[#0B1220] border border-[#0E2445] p-7 sm:p-9 space-y-6 flex-1 shadow-2xl"
             >
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-[#C5A880] block font-semibold">
+                <span className="text-xs font-mono uppercase tracking-widest text-[#93C5FD] block font-semibold">
                   PLACEHOLDER — Marc&apos;s actual bio goes here
                 </span>
                 <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 mt-1 block">
@@ -115,7 +115,7 @@ export const FounderBioSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="rounded-sm bg-[#0B1220] border border-[#C5A880] p-5 sm:p-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-sans"
+              className="rounded-sm bg-[#0B1220] border border-[#0E2445] p-5 sm:p-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-sans"
             >
               <div className="space-y-1">
                 <span className="text-zinc-400 block font-mono text-[11px]">Founded:</span>
@@ -132,9 +132,9 @@ export const FounderBioSection: React.FC = () => {
                     href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] font-mono text-[#C5A880] hover:text-[#D4AF37] transition-colors"
+                    className="inline-flex items-center gap-1 text-[11px] font-mono text-[#93C5FD] hover:text-[#93C5FD] transition-colors"
                   >
-                    <MapPin className="w-3 h-3 text-[#D4AF37]" />
+                    <MapPin className="w-3 h-3 text-[#93C5FD]" />
                     <span>Find us on Google</span>
                     <ExternalLink className="w-2.5 h-2.5 opacity-70" />
                   </a>
@@ -142,7 +142,7 @@ export const FounderBioSection: React.FC = () => {
               </div>
               <div className="space-y-1">
                 <span className="text-zinc-400 block font-mono text-[11px]">FL Agency License:</span>
-                <span className="text-[#C5A880] font-mono font-medium">B1400200</span>
+                <span className="text-[#93C5FD] font-mono font-medium">B1400200</span>
               </div>
               <div className="space-y-1">
                 <span className="text-zinc-400 block font-mono text-[11px]">Officers:</span>

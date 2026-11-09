@@ -21,7 +21,7 @@ export const TestimonialsHeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               CLIENT TESTIMONIALS · MASSIVE PROTECTIVE SERVICES
             </span>
           </motion.div>
@@ -57,9 +57,9 @@ export const TestimonialsHeroSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="rounded-sm bg-[#0B1220] border-l-4 border-l-[#C5A880] border-y border-r border-white/[0.06] p-7 sm:p-9 space-y-4 shadow-xl"
+            className="rounded-sm bg-[#0B1220] border-l-4 border-l-[#0E2445] border-y border-r border-white/[0.06] p-7 sm:p-9 space-y-4 shadow-xl"
           >
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#C5A880] block font-semibold">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#93C5FD] block font-semibold">
               ON CONFIDENTIALITY
             </span>
 
@@ -82,10 +82,10 @@ export const TestimonialsHeroSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.12 }}
-            className="rounded-sm bg-[#0B1220] border-l-4 border-l-[#C5A880] border-y border-r border-white/[0.06] p-7 sm:p-9 space-y-5 shadow-xl flex flex-col justify-between"
+            className="rounded-sm bg-[#0B1220] border-l-4 border-l-[#0E2445] border-y border-r border-white/[0.06] p-7 sm:p-9 space-y-5 shadow-xl flex flex-col justify-between"
           >
             <div className="space-y-4">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#C5A880] block font-semibold">
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#93C5FD] block font-semibold">
                 FOR PROSPECTIVE CLIENTS
               </span>
 
@@ -99,7 +99,7 @@ export const TestimonialsHeroSection: React.FC = () => {
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#C5A880] hover:text-[#D4AF37] transition-colors group cursor-pointer"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#93C5FD] hover:text-[#93C5FD] transition-colors group cursor-pointer"
               >
                 <span>Request References</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />

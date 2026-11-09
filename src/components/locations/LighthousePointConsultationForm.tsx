@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { CheckCircle2, ChevronDown, Loader2, AlertTriangle } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
+import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
+import { MessageCircle, ChevronDown as ChevronDownIcon } from 'lucide-react';
 
 interface Props {
   id?: string;
@@ -11,7 +13,7 @@ interface Props {
 
 export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consultation-form' }) => {
   const prefersReducedMotion = useReducedMotion();
-  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, submitForm, reset } = useConsultationSubmit({ formSource: 'Lighthouse Point Security Consultation' });
+  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, isMethodModalOpen, setIsMethodModalOpen, validate, submitForm, submitViaWhatsApp, reset } = useConsultationSubmit({ formSource: 'Lighthouse Point Security Consultation' });
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -21,26 +23,28 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
     message: '',
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    await submitForm(formData);
+    if (validate(formData)) {
+      setIsMethodModalOpen(true);
+    }
   };
 
   return (
     <section
       id={id}
       aria-label="Lighthouse Point Confidential Estate Security Consultation"
-      className="relative w-full bg-[#070D18] py-16 sm:py-20 lg:py-24 text-white overflow-hidden border-t border-white/5 scroll-mt-24"
+      className="relative w-full bg-[#070D18] py-8 sm:py-10 lg:py-12 text-white overflow-hidden border-t border-white/5 scroll-mt-24"
     >
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="space-y-3 mb-10 sm:mb-12">
+        <div className="space-y-3 mb-4 sm:mb-5">
           <motion.h2
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6 }}
-            className="text-3xl sm:text-5xl font-serif font-normal text-white leading-tight tracking-tight"
+            className="text-xl sm:text-2xl lg:text-3xl font-serif font-normal text-white leading-tight tracking-tight"
           >
             Request a Confidential Consultation for Your Lighthouse Point Property
           </motion.h2>
@@ -63,7 +67,7 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
             animate={{ opacity: 1, scale: 1 }}
             className="bg-[#121D38] border border-white/[0.08] rounded-lg p-10 sm:p-14 text-center space-y-5"
           >
-            <div className="w-16 h-16 rounded-full bg-[#C5A880]/15 border border-[#C5A880]/40 flex items-center justify-center mx-auto text-[#D4AF37]">
+            <div className="w-16 h-16 rounded-full bg-[#0E2445]/15 border border-[#0E2445]/40 flex items-center justify-center mx-auto text-[#93C5FD]">
               <CheckCircle2 className="w-8 h-8" />
             </div>
             <h3 className="text-2xl sm:text-3xl font-serif text-white">
@@ -76,14 +80,14 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
               <button
                 type="button"
                 onClick={reset}
-                className="px-6 py-2.5 rounded-sm border border-[#C5A880]/50 text-xs font-mono uppercase tracking-wider text-[#C5A880] hover:bg-[#C5A880]/10 transition-colors cursor-pointer"
+                className="px-6 py-2.5 rounded-sm border border-[#0E2445]/50 text-xs font-mono uppercase tracking-wider text-[#93C5FD] hover:bg-[#0E2445]/10 transition-colors cursor-pointer"
               >
                 Submit Another Request
               </button>
             </div>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-7">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
             {/* Row 1: Full Name & Phone Number (2 columns) */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
               <div className="space-y-2">
@@ -96,7 +100,7 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
                   placeholder="Your full name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-[#141F38] border border-white/[0.08] focus:border-[#C5A880] rounded px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
+                  className="w-full bg-[#141F38] border border-white/[0.08] focus:border-[#0E2445] rounded px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
                 />
               </div>
 
@@ -110,7 +114,7 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
                   placeholder="Your phone number"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full bg-[#141F38] border border-white/[0.08] focus:border-[#C5A880] rounded px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
+                  className="w-full bg-[#141F38] border border-white/[0.08] focus:border-[#0E2445] rounded px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
                 />
               </div>
             </div>
@@ -126,7 +130,7 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
                 placeholder="Your email address"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full bg-[#141F38] border border-white/[0.08] focus:border-[#C5A880] rounded px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
+                className="w-full bg-[#141F38] border border-white/[0.08] focus:border-[#0E2445] rounded px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
               />
             </div>
 
@@ -141,7 +145,7 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
                     value={formData.propertyType}
                     onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
                     required
-                    className="w-full appearance-none bg-[#141F38] border border-white/[0.08] focus:border-[#C5A880] rounded px-4 py-3 text-sm text-white focus:outline-none transition-colors pr-10 cursor-pointer"
+                    className="w-full appearance-none bg-[#141F38] border border-white/[0.08] focus:border-[#0E2445] rounded px-3 py-2 sm:py-2.5 text-sm text-white focus:outline-none transition-colors pr-10 cursor-pointer"
                   >
                     <option value="" disabled>
                       Select property type
@@ -152,7 +156,7 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
                     <option value="Dry-Lot Residential">Dry-Lot Residential</option>
                     <option value="Other">Other</option>
                   </select>
-                  <ChevronDown className="w-4 h-4 text-[#C5A880] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <ChevronDown className="w-4 h-4 text-[#93C5FD] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
               </div>
 
@@ -165,7 +169,7 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
                     value={formData.serviceNeeded}
                     onChange={(e) => setFormData({ ...formData, serviceNeeded: e.target.value })}
                     required
-                    className="w-full appearance-none bg-[#141F38] border border-white/[0.08] focus:border-[#C5A880] rounded px-4 py-3 text-sm text-white focus:outline-none transition-colors pr-10 cursor-pointer"
+                    className="w-full appearance-none bg-[#141F38] border border-white/[0.08] focus:border-[#0E2445] rounded px-3 py-2 sm:py-2.5 text-sm text-white focus:outline-none transition-colors pr-10 cursor-pointer"
                   >
                     <option value="" disabled>
                       Select service needed
@@ -178,7 +182,7 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
                     <option value="Seasonal & Absentee Coverage">Seasonal & Absentee Coverage</option>
                     <option value="Other">Other</option>
                   </select>
-                  <ChevronDown className="w-4 h-4 text-[#C5A880] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <ChevronDown className="w-4 h-4 text-[#93C5FD] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
               </div>
             </div>
@@ -193,7 +197,7 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
                 placeholder="Share any specific perimeter concerns, canal frontage, dock access, vessel watch, or scheduling requirements."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full bg-[#141F38] border border-white/[0.08] focus:border-[#C5A880] rounded px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors resize-none"
+                className="w-full bg-[#141F38] border border-white/[0.08] focus:border-[#0E2445] rounded px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors resize-none"
               />
             </div>
 
@@ -212,24 +216,41 @@ export const LighthousePointConsultationForm: React.FC<Props> = ({ id = 'consult
                   </div>
                 </div>
               )}
-<div className="pt-2">
+<div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
               <button
                 type="submit"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] hover:scale-[1.01] cursor-pointer"
-               disabled={isSubmitting}>
+                disabled={isSubmitting}
+                className="flex-1 py-3 px-5 rounded bg-[#0E2445] hover:bg-[#173A6E] text-white font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-2 border border-[#3B82F6]/30 active:scale-[0.99]"
+              >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin text-[#0A0A0A] mr-2" />
+                    <Loader2 className="w-4 h-4 animate-spin text-white" />
                     <span>TRANSMITTING INQUIRY...</span>
                   </>
                 ) : (
-                  <span>Request Confidential Consultation</span>
+                  <>
+                    <span>REQUEST CONFIDENTIAL CONSULTATION</span>
+                    <ChevronDownIcon className="w-3.5 h-3.5 opacity-70" />
+                  </>
                 )}
               </button>
             </div>
           </form>
         )}
       </div>
+      {/* Submission Method Selection Modal */}
+      <SubmissionMethodModal
+        isOpen={isMethodModalOpen}
+        onClose={() => setIsMethodModalOpen(false)}
+        onSubmitEmail={async () => {
+          await submitForm(formData);
+        }}
+        onSubmitWhatsApp={() => {
+          submitViaWhatsApp(formData);
+        }}
+        isSubmittingEmail={isSubmitting}
+        clientName={formData.name}
+      />
     </section>
   );
 };

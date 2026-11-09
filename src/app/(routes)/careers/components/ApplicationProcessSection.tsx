@@ -66,7 +66,7 @@ export const ApplicationProcessSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               HOW TO APPLY
             </span>
           </motion.div>
@@ -83,7 +83,7 @@ export const ApplicationProcessSection: React.FC = () => {
         </div>
 
         {/* 4 Process Columns with Top Gold Line matching Screenshot 2 */}
-        <div className="border-t border-[#C5A880]/60 pt-10 sm:pt-12">
+        <div className="border-t border-[#0E2445]/60 pt-10 sm:pt-12">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -93,7 +93,7 @@ export const ApplicationProcessSection: React.FC = () => {
           >
             {PROCESS_STEPS.map((item) => (
               <motion.div key={item.step} variants={itemVariants} className="space-y-3">
-                <div className="text-2xl sm:text-3xl font-serif text-[#C5A880] font-normal">
+                <div className="text-2xl sm:text-3xl font-serif text-[#93C5FD] font-normal">
                   {item.step}
                 </div>
                 <h3 className="text-xl sm:text-[22px] font-serif font-normal text-white leading-snug">
@@ -115,12 +115,12 @@ export const ApplicationProcessSection: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="border-t border-white/[0.08] pt-8 space-y-1.5"
         >
-          <span className="text-[11px] font-mono uppercase tracking-widest text-[#C5A880] block font-medium">
+          <span className="text-[11px] font-mono uppercase tracking-widest text-[#93C5FD] block font-medium">
             RESUME &amp; LICENSE INFORMATION
           </span>
           <a
             href="mailto:info@massiveprotectiveservices.com"
-            className="text-xs sm:text-sm text-zinc-300 font-sans hover:text-[#C5A880] transition-colors"
+            className="text-xs sm:text-sm text-zinc-300 font-sans hover:text-[#93C5FD] transition-colors"
           >
             info@massiveprotectiveservices.com
           </a>

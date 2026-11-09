@@ -21,8 +21,8 @@ export const BlogAuthorBioSection: React.FC = () => {
           className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 text-center sm:text-left"
         >
           {/* Avatar Circle matching Screenshot 4 */}
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-[#C5A880] bg-[#0B1220] flex flex-col items-center justify-center p-2 shrink-0 shadow-lg">
-            <User className="w-8 h-8 text-[#C5A880] stroke-[1.3]" />
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full border border-[#0E2445] bg-[#0B1220] flex flex-col items-center justify-center p-2 shrink-0 shadow-lg">
+            <User className="w-8 h-8 text-[#93C5FD] stroke-[1.3]" />
             <span className="text-[9px] text-zinc-400 font-sans mt-1 leading-tight text-center">
               Marc A. Tardalo
               <br />
@@ -32,7 +32,7 @@ export const BlogAuthorBioSection: React.FC = () => {
 
           {/* Author Details matching Screenshot 4 verbatim */}
           <div className="space-y-2">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-[#C5A880] block font-semibold">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-[#93C5FD] block font-semibold">
               WRITTEN BY
             </span>
 

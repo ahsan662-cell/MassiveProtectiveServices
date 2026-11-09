@@ -19,7 +19,7 @@ export const WhyWeExistSection: React.FC = () => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+          <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
             WHY WE EXIST
           </span>
         </motion.div>
@@ -72,7 +72,7 @@ export const WhyWeExistSection: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="pt-2"
         >
-          <div className="w-16 h-[1.5px] bg-[#C5A880]" />
+          <div className="w-16 h-[1.5px] bg-[#0E2445]" />
         </motion.div>
 
         {/* Callout Statement in Elegant Serif */}

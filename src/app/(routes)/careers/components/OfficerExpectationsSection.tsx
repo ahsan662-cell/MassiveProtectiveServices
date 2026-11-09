@@ -72,7 +72,7 @@ export const OfficerExpectationsSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               OUR STANDARDS
             </span>
           </motion.div>
@@ -100,7 +100,7 @@ export const OfficerExpectationsSection: React.FC = () => {
             <motion.div
               key={item.title}
               variants={itemVariants}
-              className="border-l-2 border-l-[#C5A880] pl-6 sm:pl-7 space-y-3"
+              className="border-l-2 border-l-[#0E2445] pl-6 sm:pl-7 space-y-3"
             >
               <h3 className="text-xl sm:text-[22px] font-serif font-normal text-white leading-snug">
                 {item.title}

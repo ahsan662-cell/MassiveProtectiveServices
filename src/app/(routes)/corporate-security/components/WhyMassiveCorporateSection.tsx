@@ -103,7 +103,7 @@ export const WhyMassiveCorporateSection: React.FC = () => {
                 className="group relative flex flex-col items-start space-y-4"
               >
                 {/* Gold Icon */}
-                <div className="w-10 h-10 flex items-center justify-start text-[#C5A880] group-hover:text-[#B39369] transition-colors">
+                <div className="w-10 h-10 flex items-center justify-start text-[#93C5FD] group-hover:text-[#B39369] transition-colors">
                   <Icon className="w-6 h-6 stroke-[1.6]" />
                 </div>
 

@@ -19,7 +19,7 @@ export const WhyThisIsDifferentSection: React.FC = () => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+          <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
             WHY THIS IS DIFFERENT
           </span>
         </motion.div>

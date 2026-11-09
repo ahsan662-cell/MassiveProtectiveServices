@@ -35,7 +35,7 @@ export const LicensingHeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               LICENSING &amp; CREDENTIALS
             </span>
           </motion.div>
@@ -75,7 +75,7 @@ export const LicensingHeroSection: React.FC = () => {
               href="https://licensing.fdacs.gov/access/agency.aspx"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.3)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.5)] hover:scale-[1.02] cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#0E2445] hover:bg-[#173A6E] text-white font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(14, 36, 69, 0.3)] hover:shadow-[0_4px_32px_rgba(23, 58, 110, 0.5)] hover:scale-[1.02] cursor-pointer"
             >
               <span>Verify Our License on FDACS</span>
               <ArrowRight className="w-4 h-4" />
@@ -89,7 +89,7 @@ export const LicensingHeroSection: React.FC = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="pt-10 sm:pt-14 border-t border-[#C5A880]/30"
+          className="pt-10 sm:pt-14 border-t border-[#0E2445]/30"
         >
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 lg:gap-16">
             {STATUTORY_RIBBON.map((item) => {
@@ -99,7 +99,7 @@ export const LicensingHeroSection: React.FC = () => {
                   key={item.label}
                   className="flex items-center gap-2.5 text-zinc-300 text-xs sm:text-[13px] font-mono tracking-wider uppercase"
                 >
-                  <Icon className="w-4 h-4 text-[#C5A880] stroke-[1.6] shrink-0" />
+                  <Icon className="w-4 h-4 text-[#93C5FD] stroke-[1.6] shrink-0" />
                   <span>{item.label}</span>
                 </div>
               );

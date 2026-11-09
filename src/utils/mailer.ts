@@ -16,6 +16,13 @@ export interface InquiryDispatchPayload {
   message?: string;
   ndaRequested?: boolean;
   requiresArmedDriver?: boolean;
+  resumeFileName?: string;
+  resumeFile?: {
+    name: string;
+    type?: string;
+    base64: string;
+    size?: number;
+  };
   details?: Record<string, unknown>;
   [key: string]: unknown;
 }
@@ -194,6 +201,7 @@ export async function sendDualInquiryEmails(
     'statement',
     'ndaRequested',
     'requiresArmedDriver',
+    'resumeFile',
     'companyName',
     'company',
     'organization',
@@ -420,6 +428,23 @@ export async function sendDualInquiryEmails(
               </div>`
                 )
                 .join('')}
+
+              ${
+                inquiry.resumeFile?.name
+                  ? `
+              <div style="margin-top: 14px; margin-bottom: 14px; padding: 14px 16px; background-color: #0E2445; border: 1px solid #3B82F6; border-radius: 4px; text-align: left;" align="left">
+                <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #93C5FD; text-transform: uppercase; margin-bottom: 4px;">
+                  &#128206; Candidate Resume Attached
+                </div>
+                <div style="font-size: 15px; font-weight: 600; color: #FFFFFF;">
+                  ${escapeHtml(inquiry.resumeFile.name)}
+                </div>
+                <div style="font-size: 12px; color: #CBD5E1; margin-top: 3px;">
+                  Direct document file attached below to this email dispatch.
+                </div>
+              </div>`
+                  : ''
+              }
 
               ${
                 messageValue
@@ -655,12 +680,26 @@ export async function sendDualInquiryEmails(
 
   // 1. Send to Owner / Operations
   try {
+    const internalAttachments: Array<{ filename: string; content: Buffer; contentType?: string }> = [];
+    if (inquiry.resumeFile?.base64 && inquiry.resumeFile?.name) {
+      try {
+        internalAttachments.push({
+          filename: inquiry.resumeFile.name,
+          content: Buffer.from(inquiry.resumeFile.base64, 'base64'),
+          contentType: inquiry.resumeFile.type || 'application/pdf',
+        });
+      } catch (attachErr) {
+        console.error('[MPS Mailer] Failed to buffer resume attachment:', attachErr);
+      }
+    }
+
     const internalResult = await transporter.sendMail({
       from: fromAddress,
       to: ownerEmail,
       subject: internalSubject,
       html: internalHtml,
       text: internalTextLines,
+      attachments: internalAttachments,
     });
     internalSent = true;
     internalId = internalResult.messageId;

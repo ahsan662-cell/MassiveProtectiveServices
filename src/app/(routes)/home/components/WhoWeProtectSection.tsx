@@ -57,12 +57,12 @@ const STATS = [
   {
     value: '3 Counties',
     title: 'Palm Beach · Broward · Miami-Dade',
-    subtitle: '',
+    subtitle: 'Tri-County Armed Response',
   },
   {
-    value: '24/7',
-    title: 'Available',
-    subtitle: '365 Days a Year',
+    value: '24/7/365',
+    title: 'Rapid Deployment',
+    subtitle: 'Immediate Dispatch Ready',
   },
 ];
 
@@ -92,18 +92,19 @@ export const WhoWeProtectSection: React.FC = () => {
     <section
       id="who-we-protect"
       aria-label="Who We Protect - Massive Protective Services"
-      className="relative w-full bg-[#0A111F] text-white pt-20 sm:pt-28 lg:pt-32 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#FFFFFF] text-[#0F172A] pt-20 sm:pt-28 lg:pt-32 overflow-hidden border-t border-slate-200"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-8 sm:mb-12 space-y-4">
+        <div className="mb-12 sm:mb-16 space-y-4 max-w-3xl">
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0E2445] text-xs font-mono font-bold tracking-[0.2em] uppercase shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0E2445] animate-pulse" />
               WHO WE PROTECT
             </span>
           </motion.div>
@@ -113,19 +114,23 @@ export const WhoWeProtectSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight max-w-4xl"
+            className="text-3xl sm:text-4xl lg:text-[44px] font-sans font-extrabold text-[#0A0A0A] leading-[1.12] tracking-tight"
           >
             Clients Who Require More Than a Guard Service
           </motion.h2>
+
+          <p className="text-slate-600 font-sans text-sm sm:text-base leading-relaxed">
+            From private estate compounds and family offices to C-suite leadership and public figures, our licensed Class G details provide uncompromising security.
+          </p>
         </div>
 
-        {/* 6 Client Profile Blocks (2 rows x 3 columns) */}
+        {/* 6 Client Profile Cards (2 rows x 3 columns) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 pb-20 sm:pb-28"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pb-20 sm:pb-28"
         >
           {CLIENT_TYPES.map((client) => {
             const Icon = client.icon;
@@ -133,31 +138,38 @@ export const WhoWeProtectSection: React.FC = () => {
               <motion.div
                 key={client.title}
                 variants={itemVariants}
-                className="space-y-4 group"
+                className="group relative rounded-xl bg-white p-7 sm:p-8 border border-slate-200/90 hover:border-[#0E2445]/40 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_32px_rgba(14, 36, 69,0.08)] transition-all duration-300 flex flex-col justify-between space-y-5 hover:-translate-y-1"
               >
-                {/* Gold Outline Icon */}
-                <div>
-                  <Icon className="w-6 h-6 text-[#C5A880] stroke-[1.5] group-hover:text-[#D4AF37] transition-colors" />
+                <div className="space-y-4">
+                  {/* Brand Shield Icon Box */}
+                  <div className="w-12 h-12 rounded-lg bg-blue-50 border border-blue-200/60 flex items-center justify-center text-[#0E2445] group-hover:bg-[#0E2445] group-hover:text-white transition-colors duration-300 shadow-sm">
+                    <Icon className="w-6 h-6 stroke-[1.8]" />
+                  </div>
+
+                  {/* Title in Sans Bold */}
+                  <h3 className="text-xl font-sans font-bold text-slate-900 group-hover:text-[#0E2445] leading-snug transition-colors">
+                    {client.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-xs sm:text-sm text-slate-600 font-sans font-normal leading-relaxed">
+                    {client.description}
+                  </p>
                 </div>
 
-                {/* Title in Serif White */}
-                <h3 className="text-xl sm:text-[22px] font-serif font-normal text-white group-hover:text-[#F5F5F7] leading-snug">
-                  {client.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-zinc-300 font-sans font-light leading-relaxed">
-                  {client.description}
-                </p>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono font-medium text-[#0E2445] group-hover:text-[#173A6E]">
+                  <span>Class G Armed Standard</span>
+                  <span className="text-slate-400 group-hover:text-[#0E2445] transition-colors">→</span>
+                </div>
               </motion.div>
             );
           })}
         </motion.div>
       </div>
 
-      {/* Full-Width Bottom Credential Stat Bar matching exact screenshot */}
-      <div className="w-full bg-[#111C33] border-t border-white/[0.08] py-10 sm:py-14 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-[#C5A880]/20">
+      {/* Full-Width Bottom Credential Stat Bar */}
+      <div className="w-full bg-[#F8FAFC] border-t border-slate-200 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
           {STATS.map((stat, idx) => (
             <motion.div
               key={stat.title}
@@ -168,16 +180,16 @@ export const WhoWeProtectSection: React.FC = () => {
                 duration: 0.5,
                 delay: prefersReducedMotion ? 0 : idx * 0.1,
               }}
-              className="text-center px-4 pt-4 sm:pt-0 flex flex-col items-center justify-center space-y-1.5"
+              className="text-center px-6 pt-6 sm:pt-0 flex flex-col items-center justify-center space-y-1.5"
             >
-              <div className="text-3xl sm:text-4xl lg:text-[42px] font-serif font-normal text-[#C5A880] tracking-tight leading-none mb-1">
+              <div className="text-3xl sm:text-4xl lg:text-[42px] font-sans font-extrabold text-[#0E2445] tracking-tight leading-none mb-1">
                 {stat.value}
               </div>
-              <div className="text-xs sm:text-sm font-sans font-semibold text-white tracking-wide">
+              <div className="text-xs sm:text-sm font-sans font-bold text-slate-900 tracking-wide">
                 {stat.title}
               </div>
               {stat.subtitle && (
-                <div className="text-[11px] sm:text-xs font-sans text-zinc-400">
+                <div className="text-[11px] sm:text-xs font-sans text-slate-500 font-medium">
                   {stat.subtitle}
                 </div>
               )}

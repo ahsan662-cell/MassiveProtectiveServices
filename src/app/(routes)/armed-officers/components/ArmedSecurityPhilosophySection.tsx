@@ -18,7 +18,7 @@ export const ArmedSecurityPhilosophySection: React.FC = () => {
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
-          className="w-12 h-[2px] bg-[#C5A880] mx-auto"
+          className="w-12 h-[2px] bg-[#0E2445] mx-auto"
         />
 
         {/* Serif Headline matching Screenshot 2 */}

@@ -74,7 +74,7 @@ export const AboutServiceAreaSection: React.FC = () => {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+              <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
                 OUR SERVICE AREA
               </span>
             </motion.div>
@@ -102,9 +102,9 @@ export const AboutServiceAreaSection: React.FC = () => {
                   href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-mono text-[#C5A880] hover:text-[#D4AF37] transition-colors ml-1"
+                  className="inline-flex items-center gap-1 text-xs font-mono text-[#93C5FD] hover:text-[#93C5FD] transition-colors ml-1"
                 >
-                  <MapPin className="w-3 h-3 text-[#D4AF37]" />
+                  <MapPin className="w-3 h-3 text-[#93C5FD]" />
                   <span>Find us on Google</span>
                   <ExternalLink className="w-2.5 h-2.5 opacity-70" />
                 </a>{' '}
@@ -142,11 +142,11 @@ export const AboutServiceAreaSection: React.FC = () => {
                           transition: { duration: 0.2 },
                         }
                   }
-                  className="rounded-sm bg-[#0B1220] border border-white/[0.06] p-6 sm:p-7 flex flex-col justify-between min-h-[140px] transition-all duration-300 hover:border-[#C5A880]/50 hover:shadow-[0_4px_24px_rgba(0,0,0,0.5),0_0_20px_rgba(197,168,128,0.06)]"
+                  className="rounded-sm bg-[#0B1220] border border-white/[0.06] p-6 sm:p-7 flex flex-col justify-between min-h-[140px] transition-all duration-300 hover:border-[#0E2445]/50 hover:shadow-[0_4px_24px_rgba(0,0,0,0.5),0_0_20px_rgba(14, 36, 69, 0.06)]"
                 >
                   <div className="space-y-3">
-                    <Icon className="w-5 h-5 text-[#C5A880] stroke-[1.5]" />
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-[#C5A880]/80 block">
+                    <Icon className="w-5 h-5 text-[#93C5FD] stroke-[1.5]" />
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-[#93C5FD]/80 block">
                       {region.category}
                     </span>
                   </div>

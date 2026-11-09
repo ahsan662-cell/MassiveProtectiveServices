@@ -21,7 +21,7 @@ export const ConciergeHeadquartersSection: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-6 space-y-3"
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               DELRAY BEACH HEADQUARTERS
             </span>
 
@@ -44,7 +44,7 @@ export const ConciergeHeadquartersSection: React.FC = () => {
               service availability can be confirmed.
             </p>
 
-            <div className="text-xs sm:text-[13px] font-mono text-[#C5A880] tracking-wider uppercase font-medium">
+            <div className="text-xs sm:text-[13px] font-mono text-[#93C5FD] tracking-wider uppercase font-medium">
               PALM BEACH · BROWARD · MIAMI-DADE
             </div>
           </motion.div>

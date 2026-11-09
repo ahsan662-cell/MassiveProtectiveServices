@@ -22,7 +22,7 @@ export const DirectReferencesNDASection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               FOR QUALIFIED PROSPECTS
             </span>
           </motion.div>
@@ -61,7 +61,7 @@ export const DirectReferencesNDASection: React.FC = () => {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#C5A880] hover:text-[#D4AF37] transition-colors group cursor-pointer"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#93C5FD] hover:text-[#93C5FD] transition-colors group cursor-pointer"
             >
               <span className="underline-offset-4 group-hover:underline">Contact Marc Directly</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

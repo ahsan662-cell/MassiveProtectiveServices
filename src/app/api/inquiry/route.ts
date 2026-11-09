@@ -67,9 +67,28 @@ export async function POST(req: NextRequest) {
     }
 
     // 4. Parse & Sanitize Request Body
-    const rawBody = await req.json().catch(() => null);
+    const rawBody = (await req.json().catch(() => null)) as Record<string, unknown> | null;
     if (!rawBody || typeof rawBody !== 'object') {
       return NextResponse.json({ error: 'Invalid JSON payload' }, { status: 400 });
+    }
+
+    // Safely extract candidate resume file before text sanitization (avoids binary corruption)
+    let resumeAttachment: { name: string; type: string; base64: string; size?: number } | undefined = undefined;
+    if (rawBody.resumeFile && typeof rawBody.resumeFile === 'object') {
+      const rf = rawBody.resumeFile as { name?: unknown; type?: unknown; base64?: unknown; size?: unknown };
+      if (typeof rf.name === 'string' && typeof rf.base64 === 'string') {
+        const cleanBase64 = rf.base64.replace(/^data:[^;]+;base64,/, '');
+        // Limit to ~10MB (base64 string max ~14MB)
+        if (cleanBase64.length <= 15 * 1024 * 1024) {
+          resumeAttachment = {
+            name: sanitizePlainText(rf.name).replace(/[^a-zA-Z0-9._-]/g, '_'),
+            type: typeof rf.type === 'string' && rf.type ? sanitizePlainText(rf.type) : 'application/pdf',
+            base64: cleanBase64,
+            size: typeof rf.size === 'number' ? rf.size : undefined,
+          };
+        }
+      }
+      delete rawBody.resumeFile;
     }
 
     const sanitizedBody = sanitizeObject(rawBody) as Record<string, unknown>;
@@ -183,6 +202,7 @@ export async function POST(req: NextRequest) {
       fullName: sanitizePlainText(fullName),
       email: email,
       phone: sanitizePlainText(phone),
+      ...(resumeAttachment ? { resumeFile: resumeAttachment } : {}),
     };
 
     // Clean up normalized aliases so they don't duplicate as extra custom fields

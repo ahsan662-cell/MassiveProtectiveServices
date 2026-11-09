@@ -28,7 +28,7 @@ export const LocationCorridorCoverage: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {data.eyebrow}
               </span>
             </motion.div>
@@ -67,7 +67,7 @@ export const LocationCorridorCoverage: React.FC<Props> = ({ data }) => {
                     data.noDividers ? 'py-1' : 'py-4 sm:py-4.5'
                   } flex items-center gap-3 text-sm sm:text-base text-zinc-200 font-sans group hover:text-white transition-colors`}
                 >
-                  <span className="text-[#C5A880] group-hover:translate-x-1 transition-transform duration-200">
+                  <span className="text-[#93C5FD] group-hover:translate-x-1 transition-transform duration-200">
                     →
                   </span>
                   <span>{item}</span>
@@ -90,7 +90,7 @@ export const LocationCorridorCoverage: React.FC<Props> = ({ data }) => {
                     data.noDividers ? 'py-1' : 'py-4 sm:py-4.5'
                   } flex items-center gap-3 text-sm sm:text-base text-zinc-200 font-sans group hover:text-white transition-colors`}
                 >
-                  <span className="text-[#C5A880] group-hover:translate-x-1 transition-transform duration-200">
+                  <span className="text-[#93C5FD] group-hover:translate-x-1 transition-transform duration-200">
                     →
                   </span>
                   <span>{item}</span>

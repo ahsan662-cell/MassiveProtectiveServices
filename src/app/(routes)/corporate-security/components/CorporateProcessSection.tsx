@@ -72,7 +72,7 @@ export const CorporateProcessSection: React.FC = () => {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
               OUR PROCESS
             </span>
           </motion.div>
@@ -100,14 +100,14 @@ export const CorporateProcessSection: React.FC = () => {
             <motion.div
               key={idx}
               variants={itemVariants}
-              className="group relative bg-[#111A2C]/80 hover:bg-[#152238] border border-white/[0.07] hover:border-[#C5A880]/40 rounded-sm p-8 flex flex-col justify-between transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1 min-h-[260px]"
+              className="group relative bg-[#111A2C]/80 hover:bg-[#152238] border border-white/[0.07] hover:border-[#0E2445]/40 rounded-sm p-8 flex flex-col justify-between transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1 min-h-[260px]"
             >
               {/* Subtle top gold accent on card hover */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C5A880]/0 group-hover:via-[#C5A880] to-transparent transition-all duration-500" />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0E2445]/30 group-hover:via-[#0E2445] to-transparent transition-all duration-500" />
 
               <div className="space-y-4">
                 {/* Step Number matching Screenshot 5 in elegant gold */}
-                <span className="block text-2xl sm:text-3xl font-serif font-light text-[#C5A880] tracking-wider">
+                <span className="block text-2xl sm:text-3xl font-serif font-light text-[#93C5FD] tracking-wider">
                   {step.number}
                 </span>
 

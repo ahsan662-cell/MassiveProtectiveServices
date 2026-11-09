@@ -21,7 +21,7 @@ export const BlogHeroSection: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               SECURITY INTELLIGENCE · MASSIVE PROTECTIVE SERVICES
             </span>
           </motion.div>
@@ -48,14 +48,14 @@ export const BlogHeroSection: React.FC = () => {
         </div>
 
         {/* Full-width Divider Line matching Screenshot 1 */}
-        <div className="w-full border-t border-[#C5A880]/60 pt-10 sm:pt-14">
+        <div className="w-full border-t border-[#0E2445]/60 pt-10 sm:pt-14">
           {/* Featured Article Card matching Screenshot 1 bottom half */}
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="rounded-sm bg-[#0B1220] border-l-4 border-l-[#C5A880] border-y border-r border-white/[0.06] p-7 sm:p-10 lg:p-12 shadow-2xl"
+            className="rounded-sm bg-[#0B1220] border-l-4 border-l-[#0E2445] border-y border-r border-white/[0.06] p-7 sm:p-10 lg:p-12 shadow-2xl"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               {/* Left Column: Title, Excerpt & Link */}
@@ -73,7 +73,7 @@ export const BlogHeroSection: React.FC = () => {
                 <div className="pt-2">
                   <Link
                     href="#articles"
-                    className="inline-flex items-center gap-2 text-sm sm:text-base font-medium text-[#C5A880] hover:text-[#D4AF37] transition-colors group cursor-pointer"
+                    className="inline-flex items-center gap-2 text-sm sm:text-base font-medium text-[#93C5FD] hover:text-[#93C5FD] transition-colors group cursor-pointer"
                   >
                     <span>Read the Guide</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -83,14 +83,14 @@ export const BlogHeroSection: React.FC = () => {
 
               {/* Right Column: Meta info with Book Icon */}
               <div className="lg:col-span-4 lg:border-l lg:border-white/10 lg:pl-10 space-y-3">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#C5A880] block font-semibold">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#93C5FD] block font-semibold">
                   FEATURED · EXECUTIVE PROTECTION
                 </span>
 
                 <div className="h-[1px] w-full bg-white/10" />
 
                 <div className="flex items-start gap-2.5 text-xs text-zinc-400 font-sans pt-1">
-                  <BookOpen className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
+                  <BookOpen className="w-4 h-4 text-[#93C5FD] shrink-0 mt-0.5" />
                   <span>Author: Marc A. Tardalo · Published: Nov 24, 2026 · 7 min read</span>
                 </div>
               </div>

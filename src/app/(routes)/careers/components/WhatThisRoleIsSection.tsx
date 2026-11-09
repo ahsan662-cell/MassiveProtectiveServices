@@ -8,8 +8,8 @@ const ROLE_STANDARDS = [
   {
     icon: (
       <div className="flex items-center gap-1.5">
-        <User className="w-5 h-5 text-[#C5A880] stroke-[1.5]" />
-        <MapPin className="w-5 h-5 text-[#C5A880] stroke-[1.5]" />
+        <User className="w-5 h-5 text-[#93C5FD] stroke-[1.5]" />
+        <MapPin className="w-5 h-5 text-[#93C5FD] stroke-[1.5]" />
       </div>
     ),
     title: 'Consistent Assignment',
@@ -17,19 +17,19 @@ const ROLE_STANDARDS = [
       'We assign specific officers to specific clients and properties. You are not pulled from a pool and sent somewhere new every week. You know the property. You know the client. You know what normal looks like — which is the only way to recognize when something is not.',
   },
   {
-    icon: <FileText className="w-5 h-5 text-[#C5A880] stroke-[1.5]" />,
+    icon: <FileText className="w-5 h-5 text-[#93C5FD] stroke-[1.5]" />,
     title: 'Written Plans for Every Engagement',
     description:
       "Every engagement you work at MPS comes with a written security plan. You are briefed before you deploy. You know the property layout, the client's protocols, the emergency procedures and the specific instructions that apply to that assignment. You are not arriving cold.",
   },
   {
-    icon: <ClipboardCheck className="w-5 h-5 text-[#C5A880] stroke-[1.5]" />,
+    icon: <ClipboardCheck className="w-5 h-5 text-[#93C5FD] stroke-[1.5]" />,
     title: 'Shift Reports — Every Deployment',
     description:
       'You submit a written shift report after every deployment. This is not optional and it is not bureaucratic — it is how professional security works. Reports protect the client, protect you and create a documented record that matters if something ever happens.',
   },
   {
-    icon: <Lock className="w-5 h-5 text-[#C5A880] stroke-[1.5]" />,
+    icon: <Lock className="w-5 h-5 text-[#93C5FD] stroke-[1.5]" />,
     title: 'NDAs — Every Engagement',
     description:
       'You will sign a non-disclosure agreement for every client engagement you work. Client identity, property details and all engagement information are confidential. This is not unusual — it is standard practice at any firm operating at this level.',
@@ -72,7 +72,7 @@ export const WhatThisRoleIsSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               WHAT THIS ROLE IS
             </span>
           </motion.div>
@@ -108,7 +108,7 @@ export const WhatThisRoleIsSection: React.FC = () => {
                       transition: { duration: 0.2 },
                     }
               }
-              className="group rounded-sm bg-[#0B1220] border border-[#C5A880]/70 p-7 sm:p-9 flex flex-col justify-between space-y-4 transition-all duration-300 hover:border-[#C5A880] hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(197,168,128,0.12)] min-h-[250px]"
+              className="group rounded-sm bg-[#0B1220] border border-[#0E2445]/70 p-7 sm:p-9 flex flex-col justify-between space-y-4 transition-all duration-300 hover:border-[#0E2445] hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(14, 36, 69, 0.12)] min-h-[250px]"
             >
               <div className="space-y-4">
                 <div>{std.icon}</div>

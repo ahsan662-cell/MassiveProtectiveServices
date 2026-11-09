@@ -57,7 +57,7 @@ export const ConciergeShapedPresenceSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               SHAPED AROUND YOUR BUILDING
             </span>
           </motion.div>
@@ -93,7 +93,7 @@ export const ConciergeShapedPresenceSection: React.FC = () => {
                       transition: { duration: 0.2 },
                     }
               }
-              className="group rounded-sm bg-white border border-black/10 p-7 sm:p-9 space-y-4 shadow-sm transition-all duration-300 hover:border-[#C5A880] hover:shadow-md min-h-[220px]"
+              className="group rounded-sm bg-white border border-black/10 p-7 sm:p-9 space-y-4 shadow-sm transition-all duration-300 hover:border-[#0E2445] hover:shadow-md min-h-[220px]"
             >
               <h3 className="text-xl sm:text-2xl font-serif text-[#111827] font-normal leading-snug">
                 {item.title}
@@ -107,7 +107,7 @@ export const ConciergeShapedPresenceSection: React.FC = () => {
         </motion.div>
 
         {/* Callout Footnote with Gold Vertical Line matching Screenshot 1 */}
-        <div className="border-l-2 border-l-[#C5A880] pl-4 sm:pl-6 text-xs text-zinc-500 font-sans font-light leading-relaxed">
+        <div className="border-l-2 border-l-[#0E2445] pl-4 sm:pl-6 text-xs text-zinc-500 font-sans font-light leading-relaxed">
           Coverage hours, personnel, start dates and any armed or unarmed requirements are agreed
           individually. No staffing or start-date guarantee is implied.
         </div>

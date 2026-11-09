@@ -33,10 +33,10 @@ export const Footer: React.FC = () => {
   return (
     <footer
       aria-label="Site Footer"
-      className="relative w-full bg-[#0D2548] text-white overflow-hidden border-t border-[#C5A880]/30 select-text"
+      className="relative w-full bg-[#0E2445] text-white overflow-hidden border-t-2 border-[#0E2445] select-text"
     >
       {/* Ambient background glow */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[300px] bg-[#C5A880]/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[300px] bg-[#0E2445]/20 rounded-full blur-[140px] pointer-events-none" />
 
       <motion.div
         variants={containerVariants}
@@ -57,29 +57,29 @@ export const Footer: React.FC = () => {
 
             {/* Headline */}
             <div>
-              <h2 className="text-2xl sm:text-[26px] font-serif font-normal text-white leading-tight tracking-tight pt-1">
+              <h2 className="text-2xl sm:text-[26px] font-sans font-bold text-white leading-tight tracking-tight pt-1">
                 Headquartered in Delray Beach, FL.
               </h2>
               <a
                 href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#C5A880] hover:text-[#D4AF37] transition-colors mt-2"
+                className="inline-flex items-center gap-1.5 text-xs font-mono text-[#93C5FD] hover:text-[#93C5FD] transition-colors mt-2"
               >
-                <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
+                <MapPin className="w-3.5 h-3.5 text-[#93C5FD]" />
                 <span>Find us on Google</span>
                 <ExternalLink className="w-3 h-3 opacity-70" />
               </a>
             </div>
 
             {/* Paragraph */}
-            <p className="text-xs sm:text-sm text-zinc-300 font-sans font-light leading-relaxed max-w-md">
-              Discreet, professional protection for individuals, families and businesses across South Florida.
+            <p className="text-xs sm:text-sm text-zinc-300 font-sans font-normal leading-relaxed max-w-md">
+              Discreet, professional armed protection for individuals, families and businesses across South Florida.
             </p>
 
             {/* License Line */}
             <div className="pt-1">
-              <span className="text-[11px] sm:text-xs font-mono tracking-wider text-zinc-400 uppercase">
+              <span className="text-[11px] sm:text-xs font-mono tracking-wider text-[#93C5FD] font-semibold uppercase">
                 FL License B1400200 · LICENSED &amp; INSURED
               </span>
             </div>
@@ -88,9 +88,9 @@ export const Footer: React.FC = () => {
             <div>
               <a
                 href="tel:9542347231"
-                className="inline-block text-xs sm:text-sm font-mono text-zinc-200 hover:text-[#D4AF37] transition-colors duration-200"
+                className="inline-block text-xs sm:text-sm font-mono text-zinc-200 hover:text-[#60A5FA] transition-colors duration-200"
               >
-                <span className="text-[#C5A880]">24/7</span> · (954) 234-7231
+                <span className="text-[#93C5FD] font-bold">24/7</span> · (954) 234-7231
               </a>
             </div>
 
@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
                   href="https://www.linkedin.com/company/massive-protective-services"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-zinc-300 hover:text-[#D4AF37] transition-colors group"
+                  className="inline-flex items-center gap-2 text-zinc-300 hover:text-[#60A5FA] transition-colors group"
                 >
                   <FaLinkedin className="w-4 h-4 text-[#0A66C2] shrink-0 group-hover:scale-105 transition-transform" />
                   <span className="group-hover:underline">Company: Massive Protective Services</span>
@@ -114,7 +114,7 @@ export const Footer: React.FC = () => {
                   href="https://www.linkedin.com/in/marc-a-tardalo-22839530/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-zinc-300 hover:text-[#D4AF37] transition-colors group"
+                  className="inline-flex items-center gap-2 text-zinc-300 hover:text-[#60A5FA] transition-colors group"
                 >
                   <FaLinkedin className="w-4 h-4 text-[#0A66C2] shrink-0 group-hover:scale-105 transition-transform" />
                   <span className="group-hover:underline">Personal: Marc A. Tardalo (Founder &amp; CEO)</span>
@@ -127,17 +127,17 @@ export const Footer: React.FC = () => {
           {/* Column 2: SERVICES (lg:col-span-3) - Matches Header Services Submenu */}
           <motion.div variants={itemVariants} className="lg:col-span-3 space-y-4">
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" />
-              <h3 className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-[#C5A880]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0E2445]" />
+              <h3 className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-[#93C5FD]">
                 SERVICES
               </h3>
             </div>
-            <ul className="space-y-2.5 text-xs sm:text-[13px] font-sans font-light">
+            <ul className="space-y-2.5 text-xs sm:text-[13px] font-sans font-normal">
               {SERVICES_NAV.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-zinc-300 hover:text-[#D4AF37] transition-colors duration-200 block py-0.5 leading-snug"
+                    className="text-zinc-300 hover:text-[#60A5FA] transition-colors duration-200 block py-0.5 leading-snug"
                   >
                     {link.name}
                   </Link>
@@ -150,27 +150,27 @@ export const Footer: React.FC = () => {
           <motion.div variants={itemVariants} className="md:col-span-2 lg:col-span-4 space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" />
-                <h3 className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-[#C5A880]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0E2445]" />
+                <h3 className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-[#93C5FD]">
                   LOCATIONS
                 </h3>
               </div>
               <Link
                 href="/locations"
-                className="text-[11px] font-mono text-zinc-400 hover:text-[#D4AF37] transition-colors flex items-center gap-1 group"
+                className="text-[11px] font-mono text-[#93C5FD] hover:text-[#93C5FD] transition-colors flex items-center gap-1 group"
               >
                 <span>All Locations</span>
                 <span className="transition-transform group-hover:translate-x-0.5">→</span>
               </Link>
             </div>
             {/* 2-Column Subgrid balancing 19 jurisdictions */}
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs sm:text-[13px] font-sans font-light">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs sm:text-[13px] font-sans font-normal">
               <ul className="space-y-2.5">
                 {LOCATIONS_NAV.slice(0, 10).map((area) => (
                   <li key={area.href}>
                     <Link
                       href={area.href}
-                      className="text-zinc-300 hover:text-[#D4AF37] transition-colors duration-200 block py-0.5 leading-snug"
+                      className="text-zinc-300 hover:text-[#60A5FA] transition-colors duration-200 block py-0.5 leading-snug"
                     >
                       {area.name}
                     </Link>
@@ -182,7 +182,7 @@ export const Footer: React.FC = () => {
                   <li key={area.href}>
                     <Link
                       href={area.href}
-                      className="text-zinc-300 hover:text-[#D4AF37] transition-colors duration-200 block py-0.5 leading-snug"
+                      className="text-zinc-300 hover:text-[#60A5FA] transition-colors duration-200 block py-0.5 leading-snug"
                     >
                       {area.name}
                     </Link>
@@ -191,7 +191,7 @@ export const Footer: React.FC = () => {
                 <li>
                   <Link
                     href="/locations"
-                    className="text-[#C5A880] hover:text-[#D4AF37] font-medium transition-colors duration-200 block py-0.5 leading-snug"
+                    className="text-[#93C5FD] hover:text-[#93C5FD] font-semibold transition-colors duration-200 block py-0.5 leading-snug"
                   >
                     Explore All (19) →
                   </Link>
@@ -203,17 +203,17 @@ export const Footer: React.FC = () => {
           {/* Column 4: RESOURCES (lg:col-span-2) - Matches Header Resources Submenu */}
           <motion.div variants={itemVariants} className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880]" />
-              <h3 className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-[#C5A880]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0E2445]" />
+              <h3 className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-[#93C5FD]">
                 RESOURCES
               </h3>
             </div>
-            <ul className="space-y-2.5 text-xs sm:text-[13px] font-sans font-light">
+            <ul className="space-y-2.5 text-xs sm:text-[13px] font-sans font-normal">
               {RESOURCES_NAV.map((resource) => (
                 <li key={resource.href + resource.name}>
                   <Link
                     href={resource.href}
-                    className="text-zinc-300 hover:text-[#D4AF37] transition-colors duration-200 block py-0.5 leading-snug"
+                    className="text-zinc-300 hover:text-[#60A5FA] transition-colors duration-200 block py-0.5 leading-snug"
                   >
                     {resource.name}
                   </Link>
@@ -223,13 +223,13 @@ export const Footer: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Mid Section Review Banner & Address Note matching Task 3 & Task 4 */}
+        {/* Mid Section Review Banner & Address Note */}
         <motion.div
           variants={itemVariants}
           className="pt-6 pb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-t border-white/[0.08]"
         >
           {/* Address Line with Find Us on Google */}
-          <div className="flex flex-wrap items-center gap-2 text-xs sm:text-[13px] font-sans font-light text-zinc-400">
+          <div className="flex flex-wrap items-center gap-2 text-xs sm:text-[13px] font-sans text-zinc-300">
             <span>
               Headquartered in Delray Beach, FL · Serving Palm Beach, Broward &amp; Miami-Dade Counties.
             </span>
@@ -238,55 +238,55 @@ export const Footer: React.FC = () => {
               href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs font-mono text-[#C5A880] hover:text-[#D4AF37] transition-colors font-medium"
+              className="inline-flex items-center gap-1 text-xs font-mono text-[#93C5FD] hover:text-[#93C5FD] transition-colors font-medium"
             >
-              <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <MapPin className="w-3.5 h-3.5 text-[#93C5FD]" />
               <span>Find us on Google</span>
             </a>
           </div>
 
-          {/* TASK 3: ⭐ Happy with our service? Leave a review on Google */}
+          {/* ⭐ Happy with our service? Leave a review on Google */}
           <div>
             <a
               href="https://admin.trustindex.io/card/56cfe17231ce249"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm bg-white/[0.04] hover:bg-white/[0.08] border border-[#C5A880]/40 hover:border-[#D4AF37] text-xs sm:text-[13px] font-sans text-zinc-200 hover:text-white transition-all shadow-sm group"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm bg-[#0E2445]/40 hover:bg-[#0E2445]/60 border border-[#0E2445]/60 hover:border-[#173A6E] text-xs sm:text-[13px] font-sans text-zinc-200 hover:text-white transition-all shadow-sm group"
             >
               <span>⭐ Happy with our service? Leave a review on Google</span>
-              <ExternalLink className="w-3.5 h-3.5 text-[#C5A880] transition-transform group-hover:translate-x-0.5" />
+              <ExternalLink className="w-3.5 h-3.5 text-[#60A5FA] transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
         </motion.div>
 
-        {/* Bottom Full-Width Gold Divider Line matching Screenshot */}
-        <div className="w-full h-px bg-[#C5A880]/40 my-3" />
+        {/* Bottom Full-Width Divider Line */}
+        <div className="w-full h-px bg-[#0E2445]/40 my-3" />
 
-        {/* Bottom Copyright & Legal Links matching Screenshot */}
+        {/* Bottom Copyright & Legal Links */}
         <motion.div
           variants={itemVariants}
-          className="pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px] sm:text-xs font-sans font-light text-zinc-400"
+          className="pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-[11px] sm:text-xs font-sans text-zinc-400"
         >
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <span>© 2026 Massive Protective Services Inc.</span>
             <span>·</span>
             <Link
               href="/privacy"
-              className="hover:text-[#D4AF37] transition-colors duration-200"
+              className="hover:text-[#60A5FA] transition-colors duration-200"
             >
               Privacy Policy
             </Link>
             <span>·</span>
             <Link
               href="/terms"
-              className="hover:text-[#D4AF37] transition-colors duration-200"
+              className="hover:text-[#60A5FA] transition-colors duration-200"
             >
               Terms
             </Link>
             <span>·</span>
             <Link
               href="/privacy"
-              className="hover:text-[#D4AF37] transition-colors duration-200"
+              className="hover:text-[#60A5FA] transition-colors duration-200"
             >
               Accessibility
             </Link>
@@ -301,7 +301,7 @@ export const Footer: React.FC = () => {
               rel="noopener noreferrer"
               title="Massive Protective Services (Company LinkedIn)"
               aria-label="Company LinkedIn"
-              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-[#D4AF37] transition-colors"
+              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-[#60A5FA] transition-colors"
             >
               <FaLinkedin className="w-3.5 h-3.5 text-[#0A66C2]" />
               <span>Company</span>
@@ -313,7 +313,7 @@ export const Footer: React.FC = () => {
               rel="noopener noreferrer"
               title="Marc A. Tardalo (Personal Portfolio)"
               aria-label="Founder Portfolio"
-              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-[#D4AF37] transition-colors"
+              className="inline-flex items-center gap-1.5 text-zinc-300 hover:text-[#60A5FA] transition-colors"
             >
               <FaLinkedin className="w-3.5 h-3.5 text-[#0A66C2]" />
               <span>Personal</span>

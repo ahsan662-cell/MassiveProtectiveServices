@@ -13,7 +13,12 @@ export interface NavCategory {
 
 export const NAV_STRUCTURE: NavCategory[] = [
   {
+    title: 'HOME',
+    href: '/'
+  },
+  {
     title: 'SERVICES',
+    href: '/services',
     items: [
       {
         name: 'Executive Protection',
@@ -85,6 +90,7 @@ export const NAV_STRUCTURE: NavCategory[] = [
   },
   {
     title: 'LOCATIONS',
+    href: '/locations',
     items: [
       {
         name: 'Palm Beach',
@@ -211,11 +217,6 @@ export const NAV_STRUCTURE: NavCategory[] = [
         description: 'Delray Beach HQ, agency pedigree & command staff',
       },
       {
-        name: 'Careers & Recruitment',
-        href: '/careers',
-        description: 'Class G armed officer standards & selective hiring',
-      },
-      {
         name: 'Testimonials',
         href: '/testimonials',
         description: 'What clients say — verifiable credentials & NDA references',
@@ -245,6 +246,10 @@ export const NAV_STRUCTURE: NavCategory[] = [
   {
     title: 'BLOGS',
     href: '/blog',
+  },
+  {
+    title: 'Careers',
+    href: '/careers',
   },
   {
     title: 'CONTACT',

@@ -4,6 +4,7 @@ export { ServicesGrid } from './ServicesGrid';
 export { WhoWeProtectSection } from './WhoWeProtectSection';
 export { WhyMassiveProtectiveSection } from './WhyMassiveProtectiveSection';
 export { WhereWeOperateSection } from './WhereWeOperateSection';
+export { LocationsSlider } from './LocationsSlider';
 export { AboutMPSSection } from './AboutMPSSection';
 export { TestimonialsSection } from './TestimonialsSection';
 export { ProcessSection } from './ProcessSection';

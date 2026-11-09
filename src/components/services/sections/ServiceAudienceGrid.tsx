@@ -43,7 +43,7 @@ export const ServiceAudienceGrid: React.FC<Props> = ({ data }) => {
       }`}
     >
       {!isLight && (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#C5A880]/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#0E2445]/5 rounded-full blur-[140px] pointer-events-none" />
       )}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
@@ -56,7 +56,7 @@ export const ServiceAudienceGrid: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {data.eyebrow}
               </span>
             </motion.div>
@@ -124,11 +124,11 @@ export const ServiceAudienceGrid: React.FC<Props> = ({ data }) => {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="group relative border border-[#C5A880] hover:border-[#D4AF37] bg-white/70 hover:bg-white rounded-none p-7 sm:p-8 flex flex-col justify-start transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(197,168,128,0.18)] hover:-translate-y-1"
+                className="group relative border border-[#0E2445] hover:border-[#93C5FD] bg-white/70 hover:bg-white rounded-none p-7 sm:p-8 flex flex-col justify-start transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_24px_rgba(14, 36, 69, 0.18)] hover:-translate-y-1"
               >
                 {/* Optional icon if present */}
                 {'icon' in card && typeof card.icon === 'string' && card.icon ? (
-                  <div className="w-8 h-8 flex items-center justify-start text-[#C5A880] mb-4">
+                  <div className="w-8 h-8 flex items-center justify-start text-[#93C5FD] mb-4">
                     <ServiceIcon name={card.icon} className="w-6 h-6 stroke-[1.6]" />
                   </div>
                 ) : null}
@@ -167,10 +167,10 @@ export const ServiceAudienceGrid: React.FC<Props> = ({ data }) => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:col-span-5 border-l-2 border-[#C5A880] pl-6 sm:pl-8 space-y-4"
+              className="lg:col-span-5 border-l-2 border-[#0E2445] pl-6 sm:pl-8 space-y-4"
             >
               {data.listTitle && (
-                <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880] block mb-5">
+                <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD] block mb-5">
                   {data.listTitle}
                 </span>
               )}
@@ -180,7 +180,7 @@ export const ServiceAudienceGrid: React.FC<Props> = ({ data }) => {
                     key={idx}
                     className="flex items-center gap-3 text-sm sm:text-[15px] text-zinc-200 font-sans font-normal"
                   >
-                    <span className="text-[#C5A880] text-xs select-none">✦</span>
+                    <span className="text-[#93C5FD] text-xs select-none">✦</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -202,19 +202,19 @@ export const ServiceAudienceGrid: React.FC<Props> = ({ data }) => {
                 variants={itemVariants}
                 className={`group relative ${
                   data.cardVariant === 'gold-title'
-                    ? 'bg-[#121D38] hover:bg-[#162548] border border-white/[0.08] hover:border-[#C5A880]/50 rounded-lg'
-                    : 'bg-[#101828]/85 hover:bg-[#142036] border border-white/[0.08] hover:border-[#C5A880]/40 rounded-sm'
+                    ? 'bg-[#121D38] hover:bg-[#162548] border border-white/[0.08] hover:border-[#0E2445]/50 rounded-lg'
+                    : 'bg-[#101828]/85 hover:bg-[#142036] border border-white/[0.08] hover:border-[#0E2445]/40 rounded-sm'
                 } p-8 sm:p-9 flex flex-col justify-start transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1 space-y-4`}
               >
                 {'icon' in card && typeof card.icon === 'string' && card.icon && (
-                  <div className="w-8 h-8 flex items-center justify-start text-[#C5A880] group-hover:text-[#D4AF37] transition-colors mb-1">
+                  <div className="w-8 h-8 flex items-center justify-start text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors mb-1">
                     <ServiceIcon name={card.icon} className="w-6 h-6 stroke-[1.6]" />
                   </div>
                 )}
                 <h3
                   className={`text-xl sm:text-2xl font-serif font-normal ${
                     data.cardVariant === 'gold-title'
-                      ? 'text-[#C5A880] group-hover:text-[#D4AF37]'
+                      ? 'text-[#93C5FD] group-hover:text-[#93C5FD]'
                       : 'text-white group-hover:text-[#F3E5D0]'
                   } transition-colors leading-snug`}
                 >
@@ -242,7 +242,7 @@ export const ServiceAudienceGrid: React.FC<Props> = ({ data }) => {
                 className="group relative flex flex-col items-start space-y-4 pt-2 border-l border-white/15 pl-6 sm:pl-8"
               >
                 {/* Gold Icon */}
-                <div className="w-12 h-12 flex items-center justify-start text-[#C5A880] group-hover:text-[#D4AF37] transition-colors">
+                <div className="w-12 h-12 flex items-center justify-start text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors">
                   <ServiceIcon name={pillar.icon || 'shield-check'} className="w-8 h-8 stroke-[1.6]" />
                 </div>
 

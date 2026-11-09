@@ -61,7 +61,7 @@ export const CorporateRelatedServicesSection: React.FC = () => {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
               EXPLORE FURTHER
             </span>
           </motion.div>
@@ -89,13 +89,13 @@ export const CorporateRelatedServicesSection: React.FC = () => {
             <motion.div key={idx} variants={itemVariants}>
               <Link
                 href={service.href}
-                className="group relative block bg-[#111A2C]/80 hover:bg-[#152238] border border-white/[0.08] hover:border-[#C5A880]/50 rounded-sm p-8 sm:p-10 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1"
+                className="group relative block bg-[#111A2C]/80 hover:bg-[#152238] border border-white/[0.08] hover:border-[#0E2445]/50 rounded-sm p-8 sm:p-10 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1"
               >
                 <div className="flex items-center justify-between gap-4">
                   <h3 className="text-xl sm:text-2xl font-serif font-normal text-white group-hover:text-[#F3E5D0] transition-colors leading-snug">
                     {service.title}
                   </h3>
-                  <ArrowUpRight className="w-5 h-5 text-[#C5A880] group-hover:text-[#D4AF37] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 shrink-0" />
+                  <ArrowUpRight className="w-5 h-5 text-[#93C5FD] group-hover:text-[#93C5FD] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 shrink-0" />
                 </div>
               </Link>
             </motion.div>

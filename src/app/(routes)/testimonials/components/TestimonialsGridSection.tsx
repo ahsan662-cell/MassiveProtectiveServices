@@ -12,10 +12,10 @@ export const TestimonialsGridSection: React.FC = () => {
   return (
     <section
       aria-label="Verified Google Client Reviews"
-      className="relative w-full bg-[#0A111F] text-white py-16 sm:py-20 lg:py-24 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#ffffff] text-[#0F172A] py-18 sm:py-24 lg:py-28 overflow-hidden border-t border-slate-200"
     >
-      {/* Ambient background gold glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#C9A84C]/5 rounded-full blur-[150px] pointer-events-none" />
+      {/* Ambient background subtle brand glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#0E2445]/5 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         {/* Section Header */}
@@ -26,11 +26,10 @@ export const TestimonialsGridSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C9A84C]/10 border border-[#C9A84C]/25 text-[#C9A84C] text-xs font-semibold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#0E2445] text-xs font-mono font-bold uppercase tracking-wider shadow-sm">
               <svg
-                className="w-3.5 h-3.5"
+                className="w-3.5 h-3.5 text-[#0E2445] fill-current"
                 viewBox="0 0 24 24"
-                fill="currentColor"
                 aria-hidden="true"
               >
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
@@ -44,7 +43,7 @@ export const TestimonialsGridSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight max-w-4xl"
+            className="text-3xl sm:text-4xl lg:text-[44px] font-sans font-extrabold text-[#0A0A0A] leading-[1.12] tracking-tight max-w-4xl"
           >
             In Their Words
           </motion.h2>
@@ -54,7 +53,7 @@ export const TestimonialsGridSection: React.FC = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="text-sm sm:text-base font-sans text-zinc-400 max-w-2xl"
+            className="text-sm sm:text-base font-sans text-slate-600 max-w-2xl leading-relaxed"
           >
             Live verified reviews from clients, estate principals, and private event organizers across South Florida.
           </motion.p>
@@ -73,13 +72,10 @@ export const TestimonialsGridSection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-12 sm:mt-16 max-w-2xl mx-auto"
         >
-          <div className="relative p-6 sm:p-7 rounded-2xl bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-[#C9A84C]/30 shadow-2xl backdrop-blur-md overflow-hidden">
-            {/* Subtle gold radial ambient */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#C9A84C]/10 rounded-bl-full pointer-events-none blur-xl" />
-
+          <div className="relative p-6 sm:p-7 rounded-2xl bg-[#F8FAFC] border border-slate-200/90 shadow-xl shadow-slate-200/50 overflow-hidden">
             <div className="relative z-10 flex flex-col sm:flex-row items-center gap-6 sm:gap-7">
               {/* QR Code Container */}
-              <div className="shrink-0 bg-white p-2.5 rounded-xl shadow-xl shadow-black/50 border border-white/20">
+              <div className="shrink-0 bg-white p-2.5 rounded-xl shadow-md border border-slate-200">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/Trustindex-QRcard-massive-protective-services.svg"
@@ -92,22 +88,21 @@ export const TestimonialsGridSection: React.FC = () => {
 
               {/* Text & Action Button */}
               <div className="flex-1 text-center sm:text-left space-y-2.5">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#C9A84C]/15 border border-[#C9A84C]/30 text-[#C9A84C] text-xs font-semibold uppercase tracking-wider">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-[#0E2445] text-xs font-mono font-bold uppercase tracking-wider">
                   <svg
-                    className="w-3.5 h-3.5"
+                    className="w-3.5 h-3.5 fill-current"
                     viewBox="0 0 24 24"
-                    fill="currentColor"
                   >
                     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                   </svg>
                   <span>Quick Review Card</span>
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight font-serif">
+                <h3 className="text-lg sm:text-xl font-sans font-bold text-slate-900 tracking-tight">
                   Scan or Click to Leave a Review
                 </h3>
 
-                <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                   Scan the QR code with your mobile camera or click below to submit your verified review for Massive Protective Services.
                 </p>
 
@@ -116,7 +111,7 @@ export const TestimonialsGridSection: React.FC = () => {
                     href={TRUSTINDEX_CARD_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2.5 bg-[#C9A84C] text-[#0A0F1E] font-bold text-sm px-6 py-2.5 rounded-lg shadow-lg shadow-[#C9A84C]/20 hover:bg-[#D4B55D] hover:shadow-[#C9A84C]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                    className="inline-flex items-center justify-center gap-2.5 bg-[#0E2445] text-white font-bold text-sm px-6 py-2.5 rounded-lg shadow-lg shadow-[#0E2445]/25 hover:bg-[#173A6E] hover:shadow-[#0E2445]/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
                   >
                     <span>Leave Us a Google Review</span>
                     <svg

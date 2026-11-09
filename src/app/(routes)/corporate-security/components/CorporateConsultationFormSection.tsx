@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, Check, Loader2, ShieldCheck, Lock, AlertTriangle } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
+import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
+import { MessageCircle, ChevronDown as ChevronDownIcon } from 'lucide-react';
 
 const NEED_TYPES = [
   'Executive Protection',
@@ -27,20 +29,22 @@ export const CorporateConsultationFormSection: React.FC = () => {
   });
 
   const [needDropdownOpen, setNeedDropdownOpen] = useState(false);
-  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, submitForm, reset } = useConsultationSubmit({ formSource: 'Corporate Security Consultation' });
+  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, isMethodModalOpen, setIsMethodModalOpen, validate, submitForm, submitViaWhatsApp, reset } = useConsultationSubmit({ formSource: 'Corporate Security Consultation' });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    await submitForm(formData);
+    if (validate(formData)) {
+      setIsMethodModalOpen(true);
+    }
   };
 
   return (
     <section
       id="consultation-form"
       aria-label="Request a Confidential Corporate Security Consultation"
-      className="relative w-full bg-[#080E1A] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#080E1A] text-white py-8 sm:py-10 lg:py-12 overflow-hidden border-t border-white/5"
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3.5 sm:space-y-4">
         {/* Section Header matching Screenshot 3 */}
         <div className="space-y-3">
           <motion.div
@@ -49,7 +53,7 @@ export const CorporateConsultationFormSection: React.FC = () => {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#0E2445]">
               CONFIDENTIAL CONSULTATION
             </span>
           </motion.div>
@@ -59,7 +63,7 @@ export const CorporateConsultationFormSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.14] tracking-tight"
+            className="text-xl sm:text-2xl lg:text-[28px] font-serif font-normal text-white leading-[1.14] tracking-tight"
           >
             Request a Confidential Corporate Security Consultation
           </motion.h2>
@@ -83,8 +87,8 @@ export const CorporateConsultationFormSection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.18 }}
         >
           {isSuccess ? (
-            <div className="py-14 text-center space-y-6 bg-[#0E1728] border border-white/10 rounded-sm p-8">
-              <div className="w-16 h-16 rounded-full bg-[#C5A880]/15 border border-[#C5A880]/40 text-[#C5A880] flex items-center justify-center mx-auto">
+            <div className="py-14 text-center space-y-3 bg-[#0E1728] border border-white/10 rounded-sm p-8">
+              <div className="w-16 h-16 rounded-full bg-[#0E2445]/15 border border-[#0E2445]/40 text-[#0E2445] flex items-center justify-center mx-auto">
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <div className="space-y-2">
@@ -99,7 +103,7 @@ export const CorporateConsultationFormSection: React.FC = () => {
               <div className="pt-2">
                 <a
                   href="tel:9542347231"
-                  className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C5A880] hover:text-[#D4AF37] transition-colors"
+                  className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#0E2445] hover:text-[#173A6E] transition-colors"
                 >
                   <Lock className="w-3.5 h-3.5" />
                   <span>Immediate dispatch required? Call (954) 234-7231</span>
@@ -107,7 +111,7 @@ export const CorporateConsultationFormSection: React.FC = () => {
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-3">
               {/* Row 1: Full Name & Company Name */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -119,7 +123,7 @@ export const CorporateConsultationFormSection: React.FC = () => {
                     required
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#C5A880] text-white px-4 py-3.5 rounded-sm text-sm outline-none transition-colors"
+                    className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#0E2445] text-white px-3 py-2 sm:py-2.5 rounded-sm text-sm outline-none transition-colors"
                   />
                 </div>
 
@@ -132,7 +136,7 @@ export const CorporateConsultationFormSection: React.FC = () => {
                     required
                     value={formData.companyName}
                     onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                    className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#C5A880] text-white px-4 py-3.5 rounded-sm text-sm outline-none transition-colors"
+                    className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#0E2445] text-white px-3 py-2 sm:py-2.5 rounded-sm text-sm outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -147,7 +151,7 @@ export const CorporateConsultationFormSection: React.FC = () => {
                     type="text"
                     value={formData.jobTitle}
                     onChange={(e) => setFormData({ ...formData, jobTitle: e.target.value })}
-                    className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#C5A880] text-white px-4 py-3.5 rounded-sm text-sm outline-none transition-colors"
+                    className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#0E2445] text-white px-3 py-2 sm:py-2.5 rounded-sm text-sm outline-none transition-colors"
                   />
                 </div>
 
@@ -160,7 +164,7 @@ export const CorporateConsultationFormSection: React.FC = () => {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#C5A880] text-white px-4 py-3.5 rounded-sm text-sm outline-none transition-colors"
+                    className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#0E2445] text-white px-3 py-2 sm:py-2.5 rounded-sm text-sm outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -175,7 +179,7 @@ export const CorporateConsultationFormSection: React.FC = () => {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#C5A880] text-white px-4 py-3.5 rounded-sm text-sm outline-none transition-colors"
+                  className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#0E2445] text-white px-3 py-2 sm:py-2.5 rounded-sm text-sm outline-none transition-colors"
                 />
               </div>
 
@@ -198,81 +202,43 @@ export const CorporateConsultationFormSection: React.FC = () => {
                   </div>
                 </div>
               )}
-              <button
-                  type="button"
-                  onClick={() => setNeedDropdownOpen(!needDropdownOpen)}
-                  className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#C5A880] text-white px-4 py-3.5 rounded-sm text-sm flex items-center justify-between text-left transition-colors cursor-pointer"
-                >
-                  <span className="text-zinc-200">{formData.typeOfNeed}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 text-zinc-400 transition-transform duration-200 ${
-                      needDropdownOpen ? 'rotate-180' : ''
-                    }`}
-                  />
-                </button>
-
-                {/* Dropdown Options Container matching Screenshot 3 */}
-                {needDropdownOpen && (
-                  <div className="absolute z-30 top-full mt-1 left-0 right-0 bg-[#0E1728] border border-[#1E2D4A] rounded-sm shadow-2xl py-1 divide-y divide-white/5">
-                    {NEED_TYPES.map((type, idx) => {
-                      const isSelected = formData.typeOfNeed === type;
-                      return (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={() => {
-                            setFormData({ ...formData, typeOfNeed: type });
-                            setNeedDropdownOpen(false);
-                          }}
-                          className={`w-full px-4 py-3 text-left text-sm flex items-center justify-between transition-colors ${
-                            isSelected
-                              ? 'text-[#C5A880] bg-[#142036]'
-                              : 'text-zinc-300 hover:bg-[#142036] hover:text-white'
-                          }`}
-                        >
-                          <span>{type}</span>
-                          {isSelected && <Check className="w-4 h-4 text-[#C5A880]" />}
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-
-              {/* Row 5: Brief Description matching Screenshot 3 */}
-              <div className="space-y-2">
-                <label className="block text-xs sm:text-[13px] font-sans text-zinc-300">
-                  Brief Description
-                </label>
-                <textarea
-                  rows={5}
-                  value={formData.briefDescription}
-                  onChange={(e) => setFormData({ ...formData, briefDescription: e.target.value })}
-                  className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#C5A880] text-white px-4 py-3.5 rounded-sm text-sm outline-none transition-colors resize-y min-h-[120px]"
-                />
-              </div>
-
-              {/* Submit Button matching Screenshot 3: REQUEST CONSULTATION in solid gold */}
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] cursor-pointer flex items-center justify-center gap-2"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin text-[#0A0A0A]" />
-                      <span>PROCESSING INQUIRY...</span>
-                    </>
-                  ) : (
-                    <span>REQUEST CONSULTATION</span>
-                  )}
-                </button>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="flex-1 py-3 px-5 rounded bg-[#0E2445] hover:bg-[#173A6E] text-white font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-2 border border-[#3B82F6]/30 active:scale-[0.99]"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin text-white" />
+                        <span>PROCESSING INQUIRY...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Confidential Request</span>
+                        <ChevronDownIcon className="w-3.5 h-3.5 opacity-70" />
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             </form>
           )}
         </motion.div>
       </div>
+      {/* Submission Method Selection Modal */}
+      <SubmissionMethodModal
+        isOpen={isMethodModalOpen}
+        onClose={() => setIsMethodModalOpen(false)}
+        onSubmitEmail={async () => {
+          await submitForm(formData);
+        }}
+        onSubmitWhatsApp={() => {
+          submitViaWhatsApp(formData);
+        }}
+        isSubmittingEmail={isSubmitting}
+        clientName={formData.fullName}
+      />
     </section>
   );
 };

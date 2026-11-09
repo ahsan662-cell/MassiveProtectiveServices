@@ -28,7 +28,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
     >
       {/* Background ambient lighting accents */}
       {!isLight && (
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C5A880]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#0E2445]/5 rounded-full blur-3xl pointer-events-none" />
       )}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,7 +43,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.5 }}
                 >
-                  <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+                  <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                     {data.eyebrow}
                   </span>
                 </motion.div>
@@ -91,12 +91,12 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                 {data.featuresList?.map((feature, idx) => (
                   <div key={idx} className="py-6 sm:py-7 flex items-start gap-4 sm:gap-5 group">
                     {feature.icon && (
-                      <div className="text-[#C5A880] group-hover:text-[#D4AF37] transition-colors shrink-0 mt-0.5">
+                      <div className="text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors shrink-0 mt-0.5">
                         <ServiceIcon name={feature.icon} className="w-6 h-6 stroke-[1.6]" />
                       </div>
                     )}
                     <div className="space-y-1.5">
-                      <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#C5A880] group-hover:text-[#D4AF37] transition-colors leading-snug">
+                      <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors leading-snug">
                         {feature.title}
                       </h3>
                       <p className="text-sm sm:text-[15px] font-sans font-light leading-relaxed text-zinc-300">
@@ -118,7 +118,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.5 }}
-                  className="border-l-2 border-[#C5A880] pl-4 sm:pl-5 space-y-1 mb-6 sm:mb-8 max-w-3xl"
+                  className="border-l-2 border-[#0E2445] pl-4 sm:pl-5 space-y-1 mb-6 sm:mb-8 max-w-3xl"
                 >
                   <p
                     className={`text-xs sm:text-[13px] font-sans font-medium ${
@@ -147,7 +147,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                   transition={{ duration: 0.5 }}
                   className="mb-4"
                 >
-                  <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+                  <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                     {data.eyebrow}
                   </span>
                 </motion.div>
@@ -190,7 +190,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.6, delay: 0.24 }}
-                  className="lg:col-span-5 border-l-2 sm:border-l-[2.5px] border-[#C5A880] pl-6 sm:pl-8 space-y-4 py-1"
+                  className="lg:col-span-5 border-l-2 sm:border-l-[2.5px] border-[#0E2445] pl-6 sm:pl-8 space-y-4 py-1"
                 >
                   {data.highlightItems.map((item, idx) => (
                     <p
@@ -209,7 +209,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.6, delay: 0.24 }}
-                  className="lg:col-span-5 border-l-2 sm:border-l-[2.5px] border-[#C5A880] pl-6 sm:pl-8 space-y-3"
+                  className="lg:col-span-5 border-l-2 sm:border-l-[2.5px] border-[#0E2445] pl-6 sm:pl-8 space-y-3"
                 >
                   <h3
                     className={`text-xl sm:text-2xl font-serif font-normal ${
@@ -240,7 +240,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.5 }}
                 >
-                  <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+                  <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                     {data.eyebrow}
                   </span>
                 </motion.div>
@@ -250,7 +250,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                   whileInView={{ opacity: 1, scaleX: 1 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.6 }}
-                  className="w-16 h-[2px] bg-[#C5A880] origin-left mb-6"
+                  className="w-16 h-[2px] bg-[#0E2445] origin-left mb-6"
                 />
               ) : null}
 
@@ -306,7 +306,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                 viewport={{ once: true, margin: '-20px' }}
                 transition={{ duration: 0.8 }}
                 className={`w-full h-px ${
-                  isLight ? 'bg-black/10' : 'bg-[#C5A880]/30'
+                  isLight ? 'bg-black/10' : 'bg-[#0E2445]/30'
                 } pt-0 mt-12 sm:mt-16 origin-left`}
               />
             )}
@@ -320,7 +320,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
               whileInView={{ opacity: 1, scaleX: 1 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6 }}
-              className="w-16 h-[2px] bg-[#C5A880] mx-auto"
+              className="w-16 h-[2px] bg-[#0E2445] mx-auto"
             />
 
             {data.eyebrow && (
@@ -330,7 +330,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5 }}
               >
-                <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+                <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                   {data.eyebrow}
                 </span>
               </motion.div>
@@ -367,7 +367,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
                 transition={{ duration: 0.5 }}
                 className="flex items-center gap-2"
               >
-                <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+                <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                   {data.eyebrow}
                 </span>
               </motion.div>
@@ -378,7 +378,7 @@ export const ServicePhilosophy: React.FC<Props> = ({ data }) => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="border-l-2 sm:border-l-[3px] border-[#C5A880] pl-6 sm:pl-10 space-y-5 sm:space-y-6"
+              className="border-l-2 sm:border-l-[3px] border-[#0E2445] pl-6 sm:pl-10 space-y-5 sm:space-y-6"
             >
               <h2 className="text-3xl sm:text-5xl lg:text-[56px] font-serif font-normal text-white leading-[1.12] tracking-tight">
                 {data.headline}

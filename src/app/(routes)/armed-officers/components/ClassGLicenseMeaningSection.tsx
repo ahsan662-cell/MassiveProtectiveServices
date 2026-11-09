@@ -39,7 +39,7 @@ export const ClassGLicenseMeaningSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               THE FLORIDA STANDARD
             </span>
           </motion.div>
@@ -88,10 +88,10 @@ export const ClassGLicenseMeaningSection: React.FC = () => {
               return (
                 <div
                   key={item.title}
-                  className="rounded-sm bg-[#0B1220] border border-white/[0.06] p-6 sm:p-7 flex items-start gap-5 shadow-xl transition-all duration-300 hover:border-[#C5A880]/40"
+                  className="rounded-sm bg-[#0B1220] border border-white/[0.06] p-6 sm:p-7 flex items-start gap-5 shadow-xl transition-all duration-300 hover:border-[#0E2445]/40"
                 >
                   <div className="shrink-0 mt-0.5">
-                    <Icon className="w-5 h-5 text-[#C5A880] stroke-[1.6]" />
+                    <Icon className="w-5 h-5 text-[#93C5FD] stroke-[1.6]" />
                   </div>
                   <div className="space-y-1">
                     <h3 className="text-base sm:text-lg font-sans font-semibold text-white">

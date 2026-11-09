@@ -39,14 +39,14 @@ export class ErrorBoundary extends Component<Props, State> {
     if (this.state.hasError) {
       return (
         <div className="min-h-[50vh] w-full flex items-center justify-center p-6 bg-[#0A0A0A] text-[#F5F5F7]">
-          <div className="max-w-xl w-full border border-[#D4AF37]/30 bg-[#121212]/95 backdrop-blur-xl p-8 rounded-lg shadow-2xl relative overflow-hidden">
+          <div className="max-w-xl w-full border border-[#0E2445]/40 bg-[#121212]/95 backdrop-blur-xl p-8 rounded-lg shadow-2xl relative overflow-hidden">
             {/* Tactical top accent bar */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8B1E1E] via-[#D4AF37] to-[#8B1E1E]" />
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#8B1E1E] via-[#0E2445] to-[#8B1E1E]" />
 
-            <div className="flex items-center gap-3 text-[#D4AF37] mb-4">
-              <ShieldAlert className="w-8 h-8 text-[#D4AF37] animate-pulse" />
+            <div className="flex items-center gap-3 text-[#93C5FD] mb-4">
+              <ShieldAlert className="w-8 h-8 text-[#93C5FD] animate-pulse" />
               <div className="flex flex-col">
-                <span className="text-xs uppercase tracking-widest text-[#C5A880] font-mono">
+                <span className="text-xs uppercase tracking-widest text-[#93C5FD] font-mono">
                   SECURITY PROTOCOL ENGAGED // FDACS #81400200
                 </span>
                 <span className="text-xs text-zinc-400 font-mono">
@@ -65,16 +65,16 @@ export class ErrorBoundary extends Component<Props, State> {
 
             <div className="bg-[#1F1F1F]/80 border border-white/5 rounded-md p-4 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-full bg-[#8B1E1E]/20 text-[#D4AF37] border border-[#D4AF37]/30">
-                  <PhoneCall className="w-5 h-5 text-[#D4AF37]" />
+                <div className="p-2 rounded-full bg-[#8B1E1E]/20 text-[#93C5FD] border border-[#0E2445]/40">
+                  <PhoneCall className="w-5 h-5 text-[#93C5FD]" />
                 </div>
                 <div>
-                  <div className="text-xs font-mono uppercase text-[#C5A880]">
+                  <div className="text-xs font-mono uppercase text-[#93C5FD]">
                     24/7 Tactical Priority Dispatch
                   </div>
                   <a
                     href="tel:5615088833"
-                    className="text-lg font-bold tracking-wider text-white hover:text-[#D4AF37] transition-colors"
+                    className="text-lg font-bold tracking-wider text-white hover:text-[#93C5FD] transition-colors"
                   >
                     (561) 508-8833
                   </a>
@@ -83,7 +83,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
               <div className="text-xs font-mono text-zinc-400 text-right sm:border-l sm:border-zinc-800 sm:pl-4">
                 <div>HQ: DELRAY BEACH, FL</div>
-                <div className="text-[#C5A880]">ZERO UNARMED FILL</div>
+                <div className="text-[#93C5FD]">ZERO UNARMED FILL</div>
               </div>
             </div>
 
@@ -91,7 +91,7 @@ export class ErrorBoundary extends Component<Props, State> {
               <button
                 type="button"
                 onClick={this.handleReset}
-                className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded bg-gradient-to-r from-[#C5A880] to-[#D4AF37] text-[#0A0A0A] font-semibold text-sm hover:brightness-110 transition-all shadow-[0_0_15px_rgba(212,175,55,0.3)] cursor-pointer"
+                className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded bg-[#0E2445] hover:bg-[#173A6E] text-white font-semibold text-sm hover:brightness-110 transition-all shadow-[0_0_15px_rgba(14, 36, 69, 0.3)] cursor-pointer"
               >
                 <RefreshCw className="w-4 h-4" />
                 Re-establish Encrypted Link
@@ -99,9 +99,9 @@ export class ErrorBoundary extends Component<Props, State> {
 
               <a
                 href="tel:5615088833"
-                className="flex items-center justify-center gap-2 px-5 py-3 rounded border border-white/10 bg-[#1F1F1F] text-zinc-200 hover:text-white hover:border-[#D4AF37]/50 transition-all text-sm font-medium"
+                className="flex items-center justify-center gap-2 px-5 py-3 rounded border border-white/10 bg-[#1F1F1F] text-zinc-200 hover:text-white hover:border-[#0E2445]/50 transition-all text-sm font-medium"
               >
-                <Lock className="w-4 h-4 text-[#C5A880]" />
+                <Lock className="w-4 h-4 text-[#93C5FD]" />
                 Emergency Operator
               </a>
             </div>

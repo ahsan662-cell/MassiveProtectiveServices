@@ -4,31 +4,63 @@
 :root {
   font-size: 15px;
   --background: #0A0A0A;
-  --foreground: #F5F5F7;
+  --foreground: #F8FAFC;
 
-  /* Massive Protective Services (MPS) Brand Tokens */
+  /* Massive Protective Services (MPS) Brand Tokens: Executive Midnight Navy Blue #0E2445, Pure White & Black */
+  --color-brandColor: #0E2445;
+  --color-brandHover: #173A6E;
+  --color-brandDark: #08172E;
+  --color-brandSoft: #F0F4FA;
+  --color-brandBorder: rgba(14, 36, 69, 0.25);
+  
+  --color-brandPurple: #0E2445;
+  --color-brandPurpleHover: #173A6E;
+  --color-brandPurpleDark: #08172E;
+  --color-brandPurpleSoft: #F0F4FA;
+
+  --color-pureWhite: #FFFFFF;
+  --color-lightSurface: #F8FAFC;
+  --color-lightBorder: #E2E8F0;
+
   --color-matteBlack: #0A0A0A;
-  --color-deepCarbon: #121212;
-  --color-graphite: #1F1F1F;
-  --color-tacticalGray: #3A3D40;
-  --color-slateGold: #C5A880;
-  --color-metallicGold: #D4AF37;
-  --color-armorWhite: #F5F5F7;
-  --color-alertRed: #8B1E1E;
+  --color-deepCarbon: #111116;
+  --color-obsidian: #0E0E14;
+  --color-graphite: #1A1A24;
+  --color-tacticalGray: #2D2D3A;
+
+  /* Legacy aliases mapped to #0E2445 for seamless transitions */
+  --color-slateGold: #0E2445;
+  --color-metallicGold: #0E2445;
+  --color-armorWhite: #FFFFFF;
+  --color-alertRed: #DC2626;
 }
 
 @theme {
-  --color-matteBlack: #0A0A0A;
-  --color-deepCarbon: #121212;
-  --color-graphite: #1F1F1F;
-  --color-tacticalGray: #3A3D40;
-  --color-slateGold: #C5A880;
-  --color-metallicGold: #D4AF37;
-  --color-armorWhite: #F5F5F7;
-  --color-alertRed: #8B1E1E;
+  --color-brandColor: #0E2445;
+  --color-brandHover: #173A6E;
+  --color-brandDark: #08172E;
+  --color-brandSoft: #F0F4FA;
+  --color-brandBorder: rgba(14, 36, 69, 0.25);
+
+  --color-brandPurple: #0E2445;
+  --color-brandPurpleHover: #173A6E;
+  --color-brandPurpleDark: #08172E;
+  --color-brandPurpleSoft: #F0F4FA;
   
-  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+  --color-pureWhite: #FFFFFF;
+  --color-lightSurface: #F8FAFC;
+  --color-lightBorder: #E2E8F0;
+
+  --color-matteBlack: #0A0A0A;
+  --color-deepCarbon: #111116;
+  --color-obsidian: #0E0E14;
+  --color-graphite: #1A1A24;
+  --color-tacticalGray: #2D2D3A;
+  
+  --font-sans: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-heading), var(--font-sans), sans-serif;
+  --font-body: var(--font-body), var(--font-sans), sans-serif;
+  --font-mono: var(--font-mono), monospace;
 }
 
 @media (min-width: 1536px) {
@@ -43,7 +75,7 @@ html {
   max-width: 100vw;
   scroll-behavior: smooth;
   background-color: #0A0A0A;
-  color: #F5F5F7;
+  color: #F8FAFC;
 }
 
 body {
@@ -52,16 +84,16 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   background-color: #0A0A0A;
-  color: #F5F5F7;
+  color: #F8FAFC;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Tactical Selection highlight */
+/* Executive Midnight Navy #0E2445 Selection highlight */
 ::selection {
-  background: #D4AF37;
-  color: #0A0A0A;
+  background: #0E2445;
+  color: #FFFFFF;
 }
 
 /* Tactical Scrollbar */
@@ -74,13 +106,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1F1F1F;
+  background: #101F38;
   border-radius: 4px;
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(14, 36, 69, 0.45);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3A3D40;
+  background: #0E2445;
 }
 
 /* TrustIndex Reviews Widget Styling */
@@ -91,9 +123,9 @@ body {
 .trustindex-reviews-wrapper .ti-rating-text,
 .trustindex-reviews-wrapper .ti-rating-text strong,
 .trustindex-reviews-wrapper .ti-rating-text a {
-  color: #E4E4E7 !important;
+  color: #334155 !important;
 }
 .trustindex-reviews-wrapper .ti-footer strong a:hover,
 .trustindex-reviews-wrapper .ti-rating-text strong a:hover {
-  color: #C9A84C !important;
+  color: #0E2445 !important;
 }

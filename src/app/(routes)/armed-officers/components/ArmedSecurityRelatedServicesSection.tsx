@@ -62,7 +62,7 @@ export const ArmedSecurityRelatedServicesSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               RELATED SERVICES
             </span>
           </motion.div>
@@ -98,10 +98,10 @@ export const ArmedSecurityRelatedServicesSection: React.FC = () => {
                       transition: { duration: 0.2 },
                     }
               }
-              className="group rounded-sm bg-[#0B1220] border border-white/[0.06] p-7 sm:p-9 flex flex-col justify-between space-y-8 shadow-xl transition-all duration-300 hover:border-[#C5A880]/50 hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(197,168,128,0.12)] min-h-[280px]"
+              className="group rounded-sm bg-[#0B1220] border border-white/[0.06] p-7 sm:p-9 flex flex-col justify-between space-y-8 shadow-xl transition-all duration-300 hover:border-[#0E2445]/50 hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(14, 36, 69, 0.12)] min-h-[280px]"
             >
               <div className="space-y-4">
-                <h3 className="text-2xl font-serif text-white font-normal leading-snug group-hover:text-[#D4AF37] transition-colors">
+                <h3 className="text-2xl font-serif text-white font-normal leading-snug group-hover:text-[#93C5FD] transition-colors">
                   {item.title}
                 </h3>
 
@@ -113,7 +113,7 @@ export const ArmedSecurityRelatedServicesSection: React.FC = () => {
               <div>
                 <Link
                   href={item.href}
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#C5A880] hover:text-[#D4AF37] transition-colors group/link cursor-pointer"
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#93C5FD] hover:text-[#93C5FD] transition-colors group/link cursor-pointer"
                 >
                   <span className="underline-offset-4 group-hover/link:underline">Learn More</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" />

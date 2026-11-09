@@ -20,7 +20,7 @@ export const ArmedSecurityCTASection: React.FC = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+          <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
             IMMEDIATE DISPATCH AVAILABLE
           </span>
         </motion.div>
@@ -55,16 +55,16 @@ export const ArmedSecurityCTASection: React.FC = () => {
         >
           <Link
             href="/contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm bg-[#0E2445] hover:bg-[#173A6E] text-white font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(14, 36, 69, 0.35)] hover:shadow-[0_4px_32px_rgba(23, 58, 110, 0.55)] cursor-pointer"
           >
             Request Armed Security Detail
           </Link>
 
           <a
             href="tel:9542347231"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm border border-[#C5A880]/60 hover:border-[#D4AF37] text-zinc-200 hover:text-[#D4AF37] bg-transparent font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-sm border border-[#0E2445]/60 hover:border-[#93C5FD] text-zinc-200 hover:text-[#93C5FD] bg-transparent font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300"
           >
-            <Phone className="w-4 h-4 text-[#D4AF37]" />
+            <Phone className="w-4 h-4 text-[#93C5FD]" />
             <span>Call (954) 234-7231 (24/7)</span>
           </a>
         </motion.div>

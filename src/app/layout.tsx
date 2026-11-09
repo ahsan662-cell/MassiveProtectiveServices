@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "@/store/provider";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
@@ -11,20 +11,23 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { getLocalBusinessSchema } from "@/utils/schema";
 import { SITE_URL } from "@/utils/seo";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+  variable: "--font-mono",
   subsets: ["latin"],
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -45,6 +48,13 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || process.env.GOOGLE_SITE_VERIFICATION,
+  },
+  icons: {
+    icon: [
+      { url: "/new-logo.ico", sizes: "any" },
+    ],
+    shortcut: "/new-logo.ico",
+    apple: "/new-logo.ico",
   },
   openGraph: {
     title: "Massive Protective Services | Sovereign Armed Protection",
@@ -72,11 +82,11 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} h-full antialiased dark`}
+      className={`${plusJakarta.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body
         suppressHydrationWarning
-        className="min-h-screen max-w-[100vw] overflow-x-clip flex flex-col bg-[#0A0A0A] text-[#F5F5F7]"
+        className="min-h-screen max-w-[100vw] overflow-x-clip flex flex-col bg-[#0A0A0A] text-[#F8FAFC]"
       >
         <JsonLd data={getLocalBusinessSchema()} />
         <StoreProvider>

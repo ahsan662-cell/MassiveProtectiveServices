@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, Check, Loader2, ShieldCheck, AlertTriangle } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
+import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
+import { MessageCircle, ChevronDown as ChevronDownIcon } from 'lucide-react';
 
 const CITIES = [
   'Palm Beach',
@@ -44,20 +46,24 @@ export const ConciergeConsultationFormSection: React.FC = () => {
   const [cityOpen, setCityOpen] = useState(false);
   const [coverageOpen, setCoverageOpen] = useState(false);
   const [contactMethodOpen, setContactMethodOpen] = useState(false);
-  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, submitForm, reset } = useConsultationSubmit({ formSource: 'Concierge Security Consultation' });
+  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, isMethodModalOpen, setIsMethodModalOpen, validate, submitForm, submitViaWhatsApp, reset } = useConsultationSubmit({ formSource: 'Concierge Security Consultation' });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const getPayload = () => (formData);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    await submitForm(formData);
+    if (validate(getPayload())) {
+      setIsMethodModalOpen(true);
+    }
   };
 
   return (
     <section
       id="concierge-consultation"
       aria-label="Request a Confidential Consultation"
-      className="relative w-full bg-[#0A111F] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#0A111F] text-white py-8 sm:py-10 lg:py-12 overflow-hidden border-t border-white/[0.08]"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 sm:space-y-5">
         {/* Section Header matching Screenshot 3 */}
         <div className="space-y-3">
           <motion.div
@@ -66,7 +72,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               A PRIVATE FIRST CONVERSATION
             </span>
           </motion.div>
@@ -76,7 +82,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight"
+            className="text-xl sm:text-2xl lg:text-[28px] font-serif font-normal text-white leading-[1.15] tracking-tight"
           >
             Request a Confidential Consultation
           </motion.h2>
@@ -98,9 +104,9 @@ export const ConciergeConsultationFormSection: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="rounded-sm bg-[#0B1424] border border-[#C5A880]/50 p-8 sm:p-12 text-center space-y-5 shadow-2xl"
+            className="rounded-sm bg-[#0B1424] border border-[#0E2445]/50 p-8 sm:p-12 text-center space-y-5 shadow-2xl"
           >
-            <div className="w-14 h-14 rounded-full bg-[#C5A880]/20 border border-[#C5A880] flex items-center justify-center mx-auto text-[#C5A880]">
+            <div className="w-14 h-14 rounded-full bg-[#0E2445]/20 border border-[#0E2445] flex items-center justify-center mx-auto text-[#93C5FD]">
               <ShieldCheck className="w-7 h-7" />
             </div>
             <h3 className="text-2xl sm:text-3xl font-serif text-white">Consultation Request Sent</h3>
@@ -123,7 +129,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                   placeholder="Your full name"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                 />
               </div>
 
@@ -137,7 +143,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                   placeholder="Your phone number"
                   value={formData.phoneNumber}
                   onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                 />
               </div>
             </div>
@@ -154,7 +160,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                   placeholder="Your email address"
                   value={formData.emailAddress}
                   onChange={(e) => setFormData({ ...formData, emailAddress: e.target.value })}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                 />
               </div>
 
@@ -162,9 +168,9 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                 <label className="text-xs font-sans font-medium text-zinc-300 block">
                   Service required *
                 </label>
-                <div className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white flex items-center justify-between">
+                <div className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-white flex items-center justify-between">
                   <span>Concierge Security</span>
-                  <ChevronDown className="w-4 h-4 text-[#C5A880]" />
+                  <ChevronDown className="w-4 h-4 text-[#93C5FD]" />
                 </div>
               </div>
             </div>
@@ -180,7 +186,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                   placeholder="Property or organisation name"
                   value={formData.buildingName}
                   onChange={(e) => setFormData({ ...formData, buildingName: e.target.value })}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors"
                 />
               </div>
 
@@ -209,20 +215,20 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                     setCoverageOpen(false);
                     setContactMethodOpen(false);
                   }}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-left flex items-center justify-between text-white focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-left flex items-center justify-between text-white focus:outline-none focus:border-[#0E2445] transition-colors"
                 >
                   <span className={formData.propertyCity ? 'text-white' : 'text-zinc-400'}>
                     {formData.propertyCity || 'Select your city'}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#C5A880] transition-transform ${
+                    className={`w-4 h-4 text-[#93C5FD] transition-transform ${
                       cityOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
 
                 {cityOpen && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-[#0B1424] border border-[#C5A880]/40 rounded-sm shadow-2xl z-30 divide-y divide-white/[0.05] overflow-hidden">
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-[#0B1424] border border-[#0E2445]/40 rounded-sm shadow-2xl z-30 divide-y divide-white/[0.05] overflow-hidden">
                     {CITIES.map((city) => (
                       <div
                         key={city}
@@ -233,7 +239,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                         className="px-4 py-3 text-xs sm:text-sm text-zinc-300 hover:text-white hover:bg-white/[0.04] cursor-pointer flex items-center justify-between transition-colors"
                       >
                         <span>{city}</span>
-                        {formData.propertyCity === city && <Check className="w-3.5 h-3.5 text-[#C5A880]" />}
+                        {formData.propertyCity === city && <Check className="w-3.5 h-3.5 text-[#93C5FD]" />}
                       </div>
                     ))}
                   </div>
@@ -255,20 +261,20 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                     setCityOpen(false);
                     setContactMethodOpen(false);
                   }}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-left flex items-center justify-between text-white focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-left flex items-center justify-between text-white focus:outline-none focus:border-[#0E2445] transition-colors"
                 >
                   <span className={formData.preferredCoverage ? 'text-white' : 'text-zinc-400'}>
                     {formData.preferredCoverage || 'Select hours or discuss options'}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#C5A880] transition-transform ${
+                    className={`w-4 h-4 text-[#93C5FD] transition-transform ${
                       coverageOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
 
                 {coverageOpen && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-[#0B1424] border border-[#C5A880]/40 rounded-sm shadow-2xl z-30 divide-y divide-white/[0.05] overflow-hidden">
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-[#0B1424] border border-[#0E2445]/40 rounded-sm shadow-2xl z-30 divide-y divide-white/[0.05] overflow-hidden">
                     {COVERAGE_OPTIONS.map((opt) => (
                       <div
                         key={opt}
@@ -280,7 +286,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                       >
                         <span>{opt}</span>
                         {formData.preferredCoverage === opt && (
-                          <Check className="w-3.5 h-3.5 text-[#C5A880]" />
+                          <Check className="w-3.5 h-3.5 text-[#93C5FD]" />
                         )}
                       </div>
                     ))}
@@ -300,20 +306,20 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                     setCityOpen(false);
                     setCoverageOpen(false);
                   }}
-                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-left flex items-center justify-between text-white focus:outline-none focus:border-[#C5A880] transition-colors"
+                  className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-left flex items-center justify-between text-white focus:outline-none focus:border-[#0E2445] transition-colors"
                 >
                   <span className={formData.preferredContactMethod ? 'text-white' : 'text-zinc-400'}>
                     {formData.preferredContactMethod || 'Phone or email'}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#C5A880] transition-transform ${
+                    className={`w-4 h-4 text-[#93C5FD] transition-transform ${
                       contactMethodOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </button>
 
                 {contactMethodOpen && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-[#0B1424] border border-[#C5A880]/40 rounded-sm shadow-2xl z-30 divide-y divide-white/[0.05] overflow-hidden">
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-[#0B1424] border border-[#0E2445]/40 rounded-sm shadow-2xl z-30 divide-y divide-white/[0.05] overflow-hidden">
                     {CONTACT_METHODS.map((method) => (
                       <div
                         key={method}
@@ -325,7 +331,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                       >
                         <span>{method}</span>
                         {formData.preferredContactMethod === method && (
-                          <Check className="w-3.5 h-3.5 text-[#C5A880]" />
+                          <Check className="w-3.5 h-3.5 text-[#93C5FD]" />
                         )}
                       </div>
                     ))}
@@ -344,7 +350,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                 placeholder="Tell us about visitor flow, current arrangements, preferred hours and your anticipated start date."
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-4 py-3.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#C5A880] transition-colors resize-y"
+                className="w-full bg-[#0B1424] border border-white/10 rounded-sm px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-[#0E2445] transition-colors resize-y"
               />
             </div>
 
@@ -356,11 +362,11 @@ export const ConciergeConsultationFormSection: React.FC = () => {
                 required
                 checked={formData.agreedToPrivacy}
                 onChange={(e) => setFormData({ ...formData, agreedToPrivacy: e.target.checked })}
-                className="mt-1 w-4 h-4 accent-[#C5A880] bg-[#0B1424] border-white/20 rounded cursor-pointer"
+                className="mt-1 w-4 h-4 accent-[#0E2445] bg-[#0B1424] border-white/20 rounded cursor-pointer"
               />
               <label htmlFor="privacy-agreement" className="text-xs text-zinc-300 font-sans cursor-pointer leading-relaxed">
                 I agree to be contacted about this enquiry and have read the{' '}
-                <Link href="/privacy" className="text-[#C5A880] hover:underline">
+                <Link href="/privacy" className="text-[#93C5FD] hover:underline">
                   Privacy Policy
                 </Link>
                 . *
@@ -371,7 +377,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.35)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.55)] cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-sm bg-[#0E2445] hover:bg-[#173A6E] text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(14, 36, 69, 0.35)] hover:shadow-[0_4px_32px_rgba(23, 58, 110, 0.55)] cursor-pointer flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>
@@ -391,7 +397,7 @@ export const ConciergeConsultationFormSection: React.FC = () => {
               </p>
               <p className="font-mono text-zinc-500">
                 * Required fields ┬╖ Prefer to speak?{' '}
-                <a href="tel:9542347231" className="text-[#C5A880] hover:underline">
+                <a href="tel:9542347231" className="text-[#93C5FD] hover:underline">
                   (954) 234-7231
                 </a>
               </p>
@@ -399,6 +405,21 @@ export const ConciergeConsultationFormSection: React.FC = () => {
           </form>
         )}
       </div>
+      {/* Submission Method Selection Modal */}
+      <SubmissionMethodModal
+        isOpen={isMethodModalOpen}
+        onClose={() => setIsMethodModalOpen(false)}
+        onSubmitEmail={async () => {
+          const payload = typeof getPayload === 'function' ? getPayload() : formData;
+          await submitForm(payload);
+        }}
+        onSubmitWhatsApp={() => {
+          const payload = typeof getPayload === 'function' ? getPayload() : formData;
+          submitViaWhatsApp(payload);
+        }}
+        isSubmittingEmail={isSubmitting}
+        clientName={formData.fullName}
+      />
     </section>
   );
 };

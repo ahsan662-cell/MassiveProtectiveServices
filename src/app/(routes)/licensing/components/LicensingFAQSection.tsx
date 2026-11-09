@@ -64,7 +64,7 @@ export const LicensingFAQSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               LICENSING FAQ
             </span>
           </motion.div>
@@ -86,7 +86,7 @@ export const LicensingFAQSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.6 }}
-          className="rounded-sm bg-[#0B1220] border border-[#C5A880]/30 divide-y divide-white/[0.08] shadow-2xl overflow-hidden"
+          className="rounded-sm bg-[#0B1220] border border-[#0E2445]/30 divide-y divide-white/[0.08] shadow-2xl overflow-hidden"
         >
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -98,10 +98,10 @@ export const LicensingFAQSection: React.FC = () => {
                   aria-expanded={isOpen}
                   className="w-full text-left p-6 sm:p-8 flex items-center justify-between gap-4 cursor-pointer select-none group"
                 >
-                  <span className="text-lg sm:text-xl font-serif text-white group-hover:text-[#D4AF37] transition-colors leading-snug">
+                  <span className="text-lg sm:text-xl font-serif text-white group-hover:text-[#93C5FD] transition-colors leading-snug">
                     {faq.question}
                   </span>
-                  <div className="shrink-0 w-8 h-8 rounded-full border border-[#C5A880]/30 flex items-center justify-center text-[#C5A880] group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-colors">
+                  <div className="shrink-0 w-8 h-8 rounded-full border border-[#0E2445]/30 flex items-center justify-center text-[#93C5FD] group-hover:border-[#93C5FD] group-hover:text-[#93C5FD] transition-colors">
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>

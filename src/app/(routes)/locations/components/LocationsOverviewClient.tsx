@@ -39,7 +39,7 @@ export const LocationsOverviewClient: React.FC = () => {
         className="relative w-full pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden border-b border-white/[0.08]"
       >
         {/* Ambient background glows */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#C5A880]/10 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#0E2445]/10 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute top-10 right-10 w-96 h-96 bg-[#162548]/40 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -51,11 +51,11 @@ export const LocationsOverviewClient: React.FC = () => {
             transition={{ duration: 0.4 }}
             className="flex items-center gap-2 text-xs font-mono text-zinc-400 uppercase tracking-widest"
           >
-            <Link href="/" className="hover:text-[#D4AF37] transition-colors">
+            <Link href="/" className="hover:text-[#93C5FD] transition-colors">
               Home
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
-            <span className="text-[#C5A880]">Locations</span>
+            <span className="text-[#93C5FD]">Locations</span>
           </motion.nav>
 
           {/* Section Header */}
@@ -65,7 +65,7 @@ export const LocationsOverviewClient: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 FLORIDA DEPLOYMENT GRID · CHAPTER 493 STATUTORY JURISDICTION
               </span>
             </motion.div>
@@ -97,7 +97,7 @@ export const LocationsOverviewClient: React.FC = () => {
             className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pt-4 border-t border-white/[0.08]"
           >
             <div className="bg-[#0E1729]/80 border border-white/[0.06] rounded-sm p-4 flex flex-col justify-center">
-              <span className="text-2xl sm:text-3xl font-serif text-[#C5A880]">19</span>
+              <span className="text-2xl sm:text-3xl font-serif text-[#93C5FD]">19</span>
               <span className="text-xs text-zinc-400 font-sans font-light mt-0.5">Primary Jurisdictions</span>
             </div>
             <div className="bg-[#0E1729]/80 border border-white/[0.06] rounded-sm p-4 flex flex-col justify-center">
@@ -109,7 +109,7 @@ export const LocationsOverviewClient: React.FC = () => {
               <span className="text-xs text-zinc-400 font-sans font-light mt-0.5">Statewide Firearm Certified</span>
             </div>
             <div className="bg-[#0E1729]/80 border border-white/[0.06] rounded-sm p-4 flex flex-col justify-center">
-              <span className="text-base sm:text-lg font-serif text-[#C5A880]">24/7 Command</span>
+              <span className="text-base sm:text-lg font-serif text-[#93C5FD]">24/7 Command</span>
               <span className="text-xs text-zinc-400 font-sans font-light mt-0.5">Direct Dispatch Available</span>
             </div>
           </motion.div>
@@ -128,7 +128,7 @@ export const LocationsOverviewClient: React.FC = () => {
                 placeholder="Search locations by city, county, airport, or estate enclave..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#0F1A30]/90 border border-white/[0.12] focus:border-[#C5A880] rounded-sm pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-400 focus:outline-none transition-colors shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+                className="w-full bg-[#0F1A30]/90 border border-white/[0.12] focus:border-[#0E2445] rounded-sm pl-12 pr-4 py-3.5 text-sm text-white placeholder-zinc-400 focus:outline-none transition-colors shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
               />
               {searchQuery && (
                 <button
@@ -158,7 +158,7 @@ export const LocationsOverviewClient: React.FC = () => {
                   onClick={() => setActiveRegion(region.id)}
                   className={`px-4 py-2 rounded-sm text-xs sm:text-[13px] font-sans font-medium transition-all duration-200 cursor-pointer flex items-center gap-2 ${
                     isActive
-                      ? 'bg-[#C5A880] text-[#0A0A0A] shadow-[0_2px_12px_rgba(197,168,128,0.35)] font-semibold'
+                      ? 'bg-[#0E2445] text-white shadow-[0_2px_12px_rgba(14, 36, 69, 0.35)] font-semibold'
                       : 'bg-[#101B2E] text-zinc-300 hover:text-white hover:bg-[#162540] border border-white/[0.08]'
                   }`}
                 >
@@ -189,7 +189,7 @@ export const LocationsOverviewClient: React.FC = () => {
               Showing {filteredLocations.length} of {ALL_LOCATIONS.length} Florida Locations
             </span>
             {searchQuery && (
-              <span className="text-[#C5A880]">
+              <span className="text-[#93C5FD]">
                 Filtered by &quot;{searchQuery}&quot;
               </span>
             )}
@@ -208,7 +208,7 @@ export const LocationsOverviewClient: React.FC = () => {
                   setSearchQuery('');
                   setActiveRegion('all');
                 }}
-                className="px-5 py-2.5 rounded-sm bg-[#C5A880] text-[#0A0A0A] text-xs font-semibold uppercase tracking-wider hover:bg-[#D4AF37] transition-colors"
+                className="px-5 py-2.5 rounded-sm bg-[#0E2445] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#0E2445] transition-colors"
               >
                 Reset All Filters
               </button>
@@ -224,27 +224,27 @@ export const LocationsOverviewClient: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.35, delay: idx * 0.03 }}
-                    className="group relative bg-[#0E182D]/90 hover:bg-[#13203C] border border-white/[0.08] hover:border-[#C5A880]/50 rounded-sm p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.5)] hover:-translate-y-1"
+                    className="group relative bg-[#0E182D]/90 hover:bg-[#13203C] border border-white/[0.08] hover:border-[#0E2445]/50 rounded-sm p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.5)] hover:-translate-y-1"
                   >
                     {/* Top gold accent line */}
-                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C5A880]/0 group-hover:via-[#C5A880] to-transparent transition-all duration-500" />
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0E2445]/30 group-hover:via-[#0E2445] to-transparent transition-all duration-500" />
 
                     <div>
                       {/* County Tag & Badge */}
                       <div className="flex items-center justify-between gap-2 mb-4">
-                        <span className="text-[11px] font-mono text-[#C5A880] uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="text-[11px] font-mono text-[#93C5FD] uppercase tracking-wider flex items-center gap-1.5">
                           <MapPin className="w-3.5 h-3.5 stroke-[1.8]" />
                           <span>{item.regionLabel}</span>
                         </span>
 
-                        <span className="text-[9.5px] font-mono uppercase px-2 py-0.5 rounded bg-[#C5A880]/15 text-[#D4AF37] border border-[#C5A880]/30 shrink-0">
+                        <span className="text-[9.5px] font-mono uppercase px-2 py-0.5 rounded bg-[#0E2445]/15 text-[#93C5FD] border border-[#0E2445]/30 shrink-0">
                           {item.badge}
                         </span>
                       </div>
 
                       {/* City Name */}
-                      <Link href={item.href} className="block group-hover:text-[#D4AF37] transition-colors">
-                        <h2 className="text-2xl sm:text-[26px] font-serif font-normal text-white group-hover:text-[#D4AF37] leading-snug tracking-tight mb-2">
+                      <Link href={item.href} className="block group-hover:text-[#93C5FD] transition-colors">
+                        <h2 className="text-2xl sm:text-[26px] font-serif font-normal text-white group-hover:text-[#93C5FD] leading-snug tracking-tight mb-2">
                           {item.name}
                         </h2>
                       </Link>
@@ -263,7 +263,7 @@ export const LocationsOverviewClient: React.FC = () => {
                       <ul className="space-y-2 mb-6 border-t border-white/[0.06] pt-4">
                         {item.highlights.map((h, i) => (
                           <li key={i} className="text-xs text-zinc-300 font-sans flex items-start gap-2">
-                            <Check className="w-3.5 h-3.5 text-[#C5A880] shrink-0 mt-0.5 stroke-[2.2]" />
+                            <Check className="w-3.5 h-3.5 text-[#93C5FD] shrink-0 mt-0.5 stroke-[2.2]" />
                             <span className="leading-tight">{h}</span>
                           </li>
                         ))}
@@ -274,7 +274,7 @@ export const LocationsOverviewClient: React.FC = () => {
                     <div className="pt-2 border-t border-white/[0.06]">
                       <Link
                         href={item.href}
-                        className="w-full inline-flex items-center justify-between px-4 py-3 rounded-sm bg-[#16233B] group-hover:bg-[#C5A880] text-zinc-200 group-hover:text-[#0A0A0A] font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300"
+                        className="w-full inline-flex items-center justify-between px-4 py-3 rounded-sm bg-[#16233B] group-hover:bg-[#0E2445] text-zinc-200 group-hover:text-[#0A0A0A] font-sans font-medium text-xs tracking-wider uppercase transition-all duration-300"
                       >
                         <span>Explore {item.name} Detail</span>
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -295,7 +295,7 @@ export const LocationsOverviewClient: React.FC = () => {
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="max-w-3xl space-y-3">
-            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
               RAPID DEPLOYMENT CAPABILITY
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal text-white leading-tight tracking-tight">
@@ -308,7 +308,7 @@ export const LocationsOverviewClient: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="bg-[#0E1729] border border-white/[0.08] p-7 sm:p-8 rounded-sm space-y-4">
-              <div className="w-10 h-10 rounded-full bg-[#C5A880]/15 border border-[#C5A880]/30 flex items-center justify-center text-[#C5A880]">
+              <div className="w-10 h-10 rounded-full bg-[#0E2445]/15 border border-[#0E2445]/30 flex items-center justify-center text-[#93C5FD]">
                 <Clock className="w-5 h-5" />
               </div>
               <h3 className="text-xl font-serif text-white">Sub-15 Minute County Reach</h3>
@@ -318,7 +318,7 @@ export const LocationsOverviewClient: React.FC = () => {
             </div>
 
             <div className="bg-[#0E1729] border border-white/[0.08] p-7 sm:p-8 rounded-sm space-y-4">
-              <div className="w-10 h-10 rounded-full bg-[#C5A880]/15 border border-[#C5A880]/30 flex items-center justify-center text-[#C5A880]">
+              <div className="w-10 h-10 rounded-full bg-[#0E2445]/15 border border-[#0E2445]/30 flex items-center justify-center text-[#93C5FD]">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h3 className="text-xl font-serif text-white">Tri-County Inter-Operability</h3>
@@ -328,7 +328,7 @@ export const LocationsOverviewClient: React.FC = () => {
             </div>
 
             <div className="bg-[#0E1729] border border-white/[0.08] p-7 sm:p-8 rounded-sm space-y-4">
-              <div className="w-10 h-10 rounded-full bg-[#C5A880]/15 border border-[#C5A880]/30 flex items-center justify-center text-[#C5A880]">
+              <div className="w-10 h-10 rounded-full bg-[#0E2445]/15 border border-[#0E2445]/30 flex items-center justify-center text-[#93C5FD]">
                 <MapPin className="w-5 h-5" />
               </div>
               <h3 className="text-xl font-serif text-white">Statewide Aviation Coverage</h3>

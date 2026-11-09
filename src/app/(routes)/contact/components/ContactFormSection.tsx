@@ -16,6 +16,8 @@ import {
   Star,
 } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
+import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
+import { MessageCircle, ChevronDown as ChevronDownIcon } from 'lucide-react';
 
 const SERVICES_OPTIONS = [
   'Select a service',
@@ -39,34 +41,37 @@ export const ContactFormSection: React.FC = () => {
     message: '',
   });
 
-  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, submitForm, reset } =
-    useConsultationSubmit({
+  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, isMethodModalOpen, setIsMethodModalOpen, validate, submitForm, submitViaWhatsApp, reset } = useConsultationSubmit({
       formSource: 'Direct Contact Page Inquiry',
     });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await submitForm({
+  const getPayload = () => ({
       ...formData,
       serviceType: selectedService !== 'Select a service' ? selectedService : 'Executive Protection',
       preferredContactMethod: preferredMethod,
     });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validate(getPayload())) {
+      setIsMethodModalOpen(true);
+    }
   };
 
   return (
     <section
       aria-label="Contact and Confidential Consultation Form"
-      className="relative w-full bg-[#0A111F] text-white pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden"
+      className="relative w-full bg-[#0A111F] text-white pt-12 sm:pt-16 pb-8 sm:pb-10 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Header */}
-        <div className="mb-10 sm:mb-14 space-y-4">
+        <div className="mb-4 sm:mb-5 space-y-4">
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               CONTACT · MASSIVE PROTECTIVE SERVICES
             </span>
           </motion.div>
@@ -75,7 +80,7 @@ export const ContactFormSection: React.FC = () => {
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight"
+            className="text-xl sm:text-2xl lg:text-[28px] font-serif font-normal text-white leading-[1.15] tracking-tight"
           >
             Start a Confidential Conversation
           </motion.h1>
@@ -92,7 +97,7 @@ export const ContactFormSection: React.FC = () => {
         </div>
 
         {/* Full-width Divider Line */}
-        <div className="w-full h-px bg-[#C5A880]/30 mb-8 sm:mb-10" />
+        <div className="w-full h-px bg-[#0E2445]/30 mb-8 sm:mb-10" />
 
         {/* Main Grid: Form on Left, Contact Cards on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
@@ -105,7 +110,7 @@ export const ContactFormSection: React.FC = () => {
           >
             {/* Form Eyebrow & Subheading */}
             <div className="mb-8">
-              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#C5A880] font-semibold block">
+              <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#93C5FD] font-semibold block">
                 REQUEST A CONFIDENTIAL CONSULTATION
               </span>
               <p className="text-xs sm:text-sm text-zinc-300 font-sans font-light mt-1.5">
@@ -115,7 +120,7 @@ export const ContactFormSection: React.FC = () => {
 
             {isSuccess ? (
               <div className="py-12 text-center space-y-5">
-                <div className="w-16 h-16 rounded-full bg-[#C5A880]/15 border border-[#C5A880]/40 flex items-center justify-center mx-auto text-[#D4AF37]">
+                <div className="w-16 h-16 rounded-full bg-[#0E2445]/15 border border-[#0E2445]/40 flex items-center justify-center mx-auto text-[#93C5FD]">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-serif text-white">
@@ -132,7 +137,7 @@ export const ContactFormSection: React.FC = () => {
                       reset();
                       setFormData({ fullName: '', email: '', phone: '', message: '' });
                     }}
-                    className="px-6 py-2.5 rounded-sm border border-[#C5A880]/50 text-xs font-mono uppercase tracking-wider text-[#C5A880] hover:bg-[#C5A880]/10 transition-colors cursor-pointer"
+                    className="px-6 py-2.5 rounded-sm border border-[#0E2445]/50 text-xs font-mono uppercase tracking-wider text-[#93C5FD] hover:bg-[#0E2445]/10 transition-colors cursor-pointer"
                   >
                     Send Another Inquiry
                   </button>
@@ -144,7 +149,7 @@ export const ContactFormSection: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <label className="text-xs font-sans text-zinc-300 block">
-                      Full Name <span className="text-[#C5A880]">*</span>
+                      Full Name <span className="text-[#93C5FD]">*</span>
                     </label>
                     <input
                       type="text"
@@ -152,7 +157,7 @@ export const ContactFormSection: React.FC = () => {
                       placeholder="Your full name"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full px-4 py-3 rounded-sm bg-[#0A111F] border border-white/[0.12] focus:border-[#C5A880] text-white text-xs sm:text-sm font-sans placeholder:text-zinc-500 outline-none transition-colors"
+                      className="w-full px-4 py-3 rounded-sm bg-[#0A111F] border border-white/[0.12] focus:border-[#0E2445] text-white text-xs sm:text-sm font-sans placeholder:text-zinc-500 outline-none transition-colors"
                     />
                     {fieldErrors.fullName && (
                       <p className="text-[11px] text-[#8B1E1E] font-sans font-medium">
@@ -163,7 +168,7 @@ export const ContactFormSection: React.FC = () => {
 
                   <div className="space-y-2">
                     <label className="text-xs font-sans text-zinc-300 block">
-                      Email Address <span className="text-[#C5A880]">*</span>
+                      Email Address <span className="text-[#93C5FD]">*</span>
                     </label>
                     <input
                       type="email"
@@ -171,7 +176,7 @@ export const ContactFormSection: React.FC = () => {
                       placeholder="Your email address"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-sm bg-[#0A111F] border border-white/[0.12] focus:border-[#C5A880] text-white text-xs sm:text-sm font-sans placeholder:text-zinc-500 outline-none transition-colors"
+                      className="w-full px-4 py-3 rounded-sm bg-[#0A111F] border border-white/[0.12] focus:border-[#0E2445] text-white text-xs sm:text-sm font-sans placeholder:text-zinc-500 outline-none transition-colors"
                     />
                     {fieldErrors.email && (
                       <p className="text-[11px] text-[#8B1E1E] font-sans font-medium">
@@ -185,7 +190,7 @@ export const ContactFormSection: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-2">
                     <label className="text-xs font-sans text-zinc-300 block">
-                      Phone Number <span className="text-[#C5A880]">*</span>
+                      Phone Number <span className="text-[#93C5FD]">*</span>
                     </label>
                     <input
                       type="tel"
@@ -193,7 +198,7 @@ export const ContactFormSection: React.FC = () => {
                       placeholder="Your phone number"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-sm bg-[#0A111F] border border-white/[0.12] focus:border-[#C5A880] text-white text-xs sm:text-sm font-sans placeholder:text-zinc-500 outline-none transition-colors"
+                      className="w-full px-4 py-3 rounded-sm bg-[#0A111F] border border-white/[0.12] focus:border-[#0E2445] text-white text-xs sm:text-sm font-sans placeholder:text-zinc-500 outline-none transition-colors"
                     />
                     {fieldErrors.phone && (
                       <p className="text-[11px] text-[#8B1E1E] font-sans font-medium">
@@ -214,7 +219,7 @@ export const ContactFormSection: React.FC = () => {
                         aria-label="How can we help?"
                         value={selectedService}
                         onChange={(e) => setSelectedService(e.target.value)}
-                        className="w-full px-4 py-3 rounded-sm bg-[#0A111F] border border-white/[0.12] focus:border-[#C5A880] text-zinc-200 text-xs sm:text-sm font-sans appearance-none outline-none pr-10 cursor-pointer"
+                        className="w-full px-4 py-3 rounded-sm bg-[#0A111F] border border-white/[0.12] focus:border-[#0E2445] text-zinc-200 text-xs sm:text-sm font-sans appearance-none outline-none pr-10 cursor-pointer"
                       >
                         {SERVICES_OPTIONS.map((opt) => (
                           <option key={opt} value={opt} className="bg-[#0A111F] text-white">
@@ -237,7 +242,7 @@ export const ContactFormSection: React.FC = () => {
                     placeholder="Tell us about your situation — location, timeline, and what you need. All information is kept strictly confidential."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-sm bg-[#0A111F] border border-white/[0.12] focus:border-[#C5A880] text-white text-xs sm:text-sm font-sans placeholder:text-zinc-500 outline-none transition-colors resize-none leading-relaxed"
+                    className="w-full px-4 py-3 rounded-sm bg-[#0A111F] border border-white/[0.12] focus:border-[#0E2445] text-white text-xs sm:text-sm font-sans placeholder:text-zinc-500 outline-none transition-colors resize-none leading-relaxed"
                   />
                 </div>
 
@@ -258,7 +263,7 @@ export const ContactFormSection: React.FC = () => {
                           value={method}
                           checked={preferredMethod === method}
                           onChange={() => setPreferredMethod(method)}
-                          className="w-4 h-4 accent-[#C5A880] cursor-pointer"
+                          className="w-4 h-4 accent-[#0E2445] cursor-pointer"
                         />
                         <span className="group-hover:text-white transition-colors">{method}</span>
                       </label>
@@ -285,30 +290,37 @@ export const ContactFormSection: React.FC = () => {
                 )}
 
                 {/* Submit Action Button */}
-                <div className="pt-3 space-y-3">
+                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full py-4 px-8 rounded-sm font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.25)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.45)] cursor-pointer flex items-center justify-center gap-2 ${
-                      isSubmitting
-                        ? 'bg-[#182338] text-[#C5A880] border border-[#C5A880]/40 cursor-wait'
-                        : 'bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A]'
-                    }`}
+                    className="flex-1 py-3 px-5 rounded bg-[#0E2445] hover:bg-[#173A6E] text-white font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-2 border border-[#3B82F6]/30 active:scale-[0.99]"
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="w-4 h-4 animate-spin text-[#C5A880]" />
-                        <span>Securing Transmission...</span>
+                        <Loader2 className="w-4 h-4 animate-spin text-white" />
+                        <span>TRANSMITTING INQUIRY...</span>
                       </>
                     ) : (
-                      <span>Send Confidential Inquiry</span>
+                      <>
+                        <span>Submit Confidential Inquiry</span>
+                        <ChevronDownIcon className="w-3.5 h-3.5 opacity-70" />
+                      </>
                     )}
                   </button>
 
-                  <p className="text-[11px] sm:text-xs text-zinc-400 font-sans leading-relaxed text-center sm:text-left">
-                    We do not share, sell or distribute any information submitted through this form.
-                    Your inquiry is read by Marc Tardalo directly.
-                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const payload = typeof getPayload === 'function' ? getPayload() : formData;
+                      submitViaWhatsApp(payload);
+                    }}
+                    className="py-3 px-4 rounded bg-[#0F2D25] hover:bg-[#12382E] border border-[#25D366]/40 hover:border-[#25D366] text-[#25D366] hover:text-white font-semibold text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 shrink-0 active:scale-[0.99]"
+                    title="Direct submission to WhatsApp"
+                  >
+                    <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                    <span>Send via WhatsApp</span>
+                  </button>
                 </div>
               </form>
             )}
@@ -324,12 +336,12 @@ export const ContactFormSection: React.FC = () => {
               className="rounded-sm bg-[#101A2D] border border-white/[0.08] p-6 shadow-xl"
             >
               <div className="flex items-center gap-2 text-xs font-sans font-medium text-white">
-                <Phone className="w-4 h-4 text-[#C5A880]" />
+                <Phone className="w-4 h-4 text-[#93C5FD]" />
                 <span>24/7 Direct Line</span>
               </div>
               <a
                 href="tel:9542347231"
-                className="block text-xl sm:text-2xl font-sans font-bold text-white hover:text-[#D4AF37] tracking-wide mt-2.5 transition-colors"
+                className="block text-xl sm:text-2xl font-sans font-bold text-white hover:text-[#93C5FD] tracking-wide mt-2.5 transition-colors"
               >
                 (954) 234-7231
               </a>
@@ -346,12 +358,12 @@ export const ContactFormSection: React.FC = () => {
               className="rounded-sm bg-[#101A2D] border border-white/[0.08] p-6 shadow-xl"
             >
               <div className="flex items-center gap-2 text-xs font-sans font-medium text-white">
-                <Mail className="w-4 h-4 text-[#C5A880]" />
+                <Mail className="w-4 h-4 text-[#93C5FD]" />
                 <span>Confidential Email</span>
               </div>
               <a
                 href="mailto:operations@massiveprotectiveservices.com"
-                className="block text-sm sm:text-base font-sans font-semibold text-white hover:text-[#D4AF37] mt-2.5 transition-colors break-all"
+                className="block text-sm sm:text-base font-sans font-semibold text-white hover:text-[#93C5FD] mt-2.5 transition-colors break-all"
               >
                 operations@massiveprotectiveservices.com
               </a>
@@ -369,14 +381,14 @@ export const ContactFormSection: React.FC = () => {
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-sans font-medium text-white">
-                  <MapPin className="w-4 h-4 text-[#C5A880]" />
+                  <MapPin className="w-4 h-4 text-[#93C5FD]" />
                   <span>Headquarters</span>
                 </div>
                 <a
                   href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] font-mono text-[#C5A880] hover:text-[#D4AF37] transition-colors"
+                  className="inline-flex items-center gap-1 text-[11px] font-mono text-[#93C5FD] hover:text-[#93C5FD] transition-colors"
                 >
                   <span>Find us on Google</span>
                   <ExternalLink className="w-3 h-3 opacity-70" />
@@ -396,17 +408,17 @@ export const ContactFormSection: React.FC = () => {
               initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.35 }}
-              className="rounded-sm bg-[#0E1626] border border-[#C5A880]/30 p-6 shadow-xl"
+              className="rounded-sm bg-[#0E1626] border border-[#0E2445]/30 p-6 shadow-xl"
             >
-              <div className="flex items-center gap-2 text-xs font-mono font-medium text-[#C5A880] uppercase tracking-wider">
-                <Shield className="w-4 h-4 text-[#C5A880]" />
+              <div className="flex items-center gap-2 text-xs font-mono font-medium text-[#93C5FD] uppercase tracking-wider">
+                <Shield className="w-4 h-4 text-[#93C5FD]" />
                 <span>FDACS LICENSED & INSURED</span>
               </div>
               <p className="text-xs sm:text-sm text-zinc-300 font-sans mt-2.5 leading-relaxed">
                 Florida Agency License <strong className="text-white">#81400200</strong>. Operating
                 in strict compliance with Chapter 493, Florida Statutes.
               </p>
-              <div className="mt-3 flex items-center gap-1.5 text-xs text-[#C5A880] hover:underline cursor-pointer">
+              <div className="mt-3 flex items-center gap-1.5 text-xs text-[#93C5FD] hover:underline cursor-pointer">
                 <FileText className="w-3.5 h-3.5" />
                 <span>Verify with Florida Dept. of Agriculture & Consumer Services</span>
                 <ExternalLink className="w-3 h-3 ml-0.5" />
@@ -424,7 +436,7 @@ export const ContactFormSection: React.FC = () => {
                 href="https://admin.trustindex.io/card/56cfe17231ce249"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer bg-[#C9A84C] hover:bg-[#D4AF37] text-[#0A0F1E]"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer bg-[#0E2445] hover:bg-[#0E2445] text-white"
               >
                 <Star className="w-4 h-4 fill-[#0A0F1E] text-[#0A0F1E]" />
                 <span>Leave Us a Google Review</span>
@@ -444,8 +456,8 @@ export const ContactFormSection: React.FC = () => {
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
-              <div className="flex items-center gap-2 text-xs font-mono font-medium text-[#C5A880] uppercase tracking-wider">
-                <MapPin className="w-4 h-4 text-[#C5A880]" />
+              <div className="flex items-center gap-2 text-xs font-mono font-medium text-[#93C5FD] uppercase tracking-wider">
+                <MapPin className="w-4 h-4 text-[#93C5FD]" />
                 <span>MASSIVE PROTECTIVE SERVICES · DELRAY BEACH HEADQUARTERS</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-serif text-white font-normal">
@@ -458,9 +470,9 @@ export const ContactFormSection: React.FC = () => {
                 href="https://maps.app.goo.gl/La942E86QAy9HwZA9"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm border border-white/15 hover:border-[#C5A880] text-xs font-mono text-zinc-300 hover:text-white transition-all bg-[#101A2D]"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-sm border border-white/15 hover:border-[#0E2445] text-xs font-mono text-zinc-300 hover:text-white transition-all bg-[#101A2D]"
               >
-                <MapPin className="w-3.5 h-3.5 text-[#C5A880]" />
+                <MapPin className="w-3.5 h-3.5 text-[#93C5FD]" />
                 <span>Find us on Google</span>
                 <ExternalLink className="w-3 h-3 text-zinc-500" />
               </a>
@@ -469,7 +481,7 @@ export const ContactFormSection: React.FC = () => {
                 href="https://admin.trustindex.io/card/56cfe17231ce249"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer bg-[#C9A84C] hover:bg-[#D4AF37] text-[#0A0F1E]"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-sm font-semibold text-xs uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer bg-[#0E2445] hover:bg-[#0E2445] text-white"
               >
                 <Star className="w-3.5 h-3.5 fill-[#0A0F1E] text-[#0A0F1E]" />
                 <span>Leave Us a Google Review</span>
@@ -493,6 +505,21 @@ export const ContactFormSection: React.FC = () => {
           </div>
         </motion.div>
       </div>
+      {/* Submission Method Selection Modal */}
+      <SubmissionMethodModal
+        isOpen={isMethodModalOpen}
+        onClose={() => setIsMethodModalOpen(false)}
+        onSubmitEmail={async () => {
+          const payload = typeof getPayload === 'function' ? getPayload() : formData;
+          await submitForm(payload);
+        }}
+        onSubmitWhatsApp={() => {
+          const payload = typeof getPayload === 'function' ? getPayload() : formData;
+          submitViaWhatsApp(payload);
+        }}
+        isSubmittingEmail={isSubmitting}
+        clientName={formData.fullName}
+      />
     </section>
   );
 };

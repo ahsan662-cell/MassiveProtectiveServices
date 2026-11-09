@@ -22,12 +22,12 @@ export const Toast: React.FC<ToastProps> = ({
       initial={{ opacity: 0, y: 20, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 10, scale: 0.95 }}
-      className="flex items-center justify-between gap-3 px-4 py-3 rounded-md bg-[#121212] border border-[#D4AF37]/40 shadow-xl text-xs font-sans text-white min-w-[280px]"
+      className="flex items-center justify-between gap-3 px-4 py-3 rounded-md bg-[#121212] border border-[#0E2445]/40 shadow-xl text-xs font-sans text-white min-w-[280px]"
     >
       <div className="flex items-center gap-2.5">
         {type === 'success' && <CheckCircle2 className="w-4 h-4 text-emerald-400" />}
         {type === 'error' && <AlertCircle className="w-4 h-4 text-[#8B1E1E]" />}
-        {type === 'info' && <CheckCircle2 className="w-4 h-4 text-[#D4AF37]" />}
+        {type === 'info' && <CheckCircle2 className="w-4 h-4 text-[#93C5FD]" />}
         <span className="font-medium">{message}</span>
       </div>
 

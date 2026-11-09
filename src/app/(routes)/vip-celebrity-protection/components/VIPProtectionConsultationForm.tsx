@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronDown, Calendar, Check, Loader2, AlertTriangle } from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
+import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
+import { MessageCircle, ChevronDown as ChevronDownIcon } from 'lucide-react';
 
 interface Props {
   id?: string;
@@ -44,20 +46,24 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
   const [principalOpen, setPrincipalOpen] = useState(false);
   const [coverageOpen, setCoverageOpen] = useState(false);
   
-  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, submitForm, reset } = useConsultationSubmit({ formSource: 'VIP Protection Consultation' });
+  const { isSubmitting, isSuccess, isTimedOut, errorMessage, fieldErrors, isMethodModalOpen, setIsMethodModalOpen, validate, submitForm, submitViaWhatsApp, reset } = useConsultationSubmit({ formSource: 'VIP Protection Consultation' });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const getPayload = () => (formData);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    await submitForm(formData);
+    if (validate(getPayload())) {
+      setIsMethodModalOpen(true);
+    }
   };
 
   return (
     <section
       id={id}
       aria-label="Request VIP Protection"
-      className="relative w-full bg-[#080E1A] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/5"
+      className="relative w-full bg-[#080E1A] text-white py-8 sm:py-10 lg:py-12 overflow-hidden border-t border-white/5"
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3.5 sm:space-y-4">
         {/* Section Header */}
         <div className="space-y-3">
           <motion.div
@@ -66,7 +72,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
               A PRIVATE FIRST CONVERSATION
             </span>
           </motion.div>
@@ -76,7 +82,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.14] tracking-tight"
+            className="text-xl sm:text-2xl lg:text-[28px] font-serif font-normal text-white leading-[1.14] tracking-tight"
           >
             Request VIP Protection — We Respond Within 2 Hours
           </motion.h2>
@@ -97,9 +103,9 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-[#0F1829] border border-[#C5A880]/50 p-8 sm:p-12 text-center space-y-4"
+            className="bg-[#0F1829] border border-[#0E2445]/50 p-8 sm:p-12 text-center space-y-4"
           >
-            <div className="w-16 h-16 bg-[#C5A880]/20 text-[#C5A880] mx-auto flex items-center justify-center rounded-full">
+            <div className="w-16 h-16 bg-[#0E2445]/20 text-[#93C5FD] mx-auto flex items-center justify-center rounded-full">
               <Check className="w-8 h-8" />
             </div>
             <h3 className="text-2xl font-serif text-white">VIP Inquiry Received — Strictly Confidential</h3>
@@ -134,13 +140,13 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                   message: '',
                 });
               }}
-              className="mt-4 px-6 py-2.5 border border-[#C5A880] text-[#C5A880] hover:bg-[#C5A880] hover:text-[#0A111F] text-xs font-mono tracking-widest uppercase transition-colors"
+              className="mt-4 px-6 py-2.5 border border-[#0E2445] text-[#93C5FD] hover:bg-[#0E2445] hover:text-[#0A111F] text-xs font-mono tracking-widest uppercase transition-colors"
             >
               Submit Another Request
             </button>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-7">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-3.5">
             {/* Row 1: Full Name & Phone Number */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
               <div className="space-y-2">
@@ -153,7 +159,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                   placeholder="Your name or company"
-                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
+                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
                 />
               </div>
 
@@ -167,7 +173,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder="Your phone number"
-                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
+                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
                 />
               </div>
             </div>
@@ -183,7 +189,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="Your email address"
-                className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
+                className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
               />
             </div>
 
@@ -200,7 +206,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                     setPrincipalOpen(!principalOpen);
                     setCoverageOpen(false);
                   }}
-                  className="w-full bg-[#111A2C]/80 border border-white/15 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
+                  className="w-full bg-[#111A2C]/80 border border-white/15 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
                 >
                   <span className={formData.principalType ? 'text-white' : 'text-zinc-400'}>
                     {formData.principalType || 'Select principal type'}
@@ -213,7 +219,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                 </button>
 
                 {principalOpen && (
-                  <div className="absolute z-30 left-0 right-0 mt-1 bg-[#101828] border border-[#C5A880]/40 shadow-2xl max-h-60 overflow-y-auto">
+                  <div className="absolute z-30 left-0 right-0 mt-1 bg-[#101828] border border-[#0E2445]/40 shadow-2xl max-h-60 overflow-y-auto">
                     {PRINCIPAL_TYPES.map((type, idx) => (
                       <div
                         key={idx}
@@ -223,7 +229,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                         }}
                         className={`px-4 py-2.5 text-sm cursor-pointer transition-colors ${
                           formData.principalType === type
-                            ? 'bg-[#C5A880]/20 text-[#C5A880]'
+                            ? 'bg-[#0E2445]/20 text-[#93C5FD]'
                             : 'text-zinc-200 hover:bg-white/5'
                         }`}
                       >
@@ -245,7 +251,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                     setCoverageOpen(!coverageOpen);
                     setPrincipalOpen(false);
                   }}
-                  className="w-full bg-[#111A2C]/80 border border-white/15 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
+                  className="w-full bg-[#111A2C]/80 border border-white/15 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white flex items-center justify-between rounded-none transition-colors text-left"
                 >
                   <span className={formData.coverageNeeded ? 'text-white' : 'text-zinc-400'}>
                     {formData.coverageNeeded || 'Select coverage needed'}
@@ -258,7 +264,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                 </button>
 
                 {coverageOpen && (
-                  <div className="absolute z-30 left-0 right-0 mt-1 bg-[#101828] border border-[#C5A880]/40 shadow-2xl max-h-60 overflow-y-auto">
+                  <div className="absolute z-30 left-0 right-0 mt-1 bg-[#101828] border border-[#0E2445]/40 shadow-2xl max-h-60 overflow-y-auto">
                     {COVERAGE_OPTIONS.map((cov, idx) => (
                       <div
                         key={idx}
@@ -268,7 +274,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                         }}
                         className={`px-4 py-2.5 text-sm cursor-pointer transition-colors ${
                           formData.coverageNeeded === cov
-                            ? 'bg-[#C5A880]/20 text-[#C5A880]'
+                            ? 'bg-[#0E2445]/20 text-[#93C5FD]'
                             : 'text-zinc-200 hover:bg-white/5'
                         }`}
                       >
@@ -292,7 +298,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                   value={formData.location}
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                   placeholder="Where protection is needed"
-                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
+                  className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
                 />
               </div>
 
@@ -306,9 +312,9 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                     value={formData.arrivalDate}
                     onChange={(e) => setFormData({ ...formData, arrivalDate: e.target.value })}
                     placeholder="MM / DD / YYYY"
-                    className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 pr-10 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
+                    className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 pr-10 text-sm text-white placeholder-zinc-500 rounded-none transition-colors"
                   />
-                  <Calendar className="w-4 h-4 text-[#C5A880] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <Calendar className="w-4 h-4 text-[#93C5FD] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 </div>
               </div>
             </div>
@@ -323,7 +329,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder="Tell us about your principal, their itinerary and any known concerns — all details are strictly confidential"
-                className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#C5A880] focus:outline-none px-4 py-3.5 text-sm text-white placeholder-zinc-500 rounded-none resize-none transition-colors"
+                className="w-full bg-[#111A2C]/80 border border-white/10 focus:border-[#0E2445] focus:outline-none px-3 py-2 sm:py-2.5 text-sm text-white placeholder-zinc-500 rounded-none resize-none transition-colors"
               />
             </div>
 
@@ -333,7 +339,7 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
               disabled={isSubmitting}
               whileHover={{ scale: prefersReducedMotion ? 1 : 1.005 }}
               whileTap={{ scale: prefersReducedMotion ? 1 : 0.995 }}
-              className="w-full bg-[#C5A880] hover:bg-[#B3956F] text-[#0A111F] font-sans font-medium text-xs sm:text-sm tracking-[0.14em] uppercase py-4 sm:py-4.5 px-6 rounded-none transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(197,168,128,0.25)] hover:shadow-[0_6px_28px_rgba(197,168,128,0.4)] cursor-pointer"
+              className="w-full bg-[#0E2445] hover:bg-[#B3956F] text-[#0A111F] font-sans font-medium text-xs sm:text-sm tracking-[0.14em] uppercase py-4 sm:py-4.5 px-6 rounded-none transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(14, 36, 69, 0.25)] hover:shadow-[0_6px_28px_rgba(14, 36, 69, 0.4)] cursor-pointer"
             >
               {isSubmitting ? (
                 <>
@@ -352,6 +358,21 @@ export const VIPProtectionConsultationForm: React.FC<Props> = ({ id = 'consultat
           </form>
         )}
       </div>
+      {/* Submission Method Selection Modal */}
+      <SubmissionMethodModal
+        isOpen={isMethodModalOpen}
+        onClose={() => setIsMethodModalOpen(false)}
+        onSubmitEmail={async () => {
+          const payload = typeof getPayload === 'function' ? getPayload() : formData;
+          await submitForm(payload);
+        }}
+        onSubmitWhatsApp={() => {
+          const payload = typeof getPayload === 'function' ? getPayload() : formData;
+          submitViaWhatsApp(payload);
+        }}
+        isSubmittingEmail={isSubmitting}
+        clientName={formData.fullName}
+      />
     </section>
   );
 };

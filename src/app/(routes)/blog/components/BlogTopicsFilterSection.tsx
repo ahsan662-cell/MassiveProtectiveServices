@@ -39,7 +39,7 @@ export const BlogTopicsFilterSection: React.FC<BlogTopicsFilterSectionProps> = (
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <span className="text-xs font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+          <span className="text-xs font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
             BROWSE BY TOPIC
           </span>
         </motion.div>
@@ -60,8 +60,8 @@ export const BlogTopicsFilterSection: React.FC<BlogTopicsFilterSectionProps> = (
                 onClick={() => onSelectTopic(topic)}
                 className={`px-5 py-2 rounded-full text-xs sm:text-sm font-sans transition-all duration-300 cursor-pointer select-none ${
                   isSelected
-                    ? 'bg-[#C5A880] text-[#0A0A0A] font-semibold shadow-[0_2px_14px_rgba(197,168,128,0.4)] scale-105'
-                    : 'border border-[#C5A880]/40 text-zinc-300 hover:border-[#C5A880] hover:text-white bg-[#0B1220]/50'
+                    ? 'bg-[#0E2445] text-white font-semibold shadow-[0_2px_14px_rgba(14, 36, 69, 0.4)] scale-105'
+                    : 'border border-[#0E2445]/40 text-zinc-300 hover:border-[#0E2445] hover:text-white bg-[#0B1220]/50'
                 }`}
               >
                 {topic}

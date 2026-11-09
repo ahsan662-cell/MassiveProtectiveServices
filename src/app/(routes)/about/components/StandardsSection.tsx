@@ -79,7 +79,7 @@ export const StandardsSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               HOW WE OPERATE
             </span>
           </motion.div>
@@ -117,11 +117,11 @@ export const StandardsSection: React.FC = () => {
                         transition: { duration: 0.2 },
                       }
                 }
-                className="group rounded-sm bg-[#0B1220] border border-[#C5A880]/80 p-7 sm:p-9 flex flex-col justify-between space-y-4 transition-all duration-300 hover:border-[#C5A880] hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(197,168,128,0.15)] min-h-[240px]"
+                className="group rounded-sm bg-[#0B1220] border border-[#0E2445]/80 p-7 sm:p-9 flex flex-col justify-between space-y-4 transition-all duration-300 hover:border-[#0E2445] hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(14, 36, 69, 0.15)] min-h-[240px]"
               >
                 <div className="space-y-4">
                   <div>
-                    <Icon className="w-5 h-5 text-[#C5A880] stroke-[1.5] group-hover:text-[#D4AF37] transition-colors" />
+                    <Icon className="w-5 h-5 text-[#93C5FD] stroke-[1.5] group-hover:text-[#93C5FD] transition-colors" />
                   </div>
 
                   <h3 className="text-xl sm:text-[22px] font-serif font-normal text-white group-hover:text-[#F5F5F7] leading-snug">

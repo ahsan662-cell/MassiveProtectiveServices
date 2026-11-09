@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 export default function TestimonialsPage() {
   return (
-    <div className="w-full flex-1 flex flex-col overflow-x-clip bg-[#0A111F]">
+    <div className="w-full flex-1 flex flex-col overflow-x-clip bg-[#0A0A0A]">
       {/* 1. Hero & Confidentiality Cards (Screenshot 1) */}
       <TestimonialsHeroSection />
 

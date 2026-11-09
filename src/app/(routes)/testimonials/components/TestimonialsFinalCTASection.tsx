@@ -14,7 +14,7 @@ export const TestimonialsFinalCTASection: React.FC = () => {
       className="relative w-full bg-[#070D18] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
     >
       {/* Subtle Warm Amber Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[340px] bg-[#C5A880]/5 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[340px] bg-[#0E2445]/5 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center space-y-7 sm:space-y-8">
         {/* Headline matching Screenshot 4 */}
@@ -50,7 +50,7 @@ export const TestimonialsFinalCTASection: React.FC = () => {
           {/* Request Confidential Consultation - Solid Gold Button */}
           <Link
             href="/contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 rounded-sm bg-[#C5A880] hover:bg-[#D4AF37] text-[#0A0A0A] font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(197,168,128,0.3)] hover:shadow-[0_4px_32px_rgba(212,175,55,0.5)] hover:scale-[1.02] cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 rounded-sm bg-[#0E2445] hover:bg-[#173A6E] text-white font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-[0_4px_24px_rgba(14, 36, 69, 0.3)] hover:shadow-[0_4px_32px_rgba(23, 58, 110, 0.5)] hover:scale-[1.02] cursor-pointer"
           >
             Request Confidential Consultation
           </Link>
@@ -60,7 +60,7 @@ export const TestimonialsFinalCTASection: React.FC = () => {
             href="https://licensing.fdacs.gov/access/agency.aspx"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 sm:px-9 py-3.5 sm:py-4 rounded-sm border border-[#C5A880]/60 hover:border-[#D4AF37] text-zinc-200 hover:text-[#D4AF37] bg-transparent font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.25)] hover:scale-[1.02] group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 sm:px-9 py-3.5 sm:py-4 rounded-sm border border-[#0E2445]/60 hover:border-[#93C5FD] text-zinc-200 hover:text-[#93C5FD] bg-transparent font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 hover:shadow-[0_0_20px_rgba(23, 58, 110, 0.25)] hover:scale-[1.02] group"
           >
             <span>Verify Our License</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -80,7 +80,7 @@ export const TestimonialsFinalCTASection: React.FC = () => {
       </div>
 
       {/* Decorative Gold Accent Bar at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C5A880]/40 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#0E2445]/30 to-transparent" />
     </section>
   );
 };

@@ -63,7 +63,7 @@ export const VerifiableCredentialsSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               VERIFIABLE CREDENTIALS
             </span>
           </motion.div>
@@ -101,11 +101,11 @@ export const VerifiableCredentialsSection: React.FC = () => {
                         transition: { duration: 0.2 },
                       }
                 }
-                className="rounded-sm bg-[#0B1220] border border-white/[0.06] p-7 sm:p-8 space-y-5 shadow-xl transition-all duration-300 hover:border-[#C5A880]/50 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5),0_0_20px_rgba(197,168,128,0.1)] flex flex-col justify-between"
+                className="rounded-sm bg-[#0B1220] border border-white/[0.06] p-7 sm:p-8 space-y-5 shadow-xl transition-all duration-300 hover:border-[#0E2445]/50 hover:shadow-[0_8px_30px_rgba(0,0,0,0.5),0_0_20px_rgba(14, 36, 69, 0.1)] flex flex-col justify-between"
               >
                 <div className="space-y-4">
-                  <div className="w-10 h-10 rounded-sm bg-[#C5A880]/10 flex items-center justify-center border border-[#C5A880]/20">
-                    <Icon className="w-5 h-5 text-[#C5A880] stroke-[1.6]" />
+                  <div className="w-10 h-10 rounded-sm bg-[#0E2445]/10 flex items-center justify-center border border-[#0E2445]/20">
+                    <Icon className="w-5 h-5 text-[#93C5FD] stroke-[1.6]" />
                   </div>
 
                   <div className="space-y-1.5">
@@ -134,7 +134,7 @@ export const VerifiableCredentialsSection: React.FC = () => {
             href="https://licensing.fdacs.gov/access/agency.aspx"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#C5A880] hover:text-[#D4AF37] transition-colors group cursor-pointer"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#93C5FD] hover:text-[#93C5FD] transition-colors group cursor-pointer"
           >
             <span className="underline-offset-4 group-hover:underline">
               Verify License B1400200 on FDACS

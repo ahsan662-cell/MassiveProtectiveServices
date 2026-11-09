@@ -37,7 +37,7 @@ export const LocationNearbyLocations: React.FC<Props> = ({ data }) => {
   return (
     <section
       aria-label={data.eyebrow || 'Nearby Locations'}
-      className="relative w-full bg-[#070D18] py-16 sm:py-20 lg:py-24 text-white overflow-hidden border-t border-white/5 border-b border-[#C5A880]/30"
+      className="relative w-full bg-[#070D18] py-16 sm:py-20 lg:py-24 text-white overflow-hidden border-t border-white/5 border-b border-[#0E2445]/30"
     >
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         {/* Section Header */}
@@ -49,7 +49,7 @@ export const LocationNearbyLocations: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {data.eyebrow}
               </span>
             </motion.div>
@@ -80,10 +80,10 @@ export const LocationNearbyLocations: React.FC<Props> = ({ data }) => {
             <motion.div key={idx} variants={itemVariants}>
               <Link
                 href={place.href}
-                className="group relative flex flex-col justify-between h-full bg-[#121D38] hover:bg-[#152344] border border-white/[0.08] hover:border-[#C5A880]/50 rounded-lg p-8 sm:p-9 shadow-[0_6px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.45)] transition-all duration-300 hover:-translate-y-1"
+                className="group relative flex flex-col justify-between h-full bg-[#121D38] hover:bg-[#152344] border border-white/[0.08] hover:border-[#0E2445]/50 rounded-lg p-8 sm:p-9 shadow-[0_6px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_36px_rgba(0,0,0,0.45)] transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="space-y-4">
-                  <h3 className="text-2xl sm:text-[26px] font-serif font-normal text-[#C5A880] group-hover:text-[#D4AF37] leading-snug transition-colors">
+                  <h3 className="text-2xl sm:text-[26px] font-serif font-normal text-[#93C5FD] group-hover:text-[#93C5FD] leading-snug transition-colors">
                     {place.title}
                   </h3>
 
@@ -92,7 +92,7 @@ export const LocationNearbyLocations: React.FC<Props> = ({ data }) => {
                   </p>
                 </div>
 
-                <div className="pt-6 sm:pt-8 flex items-center gap-1.5 text-xs sm:text-[13px] font-sans text-[#C5A880] group-hover:text-[#D4AF37] transition-colors font-medium">
+                <div className="pt-6 sm:pt-8 flex items-center gap-1.5 text-xs sm:text-[13px] font-sans text-[#93C5FD] group-hover:text-[#93C5FD] transition-colors font-medium">
                   <span>{place.linkLabel || 'View Coverage'}</span>
                   <span className="group-hover:translate-x-1.5 transition-transform duration-200">
                     →

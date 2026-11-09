@@ -25,7 +25,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     <Link
       href="/"
       aria-label="Massive Protective Services - Elite Armed Security Home"
-      className={`group relative inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] rounded transition-transform duration-300 hover:scale-[1.02] ${className}`}
+      className={`group relative inline-flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0E2445] rounded transition-transform duration-300 hover:scale-[1.02] ${className}`}
     >
       <div
         className={`relative ${heightClasses[size]} w-auto aspect-[2.44/1] overflow-hidden rounded-sm`}

@@ -73,15 +73,15 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
   }, [article.sections]);
 
   return (
-    <div className="relative w-full flex-1 flex flex-col overflow-x-clip bg-[#070D18] text-white selection:bg-[#D4AF37] selection:text-[#0A0A0A]">
+    <div className="relative w-full flex-1 flex flex-col overflow-x-clip bg-[#070D18] text-white selection:bg-[#0E2445] selection:text-[#0A0A0A]">
       {/* 1. Sleek Gold Reading Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#C5A880] via-[#D4AF37] to-[#FAF8F5] z-[100] origin-left shadow-[0_0_12px_rgba(212,175,55,0.6)]"
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0E2445] via-[#3B82F6] to-[#93C5FD] z-[100] origin-left shadow-[0_0_12px_rgba(23, 58, 110, 0.6)]"
         style={{ scaleX }}
       />
 
       {/* 2. Tactical Ambient Background Lighting */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#C5A880]/[0.08] rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#0E2445]/[0.08] rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute top-96 right-0 w-[500px] h-[500px] bg-[#162548]/30 rounded-full blur-[140px] pointer-events-none" />
 
       {/* 3. Hero Header Section */}
@@ -98,7 +98,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
                 Security Intelligence
               </Link>
               <span className="text-zinc-600">/</span>
-              <span className="text-[#C5A880] truncate max-w-[180px] sm:max-w-xs font-mono text-[11px] uppercase tracking-wider">
+              <span className="text-[#93C5FD] truncate max-w-[180px] sm:max-w-xs font-mono text-[11px] uppercase tracking-wider">
                 {article.topicGroup}
               </span>
             </nav>
@@ -110,8 +110,8 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
             >
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-[#C5A880]" />
-                  <span className="text-[#C5A880] font-medium">Link Copied!</span>
+                  <Check className="w-3.5 h-3.5 text-[#93C5FD]" />
+                  <span className="text-[#93C5FD] font-medium">Link Copied!</span>
                 </>
               ) : (
                 <>
@@ -129,8 +129,8 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
             transition={{ duration: 0.4 }}
             className="flex items-center gap-3"
           >
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-widest bg-[#C5A880]/15 text-[#C5A880] border border-[#C5A880]/40 shadow-[0_0_15px_rgba(197,168,128,0.15)]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880] animate-pulse" />
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold uppercase tracking-widest bg-[#0E2445]/15 text-[#93C5FD] border border-[#0E2445]/40 shadow-[0_0_15px_rgba(14, 36, 69, 0.15)]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0E2445] animate-pulse" />
               {article.category}
             </span>
             <span className="text-xs font-mono text-zinc-500 uppercase tracking-wider hidden sm:inline">
@@ -166,13 +166,13 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
             className="pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-zinc-400"
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#101A2D] border border-[#C5A880]/60 flex items-center justify-center text-[#C5A880] font-serif font-bold text-base shadow-md">
+              <div className="w-10 h-10 rounded-full bg-[#101A2D] border border-[#0E2445]/60 flex items-center justify-center text-[#93C5FD] font-serif font-bold text-base shadow-md">
                 MT
               </div>
               <div>
                 <div className="text-white font-medium flex items-center gap-1.5">
                   <span>{article.author}</span>
-                  <Award className="w-3.5 h-3.5 text-[#C5A880]" />
+                  <Award className="w-3.5 h-3.5 text-[#93C5FD]" />
                 </div>
                 <div className="text-[11px] text-zinc-400">{article.authorTitle}</div>
               </div>
@@ -180,15 +180,15 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
 
             <div className="flex items-center gap-5 text-xs text-zinc-400">
               <div className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-[#C5A880]" />
+                <Calendar className="w-4 h-4 text-[#93C5FD]" />
                 <span>{article.date}</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-[#C5A880]" />
+                <Clock className="w-4 h-4 text-[#93C5FD]" />
                 <span>{article.readTime}</span>
               </div>
               <div className="hidden md:flex items-center gap-1.5">
-                <FileText className="w-4 h-4 text-[#C5A880]" />
+                <FileText className="w-4 h-4 text-[#93C5FD]" />
                 <span>{article.wordCount}</span>
               </div>
             </div>
@@ -204,7 +204,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
             {/* Table of Contents Box */}
             <div className="rounded-sm bg-[#0B1324] border border-white/[0.08] p-6 shadow-xl space-y-4">
               <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C5A880] font-semibold">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#93C5FD] font-semibold">
                   <Bookmark className="w-4 h-4" />
                   <span>Briefing Contents</span>
                 </div>
@@ -224,7 +224,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
                       href={`#${targetId}`}
                       className={`block py-1.5 px-2.5 rounded-sm transition-all leading-snug ${
                         isActive
-                          ? 'bg-[#C5A880]/15 text-[#C5A880] font-medium border-l-2 border-[#C5A880]'
+                          ? 'bg-[#0E2445]/15 text-[#93C5FD] font-medium border-l-2 border-[#0E2445]'
                           : 'text-zinc-400 hover:text-white hover:bg-white/[0.02]'
                       }`}
                     >
@@ -245,8 +245,8 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
             </div>
 
             {/* Author Credential Card */}
-            <div className="rounded-sm bg-[#080E1A] border border-[#C5A880]/30 p-5 space-y-3">
-              <div className="flex items-center gap-2 text-[#C5A880]">
+            <div className="rounded-sm bg-[#080E1A] border border-[#0E2445]/30 p-5 space-y-3">
+              <div className="flex items-center gap-2 text-[#93C5FD]">
                 <ShieldCheck className="w-4 h-4" />
                 <span className="text-[11px] font-mono uppercase tracking-widest font-semibold text-white">
                   Verified Authority
@@ -257,13 +257,13 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
               </p>
               <div className="pt-2 border-t border-white/[0.08] flex items-center justify-between text-[11px] font-mono text-zinc-400">
                 <span>Agency HQ: Delray Beach</span>
-                <span className="text-[#C5A880]">100% Class G Armed</span>
+                <span className="text-[#93C5FD]">100% Class G Armed</span>
               </div>
             </div>
 
             {/* Direct Commander Priority Hotline */}
             <div className="rounded-sm bg-gradient-to-br from-[#101A2D] to-[#0A111F] border border-white/10 p-5 space-y-3">
-              <div className="text-[11px] font-mono uppercase tracking-widest text-[#C5A880]">
+              <div className="text-[11px] font-mono uppercase tracking-widest text-[#93C5FD]">
                 Immediate Deployment
               </div>
               <h4 className="text-sm font-serif text-white">Need On-Site Protection in South Florida?</h4>
@@ -272,7 +272,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
               </p>
               <a
                 href="tel:9542347231"
-                className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-3 rounded-sm bg-[#C5A880]/15 hover:bg-[#C5A880]/25 text-[#C5A880] border border-[#C5A880]/40 text-xs font-mono font-medium tracking-wider transition-all"
+                className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-3 rounded-sm bg-[#0E2445]/15 hover:bg-[#0E2445]/25 text-[#93C5FD] border border-[#0E2445]/40 text-xs font-mono font-medium tracking-wider transition-all"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>Call (954) 234-7231</span>
@@ -288,10 +288,10 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="rounded-sm bg-gradient-to-br from-[#0B1324] via-[#0A111F] to-[#080E1A] border-l-4 border-l-[#C5A880] border-y border-r border-white/[0.08] p-6 sm:p-8 shadow-2xl space-y-4"
+              className="rounded-sm bg-gradient-to-br from-[#0B1324] via-[#0A111F] to-[#080E1A] border-l-4 border-l-[#0E2445] border-y border-r border-white/[0.08] p-6 sm:p-8 shadow-2xl space-y-4"
             >
-              <div className="flex items-center gap-2.5 text-[#C5A880]">
-                <Sparkles className="w-5 h-5 text-[#C5A880]" />
+              <div className="flex items-center gap-2.5 text-[#93C5FD]">
+                <Sparkles className="w-5 h-5 text-[#93C5FD]" />
                 <h2 className="text-xs sm:text-sm font-mono uppercase tracking-widest font-semibold text-white">
                   Executive Briefing &amp; Key Takeaways
                 </h2>
@@ -299,7 +299,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
               <ul className="space-y-3">
                 {article.keyTakeaways.map((takeaway, idx) => (
                   <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-zinc-200 leading-relaxed">
-                    <CheckCircle2 className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#93C5FD] shrink-0 mt-0.5" />
                     <span>{takeaway}</span>
                   </li>
                 ))}
@@ -312,15 +312,15 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="rounded-sm bg-[#101A2D]/80 border border-[#C5A880]/40 p-6 sm:p-7 shadow-[0_4px_24px_rgba(0,0,0,0.5)] relative overflow-hidden"
+              className="rounded-sm bg-[#101A2D]/80 border border-[#0E2445]/40 p-6 sm:p-7 shadow-[0_4px_24px_rgba(0,0,0,0.5)] relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#C5A880]/5 rounded-bl-full pointer-events-none" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#0E2445]/5 rounded-bl-full pointer-events-none" />
               <div className="space-y-3">
-                <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#C5A880] font-semibold">
+                <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#93C5FD] font-semibold">
                   <ShieldCheck className="w-4 h-4" />
                   <span>{article.fieldNote.title}</span>
                 </div>
-                <blockquote className="text-sm sm:text-base font-serif italic text-zinc-100 leading-relaxed border-l-2 border-[#C5A880] pl-4 py-1">
+                <blockquote className="text-sm sm:text-base font-serif italic text-zinc-100 leading-relaxed border-l-2 border-[#0E2445] pl-4 py-1">
                   &ldquo;{article.fieldNote.quote}&rdquo;
                 </blockquote>
                 <div className="text-[11px] font-mono text-zinc-400 pl-4">
@@ -347,7 +347,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
                       key={pIdx}
                       className={`text-zinc-300 font-light leading-relaxed ${
                         idx === 0 && pIdx === 0
-                          ? 'first-letter:text-5xl first-letter:font-serif first-letter:float-left first-letter:mr-3 first-letter:text-[#C5A880] first-letter:leading-none'
+                          ? 'first-letter:text-5xl first-letter:font-serif first-letter:float-left first-letter:mr-3 first-letter:text-[#93C5FD] first-letter:leading-none'
                           : ''
                       }`}
                     >
@@ -359,7 +359,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
                     <ul className="space-y-3.5 pl-2 my-4">
                       {section.bulletPoints.map((bp, bpIdx) => (
                         <li key={bpIdx} className="flex items-start gap-3 text-xs sm:text-sm text-zinc-300 leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880] shrink-0 mt-2" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#0E2445] shrink-0 mt-2" />
                           <span>{bp}</span>
                         </li>
                       ))}
@@ -367,7 +367,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
                   )}
 
                   {section.callout && (
-                    <div className="rounded-sm bg-[#080E1A] border-l-4 border-[#C5A880] p-5 my-6 space-y-2">
+                    <div className="rounded-sm bg-[#080E1A] border-l-4 border-[#0E2445] p-5 my-6 space-y-2">
                       <h3 className="text-xs sm:text-sm font-mono font-semibold uppercase tracking-wider text-white">
                         {section.callout.title}
                       </h3>
@@ -384,7 +384,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
             {article.comparisonTable && (
               <div className="rounded-sm bg-[#0B1324] border border-white/[0.08] p-6 sm:p-8 space-y-5 shadow-xl">
                 <div className="space-y-1">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C5A880]">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#93C5FD]">
                     Operational Breakdown
                   </span>
                   <h3 className="text-xl sm:text-2xl font-serif text-white">
@@ -413,7 +413,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
                                 cIdx === 0
                                   ? 'font-medium text-white'
                                   : cIdx === 1
-                                  ? 'text-[#C5A880] font-mono font-semibold'
+                                  ? 'text-[#93C5FD] font-mono font-semibold'
                                   : 'text-zinc-300 font-light'
                               }`}
                             >
@@ -430,8 +430,8 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
 
             {/* Statutory Citation Card (When Present) */}
             {article.statutoryCitation && (
-              <div className="rounded-sm bg-[#080E1A] border border-[#C5A880]/30 p-6 space-y-2">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#C5A880]">
+              <div className="rounded-sm bg-[#080E1A] border border-[#0E2445]/30 p-6 space-y-2">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#93C5FD]">
                   <Scale className="w-4 h-4" />
                   <span>{article.statutoryCitation.statute}</span>
                 </div>
@@ -448,7 +448,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
             {article.faqs.length > 0 && (
               <section id="faqs-section" className="space-y-5 pt-8 scroll-mt-28">
                 <div className="space-y-1">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#C5A880]">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#93C5FD]">
                     Direct Clarifications
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-serif text-white">
@@ -467,12 +467,12 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
                       >
                         <button
                           onClick={() => setOpenFaqIndex(isOpen ? null : fIdx)}
-                          className="w-full py-4 px-5 text-left flex items-center justify-between gap-4 text-sm sm:text-base font-medium text-white hover:text-[#C5A880] transition-colors"
+                          className="w-full py-4 px-5 text-left flex items-center justify-between gap-4 text-sm sm:text-base font-medium text-white hover:text-[#93C5FD] transition-colors"
                           aria-expanded={isOpen}
                         >
                           <span>{faq.question}</span>
                           <ChevronDown
-                            className={`w-4 h-4 text-[#C5A880] shrink-0 transition-transform duration-200 ${
+                            className={`w-4 h-4 text-[#93C5FD] shrink-0 transition-transform duration-200 ${
                               isOpen ? 'rotate-180' : ''
                             }`}
                           />
@@ -501,9 +501,9 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
             )}
 
             {/* Contextual Internal Link Bridge Card */}
-            <div className="rounded-sm bg-gradient-to-r from-[#0B1220] to-[#080E1A] border border-[#C5A880]/30 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl">
+            <div className="rounded-sm bg-gradient-to-r from-[#0B1220] to-[#080E1A] border border-[#0E2445]/30 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl">
               <div className="space-y-1 max-w-lg">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#C5A880]">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#93C5FD]">
                   Related Armed Capability
                 </span>
                 <h3 className="text-lg sm:text-xl font-serif text-white">
@@ -515,7 +515,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
               </div>
               <Link
                 href={article.relatedService.href}
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#0A0A0A] bg-gradient-to-r from-[#C5A880] to-[#D4AF37] rounded-sm hover:brightness-110 transition-all shrink-0"
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-[#0E2445] rounded-sm hover:brightness-110 transition-all shrink-0"
               >
                 <span>Explore Service</span>
                 <ArrowRight className="w-4 h-4" />
@@ -523,9 +523,9 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
             </div>
 
             {/* Direct Consultation & Priority Hotline Action Box */}
-            <div className="rounded-sm bg-gradient-to-br from-[#101A2D] via-[#0B1324] to-[#070D18] border border-[#C5A880]/50 p-8 sm:p-10 text-center space-y-6 shadow-2xl">
+            <div className="rounded-sm bg-gradient-to-br from-[#101A2D] via-[#0B1324] to-[#070D18] border border-[#0E2445]/50 p-8 sm:p-10 text-center space-y-6 shadow-2xl">
               <div className="space-y-2">
-                <span className="text-xs font-mono uppercase tracking-widest text-[#C5A880]">
+                <span className="text-xs font-mono uppercase tracking-widest text-[#93C5FD]">
                   Confidential Operations Desk
                 </span>
                 <h2 className="text-2xl sm:text-4xl font-serif text-white">
@@ -538,7 +538,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
                 <Link
                   href={`/contact?inquiry=${encodeURIComponent(article.title)}`}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#0A0A0A] bg-gradient-to-r from-[#C5A880] to-[#D4AF37] rounded-sm hover:brightness-110 transition-all shadow-lg shadow-[#C5A880]/15"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white bg-[#0E2445] rounded-sm hover:brightness-110 transition-all shadow-lg shadow-[#0E2445]/25"
                 >
                   <FileText className="w-4 h-4" />
                   <span>Request Confidential Consultation</span>
@@ -547,7 +547,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
                   href="tel:9542347231"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 text-xs sm:text-sm font-medium uppercase tracking-wider text-white border border-white/20 rounded-sm hover:bg-white/5 transition-colors"
                 >
-                  <Phone className="w-4 h-4 text-[#C5A880]" />
+                  <Phone className="w-4 h-4 text-[#93C5FD]" />
                   <span>Direct Hotline: (954) 234-7231</span>
                 </a>
               </div>
@@ -557,7 +557,7 @@ export const BlogPostView: React.FC<Props> = ({ article }) => {
             <div className="pt-6 border-t border-white/[0.08] flex items-center justify-between">
               <Link
                 href="/blog"
-                className="inline-flex items-center gap-2 text-xs sm:text-sm text-[#C5A880] hover:text-[#D4AF37] transition-colors"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm text-[#93C5FD] hover:text-[#93C5FD] transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span>Return to All Security Intelligence &amp; Guides</span>

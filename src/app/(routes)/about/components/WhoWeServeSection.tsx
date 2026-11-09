@@ -48,7 +48,7 @@ export const WhoWeServeSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               WHO WE SERVE
             </span>
           </motion.div>
@@ -72,7 +72,7 @@ export const WhoWeServeSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.12 }}
-            className="lg:col-span-6 border-l-2 border-[#C5A880] pl-6 sm:pl-8 space-y-6"
+            className="lg:col-span-6 border-l-2 border-[#0E2445] pl-6 sm:pl-8 space-y-6"
           >
             <p className="text-sm sm:text-base text-zinc-300 font-sans font-light leading-[1.85]">
               Massive Protective Services does not compete for every security contract. We are not the
@@ -113,7 +113,7 @@ export const WhoWeServeSection: React.FC = () => {
                 variants={itemVariants}
                 className="py-5 sm:py-6 flex items-center text-lg sm:text-xl lg:text-2xl font-serif text-zinc-200 hover:text-white transition-colors group cursor-default"
               >
-                <span className="text-[#C5A880] mr-4 text-base sm:text-lg leading-none select-none">
+                <span className="text-[#93C5FD] mr-4 text-base sm:text-lg leading-none select-none">
                   •
                 </span>
                 <span className="tracking-wide group-hover:translate-x-1 transition-transform duration-200">

@@ -14,7 +14,7 @@ export const CareersQuestionsCTASection: React.FC = () => {
       className="relative w-full bg-[#080E1A] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
     >
       {/* Subtle Warm Amber Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[340px] bg-[#C5A880]/5 blur-[160px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[340px] bg-[#0E2445]/5 blur-[160px] rounded-full pointer-events-none" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center space-y-7 sm:space-y-8">
         {/* Headline matching Screenshot 4 */}
@@ -49,7 +49,7 @@ export const CareersQuestionsCTASection: React.FC = () => {
         >
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 rounded-sm border border-[#C5A880]/60 hover:border-[#D4AF37] text-zinc-200 hover:text-[#D4AF37] bg-transparent font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_24px_rgba(212,175,55,0.25)] hover:scale-[1.02] group cursor-pointer"
+            className="inline-flex items-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 rounded-sm border border-[#0E2445]/60 hover:border-[#93C5FD] text-zinc-200 hover:text-[#93C5FD] bg-transparent font-semibold text-xs sm:text-sm tracking-wider transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_24px_rgba(23, 58, 110, 0.25)] hover:scale-[1.02] group cursor-pointer"
           >
             <span>Contact Us Directly</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

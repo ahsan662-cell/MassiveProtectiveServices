@@ -74,7 +74,7 @@ export const ThreeLicensesSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               OUR CREDENTIALS
             </span>
           </motion.div>
@@ -113,17 +113,17 @@ export const ThreeLicensesSection: React.FC = () => {
                         transition: { duration: 0.2 },
                       }
                 }
-                className="group rounded-sm bg-[#0B1220] border-t-2 border-t-[#C5A880] border-x border-b border-white/[0.06] p-7 sm:p-9 flex flex-col justify-between space-y-8 shadow-xl transition-all duration-300 hover:border-white/20 hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(197,168,128,0.12)] min-h-[440px]"
+                className="group rounded-sm bg-[#0B1220] border-t-2 border-t-[#0E2445] border-x border-b border-white/[0.06] p-7 sm:p-9 flex flex-col justify-between space-y-8 shadow-xl transition-all duration-300 hover:border-white/20 hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(14, 36, 69, 0.12)] min-h-[440px]"
               >
                 <div className="space-y-6">
                   {/* Top Badge Icon in Circle */}
-                  <div className="w-12 h-12 rounded-full border border-[#C5A880]/40 bg-[#C5A880]/10 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-[#C5A880] stroke-[1.6]" />
+                  <div className="w-12 h-12 rounded-full border border-[#0E2445]/40 bg-[#0E2445]/10 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-[#93C5FD] stroke-[1.6]" />
                   </div>
 
                   {/* Title and License Subtitle */}
                   <div className="space-y-2">
-                    <span className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider uppercase text-[#C5A880] block">
+                    <span className="text-[11px] sm:text-xs font-mono font-semibold tracking-wider uppercase text-[#93C5FD] block">
                       {lic.tag}
                     </span>
                     <h3 className="text-xl sm:text-2xl font-serif text-white font-normal leading-snug">
@@ -146,7 +146,7 @@ export const ThreeLicensesSection: React.FC = () => {
                     href={lic.actionHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#C5A880] hover:text-[#D4AF37] transition-colors group cursor-pointer"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#93C5FD] hover:text-[#93C5FD] transition-colors group cursor-pointer"
                   >
                     <span className="underline-offset-4 group-hover:underline">
                       {lic.actionText}

@@ -85,7 +85,7 @@ export const LocationSettingDetail: React.FC<Props> = ({ data }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
               {data.columns.map((col, idx) => (
                 <div key={idx} className="flex flex-col space-y-3 group">
-                  <div className="w-full h-[1.5px] bg-[#C5A880]/80 mb-2 group-hover:bg-[#C5A880] transition-colors" />
+                  <div className="w-full h-[1.5px] bg-[#0E2445]/80 mb-2 group-hover:bg-[#0E2445] transition-colors" />
                   <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#151D2A] leading-snug">
                     {col.title}
                   </h3>
@@ -119,7 +119,7 @@ export const LocationSettingDetail: React.FC<Props> = ({ data }) => {
                   className="flex flex-col space-y-3 group"
                 >
                   {/* Top Solid Gold Accent Bar */}
-                  <div className="w-full h-[2px] bg-[#C5A880] mb-2 group-hover:h-[2.5px] group-hover:bg-[#D4AF37] transition-all" />
+                  <div className="w-full h-[2px] bg-[#0E2445] mb-2 group-hover:h-[2.5px] group-hover:bg-[#0E2445] transition-all" />
 
                   {/* Column Title */}
                   <h3

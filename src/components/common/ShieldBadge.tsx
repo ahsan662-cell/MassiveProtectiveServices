@@ -13,7 +13,7 @@ export const ShieldBadge: React.FC<ShieldBadgeProps> = ({
   className = '',
 }) => {
   const variantStyles = {
-    gold: 'border-[#D4AF37]/40 bg-[#121212]/90 text-[#D4AF37]',
+    gold: 'border-[#0E2445]/40 bg-[#121212]/90 text-[#93C5FD]',
     tactical: 'border-white/10 bg-[#1F1F1F]/80 text-zinc-300',
     red: 'border-[#8B1E1E]/50 bg-[#8B1E1E]/10 text-red-400',
   }[variant];
@@ -22,7 +22,7 @@ export const ShieldBadge: React.FC<ShieldBadgeProps> = ({
     <div
       className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-[10px] font-mono tracking-wider uppercase border ${variantStyles} ${className}`}
     >
-      <ShieldCheck className="w-3.5 h-3.5 text-[#D4AF37]" />
+      <ShieldCheck className="w-3.5 h-3.5 text-[#93C5FD]" />
       <span>{label}</span>
     </div>
   );

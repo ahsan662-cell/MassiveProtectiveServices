@@ -64,7 +64,7 @@ export const ConciergeFAQSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               CONCIERGE SECURITY FAQ
             </span>
           </motion.div>
@@ -92,10 +92,10 @@ export const ConciergeFAQSection: React.FC = () => {
                   aria-expanded={isOpen}
                   className="w-full text-left flex items-center justify-between gap-4 cursor-pointer select-none group"
                 >
-                  <span className="text-xl sm:text-2xl font-serif text-[#111827] group-hover:text-[#C5A880] transition-colors leading-snug">
+                  <span className="text-xl sm:text-2xl font-serif text-[#111827] group-hover:text-[#93C5FD] transition-colors leading-snug">
                     {faq.question}
                   </span>
-                  <div className="shrink-0 text-[#C5A880] group-hover:text-[#111827] transition-colors">
+                  <div className="shrink-0 text-[#93C5FD] group-hover:text-[#111827] transition-colors">
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>
                 </button>

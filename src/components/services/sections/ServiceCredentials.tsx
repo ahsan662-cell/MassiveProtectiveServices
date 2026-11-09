@@ -58,7 +58,7 @@ export const ServiceCredentials: React.FC<Props> = ({ data }) => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+              <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
                 {data.eyebrow}
               </span>
             </motion.div>
@@ -102,7 +102,7 @@ export const ServiceCredentials: React.FC<Props> = ({ data }) => {
                 href={data.infoLink.href}
                 target={data.infoLink.href.startsWith('http') ? '_blank' : undefined}
                 rel={data.infoLink.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-sans text-[#C5A880] hover:text-[#D4AF37] transition-colors group"
+                className="inline-flex items-center gap-1.5 text-xs sm:text-[13px] font-sans text-[#93C5FD] hover:text-[#93C5FD] transition-colors group"
               >
                 <span>{data.infoLink.label}</span>
                 <span className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
@@ -125,9 +125,9 @@ export const ServiceCredentials: React.FC<Props> = ({ data }) => {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="group relative bg-[#121E36]/90 hover:bg-[#15233E] border-t-2 border-[#C5A880] rounded-none p-7 sm:p-9 space-y-3.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.4)]"
+                className="group relative bg-[#121E36]/90 hover:bg-[#15233E] border-t-2 border-[#0E2445] rounded-none p-7 sm:p-9 space-y-3.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.4)]"
               >
-                <h3 className="text-xl sm:text-2xl font-serif font-normal text-white group-hover:text-[#C5A880] transition-colors leading-snug">
+                <h3 className="text-xl sm:text-2xl font-serif font-normal text-white group-hover:text-[#93C5FD] transition-colors leading-snug">
                   {card.title || card.value}
                 </h3>
                 <p className="text-sm sm:text-[15px] font-sans font-light text-zinc-300 leading-relaxed">
@@ -148,11 +148,11 @@ export const ServiceCredentials: React.FC<Props> = ({ data }) => {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="bg-[#121D38] border border-white/[0.08] hover:border-[#C5A880]/50 rounded-lg p-7 sm:p-8 flex flex-col items-center text-center justify-center space-y-3.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+                className="bg-[#121D38] border border-white/[0.08] hover:border-[#0E2445]/50 rounded-lg p-7 sm:p-8 flex flex-col items-center text-center justify-center space-y-3.5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
               >
                 {/* Gold Icon */}
                 {card.icon && (
-                  <div className="text-[#C5A880] mb-1">
+                  <div className="text-[#93C5FD] mb-1">
                     <ServiceIcon name={card.icon} className="w-7 h-7 stroke-[1.6]" />
                   </div>
                 )}
@@ -199,7 +199,7 @@ export const ServiceCredentials: React.FC<Props> = ({ data }) => {
               href={data.verifyLink.href}
               target={data.verifyLink.href.startsWith('http') ? '_blank' : undefined}
               rel={data.verifyLink.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[#C5A880] hover:text-[#D4AF37] transition-colors group"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-mono text-[#93C5FD] hover:text-[#93C5FD] transition-colors group"
             >
               <span>{data.verifyLink.label}</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -209,7 +209,7 @@ export const ServiceCredentials: React.FC<Props> = ({ data }) => {
 
         {/* Bottom Subtle Gold Divider Line */}
         {data.showBottomDivider !== false && (
-          <div className="w-full h-px bg-[#C5A880]/30 pt-0 mt-12 sm:mt-16" />
+          <div className="w-full h-px bg-[#0E2445]/30 pt-0 mt-12 sm:mt-16" />
         )}
       </div>
     </section>

@@ -79,14 +79,14 @@ export const GoogleReviewsSlider: React.FC<GoogleReviewsSliderProps> = ({
     <div className="relative z-10 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-10 sm:mb-12">
-        <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C9A84C] uppercase block mb-2.5">
+        <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#0E2445] uppercase block mb-2.5">
           VERIFIED GOOGLE BUSINESS REVIEWS
         </span>
         <h2 className="text-white text-3xl sm:text-4xl lg:text-[42px] font-serif font-normal text-center mb-3.5 tracking-tight">
           What Our Clients Say
         </h2>
         <div className="flex items-center justify-center gap-2.5">
-          <span className="text-[#C9A84C] text-xl font-bold flex items-center gap-1 font-mono">
+          <span className="text-[#0E2445] text-xl font-bold flex items-center gap-1 font-mono">
             {rating} ★
           </span>
           <span className="text-zinc-400 text-sm font-sans">
@@ -148,7 +148,7 @@ export const GoogleReviewsSlider: React.FC<GoogleReviewsSliderProps> = ({
                           className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover border border-zinc-200 shrink-0"
                         />
                       ) : (
-                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0A0F1E] text-[#C9A84C] font-semibold text-sm flex items-center justify-center shrink-0 border border-[#C9A84C]/30 shadow-inner">
+                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0A0F1E] text-[#0E2445] font-semibold text-sm flex items-center justify-center shrink-0 border border-[#0E2445]/40 shadow-inner">
                           {initial}
                         </div>
                       )}
@@ -156,7 +156,7 @@ export const GoogleReviewsSlider: React.FC<GoogleReviewsSliderProps> = ({
                         <p className="text-zinc-900 font-semibold text-sm sm:text-[15px] truncate font-sans leading-tight">
                           {displayName}
                         </p>
-                        <p className="text-[#C9A84C] text-xs font-medium font-sans mt-0.5 truncate">
+                        <p className="text-[#0E2445] text-xs font-medium font-sans mt-0.5 truncate">
                           {review.relativePublishTimeDescription || 'Google Verified Review'}
                         </p>
                       </div>
@@ -201,7 +201,7 @@ export const GoogleReviewsSlider: React.FC<GoogleReviewsSliderProps> = ({
           type="button"
           onClick={handleNext}
           aria-label="Next review"
-          className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#C9A84C] hover:bg-[#D4AF37] text-[#0A0F1E] flex items-center justify-center transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg hover:scale-105 active:scale-95"
+          className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0E2445] hover:bg-[#173A6E] text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg hover:scale-105 active:scale-95"
         >
           <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
@@ -213,7 +213,7 @@ export const GoogleReviewsSlider: React.FC<GoogleReviewsSliderProps> = ({
           href={REVIEW_WRITE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 bg-[#C9A84C] hover:bg-[#D4AF37] text-[#0A0F1E] font-bold px-7 sm:px-8 py-3.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg uppercase text-xs tracking-wider cursor-pointer"
+          className="inline-flex items-center justify-center gap-2 bg-[#0E2445] hover:bg-[#173A6E] text-white font-bold px-7 sm:px-8 py-3.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg uppercase text-xs tracking-wider cursor-pointer"
         >
           <Star className="w-4 h-4 fill-[#0A0F1E]" />
           <span>Leave Us a Google Review</span>

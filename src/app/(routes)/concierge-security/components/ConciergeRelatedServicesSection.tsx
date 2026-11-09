@@ -65,7 +65,7 @@ export const ConciergeRelatedServicesSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               EXPLORE FURTHER
             </span>
           </motion.div>
@@ -103,10 +103,10 @@ export const ConciergeRelatedServicesSection: React.FC = () => {
                         transition: { duration: 0.2 },
                       }
                 }
-                className="group rounded-sm bg-white border border-black/10 p-7 sm:p-9 flex flex-col justify-between space-y-6 shadow-sm transition-all duration-300 hover:border-[#C5A880] hover:shadow-md min-h-[250px]"
+                className="group rounded-sm bg-white border border-black/10 p-7 sm:p-9 flex flex-col justify-between space-y-6 shadow-sm transition-all duration-300 hover:border-[#0E2445] hover:shadow-md min-h-[250px]"
               >
                 <div className="space-y-4">
-                  <div className="w-8 h-8 flex items-center justify-start text-[#C5A880]">
+                  <div className="w-8 h-8 flex items-center justify-start text-[#93C5FD]">
                     <Icon className="w-6 h-6 stroke-[1.6]" />
                   </div>
 
@@ -122,7 +122,7 @@ export const ConciergeRelatedServicesSection: React.FC = () => {
                 <div className="pt-2">
                   <Link
                     href={item.href}
-                    className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#C5A880] hover:text-[#111827] font-semibold transition-colors group/link cursor-pointer"
+                    className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#93C5FD] hover:text-[#111827] font-semibold transition-colors group/link cursor-pointer"
                   >
                     <span>EXPLORE SERVICE</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" />

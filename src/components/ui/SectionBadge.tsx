@@ -17,21 +17,21 @@ export const SectionBadge: React.FC<SectionBadgeProps> = ({
   className = '',
 }) => {
   const variantStyles = {
-    gold: 'bg-[#121212]/90 border-[#C5A880]/30 text-[#D4AF37] shadow-[0_0_15px_rgba(212,175,55,0.08)]',
+    gold: 'bg-[#0E2445]/10 border-[#0E2445]/30 text-[#0E2445] shadow-[0_0_15px_rgba(14,36,69,0.08)]',
     tactical: 'bg-[#141414] border-white/10 text-zinc-300',
     alert: 'bg-[#8B1E1E]/20 border-[#8B1E1E]/40 text-red-300',
   };
 
   const renderIcon = () => {
     if (!icon) {
-      return <ShieldCheck className="w-3.5 h-3.5 shrink-0 text-[#D4AF37]" />;
+      return <ShieldCheck className="w-3.5 h-3.5 shrink-0 text-[#0E2445]" />;
     }
     if (React.isValidElement(icon)) {
       return icon;
     }
     if (typeof icon === 'function' || typeof icon === 'object') {
       const IconComponent = icon as React.ComponentType<{ className?: string }>;
-      return <IconComponent className="w-3.5 h-3.5 shrink-0 text-[#D4AF37]" />;
+      return <IconComponent className="w-3.5 h-3.5 shrink-0 text-[#0E2445]" />;
     }
     return null;
   };

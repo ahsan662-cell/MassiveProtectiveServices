@@ -1,22 +1,21 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShieldCheck } from 'lucide-react';
 
 const COMPANY_ESSENTIALS = [
   {
     label: 'Agency License:',
-    value: 'B1400200 (FDACS)',
+    value: 'B1400200 (FDACS Verified)',
   },
   {
     label: 'Officers:',
-    value: 'Class G Licensed — Armed',
+    value: '100% Florida Class G Licensed — Armed',
   },
   {
     label: 'Headquarters:',
-    value: 'Delray Beach, FL',
+    value: 'Delray Beach, FL (Tri-County Dispatch)',
   },
   {
     label: 'Coverage:',
@@ -24,11 +23,11 @@ const COMPANY_ESSENTIALS = [
   },
   {
     label: 'Availability:',
-    value: '24/7 · 365 Days',
+    value: '24/7 · 365 Days Immediate Deployment',
   },
   {
     label: 'Contracts:',
-    value: 'NDA Available — Standard.',
+    value: 'Strict NDAs Signed at Every Level',
   },
 ];
 
@@ -39,8 +38,11 @@ export const AboutMPSSection: React.FC = () => {
     <section
       id="about-mps"
       aria-label="About Massive Protective Services"
-      className="relative w-full bg-[#101A2D] text-white py-14 sm:py-18 lg:py-20 overflow-hidden border-t border-white/[0.08]"
+      className="relative w-full bg-[#0B0B12] text-white py-18 sm:py-24 lg:py-28 overflow-hidden border-t border-white/[0.08]"
     >
+      {/* Background Subtle Radial Glow */}
+      <div className="absolute top-1/2 right-1/4 w-[600px] h-[400px] bg-[#0E2445]/10 blur-[160px] rounded-full pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Mission & Narrative */}
@@ -52,9 +54,10 @@ export const AboutMPSSection: React.FC = () => {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5 }}
             >
-              <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
-                ABOUT MASSIVE PROTECTIVE SERVICES
-              </span>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0E2445]/20 border border-[#0E2445]/40 text-[#60A5FA] text-xs font-mono font-semibold uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
+                <span>ABOUT MASSIVE PROTECTIVE SERVICES</span>
+              </div>
             </motion.div>
 
             {/* Headline */}
@@ -63,7 +66,7 @@ export const AboutMPSSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.08 }}
-              className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-serif font-normal text-white leading-[1.15] tracking-tight"
+              className="text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] font-sans font-bold text-white leading-[1.15] tracking-tight"
             >
               A South Florida Security Firm Built for the Clients Other Firms Are Not Equipped to Serve
             </motion.h2>
@@ -74,23 +77,23 @@ export const AboutMPSSection: React.FC = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.12 }}
-              className="text-xs font-sans text-[#C5A880]/80 italic"
+              className="text-xs font-mono text-[#93C5FD] flex items-center gap-2"
             >
-              Founder-bio sentence — pending approval.
+              <ShieldCheck className="w-4 h-4 text-[#3B82F6]" />
+              <span>Executive Command · Marc A. Tardalo</span>
             </motion.div>
 
-            {/* Narrative Paragraphs matching exact screenshot text */}
+            {/* Narrative Paragraphs */}
             <motion.div
               initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="space-y-5 text-xs sm:text-sm md:text-[15px] text-zinc-300 font-sans font-light leading-[1.8]"
+              className="space-y-5 text-xs sm:text-sm md:text-[15px] text-zinc-300 font-sans font-normal leading-[1.8]"
             >
               <p>
-                Massive Protective Services was founded in Delray Beach, Florida by [Marc A. Tardalo —
-                placeholder for founder bio sentence]. The firm operates under FL Agency License B1400200 and
-                holds all required licensure under Chapter 493, Florida Statutes.
+                Massive Protective Services was founded in Delray Beach, Florida. The firm operates under
+                Florida Agency License B1400200 and holds all required licensure under Chapter 493, Florida Statutes.
               </p>
 
               <p>
@@ -117,7 +120,7 @@ export const AboutMPSSection: React.FC = () => {
             >
               <a
                 href="#who-we-are"
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-sans font-medium text-[#C5A880] hover:text-[#D4AF37] transition-colors group cursor-pointer"
+                className="inline-flex items-center gap-2 text-xs sm:text-sm font-sans font-semibold text-[#60A5FA] hover:text-[#93C5FD] transition-colors group cursor-pointer"
               >
                 <span>Learn More About Us</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
@@ -131,10 +134,11 @@ export const AboutMPSSection: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 rounded-sm bg-[#111C33] border border-white/[0.08] border-l-2 border-l-[#C5A880] p-7 sm:p-10 shadow-2xl"
+            className="lg:col-span-5 rounded-xl bg-[#12121A] border border-white/[0.08] border-l-4 border-l-[#0E2445] p-7 sm:p-10 shadow-2xl"
           >
-            <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#C5A880] font-semibold mb-8 pb-3 border-b border-white/[0.06]">
-              COMPANY ESSENTIALS
+            <div className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#60A5FA] font-semibold mb-8 pb-3 border-b border-white/[0.06] flex items-center justify-between">
+              <span>COMPANY ESSENTIALS</span>
+              <span className="w-2 h-2 rounded-full bg-[#3B82F6] animate-pulse" />
             </div>
 
             <div className="space-y-6">
@@ -143,7 +147,7 @@ export const AboutMPSSection: React.FC = () => {
                   <div className="text-xs font-mono uppercase tracking-wider text-zinc-400">
                     {item.label}
                   </div>
-                  <div className="text-sm sm:text-base font-sans font-normal text-white">
+                  <div className="text-sm sm:text-base font-sans font-medium text-white">
                     {item.value}
                   </div>
                 </div>

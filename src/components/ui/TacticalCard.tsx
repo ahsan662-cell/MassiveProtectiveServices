@@ -30,7 +30,7 @@ export const TacticalCard: React.FC<TacticalCardProps> = ({
       whileHover={hasGlowHover ? { y: -4, transition: { duration: 0.25 } } : undefined}
       className={`relative rounded-lg border transition-all duration-300 ${variantBg[variant]} ${
         hasGlowHover
-          ? 'hover:border-[#C5A880]/50 hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.8),0_0_24px_rgba(197,168,128,0.12)]'
+          ? 'hover:border-[#0E2445] hover:shadow-[0_8px_32px_-4px_rgba(0,0,0,0.8),0_0_24px_rgba(14,36,69,0.3)]'
           : ''
       } ${className}`}
       {...motionProps}
@@ -38,10 +38,10 @@ export const TacticalCard: React.FC<TacticalCardProps> = ({
       {/* Tactical Corner Ticks */}
       {cornerTicks && (
         <>
-          <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#D4AF37]/40 pointer-events-none" />
-          <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#D4AF37]/40 pointer-events-none" />
-          <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#D4AF37]/40 pointer-events-none" />
-          <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#D4AF37]/40 pointer-events-none" />
+          <span className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#0E2445]/60 pointer-events-none" />
+          <span className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#0E2445]/60 pointer-events-none" />
+          <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#0E2445]/60 pointer-events-none" />
+          <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#0E2445]/60 pointer-events-none" />
         </>
       )}
 

@@ -62,7 +62,7 @@ export const CorporateFAQSection: React.FC = () => {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#C5A880]">
+            <span className="text-[11px] sm:text-xs font-mono font-semibold uppercase tracking-[0.25em] text-[#93C5FD]">
               CORPORATE SECURITY FAQ
             </span>
           </motion.div>
@@ -90,10 +90,10 @@ export const CorporateFAQSection: React.FC = () => {
                   aria-expanded={isOpen}
                   className="w-full flex items-center justify-between text-left gap-4 group cursor-pointer focus:outline-none"
                 >
-                  <span className="text-xl sm:text-2xl lg:text-[26px] font-serif font-normal text-white group-hover:text-[#C5A880] transition-colors leading-snug">
+                  <span className="text-xl sm:text-2xl lg:text-[26px] font-serif font-normal text-white group-hover:text-[#93C5FD] transition-colors leading-snug">
                     {faq.question}
                   </span>
-                  <div className="text-zinc-400 group-hover:text-[#C5A880] shrink-0 transition-colors pr-2">
+                  <div className="text-zinc-400 group-hover:text-[#93C5FD] shrink-0 transition-colors pr-2">
                     {isOpen ? (
                       <Minus className="w-5 h-5 stroke-[1.5]" />
                     ) : (

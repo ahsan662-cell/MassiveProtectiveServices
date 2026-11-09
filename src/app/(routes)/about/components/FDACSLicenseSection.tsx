@@ -58,7 +58,7 @@ export const FDACSLicenseSection: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#C5A880] uppercase">
+            <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
               LICENSED &amp; VERIFIABLE
             </span>
           </motion.div>
@@ -96,13 +96,13 @@ export const FDACSLicenseSection: React.FC = () => {
                         transition: { duration: 0.2 },
                       }
                 }
-                className="rounded-sm bg-[#0B1220] border border-[#C5A880]/60 p-6 sm:p-8 flex items-start gap-4 sm:gap-5 shadow-xl transition-all duration-300 hover:border-[#C5A880] hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(197,168,128,0.12)]"
+                className="rounded-sm bg-[#0B1220] border border-[#0E2445]/60 p-6 sm:p-8 flex items-start gap-4 sm:gap-5 shadow-xl transition-all duration-300 hover:border-[#0E2445] hover:shadow-[0_8px_30px_rgba(0,0,0,0.6),0_0_20px_rgba(14, 36, 69, 0.12)]"
               >
                 <div className="shrink-0 mt-1">
-                  <Icon className="w-6 h-6 text-[#C5A880] stroke-[1.4]" />
+                  <Icon className="w-6 h-6 text-[#93C5FD] stroke-[1.4]" />
                 </div>
                 <div className="space-y-1.5">
-                  <span className="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-[#C5A880] block font-medium">
+                  <span className="text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-[#93C5FD] block font-medium">
                     {card.tag}
                   </span>
                   <div className="text-xl sm:text-2xl font-serif font-normal text-white">
@@ -132,7 +132,7 @@ export const FDACSLicenseSection: React.FC = () => {
               href="https://licensing.fdacs.gov/access/agency.aspx"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#C5A880] hover:text-[#D4AF37] transition-colors group"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-[#93C5FD] hover:text-[#93C5FD] transition-colors group"
             >
               <span className="underline-offset-4 group-hover:underline">Verify Our License</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

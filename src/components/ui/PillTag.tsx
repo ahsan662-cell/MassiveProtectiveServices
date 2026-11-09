@@ -13,8 +13,8 @@ export const PillTag: React.FC<PillTagProps> = ({
 }) => {
   const variantStyles = {
     tactical: 'bg-[#1F1F1F] text-zinc-300 border-white/[0.08]',
-    gold: 'bg-[#C5A880]/10 text-[#D4AF37] border-[#C5A880]/30',
-    outline: 'bg-transparent text-zinc-400 border-white/10 hover:border-[#D4AF37]/40',
+    gold: 'bg-[#0E2445]/10 text-[#93C5FD] border-[#0E2445]/40',
+    outline: 'bg-transparent text-zinc-400 border-white/10 hover:border-[#0E2445]/40',
   };
 
   return (

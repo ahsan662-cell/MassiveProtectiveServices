@@ -19,9 +19,9 @@ export const ResponseTimeBanner: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
-          className="w-10 h-10 rounded-full border border-[#C5A880]/60 flex items-center justify-center text-[#C5A880] mb-5 shadow-[0_0_15px_rgba(197,168,128,0.15)]"
+          className="w-10 h-10 rounded-full border border-[#0E2445]/60 flex items-center justify-center text-[#93C5FD] mb-5 shadow-[0_0_15px_rgba(14, 36, 69, 0.15)]"
         >
-          <Clock className="w-5 h-5 text-[#C5A880]" />
+          <Clock className="w-5 h-5 text-[#93C5FD]" />
         </motion.div>
 
         {/* Headline matching Image 2 */}
@@ -46,7 +46,7 @@ export const ResponseTimeBanner: React.FC = () => {
           For urgent situations, call{' '}
           <a
             href="tel:9542347231"
-            className="text-white hover:text-[#D4AF37] underline font-medium transition-colors"
+            className="text-white hover:text-[#93C5FD] underline font-medium transition-colors"
           >
             (954) 234-7231
           </a>
