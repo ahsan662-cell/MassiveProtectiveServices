@@ -8,7 +8,7 @@ export default function GoogleReviews() {
     <section
       id="google-reviews"
       aria-label="Verified Google Reviews"
-      className="relative w-full bg-[#0A0F1E] py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-t border-white/[0.08] overflow-hidden"
+      className="relative w-full bg-[#FFF] py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 border-t border-white/[0.08] overflow-hidden"
     >
       {/* Ambient background gold glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#0E2445]/5 rounded-full blur-[150px] pointer-events-none" />
@@ -16,7 +16,7 @@ export default function GoogleReviews() {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-10 sm:mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0E2445]/10 border border-[#0E2445]/40 text-[#0E2445] text-xs font-semibold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFFFFF]/10 border border-[#0E2445]/40 text-[#000] text-xs font-semibold uppercase tracking-wider">
             <svg
               className="w-3.5 h-3.5"
               viewBox="0 0 24 24"
@@ -28,7 +28,7 @@ export default function GoogleReviews() {
             <span>VERIFIED GOOGLE BUSINESS REVIEWS</span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight font-serif">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-black tracking-tight font-serif">
             What Our Clients Say
           </h2>
 

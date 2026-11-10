@@ -72,7 +72,7 @@ export const BlogHeroSection: React.FC = () => {
 
                 <div className="pt-2">
                   <Link
-                    href="#articles"
+                    href="/blog/what-is-executive-protection"
                     className="inline-flex items-center gap-2 text-sm sm:text-base font-medium text-[#93C5FD] hover:text-[#93C5FD] transition-colors group cursor-pointer"
                   >
                     <span>Read the Guide</span>

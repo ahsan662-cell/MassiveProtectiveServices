@@ -200,6 +200,9 @@ export interface ServiceFormData {
   defaultCoverageStart?: string;
   propertyLocationLabel?: string;
   propertyLocationPlaceholder?: string;
+  locationLabel?: string;
+  locationPlaceholder?: string;
+  locationOptions?: string[];
   messagePlaceholder?: string;
   submitButtonText?: string;
   footerNote?: string;

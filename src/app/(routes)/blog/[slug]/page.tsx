@@ -57,36 +57,98 @@ export default async function BlogPostPage(props: Props) {
     notFound();
   }
 
+  const postUrl = getCanonicalUrl(`/blog/${article.slug}`);
+
   const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: article.title,
-    description: article.metaDescription,
-    url: getCanonicalUrl(`/blog/${article.slug}`),
-    datePublished: '2026-11-01T08:00:00+00:00',
-    dateModified: '2026-11-08T00:00:00+00:00',
-    author: {
-      '@type': 'Person',
-      name: article.author,
-      jobTitle: article.authorTitle,
-      worksFor: {
-        '@type': 'Organization',
-        name: 'Massive Protective Services',
-        url: SITE_URL,
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        headline: article.title,
+        description: article.metaDescription,
+        datePublished: article.publishDateIso || '2026-11-03',
+        dateModified: article.publishDateIso || '2026-11-03',
+        mainEntityOfPage: postUrl,
+        ...(article.about && article.about.length > 0
+          ? {
+              about: article.about.map((item) => ({
+                '@type': 'Thing',
+                name: item.name,
+              })),
+            }
+          : {}),
+        author: {
+          '@type': 'Person',
+          name: article.author,
+          url: `${SITE_URL}/about`,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Massive Protective Services Inc.',
+          url: `${SITE_URL}/`,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${SITE_URL}/images/mps_lion_logo.png`,
+          },
+        },
+        ...(article.heroImage
+          ? {
+              image: `${SITE_URL}${article.heroImage.src}`,
+            }
+          : {}),
       },
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Massive Protective Services',
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_URL}/images/mps_lion_logo.png`,
+      ...(article.howTo
+        ? [
+            {
+              '@type': 'HowTo',
+              name: article.howTo.name,
+              step: article.howTo.step.map((s) => ({
+                '@type': 'HowToStep',
+                name: s.name,
+                text: s.text,
+              })),
+            },
+          ]
+        : []),
+      ...(article.faqs && article.faqs.length > 0
+        ? [
+            {
+              '@type': 'FAQPage',
+              mainEntity: article.faqs.map((faq) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: faq.answer,
+                },
+              })),
+            },
+          ]
+        : []),
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${SITE_URL}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Blog',
+            item: `${SITE_URL}/blog`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: article.title,
+            item: postUrl,
+          },
+        ],
       },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': getCanonicalUrl(`/blog/${article.slug}`),
-    },
+    ],
   };
 
   return (

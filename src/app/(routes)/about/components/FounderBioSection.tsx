@@ -3,6 +3,8 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Crown, MapPin, ExternalLink } from 'lucide-react';
+import Image from 'next/image';
+import FounderImg from '@/public/images/Founder.jpg.jpeg';
 
 export const FounderBioSection: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -45,23 +47,18 @@ export const FounderBioSection: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-4 rounded-sm bg-[#0B1220] border border-[#0E2445] p-8 flex flex-col justify-between items-center text-center min-h-[460px] shadow-2xl"
+            className="lg:col-span-4 rounded-sm  border-[#0E2445] p-8 flex flex-col justify-between items-center text-center h-full"
           >
-            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#93C5FD]">
-              PORTRAIT / AWAITING PHOTOGRAPH
-            </div>
-
-            <div className="my-auto flex flex-col items-center space-y-4">
-              <Crown className="w-12 h-12 text-[#93C5FD] stroke-[1.2]" />
-              <div className="w-8 h-[1px] bg-[#0E2445]" />
-              <div className="text-xs sm:text-sm font-sans text-zinc-300 max-w-[200px]">
-                Marc A. Tardalo — professional photo, portrait orientation
-              </div>
-            </div>
-
-            <div className="text-[10px] font-sans text-zinc-400">
-              Professional portrait pending. No substitute likeness.
-            </div>
+            <Image
+              src={FounderImg.src}
+              alt='Founder Image'
+              width={FounderImg.width}
+              height={FounderImg.height}
+              className='w-full h-auto object-cover rounded-sm shadow-sm shadow-white/10'
+              title='Founder Image'
+              priority={true}
+            />
+            
           </motion.div>
 
           {/* Right Column (lg:col-span-8): Bio Container & Meta Box */}
@@ -72,41 +69,23 @@ export const FounderBioSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6 }}
-              className="rounded-sm bg-[#0B1220] border border-[#0E2445] p-7 sm:p-9 space-y-6 flex-1 shadow-2xl"
+              className="rounded-sm  border-[#0E2445] p-7 sm:p-9 space-y-6 flex-1 shadow-2xl"
             >
-              <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-[#93C5FD] block font-semibold">
-                  PLACEHOLDER — Marc&apos;s actual bio goes here
-                </span>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400 mt-1 block">
-                  PENDING DRAFT / NOT PUBLISHABLE BIOGRAPHY
-                </span>
-              </div>
 
               <div className="space-y-4 text-xs sm:text-sm text-zinc-300 font-sans font-light leading-[1.8]">
                 <p>
-                  Opening paragraph — where Marc comes from, what drew him to security, the inflection
-                  point that made him decide to build his own firm rather than work within the existing
-                  industry structure. This should be in Marc&apos;s own voice — first-person or close to it.
+                  Marc A. Tardalo has spent more than 15 years in executive protection, building his reputation one detail at a time across South Florida, New York, Chicago, Las Vegas, and beyond. Before founding Massive Protective Services in 2013, Marc worked close protection for Grammy Award-winning artists, NFL MVPs, BCS Championship executives, and high-net-worth families — developing the operational instincts and client standards that would later define MPS.
                 </p>
 
                 <p>
-                  Second paragraph — what he saw missing in the South Florida market. The specific gap:
-                  firms that claimed &ldquo;security&rdquo; but delivered bodies in uniforms. No planning. No
-                  training beyond the minimum. No accountability. No real protection.
+                  After years working alongside some of the best EP teams in the country, Marc saw the same problem everywhere: firms that sent bodies in uniforms and called it protection. No written plans. No advance work. No real accountability to the client. South Florida, in particular, was full of companies that looked the part but couldn’t execute when it counted. Marc built MPS to be the firm he never found — one where every officer is armed and licensed, every assignment has a written security plan, and every client has direct access to leadership.
                 </p>
 
                 <p>
-                  Third paragraph — what MPS was built to be instead. The commitment to armed officers
-                  only. The written security plans. The consistent assignments. The client relationships
-                  built on transparency.
+                  Today, MPS provides executive protection, secure luxury transportation, event security, and private family protection across South Florida and beyond. Marc holds a Florida Class G Statewide Firearms License, a Class B Security Contractor Manager license, and advanced EP certifications from LaSorsa & Associates — one of the most respected EP training organizations in the country. His clients include celebrities, professional athletes, corporate executives, and ultra-high-net-worth families who require protection that is discreet, prepared, and uncompromising.
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-white/[0.06] text-xs font-sans text-zinc-400 italic leading-relaxed">
-                Content pending Marc&apos;s input. Founding year, professional background, any prior law
-                enforcement or military background, and specific story of why MPS was founded.
-              </div>
             </motion.div>
 
             {/* Bottom Meta Box matching Image 2 */}

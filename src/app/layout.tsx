@@ -6,6 +6,7 @@ import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 import { Header } from "@/components/common/Header";
 import { Footer } from "@/components/common/Footer";
 import { SplashScreen } from "@/components/common/SplashScreen";
+import { FloatingChatbot } from "@/components/chat/FloatingChatbot";
 
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getLocalBusinessSchema } from "@/utils/schema";
@@ -109,6 +110,9 @@ export default function RootLayout({
 
             {/* Global Chapter 493 Statutory Footer */}
             <Footer />
+
+            {/* Floating Security Chatbot & Direct WhatsApp Launcher */}
+            <FloatingChatbot />
           </ErrorBoundary>
         </StoreProvider>
       </body>

@@ -269,11 +269,13 @@ export const executiveProtectionData: ServicePageConfig = {
     subtitle:
       'All inquiries are held in strict professional confidence under Florida legal and privacy standards.',
     serviceCategory: 'Executive Protection',
+    locationLabel: 'Deployment Location / Jurisdiction',
+    locationPlaceholder: 'Select jurisdiction or enter custom location...',
     secondFieldLabel: 'Principal Profile / Industry',
     secondFieldPlaceholder: 'e.g. C-Suite, Family Office, High-Profile Visitor',
     secondFieldIcon: 'briefcase',
     dropdown1Label: 'Protection Requirement',
-    dropdown1Placeholder: 'Select protective scope',
+    dropdown1Placeholder: 'Select protective scope or type custom...',
     needTypes: [
       'Close Protection (Armed Detail)',
       'Secure Armed Transport / Motorcade',

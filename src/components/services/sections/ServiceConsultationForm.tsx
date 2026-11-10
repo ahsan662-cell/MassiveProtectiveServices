@@ -1,13 +1,23 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ChevronDown, Check, Loader2, ShieldCheck, Lock, Calendar, MessageCircle, Mail } from 'lucide-react';
+import {
+  ChevronDown,
+  Check,
+  Loader2,
+  ShieldCheck,
+  Lock,
+  Calendar,
+  MapPin,
+  Briefcase,
+} from 'lucide-react';
 import { useConsultationSubmit } from '@/hooks/useConsultationSubmit';
 import { SubmissionMethodModal } from '@/components/ui/SubmissionMethodModal';
 import { SecurityCaptcha } from '@/components/ui/SecurityCaptcha';
 import { MPS_PHONE_DISPLAY } from '@/utils/whatsapp';
 import { ServiceFormData } from '../types';
+import { ALL_LOCATIONS } from '@/data/locationsOverviewData';
 
 interface Props {
   data?: ServiceFormData;
@@ -22,6 +32,192 @@ const DEFAULT_NEED_TYPES = [
   'Other',
 ];
 
+// All 19 Florida jurisdictional deployment territories + regional/travel footprints
+const DEFAULT_LOCATIONS_LIST = [
+  'Palm Beach',
+  'West Palm Beach',
+  'Delray Beach (Headquarters)',
+  'Boca Raton',
+  'Boynton Beach',
+  'Gulf Stream',
+  'Manalapan',
+  'Ocean Ridge',
+  'Fort Lauderdale',
+  'Hillsboro Beach',
+  'Lighthouse Point',
+  'Miami',
+  'Miami Beach',
+  'Aventura',
+  'Tampa',
+  'Sarasota',
+  'Orlando',
+  'Naples',
+  'Jacksonville',
+  'Tri-County Corridor (Palm Beach · Broward · Miami-Dade)',
+  'Statewide Florida Operations',
+  'Domestic & International Travel',
+];
+
+interface ComboboxFieldProps {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: string[];
+  placeholder?: string;
+  icon?: React.ReactNode;
+  required?: boolean;
+  error?: string;
+}
+
+/**
+ * ComboboxField: Combines a searchable text input with an interactive dropdown.
+ * Principal / client can pick from verified presets OR type any custom location/scope.
+ */
+const ComboboxField: React.FC<ComboboxFieldProps> = ({
+  label,
+  value,
+  onChange,
+  options,
+  placeholder = 'Select or type custom...',
+  icon,
+  required = false,
+  error,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Filter options based on active typing
+  const filteredOptions = useMemo(() => {
+    if (!value || !value.trim()) return options;
+    const q = value.toLowerCase().trim();
+    return options.filter((opt) => opt.toLowerCase().includes(q));
+  }, [options, value]);
+
+  const hasExactMatch = options.some(
+    (opt) => opt.toLowerCase().trim() === (value || '').toLowerCase().trim()
+  );
+
+  return (
+    <div className="space-y-1 relative" ref={containerRef}>
+      <label className="block text-[11px] font-sans text-zinc-300">
+        {label} {required && <span className="text-[#93C5FD]">*</span>}
+      </label>
+
+      <div className="relative">
+        {icon && (
+          <div className="absolute left-2.5 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none">
+            {icon}
+          </div>
+        )}
+
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => {
+            onChange(e.target.value);
+            setIsOpen(true);
+          }}
+          onFocus={() => setIsOpen(true)}
+          placeholder={placeholder}
+          className={`w-full bg-[#111B2C] border ${
+            error ? 'border-red-500' : 'border-[#1E2D4A] focus:border-[#3B82F6]'
+          } text-white placeholder-zinc-500 ${
+            icon ? 'pl-8' : 'pl-3'
+          } pr-9 py-2 rounded text-xs sm:text-sm outline-none transition-colors`}
+        />
+
+        <button
+          type="button"
+          tabIndex={-1}
+          onClick={() => setIsOpen(!isOpen)}
+          className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+          aria-label={`Toggle ${label} options`}
+        >
+          <ChevronDown
+            className={`w-3.5 h-3.5 transition-transform duration-200 ${
+              isOpen ? 'rotate-180 text-[#93C5FD]' : ''
+            }`}
+          />
+        </button>
+      </div>
+
+      {error && <p className="text-[10px] text-red-400 font-mono">{error}</p>}
+
+      {isOpen && (
+        <div className="absolute z-40 top-full mt-1 left-0 right-0 bg-[#0E1728] border border-[#1E2D4A] rounded shadow-2xl py-1 divide-y divide-white/5 max-h-56 overflow-y-auto">
+          {/* Custom entry badge if user has typed something that isn't an exact match */}
+          {value && value.trim() && !hasExactMatch && (
+            <div
+              onClick={() => setIsOpen(false)}
+              className="px-3 py-2 text-xs bg-[#16233B]/80 text-[#93C5FD] flex items-center justify-between border-b border-white/5 cursor-pointer hover:bg-[#1C2C4A]"
+            >
+              <div className="truncate">
+                <span className="text-[10px] uppercase font-mono tracking-wider text-zinc-400 block">
+                  Custom entry:
+                </span>
+                <span className="font-medium text-white truncate">&quot;{value}&quot;</span>
+              </div>
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#0E2445] text-[#93C5FD] shrink-0 border border-[#3B82F6]/30">
+                Custom
+              </span>
+            </div>
+          )}
+
+          {filteredOptions.length > 0 ? (
+            filteredOptions.map((opt, idx) => {
+              const isSelected =
+                (value || '').toLowerCase().trim() === opt.toLowerCase().trim();
+              return (
+                <button
+                  key={idx}
+                  type="button"
+                  onClick={() => {
+                    onChange(opt);
+                    setIsOpen(false);
+                  }}
+                  className={`w-full px-3 py-2 text-left text-xs sm:text-sm flex items-center justify-between transition-colors cursor-pointer ${
+                    isSelected
+                      ? 'text-[#93C5FD] bg-[#142036]'
+                      : 'text-zinc-300 hover:bg-[#142036] hover:text-white'
+                  }`}
+                >
+                  <span className="truncate">{opt}</span>
+                  {isSelected && <Check className="w-3.5 h-3.5 text-[#93C5FD] shrink-0" />}
+                </button>
+              );
+            })
+          ) : (
+            <div className="p-3 text-center space-y-1">
+              <p className="text-xs text-zinc-300">Custom entry: &quot;{value}&quot;</p>
+              <p className="text-[11px] text-[#93C5FD] font-mono">
+                Custom specification will be transmitted directly.
+              </p>
+              <button
+                type="button"
+                onClick={() => onChange('')}
+                className="text-[10px] text-zinc-400 hover:text-white underline mt-1"
+              >
+                Clear to view all options
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
 export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
   const prefersReducedMotion = useReducedMotion();
 
@@ -30,19 +226,23 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
   const subtitle =
     data?.subtitle ||
     "Tell us about your property and we'll design a customized security programme around it.";
-  const needTypes = data?.needTypes || DEFAULT_NEED_TYPES;
-  const secondFieldLabel =
-    data?.secondFieldLabel || data?.propertyLocationLabel || 'Property City / Location';
-  const secondFieldPlaceholder =
-    data?.secondFieldPlaceholder ||
-    data?.propertyLocationPlaceholder ||
-    'City or territory';
-  const hasCalendarIcon = data?.secondFieldIcon === 'calendar';
 
+  // Location configuration (supports 19 Florida jurisdictions + custom input)
+  const locationLabel =
+    data?.locationLabel || data?.propertyLocationLabel || 'Deployment Location / Jurisdiction';
+  const locationPlaceholder =
+    data?.locationPlaceholder ||
+    data?.propertyLocationPlaceholder ||
+    'Select or type custom location...';
+  const locationOptions = data?.locationOptions || DEFAULT_LOCATIONS_LIST;
+
+  // Protection Requirement / Coverage Type configuration
   const dropdown1Label = data?.dropdown1Label || 'Coverage Type';
-  const dropdown1Placeholder = data?.dropdown1Placeholder || 'Select coverage type';
+  const dropdown1Placeholder =
+    data?.dropdown1Placeholder || 'Select or type custom...';
   const dropdown1Options = data?.needTypes || DEFAULT_NEED_TYPES;
 
+  // Coverage Start / Detail Duration configuration
   const dropdown2Label = data?.dropdown2Label || 'Coverage Start';
   const dropdown2Placeholder = data?.dropdown2Placeholder || 'Select start date';
   const dropdown2Options =
@@ -54,6 +254,16 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
       'Unsure',
     ];
 
+  // Secondary Profile / Industry field (used in Executive Protection)
+  const hasDedicatedProfileField = Boolean(
+    data?.secondFieldLabel &&
+      data.secondFieldLabel !== data.propertyLocationLabel &&
+      data.secondFieldLabel !== data.locationLabel
+  );
+  const secondFieldLabel = data?.secondFieldLabel || 'Principal Profile / Industry';
+  const secondFieldPlaceholder =
+    data?.secondFieldPlaceholder || 'e.g. C-Suite, Family Office, High-Profile Visitor';
+
   const defaultNeed = data?.defaultNeed || '';
   const defaultStart = data?.defaultCoverageStart || '';
   const submitText = data?.submitButtonText || 'REQUEST CONFIDENTIAL CONSULTATION';
@@ -63,6 +273,7 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
   const isResidentialLayout = Boolean(
     data?.coverageStartOptions ||
       data?.propertyLocationLabel ||
+      data?.locationLabel ||
       data?.dropdown2Options ||
       data?.secondFieldLabel
   );
@@ -73,13 +284,13 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
     email: '',
     companyName: '',
     jobTitle: '',
+    principalProfile: '',
     propertyLocation: '',
     coverageType: defaultNeed,
     coverageStart: defaultStart,
     message: '',
   });
 
-  const [coverageDropdownOpen, setCoverageDropdownOpen] = useState(false);
   const [startDropdownOpen, setStartDropdownOpen] = useState(false);
 
   const {
@@ -100,10 +311,17 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
     formSource: headline || 'Service Security Consultation',
   });
 
+  const prepareSubmissionPayload = () => ({
+    ...formData,
+    location: formData.propertyLocation,
+    serviceType: formData.coverageType,
+    jobTitle: formData.principalProfile || formData.jobTitle,
+    principalProfile: formData.principalProfile,
+  });
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validate(formData)) {
-      setCoverageDropdownOpen(false);
       setStartDropdownOpen(false);
       setIsMethodModalOpen(true);
     }
@@ -191,7 +409,7 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
             <form onSubmit={handleFormSubmit} className="space-y-3 sm:space-y-3.5">
               {isResidentialLayout ? (
                 <>
-                  {/* Row 1: Full Name, Phone, Email (3 columns on md+) */}
+                  {/* Row 1: Full Name, Direct Phone, Email Address (3 columns on md+) */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div className="space-y-1">
                       <div className="flex justify-between items-center text-[11px] font-sans text-zinc-300">
@@ -251,89 +469,36 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
                     </div>
                   </div>
 
-                  {/* Row 2: Location/City, Coverage Type Dropdown, Coverage Start Dropdown (3 columns on md+) */}
+                  {/* Row 2: Location (Combobox), Protection Requirement (Combobox), Duration (Dropdown) */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <div className="space-y-1">
-                      <label className="block text-[11px] font-sans text-zinc-300">
-                        {secondFieldLabel}
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="text"
-                          placeholder={secondFieldPlaceholder}
-                          value={formData.propertyLocation}
-                          onChange={(e) =>
-                            setFormData({ ...formData, propertyLocation: e.target.value })
-                          }
-                          className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#3B82F6] text-white placeholder-zinc-500 px-3 py-2 rounded text-xs sm:text-sm outline-none transition-colors pr-8"
-                        />
-                        {hasCalendarIcon && (
-                          <Calendar className="w-3.5 h-3.5 text-zinc-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-                        )}
-                      </div>
-                    </div>
+                    {/* 1. Deployment Location Combobox (19 Jurisdictions + Custom Entry) */}
+                    <ComboboxField
+                      label={locationLabel}
+                      value={formData.propertyLocation}
+                      onChange={(val) => setFormData({ ...formData, propertyLocation: val })}
+                      options={locationOptions}
+                      placeholder={locationPlaceholder}
+                      icon={<MapPin className="w-3.5 h-3.5" />}
+                    />
 
-                    {/* Coverage Type Dropdown */}
-                    <div className="space-y-1 relative">
-                      <label className="block text-[11px] font-sans text-zinc-300">
-                        {dropdown1Label}
-                      </label>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setCoverageDropdownOpen(!coverageDropdownOpen);
-                          setStartDropdownOpen(false);
-                        }}
-                        className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#3B82F6] text-white px-3 py-2 rounded text-xs sm:text-sm flex items-center justify-between text-left transition-colors cursor-pointer"
-                      >
-                        <span className={`truncate ${formData.coverageType ? 'text-white' : 'text-zinc-500'}`}>
-                          {formData.coverageType || dropdown1Placeholder}
-                        </span>
-                        <ChevronDown
-                          className={`w-3.5 h-3.5 text-zinc-400 shrink-0 transition-transform duration-200 ${
-                            coverageDropdownOpen ? 'rotate-180' : ''
-                          }`}
-                        />
-                      </button>
+                    {/* 2. Protection Requirement Combobox (Scopes + Custom Scope Entry) */}
+                    <ComboboxField
+                      label={dropdown1Label}
+                      value={formData.coverageType}
+                      onChange={(val) => setFormData({ ...formData, coverageType: val })}
+                      options={dropdown1Options}
+                      placeholder={dropdown1Placeholder}
+                      icon={<ShieldCheck className="w-3.5 h-3.5" />}
+                    />
 
-                      {coverageDropdownOpen && (
-                        <div className="absolute z-30 top-full mt-1 left-0 right-0 bg-[#0E1728] border border-[#1E2D4A] rounded shadow-2xl py-1 divide-y divide-white/5 max-h-48 overflow-y-auto">
-                          {dropdown1Options.map((type, idx) => {
-                            const isSelected = formData.coverageType === type;
-                            return (
-                              <button
-                                key={idx}
-                                type="button"
-                                onClick={() => {
-                                  setFormData({ ...formData, coverageType: type });
-                                  setCoverageDropdownOpen(false);
-                                }}
-                                className={`w-full px-3 py-2 text-left text-xs sm:text-sm flex items-center justify-between transition-colors cursor-pointer ${
-                                  isSelected
-                                    ? 'text-[#93C5FD] bg-[#142036]'
-                                    : 'text-zinc-300 hover:bg-[#142036] hover:text-white'
-                                }`}
-                              >
-                                <span className="truncate">{type}</span>
-                                {isSelected && <Check className="w-3.5 h-3.5 text-[#93C5FD] shrink-0" />}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Coverage Start Dropdown */}
+                    {/* 3. Coverage Start / Detail Duration Dropdown */}
                     <div className="space-y-1 relative">
                       <label className="block text-[11px] font-sans text-zinc-300">
                         {dropdown2Label}
                       </label>
                       <button
                         type="button"
-                        onClick={() => {
-                          setStartDropdownOpen(!startDropdownOpen);
-                          setCoverageDropdownOpen(false);
-                        }}
+                        onClick={() => setStartDropdownOpen(!startDropdownOpen)}
                         className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#3B82F6] text-white px-3 py-2 rounded text-xs sm:text-sm flex items-center justify-between text-left transition-colors cursor-pointer"
                       >
                         <span className={`truncate ${formData.coverageStart ? 'text-white' : 'text-zinc-500'}`}>
@@ -341,7 +506,7 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
                         </span>
                         <ChevronDown
                           className={`w-3.5 h-3.5 text-zinc-400 shrink-0 transition-transform duration-200 ${
-                            startDropdownOpen ? 'rotate-180' : ''
+                            startDropdownOpen ? 'rotate-180 text-[#93C5FD]' : ''
                           }`}
                         />
                       </button>
@@ -374,25 +539,66 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
                     </div>
                   </div>
 
-                  {/* Row 3: Compact Message Textarea */}
-                  <div className="space-y-1">
-                    <label className="block text-[11px] font-sans text-zinc-300">
-                      Message / Special Directives <span className="text-zinc-500">(Optional)</span>
-                    </label>
-                    <textarea
-                      rows={2}
-                      placeholder={
-                        data?.messagePlaceholder ||
-                        'Briefly describe your property layout, household or specific protection requirements...'
-                      }
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#3B82F6] text-white placeholder-zinc-500 px-3 py-2 rounded text-xs sm:text-sm outline-none transition-colors resize-y min-h-[58px]"
-                    />
-                  </div>
+                  {/* Row 3: Principal Profile / Industry (if configured) + Special Directives Textarea */}
+                  {hasDedicatedProfileField ? (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      {/* Principal Profile / Industry Field */}
+                      <div className="space-y-1">
+                        <label className="block text-[11px] font-sans text-zinc-300">
+                          {secondFieldLabel}
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            placeholder={secondFieldPlaceholder}
+                            value={formData.principalProfile}
+                            onChange={(e) =>
+                              setFormData({ ...formData, principalProfile: e.target.value })
+                            }
+                            className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#3B82F6] text-white placeholder-zinc-500 pl-8 pr-3 py-2 rounded text-xs sm:text-sm outline-none transition-colors"
+                          />
+                          <Briefcase className="w-3.5 h-3.5 text-zinc-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        </div>
+                      </div>
+
+                      {/* Message / Special Directives (span 2 cols) */}
+                      <div className="space-y-1 md:col-span-2">
+                        <label className="block text-[11px] font-sans text-zinc-300">
+                          Message / Special Directives <span className="text-zinc-500">(Optional)</span>
+                        </label>
+                        <textarea
+                          rows={2}
+                          placeholder={
+                            data?.messagePlaceholder ||
+                            'Briefly describe your schedule, travel requirements or specific security directives...'
+                          }
+                          value={formData.message}
+                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                          className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#3B82F6] text-white placeholder-zinc-500 px-3 py-2 rounded text-xs sm:text-sm outline-none transition-colors resize-y min-h-[42px] max-h-[110px]"
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    /* Standard Message Textarea */
+                    <div className="space-y-1">
+                      <label className="block text-[11px] font-sans text-zinc-300">
+                        Message / Special Directives <span className="text-zinc-500">(Optional)</span>
+                      </label>
+                      <textarea
+                        rows={2}
+                        placeholder={
+                          data?.messagePlaceholder ||
+                          'Briefly describe your property layout, household or specific protection requirements...'
+                        }
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#3B82F6] text-white placeholder-zinc-500 px-3 py-2 rounded text-xs sm:text-sm outline-none transition-colors resize-y min-h-[58px]"
+                      />
+                    </div>
+                  )}
                 </>
               ) : (
-                /* Corporate / Classic Layout (Compact 3-column) */
+                /* Corporate / Classic Layout */
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                     <div className="space-y-1">
@@ -446,35 +652,15 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
                         className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#3B82F6] text-white px-3 py-2 rounded text-xs sm:text-sm outline-none transition-colors"
                       />
                     </div>
-                    <div className="space-y-1 relative">
-                      <span className="block text-[11px] font-sans text-zinc-300">Type of Need</span>
-                      <button
-                        type="button"
-                        onClick={() => setCoverageDropdownOpen(!coverageDropdownOpen)}
-                        className="w-full bg-[#111B2C] border border-[#1E2D4A] focus:border-[#3B82F6] text-white px-3 py-2 rounded text-xs sm:text-sm flex items-center justify-between text-left transition-colors cursor-pointer"
-                      >
-                        <span className="truncate text-zinc-200">{formData.coverageType || needTypes[0]}</span>
-                        <ChevronDown className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
-                      </button>
-
-                      {coverageDropdownOpen && (
-                        <div className="absolute z-30 top-full mt-1 left-0 right-0 bg-[#0E1728] border border-[#1E2D4A] rounded shadow-2xl py-1 divide-y divide-white/5 max-h-48 overflow-y-auto">
-                          {needTypes.map((type, idx) => (
-                            <button
-                              key={idx}
-                              type="button"
-                              onClick={() => {
-                                setFormData({ ...formData, coverageType: type });
-                                setCoverageDropdownOpen(false);
-                              }}
-                              className="w-full px-3 py-2 text-left text-xs sm:text-sm text-zinc-300 hover:bg-[#142036] hover:text-white"
-                            >
-                              {type}
-                            </button>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                    {/* Type of Need Combobox */}
+                    <ComboboxField
+                      label="Type of Need"
+                      value={formData.coverageType}
+                      onChange={(val) => setFormData({ ...formData, coverageType: val })}
+                      options={dropdown1Options}
+                      placeholder="Select or enter need..."
+                      icon={<ShieldCheck className="w-3.5 h-3.5" />}
+                    />
                   </div>
 
                   <div className="space-y-1">
@@ -505,7 +691,6 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
 
               {/* Row 4: Submit Actions & Dual Channel Selector */}
               <div className="pt-1.5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
-                {/* Primary Submit Button: opens submission choice dialog */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -523,7 +708,6 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
                     </>
                   )}
                 </button>
-
               </div>
 
               {/* Footer Statutory Note */}
@@ -542,10 +726,10 @@ export const ServiceConsultationForm: React.FC<Props> = ({ data }) => {
         isOpen={isMethodModalOpen}
         onClose={() => setIsMethodModalOpen(false)}
         onSubmitEmail={async () => {
-          await submitForm(formData);
+          await submitForm(prepareSubmissionPayload());
         }}
         onSubmitWhatsApp={() => {
-          submitViaWhatsApp(formData, headline);
+          submitViaWhatsApp(prepareSubmissionPayload(), headline);
         }}
         isSubmittingEmail={isSubmitting}
         clientName={formData.fullName}

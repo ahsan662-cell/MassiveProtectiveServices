@@ -11,7 +11,6 @@ interface Props {
 
 export const ServiceScopeGrid: React.FC<Props> = ({ data }) => {
   const prefersReducedMotion = useReducedMotion();
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

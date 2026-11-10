@@ -3,6 +3,8 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { User } from 'lucide-react';
+import Image from 'next/image';
+import FounderImg from "@/public/images/Founder.jpg.jpeg";
 
 export const AboutHeroSection: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
@@ -62,28 +64,17 @@ export const AboutHeroSection: React.FC = () => {
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-5 rounded-sm bg-[#101A2D] border border-[#0E2445] p-8 sm:p-12 flex flex-col justify-between items-center text-center min-h-[460px] sm:min-h-[500px] shadow-2xl relative"
+            className="lg:col-span-5 rounded-sm border border-[#0E2445] p-8 sm:p-0 flex flex-col justify-between items-center text-center min-h-[fit-content] sm:h-[fit-content] shadow-2xl relative"
           >
-            {/* Top Label */}
-            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.2em] text-[#93C5FD]">
-              PORTRAIT / AWAITING PHOTOGRAPH
-            </div>
-
-            {/* Center Icon and Dash */}
-            <div className="my-auto flex flex-col items-center space-y-4">
-              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center text-zinc-400">
-                <User className="w-8 h-8 text-zinc-300 stroke-[1.2]" />
-              </div>
-              <div className="w-8 h-[1px] bg-[#0E2445]" />
-              <div className="text-sm sm:text-base font-serif font-normal text-white">
-                Photo: Marc A. Tardalo — Founder &amp; CEO
-              </div>
-            </div>
-
-            {/* Bottom Note */}
-            <div className="text-[11px] font-sans text-zinc-400">
-              Professional portrait pending. No substitute likeness.
-            </div>
+            <Image
+              src={FounderImg.src}
+              alt='Founder Image'
+              width={FounderImg.width}
+              height={FounderImg.height}
+              className='w-full h-auto object-cover rounded-sm shadow-lg shadow-white/10'
+              title='Founder Image'
+              priority={true}
+            />
           </motion.div>
         </div>
       </div>
