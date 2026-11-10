@@ -172,21 +172,25 @@ export const ALL_SERVICES: ServiceItem[] = [
 export const ServicesGrid: React.FC = () => {
   const prefersReducedMotion = useReducedMotion();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(1); // Mobile-first default: 1 box on mobile
   const [isPaused, setIsPaused] = useState(false);
   const [viewMode, setViewMode] = useState<'slider' | 'grid'>('slider');
   const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
 
-  // Responsive items-per-view calculation
+  // Responsive items-per-view calculation: <768px = 1 box, 768-1023px = 2 boxes, >=1024px = 3 boxes
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setVisibleCount(1);
-      } else if (window.innerWidth < 1024) {
-        setVisibleCount(2);
+      let count = 1;
+      if (window.innerWidth >= 1024) {
+        count = 3;
+      } else if (window.innerWidth >= 768) {
+        count = 2;
       } else {
-        setVisibleCount(3);
+        count = 1;
       }
+      setVisibleCount(count);
+      setCurrentIndex((prev) => Math.min(prev, Math.max(0, ALL_SERVICES.length - count)));
     };
 
     handleResize();
@@ -214,22 +218,27 @@ export const ServicesGrid: React.FC = () => {
     return () => clearInterval(timer);
   }, [handleNext, isPaused, viewMode]);
 
-  // Touch Swipe Handlers for mobile
+  // Touch Swipe Handlers for mobile (distinguishes horizontal swipe from vertical scroll)
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartXRef.current = e.touches[0].clientX;
+    touchStartYRef.current = e.touches[0].clientY;
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartXRef.current === null) return;
-    const diff = touchStartXRef.current - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) {
+    if (touchStartXRef.current === null || touchStartYRef.current === null) return;
+    const diffX = touchStartXRef.current - e.changedTouches[0].clientX;
+    const diffY = touchStartYRef.current - e.changedTouches[0].clientY;
+
+    // Only trigger if horizontal swipe is dominant and exceeds threshold
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
+      if (diffX > 0) {
         handleNext();
       } else {
         handlePrev();
       }
     }
     touchStartXRef.current = null;
+    touchStartYRef.current = null;
   };
 
   return (
@@ -348,12 +357,12 @@ export const ServicesGrid: React.FC = () => {
               onTouchEnd={handleTouchEnd}
             >
               <motion.div
-                className="flex gap-6 sm:gap-7"
+                className="flex md:-mx-2.5 lg:-mx-3"
                 animate={{
                   x: `-${currentIndex * (100 / visibleCount)}%`,
                 }}
                 transition={{
-                  duration: prefersReducedMotion ? 0 : 0.6,
+                  duration: prefersReducedMotion ? 0 : 0.45,
                   ease: [0.25, 1, 0.5, 1],
                 }}
               >
@@ -364,63 +373,64 @@ export const ServicesGrid: React.FC = () => {
                     <div
                       key={service.id}
                       style={{
-                        flex: `0 0 calc(${itemWidthPercentage}% - ${
-                          ((visibleCount - 1) * (visibleCount === 1 ? 0 : visibleCount === 2 ? 24 : 28)) /
-                          visibleCount
-                        }px)`,
+                        flex: `0 0 ${itemWidthPercentage}%`,
+                        width: `${itemWidthPercentage}%`,
+                        maxWidth: `${itemWidthPercentage}%`,
                       }}
-                      className="group relative rounded-xl bg-[#12121A] border border-white/[0.08] hover:border-[#0E2445]/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-[0_12px_36px_rgba(0,0,0,0.7),0_0_24px_rgba(14, 36, 69,0.25)] hover:-translate-y-1.5"
+                      className="shrink-0 px-0 md:px-2.5 lg:px-3 box-border"
                     >
-                      {/* Image Preview Container */}
-                      <div className="relative w-full h-48 sm:h-52 overflow-hidden bg-[#0A0A0E]">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#12121A] via-[#12121A]/50 to-transparent" />
+                      <div className="group relative rounded-xl bg-[#12121A] border border-white/[0.08] hover:border-[#0E2445]/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-[0_12px_36px_rgba(0,0,0,0.7),0_0_24px_rgba(14,36,69,0.25)] hover:-translate-y-1.5 h-full">
+                        {/* Image Preview Container */}
+                        <div className="relative w-full h-44 sm:h-52 overflow-hidden bg-[#0A0A0E]">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={service.image}
+                            alt={service.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#12121A] via-[#12121A]/50 to-transparent" />
 
-                        {/* Top Category & Badge */}
-                        <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 z-10">
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0A0A0E]/85 backdrop-blur-md border border-white/10 text-[11px] font-mono font-medium text-zinc-300">
-                            {service.category}
-                          </span>
-                          <span className="inline-flex items-center px-2 py-0.5 rounded bg-[#0E2445] text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
-                            {service.badge}
-                          </span>
+                          {/* Top Category & Badge */}
+                          <div className="absolute top-3 left-3 right-3 sm:top-3.5 sm:left-3.5 sm:right-3.5 flex items-center justify-between gap-1.5 z-10">
+                            <span className="inline-flex items-center px-2 py-0.5 rounded bg-[#0A0A0E]/85 backdrop-blur-md border border-white/10 text-[10px] sm:text-[11px] font-mono font-medium text-zinc-300 truncate max-w-[60%]">
+                              {service.category}
+                            </span>
+                            <span className="inline-flex items-center px-2 py-0.5 rounded bg-[#0E2445] text-mono text-white text-[10px] sm:text-[10px] font-bold uppercase tracking-wider shadow-sm shrink-0 border border-white/10">
+                              {service.badge}
+                            </span>
+                          </div>
+
+                          {/* Floating Service Icon */}
+                          <div className="absolute bottom-3 left-3 sm:left-4 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-[#0A1E40]/90 border border-[#0E2445]/40 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:border-[#0E2445] transition-colors">
+                            <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#60A5FA] group-hover:text-blue-300 transition-colors" />
+                          </div>
                         </div>
 
-                        {/* Floating Service Icon */}
-                        <div className="absolute bottom-3 left-4 z-10 w-10 h-10 rounded-lg bg-[#0A1E40]/90 border border-[#0E2445]/40 backdrop-blur-md flex items-center justify-center shadow-lg group-hover:border-[#0E2445] transition-colors">
-                          <Icon className="w-5 h-5 text-[#60A5FA] group-hover:text-blue-300 transition-colors" />
-                        </div>
-                      </div>
+                        {/* Card Content Body */}
+                        <div className="p-4 sm:p-6 lg:p-7 flex-1 flex flex-col justify-between space-y-3.5 sm:space-y-4">
+                          <div className="space-y-2">
+                            <h3 className="text-lg sm:text-xl lg:text-[22px] font-sans font-bold text-white group-hover:text-[#93C5FD] leading-snug transition-colors line-clamp-2">
+                              {service.title}
+                            </h3>
+                            <p className="text-xs sm:text-[13px] text-zinc-300 font-sans font-normal leading-relaxed line-clamp-3">
+                              {service.description}
+                            </p>
+                          </div>
 
-                      {/* Card Content Body */}
-                      <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
-                        <div className="space-y-2.5">
-                          <h3 className="text-xl sm:text-[22px] font-sans font-bold text-white group-hover:text-[#93C5FD] leading-snug transition-colors">
-                            {service.title}
-                          </h3>
-                          <p className="text-xs sm:text-[13px] text-zinc-300 font-sans font-normal leading-relaxed line-clamp-3">
-                            {service.description}
-                          </p>
-                        </div>
-
-                        {/* Card Footer Link */}
-                        <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                          <Link
-                            href={service.href}
-                            className="inline-flex items-center gap-2 text-xs font-sans font-semibold text-[#60A5FA] group-hover:text-blue-300 transition-colors"
-                          >
-                            <span>Explore Service Details</span>
-                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-200" />
-                          </Link>
-                          <span className="text-[11px] font-mono text-zinc-500">
-                            {String(index + 1).padStart(2, '0')}/12
-                          </span>
+                          {/* Card Footer Link */}
+                          <div className="pt-3.5 sm:pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                            <Link
+                              href={service.href}
+                              className="inline-flex items-center gap-1.5 text-xs font-sans font-semibold text-[#60A5FA] group-hover:text-blue-300 transition-colors"
+                            >
+                              <span>Explore Service Details</span>
+                              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-200" />
+                            </Link>
+                            <span className="text-[11px] font-mono text-zinc-500 shrink-0">
+                              {String(index + 1).padStart(2, '0')}/12
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -430,24 +440,24 @@ export const ServicesGrid: React.FC = () => {
             </div>
 
             {/* Slider Bottom Progress Indicator */}
-            <div className="mt-8 flex items-center justify-between border-t border-white/[0.08] pt-6">
-              <div className="flex items-center gap-2">
+            <div className="mt-6 sm:mt-8 flex flex-col xs:flex-row items-center justify-between gap-4 border-t border-white/[0.08] pt-5 sm:pt-6">
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap justify-center">
                 {Array.from({ length: maxIndex + 1 }).map((_, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => setCurrentIndex(idx)}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
                       currentIndex === idx
-                        ? 'w-8 bg-[#0E2445]'
-                        : 'w-2 bg-white/20 hover:bg-white/40'
+                        ? 'w-5 sm:w-8 bg-[#0E2445] shadow-[0_0_8px_rgba(14,36,69,0.8)]'
+                        : 'w-1.5 sm:w-2 bg-white/20 hover:bg-white/40'
                     }`}
-                    aria-label={`Go to slide page ${idx + 1}`}
+                    aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}
               </div>
 
-              <div className="flex items-center gap-2 text-xs font-mono text-zinc-400">
+              <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-400 shrink-0">
                 <span className="text-[#60A5FA] font-semibold">
                   {String(currentIndex + 1).padStart(2, '0')}
                 </span>
