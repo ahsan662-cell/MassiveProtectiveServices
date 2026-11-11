@@ -1,27 +1,23 @@
 /**
  * WhatsApp Integration Utilities for Massive Protective Services (MPS)
  * Formats inquiries and generates direct WhatsApp messaging links.
- * 
- * Active Destination Number: 03142124348 -> 923142124348 (Temporary Testing Number)
+ *
+ * Active Destination: +1 (954) 234-7231 → 19542347231
  * Client Headquarters Desk: +1 (954) 234-7231
  * FDACS License B1400200
  */
 
 // Active destination for WhatsApp form submissions
-export const MPS_WHATSAPP_NUMBER = '923088034975';
+export const MPS_WHATSAPP_NUMBER = '19542347231';
 export const CLIENT_PHONE_NUMBER = '+1 (954) 234-7231';
 export const MPS_PHONE_DISPLAY = '+1 (954) 234-7231';
 
 /**
  * Returns clean international phone digits for WhatsApp URL.
- * Automatically normalizes local Pakistani format (e.g. 0314... -> 92314...).
  */
 export const getTargetWhatsAppNumber = (customNumber?: string): string => {
   const source = customNumber || MPS_WHATSAPP_NUMBER;
-  let num = source.replace(/\D/g, '');
-  if (num.startsWith('0')) {
-    num = '92' + num.slice(1);
-  }
+  const num = source.replace(/\D/g, '');
   return num;
 };
 

@@ -99,8 +99,7 @@ export const FounderBioSection: React.FC = () => {
               <div className="space-y-1">
                 <span className="text-zinc-400 block font-mono text-[11px]">Founded:</span>
                 <div className="flex items-center gap-1.5">
-                  <span className="inline-block w-7 h-2.5 bg-white/90 rounded-[1px]" />
-                  <span className="text-white/80 font-mono text-xs">(pending)</span>
+                  <span className="text-white/80 font-mono text-xs">Year 2013</span>
                 </div>
               </div>
               <div className="space-y-1">

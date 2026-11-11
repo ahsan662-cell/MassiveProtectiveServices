@@ -356,28 +356,26 @@ export const ServicesGrid: React.FC = () => {
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
-              <motion.div
-                className="flex md:-mx-2.5 lg:-mx-3"
-                animate={{
-                  x: `-${currentIndex * (100 / visibleCount)}%`,
-                }}
-                transition={{
-                  duration: prefersReducedMotion ? 0 : 0.45,
-                  ease: [0.25, 1, 0.5, 1],
+              {/* Track: gap-based spacing. Each card width = (100% - gaps) / visibleCount.
+                  We use inline style to drive translation so the math is pixel-perfect. */}
+              <div
+                className="flex"
+                style={{
+                  gap: visibleCount > 1 ? '16px' : '0px',
+                  transform: `translateX(calc(-${currentIndex} * (100% / ${visibleCount} + ${visibleCount > 1 ? 16 / visibleCount : 0}px)))`,
+                  transition: `transform ${prefersReducedMotion ? '0ms' : '450ms'} cubic-bezier(0.25, 1, 0.5, 1)`,
                 }}
               >
                 {ALL_SERVICES.map((service, index) => {
                   const Icon = service.icon;
-                  const itemWidthPercentage = 100 / visibleCount;
                   return (
                     <div
                       key={service.id}
                       style={{
-                        flex: `0 0 ${itemWidthPercentage}%`,
-                        width: `${itemWidthPercentage}%`,
-                        maxWidth: `${itemWidthPercentage}%`,
+                        flex: `0 0 calc(${100 / visibleCount}% - ${visibleCount > 1 ? (16 * (visibleCount - 1)) / visibleCount : 0}px)`,
+                        minWidth: 0,
                       }}
-                      className="shrink-0 px-0 md:px-2.5 lg:px-3 box-border"
+                      className="shrink-0"
                     >
                       <div className="group relative rounded-xl bg-[#12121A] border border-white/[0.08] hover:border-[#0E2445]/60 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-[0_12px_36px_rgba(0,0,0,0.7),0_0_24px_rgba(14,36,69,0.25)] hover:-translate-y-1.5 h-full">
                         {/* Image Preview Container */}
@@ -436,7 +434,7 @@ export const ServicesGrid: React.FC = () => {
                     </div>
                   );
                 })}
-              </motion.div>
+              </div>
             </div>
 
             {/* Slider Bottom Progress Indicator */}

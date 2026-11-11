@@ -129,3 +129,15 @@ body {
 .trustindex-reviews-wrapper .ti-rating-text strong a:hover {
   color: #0E2445 !important;
 }
+
+/* Strictly hide any Trustindex review with less than 4 stars (1, 2, or 3 stars) */
+.trustindex-reviews-wrapper .ti-review-item[data-rating="1"],
+.trustindex-reviews-wrapper .ti-review-item[data-rating="1.0"],
+.trustindex-reviews-wrapper .ti-review-item[data-rating="2"],
+.trustindex-reviews-wrapper .ti-review-item[data-rating="2.0"],
+.trustindex-reviews-wrapper .ti-review-item[data-rating="3"],
+.trustindex-reviews-wrapper .ti-review-item[data-rating="3.0"],
+.trustindex-reviews-wrapper .ti-review-item:has(.ti-star:nth-child(4).e),
+.trustindex-reviews-wrapper .ti-review-item:has(.ti-star.e + .ti-star.e) {
+  display: none !important;
+}

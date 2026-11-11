@@ -14,16 +14,16 @@ export const AboutHeroSection: React.FC = () => {
       aria-label="About Massive Protective Services"
       className="relative w-full bg-[#0A111F] text-white pt-24 sm:pt-28 pb-12 sm:pb-16 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Headline and Story */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-6">
             {/* Eyebrow */}
             <motion.div
               initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-2"
+              className="flex items-start"
             >
               <span className="w-5 h-[1.5px] bg-[#0E2445]" />
               <span className="text-xs sm:text-[13px] font-mono font-medium tracking-[0.25em] text-[#93C5FD] uppercase">
@@ -60,7 +60,7 @@ export const AboutHeroSection: React.FC = () => {
           </div>
 
           {/* Right Column: Portrait Frame matching Image 1 */}
-          <motion.div
+          {/* <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -75,7 +75,7 @@ export const AboutHeroSection: React.FC = () => {
               title='Founder Image'
               priority={true}
             />
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>

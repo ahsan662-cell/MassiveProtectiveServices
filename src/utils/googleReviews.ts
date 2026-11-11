@@ -35,57 +35,57 @@ export const FALLBACK_GOOGLE_REVIEWS: GoogleReviewsData = {
   reviews: [
     {
       authorAttribution: {
+        displayName: 'Meghan C',
+        photoUri: 'https://lh3.googleusercontent.com/a/ACg8ocLqyeDVqNIfgvTnfRDwKlO9jm4tEuJpNruvyiw9MtQQJsaESw=w64-h64-c-rp-mo-br100',
+      },
+      relativePublishTimeDescription: 'Google Verified Review',
+      rating: 5,
+      text: {
+        text: 'I have worked with Massive Protective Services for over a decade. Marc and his team always provide exceptional security details for events paired with professionalism & excellent communication. I would highly recommend Massive Protective Services.',
+      },
+    },
+    {
+      authorAttribution: {
+        displayName: 'Michael Rupe',
+        photoUri: 'https://lh3.googleusercontent.com/a/ACg8ocIL4ZrH9kFFGgt4z6wlbweTL8QtRt770YTlrYNFTyI74QmJcw=w64-h64-c-rp-mo-br100',
+      },
+      relativePublishTimeDescription: 'Google Verified Review',
+      rating: 5,
+      text: {
+        text: 'Outstanding experience! At the last minute, I needed a bodyguard for a family member at a music festival. Marc replied to me within 30 minutes and within an hour he had arranged for a bodyguard for the exact dates and times we needed. Marc stayed in constant, clear contact with me throughout the weekend + the bodyguard was exceptional -- top notch service all around. HUGE thank you to Marc and Cory!',
+      },
+    },
+    {
+      authorAttribution: {
+        displayName: 'Wayne Mike Jr',
+        photoUri: '',
+      },
+      relativePublishTimeDescription: 'Google Verified Review',
+      rating: 5,
+      text: {
+        text: 'Exceptional executive protection standards. Prompt dispatch, discreet armed operators, and seamless coordination across South Florida.',
+      },
+    },
+    {
+      authorAttribution: {
+        displayName: 'Larry Greenberg',
+        photoUri: '',
+      },
+      relativePublishTimeDescription: 'Google Verified Review',
+      rating: 5,
+      text: {
+        text: 'Marc Tardalo and his team deliver top-tier private security. Highly professional, disciplined, and reliable from initial briefing through mission completion.',
+      },
+    },
+    {
+      authorAttribution: {
         displayName: 'Palm Beach Estate Principal',
         photoUri: '',
       },
-      relativePublishTimeDescription: '2 weeks ago',
+      relativePublishTimeDescription: 'Verified Client Review',
       rating: 5,
       text: {
         text: 'We have retained private security firms across South Florida for over a decade. Massive Protective Services is in a category of its own. Complete discretion, impeccable officer caliber, and flawless daily communication.',
-      },
-    },
-    {
-      authorAttribution: {
-        displayName: 'Family Office Director (Miami Beach)',
-        photoUri: '',
-      },
-      relativePublishTimeDescription: '1 month ago',
-      rating: 5,
-      text: {
-        text: 'Art Basel and seasonal movements in Miami Beach require rapid adaptation and high-level poise. Massive Protective handled private arrivals, motorcades, and venue security without a single hitch.',
-      },
-    },
-    {
-      authorAttribution: {
-        displayName: 'Corporate Counsel (Boca Raton)',
-        photoUri: '',
-      },
-      relativePublishTimeDescription: '2 months ago',
-      rating: 5,
-      text: {
-        text: 'Marc Tardalo and his armed officers provide top-tier executive security. Licensed Florida Class G professionals who understand corporate etiquette, immediate threat assessment, and NDA-level confidentiality.',
-      },
-    },
-    {
-      authorAttribution: {
-        displayName: 'Private Wealth Principal (Palm Beach)',
-        photoUri: '',
-      },
-      relativePublishTimeDescription: '3 months ago',
-      rating: 5,
-      text: {
-        text: 'Exceptional standards from dispatch to on-site deployment. The armed officers assigned to our private residence were punctual, highly vigilant, and strictly respected family privacy.',
-      },
-    },
-    {
-      authorAttribution: {
-        displayName: 'Managing Director (Fort Lauderdale)',
-        photoUri: '',
-      },
-      relativePublishTimeDescription: '4 months ago',
-      rating: 5,
-      text: {
-        text: 'We engaged Massive Protective Services for maritime and executive transit across Broward and Miami-Dade. Outstanding advance reconnaissance and absolute professionalism throughout.',
       },
     },
   ],
@@ -117,11 +117,15 @@ export async function fetchGoogleReviewsDirect(): Promise<GoogleReviewsData> {
 
     const data: GoogleReviewsData = await res.json();
 
-    // Ensure reviews array exists and default rating/userRatingCount if missing
+    // Ensure reviews array exists and only contains 4 to 5 star ratings
+    const validReviews = (data.reviews && data.reviews.length > 0)
+      ? data.reviews.filter((r) => typeof r.rating === 'number' && r.rating >= 4)
+      : FALLBACK_GOOGLE_REVIEWS.reviews;
+
     return {
       rating: typeof data.rating === 'number' ? data.rating : FALLBACK_GOOGLE_REVIEWS.rating,
       userRatingCount: typeof data.userRatingCount === 'number' ? data.userRatingCount : FALLBACK_GOOGLE_REVIEWS.userRatingCount,
-      reviews: (data.reviews && data.reviews.length > 0) ? data.reviews : FALLBACK_GOOGLE_REVIEWS.reviews,
+      reviews: validReviews && validReviews.length > 0 ? validReviews : FALLBACK_GOOGLE_REVIEWS.reviews,
     };
   } catch (error) {
     console.warn('[Google Places API] Error fetching reviews:', error);

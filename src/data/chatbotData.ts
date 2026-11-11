@@ -39,7 +39,7 @@ export const CHATBOT_CONFIG = {
     accentColor: "#C5A880",
     phone: "+1 (954) 234-7231",
     phoneAction: "tel:19542347231",
-    whatsapp: "923088034975",
+    whatsapp: "19542347231",
     whatsappDisplay: "+1 (954) 234-7231",
     contactPage: "/contact",
     email: "smb6925@gmail.com",
@@ -153,7 +153,7 @@ export const CHATBOT_CONFIG = {
           id: "whatsapp",
           label: "WhatsApp Marc Directly",
           type: "url",
-          action: "https://api.whatsapp.com/send?phone=923088034975&text=Hello%20Marc%2C%20I%20am%20inquiring%20about%20Massive%20Protective%20Services.",
+          action: "https://api.whatsapp.com/send?phone=19542347231&text=Hello%20Marc%2C%20I%20am%20inquiring%20about%20Massive%20Protective%20Services.",
           style: "outline",
         },
         {
