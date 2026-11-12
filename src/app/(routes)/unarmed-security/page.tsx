@@ -1,1 +1,1 @@
-export { default, metadata } from '@/app/(routes)/unarmed-security-guards/page';
+export { default, metadata } from '@/app/(routes)/services/unarmed-security-guards/page';

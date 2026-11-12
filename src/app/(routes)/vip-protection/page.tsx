@@ -1,1 +1,1 @@
-export { default, metadata } from '@/app/(routes)/vip-celebrity-protection/page';
+export { default, metadata } from '@/app/(routes)/services/vip-celebrity-protection/page';
