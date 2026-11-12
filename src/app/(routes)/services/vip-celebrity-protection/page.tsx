@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "high profile personal security",
   ],
   alternates: {
-    canonical: getCanonicalUrl('/vip-celebrity-protection'),
+    canonical: getCanonicalUrl('/services/vip-celebrity-protection'),
   },
   title: 'VIP & Celebrity Protection in Miami & South Florida | Massive Protective Services',
   description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'VIP & Celebrity Protection in Miami & South Florida | Massive Protective Services',
     description:
       'From hotel arrivals to nightlife, events, and private travel. Licensed armed close protection with strict non-disclosure agreements.',
-    url: getCanonicalUrl('/vip-celebrity-protection'),
+    url: getCanonicalUrl('/services/vip-celebrity-protection'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

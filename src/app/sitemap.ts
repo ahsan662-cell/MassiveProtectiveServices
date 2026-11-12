@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/terms`, priority: 0.3, changeFrequency: 'yearly' as const },
   ];
 
-  // 10 Armed & Protection Service Pages (excluding unarmed guards per firm constraint)
+  // 11 Service Pages — canonical /services/* paths
   const servicePages = [
     'executive-protection',
     'estate-security',
@@ -31,8 +31,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'loss-prevention',
     'mobile-patrol',
     'school-security',
+    'unarmed-security-guards',
   ].map((slug) => ({
-    url: `${SITE_URL}/${slug}`,
+    url: `${SITE_URL}/services/${slug}`,
     priority: 0.9,
     changeFrequency: 'weekly' as const,
     lastModified,

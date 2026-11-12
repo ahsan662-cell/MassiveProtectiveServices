@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "commercial asset protection",
   ],
   alternates: {
-    canonical: getCanonicalUrl('/loss-prevention'),
+    canonical: getCanonicalUrl('/services/loss-prevention'),
   },
   title: 'Loss Prevention & Retail Security in South Florida | Massive Protective Services',
   description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Loss Prevention & Retail Security in South Florida | Massive Protective Services',
     description:
       'Protect what you have built. Respect the way you do business. Observant retail security, camera observation, stockroom controls, and visible deterrence.',
-    url: getCanonicalUrl('/loss-prevention'),
+    url: getCanonicalUrl('/services/loss-prevention'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

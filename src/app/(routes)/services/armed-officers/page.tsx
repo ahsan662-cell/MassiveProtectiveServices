@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "armed commercial security",
   ],
   alternates: {
-    canonical: getCanonicalUrl('/armed-officers'),
+    canonical: getCanonicalUrl('/services/armed-officers'),
   },
   title: 'Armed Security Guard Services in South Florida | Massive Protective Services',
   description:
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: 'Armed Security Guard Services in South Florida | Massive Protective Services',
     description:
       'Florida Class G armed protection for private estates, corporate premises, events, and executive details. Zero unarmed guards.',
-    url: getCanonicalUrl('/armed-officers'),
+    url: getCanonicalUrl('/services/armed-officers'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "corporate principal protection",
   ],
   alternates: {
-    canonical: getCanonicalUrl('/executive-protection'),
+    canonical: getCanonicalUrl('/services/executive-protection'),
   },
   title: 'Executive Protection Services in South Florida | Massive Protective Services',
   description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Executive Protection Services in South Florida | Massive Protective Services',
     description:
       'Armed executive protection for principals who require more than a presence. Licensed, vetted, discreet close protection across South Florida and beyond.',
-    url: getCanonicalUrl('/executive-protection'),
+    url: getCanonicalUrl('/services/executive-protection'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

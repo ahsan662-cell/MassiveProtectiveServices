@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "VIP event security Florida",
   ],
   alternates: {
-    canonical: getCanonicalUrl('/event-security'),
+    canonical: getCanonicalUrl('/services/event-security'),
   },
   title: 'Event Security Services in Miami & South Florida | Massive Protective Services',
   description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Event Security Services in Miami & South Florida | Massive Protective Services',
     description:
       'Your guests should never know security is there. Your principal should never be without it. Licensed, discreet event security across South Florida.',
-    url: getCanonicalUrl('/event-security'),
+    url: getCanonicalUrl('/services/event-security'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

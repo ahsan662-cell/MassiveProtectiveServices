@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "luxury condominium security",
   ],
   alternates: {
-    canonical: getCanonicalUrl('/concierge-security'),
+    canonical: getCanonicalUrl('/services/concierge-security'),
   },
   title: 'Concierge Security in South Florida | Massive Protective Services',
   description:
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: 'Concierge Security in South Florida | Massive Protective Services',
     description:
       'Discreet front-of-house security. A considered welcome, with a watchful presence behind every arrival.',
-    url: getCanonicalUrl('/concierge-security'),
+    url: getCanonicalUrl('/services/concierge-security'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

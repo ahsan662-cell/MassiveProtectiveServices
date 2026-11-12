@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "scheduled security visits Miami",
   ],
   alternates: {
-    canonical: getCanonicalUrl('/mobile-patrol'),
+    canonical: getCanonicalUrl('/services/mobile-patrol'),
   },
   title: 'Mobile Patrol Services in South Florida | Massive Protective Services',
   description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Mobile Patrol Services in South Florida | Massive Protective Services',
     description:
       'Scheduled & varied vehicle visits, access checks, common area walkthroughs, and real-time electronic reporting. Professional security patrol across South Florida.',
-    url: getCanonicalUrl('/mobile-patrol'),
+    url: getCanonicalUrl('/services/mobile-patrol'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

@@ -133,6 +133,102 @@ const nextConfig: NextConfig = {
         destination: '/locations/:slug*',
         permanent: true,
       },
+      // Root-level locations → /locations/:slug
+      {
+        source: '/aventura',
+        destination: '/locations/aventura',
+        permanent: true,
+      },
+      {
+        source: '/boca-raton',
+        destination: '/locations/boca-raton',
+        permanent: true,
+      },
+      {
+        source: '/boynton-beach',
+        destination: '/locations/boynton-beach',
+        permanent: true,
+      },
+      {
+        source: '/delray-beach',
+        destination: '/locations/delray-beach',
+        permanent: true,
+      },
+      {
+        source: '/fort-lauderdale',
+        destination: '/locations/fort-lauderdale',
+        permanent: true,
+      },
+      {
+        source: '/gulf-stream',
+        destination: '/locations/gulf-stream',
+        permanent: true,
+      },
+      {
+        source: '/hillsboro-beach',
+        destination: '/locations/hillsboro-beach',
+        permanent: true,
+      },
+      {
+        source: '/jacksonville',
+        destination: '/locations/jacksonville',
+        permanent: true,
+      },
+      {
+        source: '/lighthouse-point',
+        destination: '/locations/lighthouse-point',
+        permanent: true,
+      },
+      {
+        source: '/manalapan',
+        destination: '/locations/manalapan',
+        permanent: true,
+      },
+      {
+        source: '/miami',
+        destination: '/locations/miami',
+        permanent: true,
+      },
+      {
+        source: '/miami-beach',
+        destination: '/locations/miami-beach',
+        permanent: true,
+      },
+      {
+        source: '/naples',
+        destination: '/locations/naples',
+        permanent: true,
+      },
+      {
+        source: '/ocean-ridge',
+        destination: '/locations/ocean-ridge',
+        permanent: true,
+      },
+      {
+        source: '/orlando',
+        destination: '/locations/orlando',
+        permanent: true,
+      },
+      {
+        source: '/palm-beach',
+        destination: '/locations/palm-beach',
+        permanent: true,
+      },
+      {
+        source: '/sarasota',
+        destination: '/locations/sarasota',
+        permanent: true,
+      },
+      {
+        source: '/tampa',
+        destination: '/locations/tampa',
+        permanent: true,
+      },
+      {
+        source: '/west-palm-beach',
+        destination: '/locations/west-palm-beach',
+        permanent: true,
+      },
     ];
   },
   experimental: {

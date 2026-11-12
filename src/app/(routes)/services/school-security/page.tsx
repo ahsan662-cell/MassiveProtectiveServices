@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "campus safety officers Florida",
   ],
   alternates: {
-    canonical: getCanonicalUrl('/school-security'),
+    canonical: getCanonicalUrl('/services/school-security'),
   },
   title: 'School Security Services in South Florida | Massive Protective Services',
   description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'School Security Services in South Florida | Massive Protective Services',
     description:
       'Proposed security support for private and independent schools in South Florida. Arrival & dismissal coordination, perimeter observation, and welcoming campus protection.',
-    url: getCanonicalUrl('/school-security'),
+    url: getCanonicalUrl('/services/school-security'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

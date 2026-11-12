@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "commercial building guards",
   ],
   alternates: {
-    canonical: getCanonicalUrl('/unarmed-security-guards'),
+    canonical: getCanonicalUrl('/services/unarmed-security-guards'),
   },
   title: 'Unarmed Security Guards in South Florida | Massive Protective Services',
   description:
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: 'Unarmed Security Guards in South Florida | Massive Protective Services',
     description:
       'Quiet authority. Clear responsibilities. Professional unarmed security guard services for commercial properties, residential communities, luxury retail, and corporate workplaces in South Florida.',
-    url: getCanonicalUrl('/unarmed-security-guards'),
+    url: getCanonicalUrl('/services/unarmed-security-guards'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

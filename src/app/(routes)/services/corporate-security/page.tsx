@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "corporate campus armed security",
   ],
   alternates: {
-    canonical: getCanonicalUrl('/corporate-security'),
+    canonical: getCanonicalUrl('/services/corporate-security'),
   },
   title: 'Corporate Security Services in South Florida | Massive Protective Services',
   description:
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: 'Corporate Security Services in South Florida | Massive Protective Services',
     description:
       'Your boardroom should be your safest room. We make sure it is. Executive protection, high-risk terminations, workplace violence prevention, and corporate security officers.',
-    url: getCanonicalUrl('/corporate-security'),
+    url: getCanonicalUrl('/services/corporate-security'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',

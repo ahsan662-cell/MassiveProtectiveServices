@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "private residence security South Florida",
   ],
   alternates: {
-    canonical: getCanonicalUrl('/estate-security'),
+    canonical: getCanonicalUrl('/services/estate-security'),
   },
   title: 'Estate & Residential Security Services in South Florida | Massive Protective Services',
   description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: 'Estate & Residential Security Services in South Florida | Massive Protective Services',
     description:
       'Your home is your most private space. Who’s protecting it while you sleep — and while you’re away? Licensed residential and estate security across South Florida.',
-    url: getCanonicalUrl('/estate-security'),
+    url: getCanonicalUrl('/services/estate-security'),
     siteName: 'Massive Protective Services',
     locale: 'en_US',
     type: 'website',
