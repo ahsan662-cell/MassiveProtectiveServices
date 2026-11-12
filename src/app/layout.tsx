@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Plus_Jakarta_Sans, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "@/store/provider";
@@ -86,7 +87,27 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Google tag (gtag.js) - Google Tag Manager / Analytics */}
+        {/* Google tag (gtag.js) - Google Analytics 4 */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-WEPVNWJT8B"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-WEPVNWJT8B', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+
+        {/* Google Tag Manager */}
         <script
           async
           src="https://www.googletagmanager.com/gtm.js?id=GTM-53DPPQC7"
