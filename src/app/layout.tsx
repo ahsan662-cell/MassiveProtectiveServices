@@ -85,6 +85,20 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${plusJakarta.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        {/* Google tag (gtag.js) - Google Tag Manager / Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-NKBJRD48"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());`,
+          }}
+        />
+      </head>
       <body
         suppressHydrationWarning
         className="min-h-screen max-w-[100vw] overflow-x-clip flex flex-col bg-[#0A0A0A] text-[#F8FAFC]"
