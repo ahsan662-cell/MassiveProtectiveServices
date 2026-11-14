@@ -371,10 +371,10 @@ export const ContactFormSection: React.FC = () => {
                 <span>Confidential Email</span>
               </div>
               <a
-                href="mailto:operations@massiveprotectiveservices.com"
+                href="mailto:Admin@massiveprotectiveservices.com"
                 className="block text-sm sm:text-base font-sans font-semibold text-white hover:text-[#93C5FD] mt-2.5 transition-colors break-all"
               >
-                operations@massiveprotectiveservices.com
+                Admin@massiveprotectiveservices.com
               </a>
               <p className="text-xs text-zinc-400 font-sans mt-1.5 leading-relaxed">
                 Monitored continuously. PGP key available upon request for encrypted correspondence.
